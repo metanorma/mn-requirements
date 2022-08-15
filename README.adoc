@@ -1,0 +1,26 @@
+= mn-requirements: Requirements processing and rendering according to different models
+
+image:https://img.shields.io/gem/v/mn-requirements.svg["Gem Version", link="https://rubygems.org/gems/mn-requirements"]
+image:https://github.com/metanorma/mn-requirements/workflows/rake/badge.svg["Build Status", link="https://github.com/metanorma/mn-requirements/actions?workflow=rake"]
+image:https://codeclimate.com/github/metanorma/mn-requirements/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/mn-requirements"]
+image:https://img.shields.io/github/issues-pr-raw/metanorma/mn-requirements.svg["Pull Requests", link="https://github.com/metanorma/mn-requirements/pulls"]
+image:https://img.shields.io/github/commits-since/metanorma/mn-requirements/latest.svg["Commits since latest",link="https://github.com/metanorma/mn-requirements/releases"]
+
+== Functionality
+
+This gem supports the processing of Requirements models and their rendering in the https://metanorma.org[Metanorma]
+toolset, allowing various models to be processed. The gem currently supports:
+
+`metanorma`:: Default Metanorma Requiremnts model
+`ogc`:: OGC Modspec
+
+== Usage
+
+Within Metanorma, a requirement is specified as being of a particular type; e.g.
+
+[source,asciidoc]
+----
+[requirement,type=ogc]
+...
+...
+----
