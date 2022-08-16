@@ -1,25 +1,47 @@
-require 'metanorma-standoc'
+require "htmlentities"
+require "metanorma-utils"
+require_relative "cleanup"
 
 module Metanorma
-  module Requirements
-    class Default < ::Metanorma::Standoc::Converter
-      def reqt_subpart(name)
-        %w(specification measurement-target verification import identifier title
-           description component subject inherit classification).include? name
+  class Requirements
+    class Default
+      def initialize
+        @c = HTMLEntities.new
       end
 
-      def reqt_subpart_attrs(node, name)
+      def noko(&block)
+        Metanorma::Utils.noko(&block)
+      end
+
+      def attr_code(attributes)
+        Metanorma::Utils.attr_code(attributes)
+      end
+
+      def csv_split(text, delim = ";")
+        Metanorma::Utils.csv_split(text, delim)
+      end
+
+      def wrap_in_para(node, out)
+        Metanorma::Utils.wrap_in_para(node, out)
+      end
+
+      def reqt_subpart?(name)
+        %w[specification measurement-target verification import identifier title
+           description component subject inherit classification].include? name
+      end
+
+      def reqt_subpart_attrs(node, name, attrs)
         klass = node.attr("class") || "component"
-        attr_code(keep_attrs(node)
+        attr_code(attrs
           .merge(exclude: node.option?("exclude"),
                  type: node.attr("type"),
                  class: name == "component" ? klass : nil))
       end
 
-      def requirement_subpart(node)
+      def requirement_subpart(node, attrs)
         name = node.role || node.attr("style")
         noko do |xml|
-          xml.send name, **reqt_subpart_attrs(node, name) do |o|
+          xml.send name, **reqt_subpart_attrs(node, name, attrs) do |o|
             o << node.content
           end
         end
@@ -45,16 +67,15 @@ module Metanorma
         end
       end
 
-      def reqt_attrs(node)
-        attr_code(keep_attrs(node).merge(id_unnum_attrs(node)).merge(
-                    id: Metanorma::Utils::anchor_or_uuid(node),
+      def reqt_attrs(node, attrs)
+        attr_code(attrs.merge(
+                    id: Metanorma::Utils.anchor_or_uuid(node),
                     unnumbered: node.option?("unnumbered") ? "true" : nil,
                     number: node.attr("number"),
                     subsequence: node.attr("subsequence"),
                     obligation: node.attr("obligation"),
                     filename: node.attr("filename"),
                     type: node.attr("type"),
-                    model: node.attr("model"),
                   ))
       end
 
@@ -76,9 +97,9 @@ module Metanorma
           requirement_classification(classif, out)
       end
 
-      def requirement(node, obligation)
+      def requirement(node, obligation, attrs)
         noko do |xml|
-          xml.send obligation, **reqt_attrs(node) do |ex|
+          xml.send obligation, **reqt_attrs(node, attrs) do |ex|
             requirement_elems(node, ex)
             wrap_in_para(node, ex)
           end
