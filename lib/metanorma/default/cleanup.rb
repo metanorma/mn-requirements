@@ -35,12 +35,12 @@ module Metanorma
         end
       end
 
-      def requirement_descriptions_cleanup(_reqt)
-        r.xpath(".//p[not(./*)][normalize-space(.)='']").each(&:remove)
-        r.children.each do |e|
-          requirement_description_wrap(r, e)
+      def requirement_descriptions_cleanup(reqt)
+        reqt.xpath(".//p[not(./*)][normalize-space(.)='']").each(&:remove)
+        reqt.children.each do |e|
+          requirement_description_wrap(reqt, e)
         end
-        requirement_description_cleanup1(r)
+        requirement_description_cleanup1(reqt)
       end
 
       def requirement_description_wrap(reqt, text)
@@ -87,7 +87,7 @@ module Metanorma
       end
 
       def dl_to_elems(ins, elem, dlist, name)
-        Metanorma::Utils::(ins, elem, dlist, name)
+        Metanorma::Utils::dl_to_elems(ins, elem, dlist, name)
       end
 
       def requirement_metadata1(reqt, dlist, ins)

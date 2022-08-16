@@ -39,31 +39,31 @@ module Metanorma
 
     def requirement_type_cleanup(xmldoc)
       xmldoc.xpath(REQRECPER).each do |r|
-        model[r["model"]].requirement_type_cleanup(r)
+        model(r["model"]).requirement_type_cleanup(r)
       end
     end
 
     def requirement_metadata_cleanup(xmldoc)
       xmldoc.xpath(REQRECPER).each do |r|
-        model[r["model"]].requirement_metadata_cleanup(r)
+        model(r["model"]).requirement_metadata_cleanup(r)
       end
     end
 
     def requirement_inherit_cleanup(xmldoc)
       xmldoc.xpath(REQRECPER).each do |r|
-        model[r["model"]].requirement_inherit_cleanup(r)
+        model(r["model"]).requirement_inherit_cleanup(r)
       end
     end
 
     def requirement_descriptions_cleanup(xmldoc)
       xmldoc.xpath(REQRECPER).each do |r|
-        model[r["model"]].requirement_descriptions_cleanup(r)
+        model(r["model"]).requirement_descriptions_cleanup(r)
       end
     end
 
     def requirement_identifier_cleanup(xmldoc)
       xmldoc.xpath(REQRECPER).each do |r|
-        model[r["model"]].requirement_identifier_cleanup(r)
+        model(r["model"]).requirement_identifier_cleanup(r)
       end
     end
   end
