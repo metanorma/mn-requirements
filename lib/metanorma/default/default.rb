@@ -1,28 +1,13 @@
 require "htmlentities"
-require "metanorma-utils"
 require_relative "cleanup"
+require_relative "utils"
+require_relative "isodoc"
 
 module Metanorma
   class Requirements
     class Default
       def initialize
         @c = HTMLEntities.new
-      end
-
-      def noko(&block)
-        Metanorma::Utils.noko(&block)
-      end
-
-      def attr_code(attributes)
-        Metanorma::Utils.attr_code(attributes)
-      end
-
-      def csv_split(text, delim = ";")
-        Metanorma::Utils.csv_split(text, delim)
-      end
-
-      def wrap_in_para(node, out)
-        Metanorma::Utils.wrap_in_para(node, out)
       end
 
       def reqt_subpart?(name)

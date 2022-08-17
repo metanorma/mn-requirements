@@ -91,10 +91,7 @@ module Metanorma
       end
 
       def requirement_metadata1(reqt, dlist, ins)
-        unless ins
-          reqt.children.first.previous = " "
-          ins = reqt.children.first
-        end
+        ins = requirement_metadata1_set_insert(reqt, ins)
         requirement_metadata1_attrs.each do |a|
           dl_to_attrs(reqt, dlist, a)
         end
@@ -103,6 +100,13 @@ module Metanorma
         end
         ins = reqt_dl_to_classif(ins, reqt, dlist)
         reqt_dl_to_classif1(ins, reqt, dlist)
+      end
+
+      def requirement_metadata1_set_insert(reqt, ins)
+        return ins if ins
+
+        reqt.children.first.previous = " "
+        reqt.children.first
       end
 
       def reqt_dl_to_classif(ins, reqt, dlist)
@@ -125,12 +129,16 @@ module Metanorma
                    requirement_metadata_component_tags + %w(classification))
             .include?(e.text)
 
-          val = e.at("./following::dd/p") || e.at("./following::dd")
-          ins.next = "<classification><tag>#{e.text}</tag>"\
-                     "<value>#{val.children.to_xml}</value></classification>"
-          ins = ins.next
+          ins = reqt_dl_to_classif2(e, ins)
         end
         ins
+      end
+
+      def reqt_dl_to_classif2(term, ins)
+        val = term.at("./following::dd/p") || e.at("./following::dd")
+        ins.next = "<classification><tag>#{term.text}</tag>"\
+                   "<value>#{val.children.to_xml}</value></classification>"
+        ins.next
       end
     end
   end
