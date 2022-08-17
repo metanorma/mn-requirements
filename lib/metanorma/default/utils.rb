@@ -18,6 +18,10 @@ module Metanorma
       def wrap_in_para(node, out)
         Metanorma::Utils.wrap_in_para(node, out)
       end
+
+      def ns(xpath)
+        Metanorma::Utils.ns(xpath)
+      end
     end
   end
 end

@@ -1,9 +1,15 @@
 require_relative "../default/default"
+require "isodoc-i18n"
 
 module Metanorma
   class Requirements
+    attr_accessor :i18n, :labels
+
     def initialize(options)
       @default = options[:default]
+      @i18n = ::IsoDoc::I18n.new(options[:lang] || "en",
+                                 options[:script] || "Latn")
+      @labels = options[:labels]
       @models = {}
       model_names.each { |k| @models[k] = create(k) }
     end
@@ -14,8 +20,8 @@ module Metanorma
 
     def create(type)
       case type
-      when :default then Metanorma::Requirements::Default.new
-      else Metanorma::Requirements::Default.new
+      when :default then Metanorma::Requirements::Default.new(parent: self)
+      else Metanorma::Requirements::Default.new(parent: self)
       end
     end
 

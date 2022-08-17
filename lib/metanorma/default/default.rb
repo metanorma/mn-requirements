@@ -6,8 +6,11 @@ require_relative "isodoc"
 module Metanorma
   class Requirements
     class Default
-      def initialize
+      def initialize(options)
         @c = HTMLEntities.new
+        @parent = options[:parent]
+        @i18n = @parent.i18n
+        @labels = @parent.labels
       end
 
       def reqt_subpart?(name)

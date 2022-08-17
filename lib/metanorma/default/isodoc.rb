@@ -33,10 +33,10 @@ module Metanorma
 
       def recommendation_header(node, out)
         label, title, name = recommendation_labels(node)
-        ret = [name + l10n(":")]
+        ret = name ? [name + @parent.i18n.l10n(":")] : []
         if label || title
           ret += ["<br/>", label]
-          ret << l10n(". ") if label && title
+          ret << @parent.i18n.l10n(". ") if label && title
           ret << title
         end
         out << "<name>#{ret.compact.join}</name>"
@@ -44,12 +44,12 @@ module Metanorma
 
       def recommendation_attributes1(node, out)
         oblig = node["obligation"] and
-          out << l10n("#{@i18n.obligation}: #{oblig}")
+          out << @i18n.l10n("#{@labels['obligation']}: #{oblig}")
         node.xpath(ns("./subject")).each do |subj|
-          out << l10n("#{@i18n.subject}: #{subj.text}")
+          out << @i18n.l10n("#{@labels['subject']}: #{subj.text}")
         end
         node.xpath(ns("./inherit")).each do |i|
-          out << recommendation_attr_parse(i, @i18n.inherits)
+          out << recommendation_attr_parse(i, @labels["inherits"])
         end
         node.xpath(ns("./classification")).each do |c|
           line = recommendation_attr_keyvalue(c, "tag",
