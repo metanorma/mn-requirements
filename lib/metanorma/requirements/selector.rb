@@ -1,4 +1,5 @@
 require_relative "../default/default"
+require_relative "../modspec/modspec"
 require "isodoc-i18n"
 
 module Metanorma
@@ -15,29 +16,46 @@ module Metanorma
     end
 
     def model_names
-      %i[default]
+      %i[default ogc]
+    end
+
+    # all roles that can be assigned to an example to make it a reqt,
+    # across all models (because the model may not be an attribute but
+    # embedded in the definition list). Mapped to obligation
+    # TODO may need to make it conditional on model
+    def requirement_roles
+      {
+        recommendation: "recommendation",
+        requirement: "requirement",
+        permission: "permission",
+        requirements_class: "requirement",
+        conformance_test: "requirement",
+        conformance_class: "requirement",
+        abstract_test: "requirement",
+      }
     end
 
     def create(type)
       case type
-      when :default then Metanorma::Requirements::Default.new(parent: self)
+      when :modspec, :ogc
+        Metanorma::Requirements::Modspec.new(parent: self)
       else Metanorma::Requirements::Default.new(parent: self)
       end
     end
 
     def model(type)
-      @models[type.to_sym] || @models[@default]
+      @models[type&.to_sym] || @models[@default]
     end
 
     REQRECPER = "//requirement | //recommendation | //permission".freeze
 
     # all cleanup steps by all possible models are included here, and each model
     # can skip a given step. This class iterates through the entire document,
-    # and picks the model for each requirement; then that model's method is applied
-    # to that particular requirement instance
+    # and picks the model for each requirement; then that model's method is
+    # applied to that particular requirement instance
     def requirement_cleanup(xmldoc)
-      requirement_type_cleanup(xmldoc)
       requirement_metadata_cleanup(xmldoc)
+      requirement_type_cleanup(xmldoc)
       requirement_inherit_cleanup(xmldoc)
       requirement_descriptions_cleanup(xmldoc)
       requirement_identifier_cleanup(xmldoc)
