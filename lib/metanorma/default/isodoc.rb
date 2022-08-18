@@ -90,6 +90,26 @@ module Metanorma
         ret.name = "div"
         out << ret
       end
+
+      def permission_parts(block, label, klass); end
+
+      def req_class_paths
+        [
+          { klass: "permission", label: "permission", xpath: "permission" },
+          { klass: "requirement", label: "requirement", xpath: "requirement" },
+          { klass: "recommendation", label: "recommendation",
+            xpath: "recommendation" },
+        ]
+      end
+
+      def req_nested_class_paths
+        [
+          { klass: "permission", label: "permission", xpath: "permission" },
+          { klass: "requirement", label: "requirement", xpath: "requirement" },
+          { klass: "recommendation", label: "recommendation",
+            xpath: "recommendation" },
+        ]
+      end
     end
   end
 end

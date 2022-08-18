@@ -26,7 +26,7 @@ module Metanorma
     end
 
     def model(type)
-      @models[type] || @models[@default]
+      @models[type.to_sym] || @models[@default]
     end
 
     REQRECPER = "//requirement | //recommendation | //permission".freeze
