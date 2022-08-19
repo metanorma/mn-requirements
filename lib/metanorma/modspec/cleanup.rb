@@ -36,8 +36,7 @@ module Metanorma
           requirement_metadata1(val, d, d)
           d.remove
         end
-        if %w(requirement permission
-              recommendation).include?(term.text) && !val.text.empty?
+        if REQS.include?(term.text) && !val.text.empty?
           val["label"] = val.text.strip
           val.children.remove
         end

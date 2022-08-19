@@ -1,6 +1,15 @@
 module Metanorma
   class Requirements
     class Default
+      def l10n(text)
+        @i18n.l10n(text)
+      end
+
+      def recommendation_label(elem, type, xrefs)
+        number = xrefs.anchor(elem["id"], :label, false)
+        (number.nil? ? type : "#{type} #{number}")
+      end
+
       def reqt_metadata_node?(node)
         %w(label title subject classification tag value
            inherit name).include? node.name
@@ -25,7 +34,8 @@ module Metanorma
       end
 
       def recommendation_labels(node)
-        [node.at(ns("./label")), node.at(ns("./title")), node.at(ns("./name"))]
+        [node.at(ns("./label")), node.at(ns("./title")),
+         node.at(ns("./name"))]
           .map do |n|
           n&.children&.to_xml
         end
@@ -33,10 +43,10 @@ module Metanorma
 
       def recommendation_header(node, out)
         label, title, name = recommendation_labels(node)
-        ret = name ? [name + @parent.i18n.l10n(":")] : []
+        ret = name ? [name + l10n(":")] : []
         if label || title
           ret += ["<br/>", label]
-          ret << @parent.i18n.l10n(". ") if label && title
+          ret << l10n(". ") if label && title
           ret << title
         end
         out << "<name>#{ret.compact.join}</name>"
@@ -44,9 +54,9 @@ module Metanorma
 
       def recommendation_attributes1(node, out)
         oblig = node["obligation"] and
-          out << @i18n.l10n("#{@labels['obligation']}: #{oblig}")
+          out << l10n("#{@labels['obligation']}: #{oblig}")
         node.xpath(ns("./subject")).each do |subj|
-          out << @i18n.l10n("#{@labels['subject']}: #{subj.text}")
+          out << l10n("#{@labels['subject']}: #{subj.text}")
         end
         node.xpath(ns("./inherit")).each do |i|
           out << recommendation_attr_parse(i, @labels["inherits"])
@@ -91,12 +101,16 @@ module Metanorma
         out << ret
       end
 
-      def permission_parts(block, label, klass); end
+      def permission_parts(_block, _label, _klass)
+        []
+      end
 
       def req_class_paths
         [
-          { klass: "permission", label: "permission", xpath: "permission" },
-          { klass: "requirement", label: "requirement", xpath: "requirement" },
+          { klass: "permission", label: "permission",
+            xpath: "permission" },
+          { klass: "requirement", label: "requirement",
+            xpath: "requirement" },
           { klass: "recommendation", label: "recommendation",
             xpath: "recommendation" },
         ]
@@ -104,11 +118,17 @@ module Metanorma
 
       def req_nested_class_paths
         [
-          { klass: "permission", label: "permission", xpath: "permission" },
-          { klass: "requirement", label: "requirement", xpath: "requirement" },
+          { klass: "permission", label: "permission",
+            xpath: "permission" },
+          { klass: "requirement", label: "requirement",
+            xpath: "requirement" },
           { klass: "recommendation", label: "recommendation",
             xpath: "recommendation" },
         ]
+      end
+
+      def postprocess_label(id, _reqt, _klass)
+        id
       end
     end
   end
