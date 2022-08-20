@@ -5,7 +5,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
         <preface><foreword id="A"><title>Preface</title>
-        <recommendation id="_">
+        <recommendation model="ogc" id="_">
       <identifier>/ogc/recommendation/wfs/2</identifier>
       <inherit>/ss/584/2015/level/1</inherit>
       <subject>user</subject>
@@ -30,13 +30,151 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-           <preface><foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
-           <table id="_" class="recommendation" type="recommend">
-         <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Recommendation 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td colspan="2"><p id="_">I recommend <em>1</em>.</p></td></tr><tr><td>Test purpose</td><td><p>TEST PURPOSE</p></td></tr><tr><td colspan="2"><p id="_">I recommend <em>2</em>.</p></td></tr><tr><td>Conditions</td><td><p>CONDITIONS</p></td></tr><tr><td colspan="2"><p id="_">I recommend <em>3</em>.</p></td></tr><tr><td>A</td><td><p>FIRST PART</p></td></tr><tr><td colspan="2"><p id="_">I recommend <em>4</em>.</p></td></tr><tr><td>B</td><td><p>SECOND PART</p></td></tr><tr><td colspan="2"><p id="_">I recommend <em>5</em>.</p></td></tr><tr><td>Test method</td><td><p>TEST METHOD</p></td></tr><tr><td colspan="2"><p id="_">I recommend <em>6</em>.</p></td></tr><tr><td>C</td><td><p>THIRD PART</p></td></tr><tr><td colspan="2"><p id="_">I recommend <em>7</em>.</p></td></tr><tr><td>Panda GHz express</td><td><p>PANDA PART</p></td></tr><tr><td colspan="2"><p id="_">I recommend <em>8</em>.</p></td></tr></tbody></table>
-         </foreword>
+      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
+         <preface>
+           <foreword id='A' displayorder='1'>
+             <title>Preface</title>
+             <table id='_' class='recommendation' type='recommend'>
+               <thead>
+                 <tr>
+                   <th scope='colgroup' colspan='2'>
+                     <p class='RecommendationTitle'>Recommendation 1</p>
+                   </th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td colspan='2'>
+                     <p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Subject</td>
+                   <td>user</td>
+                 </tr>
+                 <tr>
+                   <td>Dependency</td>
+                   <td>/ss/584/2015/level/1</td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>1</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Test purpose</td>
+                   <td>
+                     <p>TEST PURPOSE</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>2</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Conditions</td>
+                   <td>
+                     <p>CONDITIONS</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>3</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>A</td>
+                   <td>
+                     <p>FIRST PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>4</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>B</td>
+                   <td>
+                     <p>SECOND PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>5</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Test method</td>
+                   <td>
+                     <p>TEST METHOD</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>6</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>C</td>
+                   <td>
+                     <p>THIRD PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>7</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Panda GHz express</td>
+                   <td>
+                     <p>PANDA PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend
+                       <em>8</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </foreword>
          </preface>
-         </ogc-standard>
+       </ogc-standard>
     OUTPUT
 
     expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
@@ -51,7 +189,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <ogc-standard xmlns="https://standards.opengeospatial.org/document">
             <preface>
                 <foreword id="A"><title>Preface</title>
-                    <requirement id='A1'>
+                    <requirement model="ogc" id='A1'>
         <component exclude='false' class='test method type'>
           <p id='_'>Manual Inspection</p>
         </component>
@@ -86,11 +224,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
         <preface>
           <foreword id='A' displayorder='1'>
-            <title depth='1'>
-              I.
-              <tab/>
-              Preface
-            </title>
+            <title>Preface</title>
             <table id='A1' class='requirement' type='recommend'>
               <thead>
                 <tr>
@@ -153,17 +287,17 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <ogc-standard xmlns="https://standards.opengeospatial.org/document">
       <preface>
           <foreword id="A"><title>Preface</title>
-              <requirement id='A1' type="general">
+              <requirement model="ogc" id='A1' type="general">
               <identifier>/ogc/recommendation/wfs/1</identifier>
               </requirement>
-              <requirement id='A2' type="verification">
+              <requirement model="ogc" id='A2' type="verification">
               <identifier>/ogc/recommendation/wfs/2</identifier>
               <classification><tag>target</tag><value>/ogc/recommendation/wfs/1</value></classification>
               </requirement>
-              <requirement id='A3' type="class">
+              <requirement model="ogc" id='A3' type="class">
               <identifier>/ogc/recommendation/wfs/3</identifier>
               </requirement>
-              <requirement id='A4' type="conformanceclass">
+              <requirement model="ogc" id='A4' type="conformanceclass">
               <identifier>/ogc/recommendation/wfs/4</identifier>
               <classification><tag>target</tag><value>/ogc/recommendation/wfs/3</value></classification>
               </requirement>
@@ -174,12 +308,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
          <preface>
            <foreword id='A' displayorder='1'>
-             <title depth='1'>
-               I.
-               <tab/>
-               Preface
-             </title>
-             <table id='A1' type='recommend' class='requirement'>
+             <title>Preface</title>
+             <table id='A1' class='requirement' type='recommend'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -195,11 +325,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                  <tr>
                    <td>Conformance test</td>
-                   <td><xref target='A2'>/ogc/recommendation/wfs/2</xref></td>
+                   <td>
+                     <xref target='A2'>/ogc/recommendation/wfs/2</xref>
+                   </td>
                  </tr>
                </tbody>
              </table>
-             <table id='A2' type='recommendtest' class='requirement'>
+             <table id='A2' class='requirement' type='recommendtest'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -215,11 +347,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                  <tr>
                    <td>Requirement</td>
-                   <td><xref target="A1">/ogc/recommendation/wfs/1</xref></td>
+                   <td>/ogc/recommendation/wfs/1</td>
                  </tr>
                </tbody>
              </table>
-             <table id='A3' type='recommendclass' class='requirement'>
+             <table id='A3' class='requirement' type='recommendclass'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -235,11 +367,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                  <tr>
                    <td>Conformance test</td>
-                   <td><xref target='A4'>/ogc/recommendation/wfs/4</xref></td>
+                   <td>
+                     <xref target='A4'>/ogc/recommendation/wfs/4</xref>
+                   </td>
                  </tr>
                </tbody>
              </table>
-             <table id='A4' type='recommendclass' class='requirement'>
+             <table id='A4' class='requirement' type='recommendclass'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -255,7 +389,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                  <tr>
                    <td>Requirements class</td>
-                   <td><xref target='A3'>/ogc/recommendation/wfs/3</xref></td>
+                   <td>
+                     <xref target='A3'>/ogc/recommendation/wfs/3</xref>
+                   </td>
                  </tr>
                </tbody>
              </table>
@@ -263,7 +399,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </preface>
        </ogc-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::Ogc::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
   end

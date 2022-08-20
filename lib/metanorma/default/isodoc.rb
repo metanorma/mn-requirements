@@ -11,17 +11,17 @@ module Metanorma
       end
 
       def reqt_metadata_node?(node)
-        %w(label title subject classification tag value
+        %w(identifier title subject classification tag value
            inherit name).include? node.name
       end
 
       def requirement_render1(node)
         out = recommendation_base(node, node.name)
-        recommendation_header(node, out)
-        recommendation_attributes(node, out)
+        ins = recommendation_header(node, out)
+        ins = recommendation_attributes(node, ins)
         node.elements.reject do |n|
           reqt_metadata_node?(n)
-        end.each { |n| requirement_component_parse(n, out) }
+        end.each { |n| ins = requirement_component_parse(n, ins) }
         out
       end
 
@@ -34,7 +34,7 @@ module Metanorma
       end
 
       def recommendation_labels(node)
-        [node.at(ns("./label")), node.at(ns("./title")),
+        [node.at(ns("./identifier")), node.at(ns("./title")),
          node.at(ns("./name"))]
           .map do |n|
           n&.children&.to_xml
@@ -50,6 +50,7 @@ module Metanorma
           ret << title
         end
         out << "<name>#{ret.compact.join}</name>"
+        out
       end
 
       def recommendation_attributes1(node, out)
@@ -62,8 +63,7 @@ module Metanorma
           out << recommendation_attr_parse(i, @labels["inherits"])
         end
         node.xpath(ns("./classification")).each do |c|
-          line = recommendation_attr_keyvalue(c, "tag",
-                                              "value") and out << line
+          out << recommendation_attr_keyvalue(c, "tag", "value")
         end
         out
       end
@@ -75,15 +75,15 @@ module Metanorma
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
-        "#{tag.text.capitalize}: #{value.text}"
+        "#{tag.text.capitalize}: #{value.children.to_xml}"
       end
 
       def recommendation_attributes(node, out)
         ret = recommendation_attributes1(node, [])
           .map { |a| "<em>#{a}</em>" }
-        return if ret.empty?
-
-        out << "<p>#{ret.join("<br/>\n")}</p>"
+        ret.empty? or
+          out << "<p>#{ret.join("<br/>\n")}</p>"
+        out
       end
 
       def reqt_component_type(node)
@@ -93,42 +93,13 @@ module Metanorma
       end
 
       def requirement_component_parse(node, out)
-        return if node["exclude"] == "true"
+        return out if node["exclude"] == "true"
 
         ret = node.dup
         ret["type"] = reqt_component_type(node)
         ret.name = "div"
         out << ret
-      end
-
-      def permission_parts(_block, _label, _klass)
-        []
-      end
-
-      def req_class_paths
-        [
-          { klass: "permission", label: "permission",
-            xpath: "permission" },
-          { klass: "requirement", label: "requirement",
-            xpath: "requirement" },
-          { klass: "recommendation", label: "recommendation",
-            xpath: "recommendation" },
-        ]
-      end
-
-      def req_nested_class_paths
-        [
-          { klass: "permission", label: "permission",
-            xpath: "permission" },
-          { klass: "requirement", label: "requirement",
-            xpath: "requirement" },
-          { klass: "recommendation", label: "recommendation",
-            xpath: "recommendation" },
-        ]
-      end
-
-      def postprocess_label(id, _reqt, _klass)
-        id
+        out
       end
     end
   end

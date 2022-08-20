@@ -18,11 +18,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <requirement id="N1">
+          <requirement model="ogc" id="N1">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <clause id="xyz"><title>Preparatory</title>
-          <requirement id="N2" unnumbered="true">
+          <requirement model="ogc" id="N2" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
       </clause>
@@ -30,7 +30,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <requirement id="N">
+          <requirement model="ogc" id="N">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p><xref target="N"/></p>
@@ -38,10 +38,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <requirement id="note1">
+          <requirement model="ogc" id="note1">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
-          <requirement id="note2">
+          <requirement model="ogc" id="note2">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -50,15 +50,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <requirement id="AN">
+          <requirement model="ogc" id="AN">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
           </clause>
           <clause id="annex1b">
-          <requirement id="Anote1" unnumbered="true">
+          <requirement model="ogc" id="Anote1" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
-          <requirement id="Anote2">
+          <requirement model="ogc" id="Anote2">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
           </clause>
@@ -69,13 +69,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Requirement 1</xref>
-          <xref target='N2'>Clause II.A, Requirement (??)</xref>
+          <xref target='N2'>Preparatory, Requirement (??)</xref>
           <xref target='N'>Clause 1, Requirement 2</xref>
           <xref target='note1'>Clause 3.1, Requirement 3</xref>
           <xref target='note2'>Clause 3.1, Requirement 4</xref>
-          <xref target='AN'>Annex A.1, Requirement A.1</xref>
-          <xref target='Anote1'>Annex A.2, Requirement (??)</xref>
-          <xref target='Anote2'>Annex A.2, Requirement A.2</xref>
+          <xref target='AN'>Requirement A.1</xref>
+          <xref target='Anote1'>Requirement (??)</xref>
+          <xref target='Anote2'>Requirement A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -102,13 +102,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <requirement id="N1">
-          <label>/ogc/req1</label>
+          <requirement model="ogc" id="N1">
+          <identifier>/ogc/req1</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <clause id="xyz"><title>Preparatory</title>
-          <requirement id="N2" unnumbered="true">
-          <label>/ogc/req2</label>
+          <requirement model="ogc" id="N2" unnumbered="true">
+          <identifier>/ogc/req2</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
       </clause>
@@ -116,8 +116,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <requirement id="N">
-          <label>/ogc/req3</label>
+          <requirement model="ogc" id="N">
+          <identifier>/ogc/req3</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p><xref target="N"/></p>
@@ -125,12 +125,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <requirement id="note1">
-          <label>/ogc/req4</label>
+          <requirement model="ogc" id="note1">
+          <identifier>/ogc/req4</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
-          <requirement id="note2">
-          <label>/ogc/req5</label>
+          <requirement model="ogc" id="note2">
+          <identifier>/ogc/req5</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -139,18 +139,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <requirement id="AN">
-          <label>/ogc/req6</label>
+          <requirement model="ogc" id="AN">
+          <identifier>/ogc/req6</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
           </clause>
           <clause id="annex1b">
-          <requirement id="Anote1" unnumbered="true">
-          <label>/ogc/req7</label>
+          <requirement model="ogc" id="Anote1" unnumbered="true">
+          <identifier>/ogc/req7</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
-          <requirement id="Anote2">
-          <label>/ogc/req8</label>
+          <requirement model="ogc" id="Anote2">
+          <identifier>/ogc/req8</identifier>
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
           </clause>
@@ -165,7 +165,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <tt>/ogc/req1</tt>
          </xref>
          <xref target='N2'>
-           Clause II.A, Requirement (??):
+           Preparatory, Requirement (??):
            <tt>/ogc/req2</tt>
          </xref>
          <xref target='N'>
@@ -181,15 +181,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <tt>/ogc/req5</tt>
          </xref>
          <xref target='AN'>
-           Annex A.1, Requirement A.1:
+           Requirement A.1:
            <tt>/ogc/req6</tt>
          </xref>
          <xref target='Anote1'>
-           Annex A.2, Requirement (??):
+           Requirement (??):
            <tt>/ogc/req7</tt>
          </xref>
          <xref target='Anote2'>
-           Annex A.2, Requirement A.2:
+           Requirement A.2:
            <tt>/ogc/req8</tt>
          </xref>
               </p>
@@ -226,13 +226,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <requirement id="N1">
+          <requirement model="ogc" id="N1">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="N1a"/>
         <component class="part" id="N1b"/>
         </requirement>
         <clause id="xyz"><title>Preparatory</title>
-          <requirement id="N2" unnumbered="true">
+          <requirement model="ogc" id="N2" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="N2a"/>
         <component class="part" id="N2b"/>
@@ -242,7 +242,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <requirement id="N">
+          <requirement model="ogc" id="N">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="Na"/>
         <component class="part" id="Nb"/>
@@ -252,12 +252,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <requirement id="note1">
+          <requirement model="ogc" id="note1">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="note1a"/>
         <component class="part" id="note1b"/>
         </requirement>
-          <requirement id="note2">
+          <requirement model="ogc" id="note2">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="note2a"/>
         <component class="part" id="note2b"/>
@@ -268,19 +268,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <requirement id="AN">
+          <requirement model="ogc" id="AN">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="ANa"/>
         <component class="part" id="ANb"/>
         </requirement>
           </clause>
           <clause id="annex1b">
-          <requirement id="Anote1" unnumbered="true">
+          <requirement model="ogc" id="Anote1" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="Anote1a"/>
         <component class="part" id="Anote1b"/>
         </requirement>
-          <requirement id="Anote2">
+          <requirement model="ogc" id="Anote2">
         <stem type="AsciiMath">r = 1 %</stem>
         <component class="part" id="Anote2a"/>
         <component class="part" id="Anote2b"/>
@@ -292,22 +292,22 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       <foreword displayorder='1'>
         <p>
-          <xref target='N1a'>Introduction, Requirement A</xref>
-          <xref target='N1b'>Introduction, Requirement B</xref>
-          <xref target='N2a'>Clause II.A, Requirement A</xref>
-          <xref target='N2b'>Clause II.A, Requirement B</xref>
-          <xref target='Na'>Clause 1, Requirement A</xref>
-          <xref target='Nb'>Clause 1, Requirement B</xref>
-          <xref target='note1a'>Clause 3.1, Requirement A</xref>
-          <xref target='note1b'>Clause 3.1, Requirement B</xref>
-          <xref target='note2a'>Clause 3.1, Requirement A</xref>
-          <xref target='note2b'>Clause 3.1, Requirement B</xref>
-          <xref target='ANa'>Annex A.1, Requirement A</xref>
-          <xref target='ANb'>Annex A.1, Requirement B</xref>
-          <xref target='Anote1a'>Annex A.2, Requirement A</xref>
-          <xref target='Anote1b'>Annex A.2, Requirement B</xref>
-          <xref target='Anote2a'>Annex A.2, Requirement A</xref>
-          <xref target='Anote2b'>Annex A.2, Requirement B</xref>
+          <xref target='N1a'>Introduction, Requirement 1 A</xref>
+          <xref target='N1b'>Introduction, Requirement 1 B</xref>
+          <xref target='N2a'>Preparatory, Requirement A</xref>
+          <xref target='N2b'>Preparatory, Requirement B</xref>
+          <xref target='Na'>Clause 1, Requirement 2 A</xref>
+          <xref target='Nb'>Clause 1, Requirement 2 B</xref>
+          <xref target='note1a'>Clause 3.1, Requirement 3 A</xref>
+          <xref target='note1b'>Clause 3.1, Requirement 3 B</xref>
+          <xref target='note2a'>Clause 3.1, Requirement 4 A</xref>
+          <xref target='note2b'>Clause 3.1, Requirement 4 B</xref>
+          <xref target='ANa'>Requirement A.1 A</xref>
+          <xref target='ANb'>Requirement A.1 B</xref>
+          <xref target='Anote1a'>Requirement A. A</xref>
+          <xref target='Anote1b'>Requirement A. B</xref>
+          <xref target='Anote2a'>Requirement A.2 A</xref>
+          <xref target='Anote2b'>Requirement A.2 B</xref>
         </p>
       </foreword>
     OUTPUT
@@ -334,11 +334,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <requirement id="N1" type="verification">
+          <requirement model="ogc" id="N1" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <clause id="xyz"><title>Preparatory</title>
-          <requirement id="N2" unnumbered="true" type="verification">
+          <requirement model="ogc" id="N2" unnumbered="true" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
       </clause>
@@ -346,7 +346,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <requirement id="N" type="verification">
+          <requirement model="ogc" id="N" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p><xref target="N"/></p>
@@ -354,10 +354,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <requirement id="note1" type="verification">
+          <requirement model="ogc" id="note1" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
-          <requirement id="note2" type="verification">
+          <requirement model="ogc" id="note2" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -366,15 +366,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <requirement id="AN" type="verification">
+          <requirement model="ogc" id="AN" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
           </clause>
           <clause id="annex1b">
-          <requirement id="Anote1" unnumbered="true" type="verification">
+          <requirement model="ogc" id="Anote1" unnumbered="true" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
-          <requirement id="Anote2" type="verification">
+          <requirement model="ogc" id="Anote2" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
           </clause>
@@ -385,13 +385,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Requirement test 1</xref>
-          <xref target='N2'>Clause II.A, Requirement test (??)</xref>
+          <xref target='N2'>Preparatory, Requirement test (??)</xref>
           <xref target='N'>Clause 1, Requirement test 2</xref>
           <xref target='note1'>Clause 3.1, Requirement test 3</xref>
           <xref target='note2'>Clause 3.1, Requirement test 4</xref>
-          <xref target='AN'>Annex A.1, Requirement test A.1</xref>
-          <xref target='Anote1'>Annex A.2, Requirement test (??)</xref>
-          <xref target='Anote2'>Annex A.2, Requirement test A.2</xref>
+          <xref target='AN'>Requirement test A.1</xref>
+          <xref target='Anote1'>Requirement test (??)</xref>
+          <xref target='Anote2'>Requirement test A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -418,11 +418,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <recommendation id="N1">
+          <recommendation model="ogc" id="N1">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
         <clause id="xyz"><title>Preparatory</title>
-          <recommendation id="N2" unnumbered="true">
+          <recommendation model="ogc" id="N2" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
       </clause>
@@ -430,7 +430,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <recommendation id="N">
+          <recommendation model="ogc" id="N">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
         <p><xref target="N"/></p>
@@ -438,10 +438,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <recommendation id="note1">
+          <recommendation model="ogc" id="note1">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
-          <recommendation id="note2">
+          <recommendation model="ogc" id="note2">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -450,15 +450,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <recommendation id="AN">
+          <recommendation model="ogc" id="AN">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
           </clause>
           <clause id="annex1b">
-          <recommendation id="Anote1" unnumbered="true">
+          <recommendation model="ogc" id="Anote1" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
-          <recommendation id="Anote2">
+          <recommendation model="ogc" id="Anote2">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
           </clause>
@@ -469,13 +469,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Recommendation 1</xref>
-          <xref target='N2'>Clause II.A, Recommendation (??)</xref>
+          <xref target='N2'>Preparatory, Recommendation (??)</xref>
           <xref target='N'>Clause 1, Recommendation 2</xref>
           <xref target='note1'>Clause 3.1, Recommendation 3</xref>
           <xref target='note2'>Clause 3.1, Recommendation 4</xref>
-          <xref target='AN'>Annex A.1, Recommendation A.1</xref>
-          <xref target='Anote1'>Annex A.2, Recommendation (??)</xref>
-          <xref target='Anote2'>Annex A.2, Recommendation A.2</xref>
+          <xref target='AN'>Recommendation A.1</xref>
+          <xref target='Anote1'>Recommendation (??)</xref>
+          <xref target='Anote2'>Recommendation A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -502,11 +502,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <recommendation id="N1" type="verification">
+          <recommendation model="ogc" id="N1" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
         <clause id="xyz"><title>Preparatory</title>
-          <recommendation id="N2" unnumbered="true" type="verification">
+          <recommendation model="ogc" id="N2" unnumbered="true" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
       </clause>
@@ -514,7 +514,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <recommendation id="N" type="verification">
+          <recommendation model="ogc" id="N" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
         <p><xref target="N"/></p>
@@ -522,10 +522,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <recommendation id="note1" type="verification">
+          <recommendation model="ogc" id="note1" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
-          <recommendation id="note2" type="verification">
+          <recommendation model="ogc" id="note2" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -534,15 +534,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <recommendation id="AN" type="verification">
+          <recommendation model="ogc" id="AN" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
           </clause>
           <clause id="annex1b">
-          <recommendation id="Anote1" unnumbered="true" type="verification">
+          <recommendation model="ogc" id="Anote1" unnumbered="true" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
-          <recommendation id="Anote2" type="verification">
+          <recommendation model="ogc" id="Anote2" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </recommendation>
           </clause>
@@ -553,13 +553,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Recommendation test 1</xref>
-          <xref target='N2'>Clause II.A, Recommendation test (??)</xref>
+          <xref target='N2'>Preparatory, Recommendation test (??)</xref>
           <xref target='N'>Clause 1, Recommendation test 2</xref>
           <xref target='note1'>Clause 3.1, Recommendation test 3</xref>
           <xref target='note2'>Clause 3.1, Recommendation test 4</xref>
-          <xref target='AN'>Annex A.1, Recommendation test A.1</xref>
-          <xref target='Anote1'>Annex A.2, Recommendation test (??)</xref>
-          <xref target='Anote2'>Annex A.2, Recommendation test A.2</xref>
+          <xref target='AN'>Recommendation test A.1</xref>
+          <xref target='Anote1'>Recommendation test (??)</xref>
+          <xref target='Anote2'>Recommendation test A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -586,11 +586,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <permission id="N1">
+          <permission model="ogc" id="N1">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <clause id="xyz"><title>Preparatory</title>
-          <permission id="N2" unnumbered="true">
+          <permission model="ogc" id="N2" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
       </clause>
@@ -598,7 +598,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <permission id="N">
+          <permission model="ogc" id="N">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p><xref target="N"/></p>
@@ -606,10 +606,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <permission id="note1">
+          <permission model="ogc" id="note1">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="note2">
+          <permission model="ogc" id="note2">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -618,15 +618,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <permission id="AN">
+          <permission model="ogc" id="AN">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
           <clause id="annex1b">
-          <permission id="Anote1" unnumbered="true">
+          <permission model="ogc" id="Anote1" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="Anote2">
+          <permission model="ogc" id="Anote2">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
@@ -637,13 +637,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Permission 1</xref>
-          <xref target='N2'>Clause II.A, Permission (??)</xref>
+          <xref target='N2'>Preparatory, Permission (??)</xref>
           <xref target='N'>Clause 1, Permission 2</xref>
           <xref target='note1'>Clause 3.1, Permission 3</xref>
           <xref target='note2'>Clause 3.1, Permission 4</xref>
-          <xref target='AN'>Annex A.1, Permission A.1</xref>
-          <xref target='Anote1'>Annex A.2, Permission (??)</xref>
-          <xref target='Anote2'>Annex A.2, Permission A.2</xref>
+          <xref target='AN'>Permission A.1</xref>
+          <xref target='Anote1'>Permission (??)</xref>
+          <xref target='Anote2'>Permission A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -670,11 +670,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <permission id="N1" type="verification">
+          <permission model="ogc" id="N1" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <clause id="xyz"><title>Preparatory</title>
-          <permission id="N2" unnumbered="true" type="verification">
+          <permission model="ogc" id="N2" unnumbered="true" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
       </clause>
@@ -682,7 +682,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <permission id="N" type="verification">
+          <permission model="ogc" id="N" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p><xref target="N"/></p>
@@ -690,10 +690,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <permission id="note1" type="verification">
+          <permission model="ogc" id="note1" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="note2" type="verification">
+          <permission model="ogc" id="note2" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -702,15 +702,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <permission id="AN" type="verification">
+          <permission model="ogc" id="AN" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
           <clause id="annex1b">
-          <permission id="Anote1" unnumbered="true" type="verification">
+          <permission model="ogc" id="Anote1" unnumbered="true" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="Anote2" type="verification">
+          <permission model="ogc" id="Anote2" type="verification">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
@@ -721,13 +721,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Permission test 1</xref>
-          <xref target='N2'>Clause II.A, Permission test (??)</xref>
+          <xref target='N2'>Preparatory, Permission test (??)</xref>
           <xref target='N'>Clause 1, Permission test 2</xref>
           <xref target='note1'>Clause 3.1, Permission test 3</xref>
           <xref target='note2'>Clause 3.1, Permission test 4</xref>
-          <xref target='AN'>Annex A.1, Permission test A.1</xref>
-          <xref target='Anote1'>Annex A.2, Permission test (??)</xref>
-          <xref target='Anote2'>Annex A.2, Permission test A.2</xref>
+          <xref target='AN'>Permission test A.1</xref>
+          <xref target='Anote1'>Permission test (??)</xref>
+          <xref target='Anote2'>Permission test A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -758,32 +758,32 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </preface>
       <sections>
       <clause id="xyz"><title>Preparatory</title>
-      <permission id="N1">
-      <permission id="N2" type="verification">
-      <permission id="N">
+      <permission model="ogc" id="N1">
+      <permission model="ogc" id="N2" type="verification">
+      <permission model="ogc" id="N">
       </permission>
       </permission>
-      <requirement id="Q1">
+      <requirement model="ogc" id="Q1">
       </requirement>
-      <recommendation id="R1">
+      <recommendation model="ogc" id="R1">
       </recommendation>
-      <permission id="N3" type="verification"/>
-      <permission id="N4"/>
+      <permission model="ogc" id="N3" type="verification"/>
+      <permission model="ogc" id="N4"/>
       </permission>
       </clause>
       </sections>
       <annex id="Axyz"><title>Preparatory</title>
-      <permission id="AN1" type="verification">
-      <permission id="AN2">
-      <permission id="AN" type="verification">
+      <permission model="ogc" id="AN1" type="verification">
+      <permission model="ogc" id="AN2">
+      <permission model="ogc" id="AN" type="verification">
       </permission>
       </permission>
-      <requirement id="AQ1">
+      <requirement model="ogc" id="AQ1">
       </requirement>
-      <recommendation id="AR1">
+      <recommendation model="ogc" id="AR1">
       </recommendation>
-      <permission id="AN3" type="verification"/>
-      <permission id="AN4"/>
+      <permission model="ogc" id="AN3" type="verification"/>
+      <permission model="ogc" id="AN4"/>
       </permission>
       </annex>
       </iso-standard>
@@ -796,11 +796,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <xref target='N'>Clause 1, Permission 1-1-1</xref>
           <xref target='Q1'>Clause 1, Requirement 1-1</xref>
           <xref target='R1'>Clause 1, Recommendation 1-1</xref>
-          <xref target='AN1'>Annex A, Permission test A.1</xref>
-          <xref target='AN2'>Annex A, Permission A.1-1</xref>
-          <xref target='AN'>Annex A, Permission test A.1-1-1</xref>
-          <xref target='AQ1'>Annex A, Requirement A.1-1</xref>
-          <xref target='AR1'>Annex A, Recommendation A.1-1</xref>
+          <xref target='AN1'>Permission test A.1</xref>
+          <xref target='AN2'>Permission A.1-1</xref>
+          <xref target='AN'>Permission test A.1-1-1</xref>
+          <xref target='AQ1'>Requirement A.1-1</xref>
+          <xref target='AR1'>Recommendation A.1-1</xref>
         </p>
       </foreword>
     OUTPUT
@@ -827,11 +827,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <permission id="N1" type="abstracttest">
+          <permission model="ogc" id="N1" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <clause id="xyz"><title>Preparatory</title>
-          <permission id="N2" unnumbered="true" type="abstracttest">
+          <permission model="ogc" id="N2" unnumbered="true" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
       </clause>
@@ -839,7 +839,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <permission id="N" type="abstracttest">
+          <permission model="ogc" id="N" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p><xref target="N"/></p>
@@ -847,10 +847,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <permission id="note1" type="abstracttest">
+          <permission model="ogc" id="note1" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="note2" type="abstracttest">
+          <permission model="ogc" id="note2" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -859,15 +859,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <permission id="AN" type="abstracttest">
+          <permission model="ogc" id="AN" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
           <clause id="annex1b">
-          <permission id="Anote1" unnumbered="true" type="abstracttest">
+          <permission model="ogc" id="Anote1" unnumbered="true" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="Anote2" type="abstracttest">
+          <permission model="ogc" id="Anote2" type="abstracttest">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
@@ -878,13 +878,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Abstract test 1</xref>
-          <xref target='N2'>Clause II.A, Abstract test (??)</xref>
+          <xref target='N2'>Preparatory, Abstract test (??)</xref>
           <xref target='N'>Clause 1, Abstract test 2</xref>
           <xref target='note1'>Clause 3.1, Abstract test 3</xref>
           <xref target='note2'>Clause 3.1, Abstract test 4</xref>
-          <xref target='AN'>Annex A.1, Abstract test A.1</xref>
-          <xref target='Anote1'>Annex A.2, Abstract test (??)</xref>
-          <xref target='Anote2'>Annex A.2, Abstract test A.2</xref>
+          <xref target='AN'>Abstract test A.1</xref>
+          <xref target='Anote1'>Abstract test (??)</xref>
+          <xref target='Anote2'>Abstract test A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -911,11 +911,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </p>
           </foreword>
           <introduction id="intro">
-          <permission id="N1" type="conformanceclass">
+          <permission model="ogc" id="N1" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <clause id="xyz"><title>Preparatory</title>
-          <permission id="N2" unnumbered="true" type="conformanceclass">
+          <permission model="ogc" id="N2" unnumbered="true" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
       </clause>
@@ -923,7 +923,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </preface>
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
-          <permission id="N" type="conformanceclass">
+          <permission model="ogc" id="N" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p><xref target="N"/></p>
@@ -931,10 +931,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <terms id="terms"/>
           <clause id="widgets"><title>Widgets</title>
           <clause id="widgets1">
-          <permission id="note1" type="conformanceclass">
+          <permission model="ogc" id="note1" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="note2" type="conformanceclass">
+          <permission model="ogc" id="note2" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
         <p>    <xref target="note1"/> <xref target="note2"/> </p>
@@ -943,15 +943,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </sections>
           <annex id="annex1">
           <clause id="annex1a">
-          <permission id="AN" type="conformanceclass">
+          <permission model="ogc" id="AN" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
           <clause id="annex1b">
-          <permission id="Anote1" unnumbered="true" type="conformanceclass">
+          <permission model="ogc" id="Anote1" unnumbered="true" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
-          <permission id="Anote2" type="conformanceclass">
+          <permission model="ogc" id="Anote2" type="conformanceclass">
         <stem type="AsciiMath">r = 1 %</stem>
         </permission>
           </clause>
@@ -962,13 +962,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Introduction, Conformance class 1</xref>
-          <xref target='N2'>Clause II.A, Conformance class (??)</xref>
+          <xref target='N2'>Preparatory, Conformance class (??)</xref>
           <xref target='N'>Clause 1, Conformance class 2</xref>
           <xref target='note1'>Clause 3.1, Conformance class 3</xref>
           <xref target='note2'>Clause 3.1, Conformance class 4</xref>
-          <xref target='AN'>Annex A.1, Conformance class A.1</xref>
-          <xref target='Anote1'>Annex A.2, Conformance class (??)</xref>
-          <xref target='Anote2'>Annex A.2, Conformance class A.2</xref>
+          <xref target='AN'>Conformance class A.1</xref>
+          <xref target='Anote1'>Conformance class (??)</xref>
+          <xref target='Anote2'>Conformance class A.2</xref>
         </p>
       </foreword>
     OUTPUT

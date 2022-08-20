@@ -2,6 +2,7 @@ require "htmlentities"
 require_relative "cleanup"
 require_relative "utils"
 require_relative "isodoc"
+require_relative "xrefs"
 
 module Metanorma
   class Requirements

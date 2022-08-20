@@ -6,7 +6,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword>
           <permission id="_"   keep-with-next="true" keep-lines-together="true" model="default">
-        <label>/ogc/recommendation/wfs/2</label>
+        <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></inherit>
         <subject>user</subject>
@@ -107,7 +107,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <preface><foreword>
           <requirement id="A" unnumbered="true"  keep-with-next="true" keep-lines-together="true" model="default">
         <title>A New Requirement</title>
-        <label>/ogc/recommendation/wfs/2</label>
+        <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <subject>user</subject>
         <description>
@@ -195,7 +195,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <preface><foreword>
           <requirement id="A" unnumbered="true" model="default">
         <title>A New Requirement</title>
-        <label>/ogc/recommendation/wfs/2</label>
+        <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <subject>user</subject>
         <description>
@@ -286,7 +286,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword>
           <recommendation id="_" obligation="shall,could"   keep-with-next="true" keep-lines-together="true" model="default">
-        <label>/ogc/recommendation/wfs/2</label>
+        <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <classification><tag>type</tag><value>text</value></classification>
         <classification><tag>language</tag><value>BASIC</value></classification>

@@ -16,8 +16,7 @@ module Metanorma
         @reqtlabels ||= doc
           .xpath(ns("//requirement | //recommendation | //permission"))
           .each_with_object({}) do |r, m|
-            l = reqt.at(ns("./label"))&.text and
-              m[l] = r["id"]
+            l = r.at(ns("./label"))&.text and m[l] = r["id"]
           end
         @reqtlabels[label]
       end
@@ -25,7 +24,7 @@ module Metanorma
       # embedded reqts xref to top level reqts via label lookup
       def inject_crossreference_reqt?(node, label)
         !node.ancestors("requirement, recommendation, permission").empty? &&
-          reqtlabels[label]
+          reqtlabels(node.document, label)
       end
 
       def recommendation_class_label(node)
@@ -66,7 +65,7 @@ module Metanorma
       end
 
       def recommendation_link(docxml, ident)
-        @reqt_links ||= reqtlinks(docxml)
+        @reqt_links ||= reqt_links(docxml)
         test = @reqt_links[ident&.strip] or return nil
         "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
       end

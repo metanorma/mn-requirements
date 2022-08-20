@@ -5,27 +5,19 @@ module Metanorma
   class Requirements
     class Modspec < Default
       def requirement_render1(node)
-        node.xpath(ns("//requirement | //recommendation | //permission"))
-          .xpath { |r| requirement_render1(r) }
-        out = recommendation_base(node, node.name)
-        recommendation_header(node, out)
-        b = out.add_child("<tbody></tbody>").first
-        recommendation_attributes(node, b)
-        node.elements.reject do |n|
-          reqt_metadata_node?(n)
-        end.each { |n| requirement_component_parse(n, out) }
-        requirement_table_cleanup(out)
+        requirement_table_cleanup(super)
       end
 
       def recommendation_base(node, klass)
         out = node.document.create_element("table")
-        out["id"] = node["id"]
-        %w(keep-with-next keep-lines-together unnumbered).each do |x|
+        out.default_namespace = node.namespace.href
+        %w(id keep-with-next keep-lines-together unnumbered).each do |x|
           out[x] = node[x] if node[x]
         end
         out["class"] = klass
         out["type"] = recommend_class(node)
         recommendation_component_labels(node)
+        out
       end
 
       def recommendation_component_labels(node)
@@ -40,7 +32,8 @@ module Metanorma
       def recommendation_header(recommend, out)
         h = out.add_child("<thead><tr><th scope='colgroup' colspan='2'>"\
                           "</th></tr></thead>").first
-        recommendation_name(recommend, h.at(".//th"))
+        recommendation_name(recommend, h.at(ns(".//th")))
+        out
       end
 
       def recommendation_name(node, out)
@@ -48,7 +41,8 @@ module Metanorma
         name = node.at(ns("./name")) and name.children.each do |n|
           b << n
         end
-        return unless title = node.at(ns("./title")) &&
+        title = node.at(ns("./title"))
+        return unless title &&
           node.ancestors("requirement, recommendation, permission").empty?
 
         b << l10n(": ") if name
@@ -56,16 +50,18 @@ module Metanorma
       end
 
       def recommendation_attributes(node, out)
-        recommend_title(node, out)
+        ins = out.add_child("<tbody></tbody>").first
+        recommend_title(node, ins)
         recommendation_attributes1(node).each do |i|
-          out.add_child("<tr><td>#{i[0]}</td><td>#{i[1]}</td></tr>")
+          ins.add_child("<tr><td>#{i[0]}</td><td>#{i[1]}</td></tr>")
         end
+        ins
       end
 
       def recommend_title(node, out)
         label = node.at(ns("./identifier")) or return
         b = out.add_child("<tr><td colspan='2'><p></p></td></tr>")
-        p = b.at(".//p")
+        p = b.at(ns(".//p"))
         p["class"] = "RecommendationLabel"
         p << label.children.to_xml
       end
@@ -84,7 +80,7 @@ module Metanorma
         subj = node.at(ns("./subject"))&.children and
           head << [rec_subj(node), subj]
         node.xpath(ns("./classification[tag = 'target']/value")).each do |v|
-          xref = recommendation_id(v.text) and head << [
+          xref = recommendation_id(node.document, v.text) and head << [
             rec_target(node), xref
           ]
         end
@@ -98,7 +94,7 @@ module Metanorma
       def recommendation_attributes1_dependencies(node, head)
         node.xpath(ns("./inherit")).each do |i|
           head << ["Dependency",
-                   recommendation_id(i.children.to_xml)]
+                   recommendation_id(node.document, i.children.to_xml)]
         end
         node.xpath(ns("./classification[tag = 'indirect-dependency']/value"))
           .each do |v|
@@ -125,6 +121,7 @@ module Metanorma
       def recommendation_attributes1_component(node, out)
         node = recommendation_steps(node)
         out << "<tr><td>#{node['label']}</td><td>#{node.children}</td></tr>"
+        out
       end
 
       def recommendation_attr_keyvalue(node, key, value)
@@ -148,15 +145,16 @@ module Metanorma
       end
 
       def requirement_component_parse(node, out)
-        return if node["exclude"] == "true"
+        return out if node["exclude"] == "true"
 
         node.elements.size == 1 && node.first_element_child.name == "dl" and
           return reqt_dl(node.first_element_child, out)
         node.name == "component" and
           return recommendation_attributes1_component(node, out)
-        b = out.add_child("<tr><td colspan='2'></td></tr>").first
-        b.at(".//td") <<
+        out.add_child("<tr><td colspan='2'></td></tr>").first
+          .at(ns(".//td")) <<
           (preserve_in_nested_table?(node) ? node : node.children)
+        out
       end
 
       def reqt_dl(node, out)
@@ -166,12 +164,13 @@ module Metanorma
           out.add_child("<tr><td>#{dt.children.to_xml}</td>"\
                         "<td>#{dd.children.to_xml}</td></tr>")
         end
+        out
       end
 
       def requirement_table_cleanup(table)
-        return unless table["type"] == "recommendclass"
+        return table unless table["type"] == "recommendclass"
 
-        docxml.xpath(ns("./tbody/tr/td/table")).each do |t|
+        table.xpath(ns("./tbody/tr/td/table")).each do |t|
           t.xpath(ns("./thead | ./tbody |./tfoot")).each do |x|
             x.replace(x.children)
           end
@@ -180,6 +179,7 @@ module Metanorma
             requirement_table_cleanup1(x, y)
           t.parent.parent.replace(t.children)
         end
+        table
       end
 
       # table nested in table: merge label and caption into a single row

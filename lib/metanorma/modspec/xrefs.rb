@@ -10,11 +10,11 @@ module Metanorma
           { klass: "recommendationclass", label: "recommendationclass",
             xpath: "recommendation[@type = 'class']" },
           { klass: "permissiontest", label: "permissiontest",
-            xpath: "permission[@type = 'verification]" },
+            xpath: "permission[@type = 'verification']" },
           { klass: "recommendationtest", label: "recommendationtest",
-            xpath: "recommendation[@type = 'verification]" },
+            xpath: "recommendation[@type = 'verification']" },
           { klass: "requirementtest", label: "requirementtest",
-            xpath: "requirement[@type = 'verification]" },
+            xpath: "requirement[@type = 'verification']" },
           { klass: "abstracttest", label: "abstracttest",
             xpath: "permission[@type = 'abstracttest']" },
           { klass: "abstracttest", label: "abstracttest",
@@ -28,11 +28,15 @@ module Metanorma
           { klass: "conformanceclass", label: "conformanceclass",
             xpath: "recommendation[@type = 'conformanceclass']" },
           { klass: "permission", label: "permission",
-            xpath: "permission[not(@type = 'verification' or @type = 'class' or @type = 'abstracttest' or @type = 'conformanceclass')]" },
+            xpath: "permission[not(@type = 'verification' or @type = 'class' "\
+                   "or @type = 'abstracttest' or @type = 'conformanceclass')]" },
           { klass: "recommendation", label: "recommendation",
-            xpath: "recommendation[not(@type = 'verification' or @type = 'class' or @type = 'abstracttest' or @type = 'conformanceclass')]" },
+            xpath: "recommendation[not(@type = 'verification' or "\
+                   "@type = 'class' or @type = 'abstracttest' or "\
+                   "@type = 'conformanceclass')]" },
           { klass: "requirement", label: "requirement",
-            xpath: "requirement[not(@type = 'verification' or @type = 'class' or @type = 'abstracttest' or @type = 'conformanceclass')]" },
+            xpath: "requirement[not(@type = 'verification' or @type = 'class' "\
+                   "or @type = 'abstracttest' or @type = 'conformanceclass')]" },
         ]
       end
 
@@ -40,21 +44,22 @@ module Metanorma
         req_class_paths
       end
 
-      def permission_parts(block, label, klass)
+      def permission_parts(block, block_id, label, klass)
         block.xpath(ns("./component[@class = 'part']"))
           .each_with_index.with_object([]) do |(c, i), m|
           next if c["id"].nil? || c["id"].empty?
 
-          m << { id: c["id"], number: (i + "A".ord).chr.to_s,
+          m << { id: c["id"], number: l10n("#{block_id} #{(i + 'A'.ord).chr}"),
                  elem: c, label: label, klass: klass }
         end
       end
 
-      def postprocess_label(id, reqt, _klass)
-        if l = reqt.at(ns("./identifier"))&.text
-          "#{id}: <tt>#{l}</tt>"
-        else super
+      def postprocess_anchor_struct(block, anchor)
+        super
+        if l = block.at(ns("./identifier"))&.text
+          anchor[:xref] += l10n(": ") + "<tt>#{l}</tt>"
         end
+        anchor
       end
     end
   end

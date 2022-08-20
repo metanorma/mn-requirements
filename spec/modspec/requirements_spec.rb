@@ -5,7 +5,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
-          <permission id="A1">
+          <permission model="ogc" id="A1">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></inherit>
@@ -68,7 +68,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     presxml = <<~OUTPUT
                 <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-                <preface><foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
+                <preface><foreword id="A" displayorder="1"><title>Preface</title>
                 <table id="A1" class="permission" type="recommend">
             <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
             <tr>
@@ -175,8 +175,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <bibliography><references id="_bibliography" obligation="informative" normative="false" displayorder="2">
             <title depth="1">Bibliography</title>
             <bibitem id="rfc2616" type="standard">
-              <formattedref>R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P.
-               Leach, T. Berners-Lee: IETF RFC 2616, <em>Hypertext Transfer Protocol&#x2009;&#x2014;&#x2009;HTTP/1.1</em>. Fremont, CA (1999). <link target='https://www.rfc-editor.org/info/rfc2616'>https://www.rfc-editor.org/info/rfc2616</link>.</formattedref>
+              <formattedref>R. FIELDING, J. GETTYS, J. MOGUL, H. FRYSTYK, L. MASINTER, P. LEACH and T. BERNERS-LEE.
+               <em>Hypertext Transfer Protocol&#x2009;&#x2014;&#x2009;HTTP/1.1</em>.
+              In: RFC. June 1999. Fremont, CA. <link target='https://www.rfc-editor.org/info/rfc2616'>https://www.rfc-editor.org/info/rfc2616</link>.</formattedref>
                         <uri type='xml'>https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2616.xml</uri>
                 <uri type='src'>https://www.rfc-editor.org/info/rfc2616</uri>
                 <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
@@ -200,7 +201,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface>
               <foreword id="A"><title>Preface</title>
-          <permission id="A1" type="verification">
+          <permission model="ogc" id="A1" type="verification">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <subject>user</subject>
@@ -249,27 +250,88 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-           <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-          <preface>
-              <foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
-          <table id="A1" type="recommendtest" class="permission">
-      <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Permission test 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Control-class</td><td>Technical</td></tr><tr><td>Priority</td><td>P0</td></tr><tr><td>Family</td><td>System and Communications Protection</td></tr><tr><td>Family</td><td>System and Communications Protocols</td></tr><tr><td colspan="2">
-          <p id="_">I recommend <em>this</em>.</p>
-        </td></tr><tr><td>A</td><td>B</td></tr><tr><td>C</td><td>D</td></tr><tr><td colspan="2">
-          <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_"><name>1</name>
-            <stem type="AsciiMath">r/1 = 0</stem>
-          </formula>
-        </td></tr><tr><td colspan="2">
-          <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
-            if (success)
-            recommendation(label: success-response)
-            end
-          </sourcecode>
-        </td></tr></tbody></table>
-          </foreword></preface>
-          </ogc-standard>
+          <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
+         <preface>
+           <foreword id='A' displayorder='1'>
+             <title>Preface</title>
+             <table id='A1' class='permission' type='recommendtest'>
+               <thead>
+                 <tr>
+                   <th scope='colgroup' colspan='2'>
+                     <p class='RecommendationTestTitle'>Permission test 1</p>
+                   </th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td colspan='2'>
+                     <p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>Subject</td>
+                   <td>user</td>
+                 </tr>
+                 <tr>
+                   <td>Dependency</td>
+                   <td>/ss/584/2015/level/1</td>
+                 </tr>
+                 <tr>
+                   <td>Control-class</td>
+                   <td>Technical</td>
+                 </tr>
+                 <tr>
+                   <td>Priority</td>
+                   <td>P0</td>
+                 </tr>
+                 <tr>
+                   <td>Family</td>
+                   <td>System and Communications Protection</td>
+                 </tr>
+                 <tr>
+                   <td>Family</td>
+                   <td>System and Communications Protocols</td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>
+                       I recommend 
+                       <em>this</em>
+                       .
+                     </p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td>A</td>
+                   <td>B</td>
+                 </tr>
+                 <tr>
+                   <td>C</td>
+                   <td>D</td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>The measurement target shall be measured as:</p>
+                     <formula id='_'>
+                       <name>1</name>
+                       <stem type='AsciiMath'>r/1 = 0</stem>
+                     </formula>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan='2'>
+                     <p id='_'>The following code will be run for verification:</p>
+                     <sourcecode id='_'>
+                       CoreRoot(success): HttpResponse if (success)
+                       recommendation(label: success-response) end 
+                     </sourcecode>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </foreword>
+         </preface>
+       </ogc-standard>
     OUTPUT
 
     expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
@@ -284,7 +346,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface>
               <foreword id="A"><title>Preface</title>
-          <permission id="A1" type="abstracttest">
+          <permission model="ogc" id="A1" type="abstracttest">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <subject>user</subject>
@@ -334,9 +396,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
           <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
           <preface>
-              <foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
+              <foreword id="A" displayorder="1"><title>Preface</title>
           <table id="A1" type="recommendtest" class="permission">
-      <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Control-class</td><td>Technical</td></tr><tr><td>Priority</td><td>P0</td></tr><tr><td>Family</td><td>System and Communications Protection</td></tr><tr><td>Family</td><td>System and Communications Protocols</td></tr><tr><td colspan="2">
+      <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Control-class</td><td>Technical</td></tr><tr><td>Priority</td><td>P0</td></tr><tr><td>Family</td><td>System and Communications Protection</td></tr><tr><td>Family</td><td>System and Communications Protocols</td></tr>
+
+        <tr><td colspan="2">
           <p id="_">I recommend <em>this</em>.</p>
         </td></tr><tr><td>A</td><td>B</td></tr><tr><td>C</td><td>D</td></tr><tr><td colspan="2">
           <p id="_">The measurement target shall be measured as:</p>
@@ -366,22 +430,22 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
-          <permission id="A1" type="class" keep-with-next="true" keep-lines-together="true">
+          <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit>/ss/584/2015/level/2</inherit>
         <subject>user</subject>
-        <permission id="A2">
+        <permission model="ogc" id="A2">
         <identifier>/ogc/recommendation/wfs/10</identifier>
         </permission>
-        <requirement id="A3">
+        <requirement model="ogc" id="A3">
         <identifier>Requirement 1</identifier>
         </requirement>
-        <recommendation id="A4">
+        <recommendation model="ogc" id="A4">
         <identifier>Recommendation 1</identifier>
         </recommendation>
       </permission>
-      <permission id="B1">
+      <permission model="ogc" id="B1">
         <identifier>/ogc/recommendation/wfs/11</identifier>
       </permission>
           </foreword></preface>
@@ -390,7 +454,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     presxml = <<~OUTPUT
       <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-             <preface><foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
+             <preface><foreword id="A" displayorder="1"><title>Preface</title>
              <table id="A1" type="recommendclass" keep-with-next="true" keep-lines-together="true" class="permission">
 
 
@@ -426,7 +490,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
-          <permission id="A1" type="conformanceclass">
+          <permission model="ogc" id="A1" type="conformanceclass">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit>ABC</inherit>
@@ -434,17 +498,17 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <classification><tag>target</target><value>ABC</value></classification>
         <classification><tag>indirect-dependency</target><value><link target="http://www.example.com/"/></value></classification>
         <classification><tag>indirect-dependency</target><value>ABC</value></classification>
-        <permission id="A2">
+        <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
         </permission>
-        <requirement id="A3">
+        <requirement model="ogc" id="A3">
         <identifier>Requirement 1</identifier>
         </requirement>
-        <recommendation id="A4">
+        <recommendation model="ogc" id="A4">
         <identifier>Recommendation 1</identifier>
         </recommendation>
       </permission>
-          <permission id="B" type="conformanceclass">
+          <permission model="ogc" id="B" type="conformanceclass">
           <identifier>ABC</identifier>
           </permission>
           </foreword></preface>
@@ -453,7 +517,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     presxml = <<~OUTPUT
       <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-             <preface><foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
+             <preface><foreword id="A" displayorder="1"><title>Preface</title>
              <table id="A1" type="recommendclass" class="permission">
          <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Conformance class 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr>
          <tr><td>Requirements class</td><td><xref target='B'>ABC</xref></td></tr>
@@ -500,18 +564,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
-          <requirement id="A1" type="class">
+          <requirement model="ogc" id="A1" type="class">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit>/ss/584/2015/level/2</inherit>
         <subject>user</subject>
-        <permission id="A2">
+        <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
         </permission>
-        <requirement id="A3">
+        <requirement model="ogc" id="A3">
         <identifier>Requirement 1</identifier>
         </requirement>
-        <recommendation id="A4">
+        <recommendation model="ogc" id="A4">
         <identifier>Recommendation 1</identifier>
         </recommendation>
       </requirement>
@@ -521,7 +585,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     presxml = <<~OUTPUT
       <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-             <preface><foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
+             <preface><foreword id="A" displayorder="1"><title>Preface</title>
              <table id="A1" type="recommendclass" class="requirement">
          <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Requirements class 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Target type</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/2</td></tr>
            <tr><td><p>Permission 1-1</p></td><td><p class="RecommendationLabel">Permission 1</p></td></tr>
@@ -542,18 +606,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
-          <recommendation id="A1" type="class">
+          <recommendation model="ogc" id="A1" type="class">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit>/ss/584/2015/level/2</inherit>
         <subject>user</subject>
-        <permission id="A2">
+        <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
         </permission>
-        <requirement id="A3">
+        <requirement model="ogc" id="A3">
         <identifier>Requirement 1</identifier>
         </requirement>
-        <recommendation id="A4">
+        <recommendation model="ogc" id="A4">
         <identifier>Recommendation 1</identifier>
         </recommendation>
       </recommendation>
@@ -563,7 +627,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     presxml = <<~OUTPUT
            <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-          <preface><foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
+          <preface><foreword id="A" displayorder="1"><title>Preface</title>
           <table id="A1" type="recommendclass" class="recommendation">
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Recommendations class 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Target type</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/2</td></tr>
         <tr><td><p>Permission 1-1</p></td><td><p class="RecommendationLabel">Permission 1</p></td></tr>
@@ -584,7 +648,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
                 <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A0"><title>Preface</title>
-          <requirement id="A" unnumbered="true">
+          <requirement model="ogc" id="A" unnumbered="true">
         <title>A New Requirement</title>
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
@@ -632,28 +696,69 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-          <preface><foreword id="A0" displayorder="1"><title depth="1">I.<tab/>Preface</title>
-          <table id="A" unnumbered="true" class="requirement" type="recommend">
-      <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Requirement: A New Requirement</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td colspan="2">
-          <p id="_">I recommend <em>this</em>.</p>
-        </td></tr><tr><td colspan="2">
-          <p id="_">As for the measurement targets,</p>
-        </td></tr><tr><td colspan="2">
-          <p id="_">The measurement target shall be measured as:</p>
-          <formula id="B"><name>1</name>
-            <stem type="AsciiMath">r/1 = 0</stem>
-          </formula>
-        </td></tr><tr><td colspan="2">
-          <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
-            if (success)
-            recommendation(label: success-response)
-            end
-          </sourcecode>
-        </td></tr></tbody></table>
-          </foreword></preface>
-          </ogc-standard>
+            <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
+          <preface>
+            <foreword id='A0' displayorder='1'>
+              <title>Preface</title>
+              <table id='A' unnumbered='true' class='requirement' type='recommend'>
+                <thead>
+                  <tr>
+                    <th scope='colgroup' colspan='2'>
+                      <p class='RecommendationTitle'>Requirement: A New Requirement</p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan='2'>
+                      <p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Subject</td>
+                    <td>user</td>
+                  </tr>
+                  <tr>
+                    <td>Dependency</td>
+                    <td>/ss/584/2015/level/1</td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>
+                        I recommend
+                        <em>this</em>
+                        .
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>As for the measurement targets,</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>The measurement target shall be measured as:</p>
+                      <formula id='B'>
+                        <name>1</name>
+                        <stem type='AsciiMath'>r/1 = 0</stem>
+                      </formula>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>The following code will be run for verification:</p>
+                      <sourcecode id='_'>
+                        CoreRoot(success): HttpResponse if (success)
+                        recommendation(label: success-response) end
+                      </sourcecode>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </foreword>
+          </preface>
+        </ogc-standard>
     OUTPUT
 
     expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
@@ -667,7 +772,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
             <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
-          <recommendation id="_">
+          <recommendation model="ogc" id="_">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <subject>user</subject>
@@ -715,28 +820,69 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-           <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-          <preface><foreword id="A" displayorder="1"><title depth="1">I.<tab/>Preface</title>
-          <table id="_" class="recommendation" type="recommend">
-      <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Recommendation 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td colspan="2">
-          <p id="_">I recommend <em>this</em>.</p>
-        </td></tr><tr><td colspan="2">
-          <p id="_">As for the measurement targets,</p>
-        </td></tr><tr><td colspan="2">
-          <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_"><name>1</name>
-            <stem type="AsciiMath">r/1 = 0</stem>
-          </formula>
-        </td></tr><tr><td colspan="2">
-          <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
-            if (success)
-            recommendation(label: success-response)
-            end
-          </sourcecode>
-        </td></tr></tbody></table>
-          </foreword></preface>
-          </ogc-standard>
+            <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
+          <preface>
+            <foreword id='A' displayorder='1'>
+              <title>Preface</title>
+              <table id='_' class='recommendation' type='recommend'>
+                <thead>
+                  <tr>
+                    <th scope='colgroup' colspan='2'>
+                      <p class='RecommendationTitle'>Recommendation 1</p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan='2'>
+                      <p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Subject</td>
+                    <td>user</td>
+                  </tr>
+                  <tr>
+                    <td>Dependency</td>
+                    <td>/ss/584/2015/level/1</td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>
+                        I recommend
+                        <em>this</em>
+                        .
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>As for the measurement targets,</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>The measurement target shall be measured as:</p>
+                      <formula id='_'>
+                        <name>1</name>
+                        <stem type='AsciiMath'>r/1 = 0</stem>
+                      </formula>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <p id='_'>The following code will be run for verification:</p>
+                      <sourcecode id='_'>
+                        CoreRoot(success): HttpResponse if (success)
+                        recommendation(label: success-response) end
+                      </sourcecode>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </foreword>
+          </preface>
+        </ogc-standard>
     OUTPUT
 
     expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
