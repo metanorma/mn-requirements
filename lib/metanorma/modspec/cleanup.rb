@@ -72,6 +72,7 @@ module Metanorma
         reqt.xpath("./requirement | ./permission | ./recommendation")
           .each do |c|
           c["id"] = Metanorma::Utils::anchor_or_uuid
+          c["model"] = reqt["model"] # all requirements must have a model
         end
       end
 

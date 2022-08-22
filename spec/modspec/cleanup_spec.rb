@@ -126,7 +126,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <description>
                  <p id='_'>Interpolated description</p>
              </description>
-             <recommendation id='_' label="Interpolated Recommendation"/>
+             <recommendation id='_' label="Interpolated Recommendation" model="ogc" type=""/>
              <component class='part'>
                  <p id='_'>Widget has been suitably calibrated for aerodynamics</p>
              </component>
