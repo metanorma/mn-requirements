@@ -43,8 +43,9 @@ module Metanorma
 
       def recommendation_header(node, out)
         label, title, name = recommendation_labels(node)
-        ret = name ? [name + l10n(":")] : []
+        ret = name ? [name] : []
         if label || title
+          ret << l10n(":") unless ret.empty?
           ret += ["<br/>", label]
           ret << l10n(". ") if label && title
           ret << title
@@ -96,8 +97,10 @@ module Metanorma
         return out if node["exclude"] == "true"
 
         ret = node.dup
-        ret["type"] = reqt_component_type(node)
-        ret.name = "div"
+        if reqt_subpart?(node.name)
+          ret["type"] = reqt_component_type(node)
+          ret.name = "div"
+        end
         out << ret
         out
       end

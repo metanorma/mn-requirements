@@ -15,6 +15,7 @@ RSpec.describe Metanorma::Requirements::Default do
         <description>
           <p id="_">I recommend <em>this</em>.</p>
         </description>
+        <note id="N">This is a note</note>
         <specification exclude="true" type="tabular">
           <p id="_">This is the object of the recommendation:</p>
           <table id="_">
@@ -73,7 +74,9 @@ RSpec.describe Metanorma::Requirements::Default do
       <em>Family: System and Communications Protection</em><br/>
       <em>Family: System and Communications Protocols</em></p><div type="requirement-description">
           <p id="_">I recommend <em>this</em>.</p>
-        </div><div type="requirement-description">
+        </div>
+        <note id="N"><name>NOTE</name>This is a note</note>
+        <div type="requirement-description">
           <p id="_">As for the measurement targets,</p>
         </div><div exclude="false" type="requirement-measurement-target">
           <p id="_">The measurement target shall be measured as:</p>
