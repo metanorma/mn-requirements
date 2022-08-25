@@ -1,5 +1,5 @@
 module Metanorma
   class Requirements
-    VERSION = "0.0.2".freeze
-  end 
-end 
+    VERSION = "0.0.3".freeze
+  end
+end

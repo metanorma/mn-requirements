@@ -16,11 +16,11 @@ toolset, allowing various models to be processed. The gem currently supports:
 
 == Usage
 
-Within Metanorma, a requirement is specified as being of a particular type; e.g.
+Within Metanorma, a requirement is specified as being of a particular model; e.g.
 
 [source,asciidoc]
 ----
-[requirement,type=ogc]
+[requirement,model=ogc]
 ...
 ...
 ----
