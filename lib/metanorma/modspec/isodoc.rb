@@ -5,10 +5,11 @@ module Metanorma
   class Requirements
     class Modspec < Default
       def requirement_render1(node)
+        init_lookups(node.document)
         requirement_table_cleanup(super)
       end
 
-      def recommendation_base(node, klass)
+      def recommendation_base(node, _klass)
         out = node.document.create_element("table")
         out.default_namespace = node.namespace.href
         %w(id keep-with-next keep-lines-together unnumbered).each do |x|
@@ -29,24 +30,30 @@ module Metanorma
         end
       end
 
-      def recommendation_header(recommend, out)
-        h = out.add_child("<thead><tr><th scope='colgroup' colspan='2'>"\
-                          "</th></tr></thead>").first
-        recommendation_name(recommend, h.at(ns(".//th")))
+      def recommendation_header(reqt, out)
+        n = recommendation_name(reqt, nil)
+        x = if reqt.ancestors("requirement, recommendation, permission").empty?
+              "<thead><tr><th scope='colgroup' colspan='2'>"\
+                "<p class='#{recommend_name_class(reqt)}'>#{n}</p>"\
+                "</th></tr></thead>"
+            else
+              "<thead><tr><td>#{recommendation_class_label(reqt)}</td>"\
+                "<td>#{n}</td></tr></thead>"
+            end
+        out << x
         out
       end
 
-      def recommendation_name(node, out)
-        b = out.add_child("<p class='#{recommend_name_class(node)}'></p>").first
-        name = node.at(ns("./name")) and name.children.each do |n|
-          b << n
-        end
+      def recommendation_name(node, _out)
+        ret = ""
+        name = node.at(ns("./name")) and ret += name.children.to_xml
         title = node.at(ns("./title"))
-        return unless title &&
+        return ret unless title &&
           node.ancestors("requirement, recommendation, permission").empty?
 
-        b << l10n(": ") if name
-        title.children.each { |n| b << n }
+        ret += l10n(": ") if name
+        ret += title.children.to_xml
+        ret
       end
 
       def recommendation_attributes(node, out)
@@ -60,10 +67,11 @@ module Metanorma
 
       def recommend_title(node, out)
         label = node.at(ns("./identifier")) or return
-        b = out.add_child("<tr><td colspan='2'><p></p></td></tr>")
-        p = b.at(ns(".//p"))
-        p["class"] = "RecommendationLabel"
-        p << label.children.to_xml
+        #         b = out.add_child("<tr><td colspan='2'><p></p></td></tr>")
+        #         p = b.at(ns(".//p"))
+        #         p["class"] = "RecommendationLabel"
+        #         p << label.children.to_xml
+        out.add_child("<tr><td>Identifier</td><td>#{label.children.to_xml}</td>")
       end
 
       def recommendation_attributes1(node)
@@ -80,25 +88,35 @@ module Metanorma
         subj = node.at(ns("./subject"))&.children and
           head << [rec_subj(node), subj]
         node.xpath(ns("./classification[tag = 'target']/value")).each do |v|
-          xref = recommendation_id(node.document, v.text) and head << [
+          xref = recommendation_id(v.text) and head << [
             rec_target(node), xref
           ]
         end
-        %w(general class).include?(node["type"]) and
-          xref = recommendation_link(node.document,
-                                     node.at(ns("./identifier"))&.text) and
-          head << ["Conformance test", xref]
+        head += recommendation_backlinks(node)
         recommendation_attributes1_dependencies(node, head)
+      end
+
+      def recommendation_backlinks(node)
+        ret = []
+        id = node.at(ns("./identifier")) or return ret
+        %w(general class).include?(node["type"]) and
+          xref = recommendation_link_test(id.text) and
+          ret << ["Conformance test", xref]
+        ret
+        (node["type"].nil? || node["type"].empty?) and
+          xref = recommendation_link_class(id.text) and
+          ret << ["Requirement class", xref]
+        ret
       end
 
       def recommendation_attributes1_dependencies(node, head)
         node.xpath(ns("./inherit")).each do |i|
           head << ["Dependency",
-                   recommendation_id(node.document, i.children.to_xml)]
+                   recommendation_id(i.children.to_xml)]
         end
         node.xpath(ns("./classification[tag = 'indirect-dependency']/value"))
           .each do |v|
-          xref = recommendation_id(node.document, v.children.to_xml) and
+          xref = recommendation_id(v.children.to_xml) and
             head << ["Indirect Dependency", xref]
         end
         head
@@ -171,28 +189,10 @@ module Metanorma
         return table unless table["type"] == "recommendclass"
 
         table.xpath(ns("./tbody/tr/td/table")).each do |t|
-          t.xpath(ns("./thead | ./tbody |./tfoot")).each do |x|
-            x.replace(x.children)
-          end
-          (x = t.at(ns("./tr/th[@colspan = '2']"))) &&
-            (y = t.at(ns("./tr/td[@colspan = '2']"))) and
-            requirement_table_cleanup1(x, y)
-          t.parent.parent.replace(t.children)
+          x = t.at(ns("./thead/tr")) or next
+          t.parent.parent.replace(x)
         end
         table
-      end
-
-      # table nested in table: merge label and caption into a single row
-      def requirement_table_cleanup1(outer, inner)
-        outer.delete("colspan")
-        outer.delete("scope")
-        inner.delete("colspan")
-        inner.delete("scope")
-        outer.name = "td"
-        p = outer.at(ns("./p[@class = 'RecommendationTitle']")) and
-          p.delete("class")
-        outer.parent << inner.dup
-        inner.parent.remove
       end
 
       def rec_subj(node)

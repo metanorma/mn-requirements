@@ -2,29 +2,48 @@ module Metanorma
   class Requirements
     class Modspec < Default
       def recommendation_label(elem, type, xrefs)
+        @xrefs ||= xrefs.dup
+        init_lookups(elem.document)
+
         label = elem.at(ns("./identifier"))&.text
         if inject_crossreference_reqt?(elem, label)
-          number = xrefs.anchor(reqtlabels(elem.document, label), :xref, false)
-          number.nil? ? type : number
+          recommendation_label_xref(elem, label, xrefs)
         else
           type = recommendation_class_label(elem)
           super
         end
       end
 
-      def reqtlabels(doc, label)
-        @reqtlabels ||= doc
-          .xpath(ns("//requirement | //recommendation | //permission"))
-          .each_with_object({}) do |r, m|
-            l = r.at(ns("./label"))&.text and m[l] = r["id"]
-          end
-        @reqtlabels[label]
+      def recommendation_label_xref(elem, label, xrefs)
+        id = @reqtlabels[label]
+        number = xrefs.anchor(id, :xref, false)
+        number.nil? and return type
+        elem.ancestors("requirement, recommendation, permission").empty? and
+          return number
+        "<xref target='#{id}'>#{number}</xref>"
       end
 
-      # embedded reqts xref to top level reqts via label lookup
+      def init_lookups(doc)
+        return if @init_lookups
+
+        @init_lookups = true
+        @reqtlabels = reqtlabels(doc)
+        @reqt_ids = reqt_ids(doc)
+        @reqt_links_class = reqt_links_class(doc)
+        @reqt_links_test = reqt_links_test(doc)
+      end
+
+      def reqtlabels(doc)
+        doc.xpath(ns("//requirement | //recommendation | //permission"))
+          .each_with_object({}) do |r, m|
+            l = r.at(ns("./identifier"))&.text and m[l] = r["id"]
+          end
+      end
+
+      # embedded reqts xref to reqts via label lookup
       def inject_crossreference_reqt?(node, label)
-        !node.ancestors("requirement, recommendation, permission").empty? &&
-          reqtlabels(node.document, label)
+        !node.ancestors("requirement, recommendation, permission").empty? and
+          @reqtlabels[label]
       end
 
       def recommendation_class_label(node)
@@ -50,28 +69,49 @@ module Metanorma
           end
       end
 
-      def reqt_links(docxml)
+      def reqt_links_test(docxml)
         docxml.xpath(ns("//requirement | //recommendation | //permission"))
           .each_with_object({}) do |r, m|
             next unless %w(conformanceclass
                            verification).include?(r["type"])
 
             subj = r.at(ns("./classification[tag = 'target']/value"))
-            id = r.at(ns("./identifier"))
-            next unless subj && id
+            id = r.at(ns("./identifier")) or next
+            lbl = @xrefs.anchor(@reqt_ids[id.text.strip], :xref, false)
+            next unless subj && lbl
 
-            m[subj.text] = { lbl: id.text, id: r["id"] }
+            m[subj.text] = { lbl: lbl, id: r["id"] }
           end
       end
 
-      def recommendation_link(docxml, ident)
-        @reqt_links ||= reqt_links(docxml)
-        test = @reqt_links[ident&.strip] or return nil
+      def recommendation_link_test(ident)
+        test = @reqt_links_test[ident&.strip] or return nil
         "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
       end
 
-      def recommendation_id(docxml, ident)
-        @reqt_ids ||= reqt_ids(docxml)
+      def reqt_links_class(docxml)
+        docxml.xpath(ns("//requirement | //recommendation | //permission"))
+          .each_with_object({}) do |r, m|
+            next unless %w(class).include?(r["type"])
+
+            id = r.at(ns("./identifier")) or next
+            r.xpath(ns("./requirement | ./recommendation | ./permission"))
+              .each do |r1|
+              id1 = r1.at(ns("./identifier")) or next
+              lbl = @xrefs.anchor(@reqt_ids[id.text.strip], :xref, false)
+              next unless lbl
+
+              m[id1.text] = { lbl: lbl, id: r["id"] }
+            end
+          end
+      end
+
+      def recommendation_link_class(ident)
+        test = @reqt_links_class[ident&.strip] or return nil
+        "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
+      end
+
+      def recommendation_id(ident)
         test = @reqt_ids[ident&.strip] or return ident&.strip
         "<xref target='#{test}'>#{ident.strip}</xref>"
       end

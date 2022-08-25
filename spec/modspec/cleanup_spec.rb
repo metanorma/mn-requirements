@@ -28,7 +28,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       . Widget has been suitably calibrated for aerodynamics
       part:: Determine travel distance by flight path
       description:: Interpolated description
-      recommendation:: Interpolated Recommendation
+      recommendation:: /label/1
       part:: Widget has been suitably calibrated for aerodynamics
       test-method:: Method
       description::: Method description
@@ -126,7 +126,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <description>
                  <p id='_'>Interpolated description</p>
              </description>
-             <recommendation id='_' label="Interpolated Recommendation" model="ogc" type=""/>
+             <recommendation id='_' model="ogc" type=""><identifier>/label/1</identifier></recommendation>
              <component class='part'>
                  <p id='_'>Widget has been suitably calibrated for aerodynamics</p>
              </component>

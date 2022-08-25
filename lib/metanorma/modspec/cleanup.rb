@@ -37,8 +37,7 @@ module Metanorma
           d.remove
         end
         if REQS.include?(term.text) && !val.text.empty?
-          val["label"] = val.text.strip
-          val.children.remove
+          val.children = "<identifier>#{val.text.strip}</identifier>"
         end
         val
       end

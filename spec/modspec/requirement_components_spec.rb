@@ -44,10 +44,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td colspan='2'>
-                     <p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p>
-                   </td>
-                 </tr>
+                  <td>Identifier</td>
+                  <td>/ogc/recommendation/wfs/2</td>
+                </tr>
                  <tr>
                    <td>Subject</td>
                    <td>user</td>
@@ -305,7 +304,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
+           <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
          <preface>
            <foreword id='A' displayorder='1'>
              <title>Preface</title>
@@ -319,14 +318,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td colspan='2'>
-                     <p class='RecommendationLabel'>/ogc/recommendation/wfs/1</p>
-                   </td>
+                   <td>Identifier</td>
+                   <td>/ogc/recommendation/wfs/1</td>
                  </tr>
                  <tr>
                    <td>Conformance test</td>
                    <td>
-                     <xref target='A2'>/ogc/recommendation/wfs/2</xref>
+                     <xref target='A2'>
+                       Requirement test 1:
+                       <tt>/ogc/recommendation/wfs/2</tt>
+                     </xref>
                    </td>
                  </tr>
                </tbody>
@@ -341,13 +342,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td colspan='2'>
-                     <p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p>
-                   </td>
+                   <td>Identifier</td>
+                   <td>/ogc/recommendation/wfs/2</td>
                  </tr>
                  <tr>
                    <td>Requirement</td>
-                   <td>/ogc/recommendation/wfs/1</td>
+                   <td>
+                     <xref target='A1'>/ogc/recommendation/wfs/1</xref>
+                   </td>
                  </tr>
                </tbody>
              </table>
@@ -361,14 +363,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td colspan='2'>
-                     <p class='RecommendationLabel'>/ogc/recommendation/wfs/3</p>
-                   </td>
+                   <td>Identifier</td>
+                   <td>/ogc/recommendation/wfs/3</td>
                  </tr>
                  <tr>
                    <td>Conformance test</td>
                    <td>
-                     <xref target='A4'>/ogc/recommendation/wfs/4</xref>
+                     <xref target='A4'>
+                       Conformance class 1:
+                       <tt>/ogc/recommendation/wfs/4</tt>
+                     </xref>
                    </td>
                  </tr>
                </tbody>
@@ -383,9 +387,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td colspan='2'>
-                     <p class='RecommendationLabel'>/ogc/recommendation/wfs/4</p>
-                   </td>
+                   <td>Identifier</td>
+                   <td>/ogc/recommendation/wfs/4</td>
                  </tr>
                  <tr>
                    <td>Requirements class</td>
