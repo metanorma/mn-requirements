@@ -34,7 +34,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
          <preface>
            <foreword id='A' displayorder='1'>
              <title>Preface</title>
-             <table id='_' class='recommendation' type='recommend'>
+             <table id='_' class='modspec' type='recommend'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -225,7 +225,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <preface>
           <foreword id='A' displayorder='1'>
             <title>Preface</title>
-            <table id='A1' class='requirement' type='recommend'>
+            <table id='A1' class='modspec' type='recommend'>
               <thead>
                 <tr>
                   <th scope='colgroup' colspan='2'>
@@ -309,7 +309,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
          <preface>
            <foreword id='A' displayorder='1'>
              <title>Preface</title>
-             <table id='A1' class='requirement' type='recommend'>
+             <table id='A1' class='modspec' type='recommend'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -331,7 +331,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                </tbody>
              </table>
-             <table id='A2' class='requirement' type='recommendtest'>
+             <table id='A2' class='modspec' type='recommendtest'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -351,7 +351,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                </tbody>
              </table>
-             <table id='A3' class='requirement' type='recommendclass'>
+             <table id='A3' class='modspec' type='recommendclass'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -373,7 +373,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                </tbody>
              </table>
-             <table id='A4' class='requirement' type='recommendclass'>
+             <table id='A4' class='modspec' type='recommendclass'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>

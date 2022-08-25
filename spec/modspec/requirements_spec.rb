@@ -69,7 +69,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
                 <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
                 <preface><foreword id="A" displayorder="1"><title>Preface</title>
-                <table id="A1" class="permission" type="recommend">
+                <table id="A1" class="modspec" type="recommend">
             <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
             <tr>
         <td>Control-class</td>
@@ -254,7 +254,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
          <preface>
            <foreword id='A' displayorder='1'>
              <title>Preface</title>
-             <table id='A1' class='permission' type='recommendtest'>
+             <table id='A1' class='modspec' type='recommendtest'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -397,7 +397,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
           <preface>
               <foreword id="A" displayorder="1"><title>Preface</title>
-          <table id="A1" type="recommendtest" class="permission">
+          <table id="A1" type="recommendtest" class="modspec">
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Control-class</td><td>Technical</td></tr><tr><td>Priority</td><td>P0</td></tr><tr><td>Family</td><td>System and Communications Protection</td></tr><tr><td>Family</td><td>System and Communications Protocols</td></tr>
 
         <tr><td colspan="2">
@@ -455,7 +455,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
       <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
              <preface><foreword id="A" displayorder="1"><title>Preface</title>
-             <table id="A1" type="recommendclass" keep-with-next="true" keep-lines-together="true" class="permission">
+             <table id="A1" type="recommendclass" keep-with-next="true" keep-lines-together="true" class="modspec">
 
 
 
@@ -471,7 +471,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
            <tr><td><p>Recommendation 1-1</p></td><td><p class="RecommendationLabel">Recommendation 1</p></td></tr></tbody></table>
 
-         <table id="B1" class="permission" type="recommend">
+         <table id="B1" class="modspec" type="recommend">
 
          <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/11</p></td></tr></tbody></table>
 
@@ -518,7 +518,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
       <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
              <preface><foreword id="A" displayorder="1"><title>Preface</title>
-             <table id="A1" type="recommendclass" class="permission">
+             <table id="A1" type="recommendclass" class="modspec">
          <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Conformance class 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Subject</td><td>user</td></tr>
          <tr><td>Requirements class</td><td><xref target='B'>ABC</xref></td></tr>
           <tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td><xref target='B'>ABC</xref></td></tr>
@@ -533,7 +533,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <tr><td><p>Permission 1-1</p></td><td><p class="RecommendationLabel">Permission 1</p></td></tr>
            <tr><td><p>Requirement 1-1</p></td><td><p class="RecommendationLabel">Requirement 1</p></td></tr>
            <tr><td><p>Recommendation 1-1</p></td><td><p class="RecommendationLabel">Recommendation 1</p></td></tr></tbody></table>
-                        <table id='B' class='permission' type='recommendclass'>
+                        <table id='B' class='modspec' type='recommendclass'>
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
@@ -586,7 +586,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
       <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
              <preface><foreword id="A" displayorder="1"><title>Preface</title>
-             <table id="A1" type="recommendclass" class="requirement">
+             <table id="A1" type="recommendclass" class="modspec">
          <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Requirements class 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Target type</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/2</td></tr>
            <tr><td><p>Permission 1-1</p></td><td><p class="RecommendationLabel">Permission 1</p></td></tr>
            <tr><td><p>Requirement 1-1</p></td><td><p class="RecommendationLabel">Requirement 1</p></td></tr>
@@ -628,7 +628,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
            <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
           <preface><foreword id="A" displayorder="1"><title>Preface</title>
-          <table id="A1" type="recommendclass" class="recommendation">
+          <table id="A1" type="recommendclass" class="modspec">
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Recommendations class 1</p></th></tr></thead><tbody><tr><td colspan="2"><p class='RecommendationLabel'>/ogc/recommendation/wfs/2</p></td></tr><tr><td>Target type</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/2</td></tr>
         <tr><td><p>Permission 1-1</p></td><td><p class="RecommendationLabel">Permission 1</p></td></tr>
         <tr><td><p>Requirement 1-1</p></td><td><p class="RecommendationLabel">Requirement 1</p></td></tr>
@@ -700,7 +700,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <preface>
             <foreword id='A0' displayorder='1'>
               <title>Preface</title>
-              <table id='A' unnumbered='true' class='requirement' type='recommend'>
+              <table id='A' unnumbered='true' class='modspec' type='recommend'>
                 <thead>
                   <tr>
                     <th scope='colgroup' colspan='2'>
@@ -824,7 +824,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <preface>
             <foreword id='A' displayorder='1'>
               <title>Preface</title>
-              <table id='_' class='recommendation' type='recommend'>
+              <table id='_' class='modspec' type='recommend'>
                 <thead>
                   <tr>
                     <th scope='colgroup' colspan='2'>

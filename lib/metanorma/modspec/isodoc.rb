@@ -14,7 +14,7 @@ module Metanorma
         %w(id keep-with-next keep-lines-together unnumbered).each do |x|
           out[x] = node[x] if node[x]
         end
-        out["class"] = klass
+        out["class"] = "modspec"
         out["type"] = recommend_class(node)
         recommendation_component_labels(node)
         out
