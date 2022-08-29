@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe Metanorma::Requirements::Modspec do
-  it "warns of disconnect between requirements and conformance tests, #1" do
+  it "does not warn if no linkage issues" do
     FileUtils.rm_f "test.err"
     Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
       = Document title
@@ -60,6 +60,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
       [%metadata]
       identifier:: G
+      requirement:: A
       ====
 
       [[H1]]
@@ -67,6 +68,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
       [%metadata]
       identifier:: H
+      requirement:: A
       ====
 
       [[I1]]
@@ -74,6 +76,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
       [%metadata]
       identifier:: I
+      requirement:: A
       ====
 
       [[J1]]
@@ -81,6 +84,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
       [%metadata]
       classification:: target:G
+      requirement:: D
       ====
 
       [[K1]]
@@ -88,6 +92,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
       [%metadata]
       classification:: target:H
+      requirement:: E
       ====
 
       [[L1]]
@@ -95,6 +100,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
       [%metadata]
       classification:: target:I
+      requirement:: F
       ====
 
     INPUT
@@ -105,10 +111,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(File.read("test.err"))
       .not_to include "has no corresponding Requirement class"
     expect(File.read("test.err"))
-      .not_to include "has no corresponding Conformance class test"
+      .not_to include "has no corresponding Conformance class"
   end
 
-  it "warns of disconnect between requirements and conformance tests, #2" do
+  it "warns of disconnect between requirements and conformance tests, #1" do
     FileUtils.rm_f "test.err"
     Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
       = Document title
@@ -198,12 +204,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(File.read("test.err"))
       .to include "Requirement A has no corresponding Conformance test"
     expect(File.read("test.err"))
-      .to include "Conformance class test J has no corresponding Requirement class"
+      .to include "Conformance class J has no corresponding Requirement class"
     expect(File.read("test.err"))
-      .to include "Requirement class G has no corresponding Conformance class test"
+      .to include "Requirement class G has no corresponding Conformance class"
   end
 
-  it "warns of disconnect between requirements and conformance tests, #3" do
+  it "warns of disconnect between requirements and conformance tests, #2" do
     FileUtils.rm_f "test.err"
     Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
       = Document title
@@ -240,5 +246,85 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     expect(File.read("test.err"))
       .not_to include "Conformance test D has no corresponding Requirement"
+  end
+
+  it "warns of disconnect between requirement classes and requirements" do
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :requirements-model: ogc
+
+      [[A]]
+      [.requirement,type=requirement]
+      ====
+      ====
+
+      [[B]]
+      [.requirement,type=recommendation]
+      ====
+      ====
+
+      [[C]]
+      [.requirement,type=permission]
+      ====
+      ====
+
+      [[G1]]
+      [.requirement,type=requirements_class]
+      ====
+      [%metadata]
+      identifier:: G
+      ====
+
+      [[H1]]
+      [.recommendation,type=requirements_class]
+      ====
+      [%metadata]
+      identifier:: H
+      ====
+
+      [[I1]]
+      [.permission,type=requirements_class]
+      ====
+      [%metadata]
+      identifier:: I
+      ====
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Requirement class G has no corresponding Requirement"
+    expect(File.read("test.err"))
+      .to include "Requirement class H has no corresponding Requirement"
+    expect(File.read("test.err"))
+      .to include "Requirement class I has no corresponding Requirement"
+  end
+
+
+  it "warns of disconnect between conformance classes and conformance tests" do
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :requirements-model: ogc
+
+      [[A]]
+      [.requirement,type=conformance_test]
+      ====
+      ====
+
+      [[B]]
+      [.requirement,type=conformance_class]
+      ====
+      ====
+
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Conformance class B has no corresponding Conformance test"
+    expect(File.read("test.err"))
+      .to include "Conformance test A has no corresponding Conformance class"
   end
 end
