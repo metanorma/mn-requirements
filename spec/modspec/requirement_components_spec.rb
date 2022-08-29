@@ -45,7 +45,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <tbody>
                  <tr>
                   <td>Identifier</td>
-                  <td>/ogc/recommendation/wfs/2</td>
+                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                  <tr>
                    <td>Subject</td>
@@ -319,7 +319,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <tbody>
                 <tr>
                   <td>Identifier</td>
-                  <td>/ogc/recommendation/wfs/1</td>
+                  <td><tt>/ogc/recommendation/wfs/1</tt></td>
                 </tr>
                 <tr>
                   <td>Conformance test</td>
@@ -343,7 +343,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <tbody>
                 <tr>
                   <td>Identifier</td>
-                  <td>/ogc/recommendation/wfs/2</td>
+                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <td>Requirement</td>
@@ -364,7 +364,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <tbody>
                 <tr>
                   <td>Identifier</td>
-                  <td>/ogc/recommendation/wfs/3</td>
+                  <td><tt>/ogc/recommendation/wfs/3</tt></td>
                 </tr>
                 <tr>
                   <td>Conformance test</td>
@@ -388,7 +388,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <tbody>
                 <tr>
                   <td>Identifier</td>
-                  <td>/ogc/recommendation/wfs/4</td>
+                  <td><tt>/ogc/recommendation/wfs/4</tt></td>
                 </tr>
                 <tr>
                   <td>Requirements class</td>
