@@ -56,12 +56,12 @@ module Metanorma
 
       def recommendation_attributes1(node, out)
         oblig = node["obligation"] and
-          out << l10n("#{@labels['obligation']}: #{oblig}")
+          out << l10n("#{@labels['default']['obligation']}: #{oblig}")
         node.xpath(ns("./subject")).each do |subj|
-          out << l10n("#{@labels['subject']}: #{subj.text}")
+          out << l10n("#{@labels['default']['subject']}: #{subj.text}")
         end
         node.xpath(ns("./inherit")).each do |i|
-          out << recommendation_attr_parse(i, @labels["inherits"])
+          out << recommendation_attr_parse(i, @labels["default"]["inherits"])
         end
         node.xpath(ns("./classification")).each do |c|
           out << recommendation_attr_keyvalue(c, "tag", "value")

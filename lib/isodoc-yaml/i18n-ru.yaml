@@ -1,0 +1,26 @@
+requirements:
+  default:
+    requirement: Требование
+    recommendation: Рекомендация
+    permission: Разрешение
+    obligation: Обязательство
+    subject: Тема
+    inherits: Наследует
+  modspec:
+    recommendationtest: Проверка рекомендации
+    requirementtest: Проверка требований
+    permissiontest: Проверка разрешения
+    recommendationclass: Класс рекомендаций
+    requirementclass: Класс требований
+    permissionclass: Класс разрешений
+    abstracttest: Абстрактная проверка
+    conformanceclass: Класс соответствия
+    conformancetest: Conformance test
+    targettype: Target type
+    target: Target
+    testpurpose: Test purpose
+    testmethod: Test method
+    dependency: Dependency
+    indirectdependency: Indirect Dependency
+    identifier: Identifier
+

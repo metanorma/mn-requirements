@@ -1,0 +1,26 @@
+requirements:
+  default:
+    requirement: Anforderung
+    recommendation: Empfehlung
+    permission: Erlaubnis
+    obligation: Verbindlichkeit
+    subject: Thema
+    inherits: Erbt
+  modspec:
+    recommendationtest: Empfehlungstest
+    requirementtest: Anforderungstest
+    permissiontest: Berechtigungstest
+    recommendationclass: Empfehlungsklasse
+    requirementclass: Anforderungsklasse
+    permissionclass: Berechtigungsklasse
+    abstracttest: Abstrakter Test
+    conformanceclass: Konformitätsklasse
+    conformancetest: Conformance test
+    targettype: Target type
+    target: Target
+    testpurpose: Test purpose
+    testmethod: Test method
+    dependency: Dependency
+    indirectdependency: Indirect Dependency
+    identifier: Identifier
+

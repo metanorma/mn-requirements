@@ -1,0 +1,26 @@
+requirements:
+  default:
+    requirement: مطلب
+    recommendation: توصية
+    permission: إذن
+    obligation: التزام
+    subject: موضوع
+    inherits: يرث
+  modspec:
+    recommendationtest: اختبار التوصية
+    requirementtest: اختبار المتطلبات
+    permissiontest: اختبار الإذن
+    recommendationclass: فئة التوصيات
+    requirementclass: فئة المتطلبات
+    permissionclass: فئة الأذونات
+    abstracttest: اختبار تجريدي
+    conformanceclass: فئة المطابقة
+    conformancetest: Conformance test
+    targettype: Target type
+    target: Target
+    testpurpose: Test purpose
+    testmethod: Test method
+    dependency: Dependency
+    indirectdependency: Indirect Dependency
+    identifier: Identifier
+

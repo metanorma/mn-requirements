@@ -67,11 +67,8 @@ module Metanorma
 
       def recommend_title(node, out)
         label = node.at(ns("./identifier")) or return
-        #         b = out.add_child("<tr><td colspan='2'><p></p></td></tr>")
-        #         p = b.at(ns(".//p"))
-        #         p["class"] = "RecommendationLabel"
-        #         p << label.children.to_xml
-        out.add_child("<tr><td>Identifier</td><td>#{label.children.to_xml}</td>")
+        out.add_child("<tr><td>#{@labels['modspec']['identifier']}</td>"\
+                      "<td>#{label.children.to_xml}</td>")
       end
 
       def recommendation_attributes1(node)
@@ -84,7 +81,8 @@ module Metanorma
       end
 
       def recommendation_attributes1_head(node, head)
-        oblig = node["obligation"] and head << ["Obligation", oblig]
+        oblig = node["obligation"] and
+          head << [@labels["default"]["obligation"], oblig]
         subj = node.at(ns("./subject"))&.children and
           head << [rec_subj(node), subj]
         node.xpath(ns("./classification[tag = 'target']/value")).each do |v|
@@ -101,23 +99,23 @@ module Metanorma
         id = node.at(ns("./identifier")) or return ret
         %w(general class).include?(node["type"]) and
           xref = recommendation_link_test(id.text) and
-          ret << ["Conformance test", xref]
+          ret << [@labels["modspec"]["conformancetest"], xref]
         ret
         (node["type"].nil? || node["type"].empty?) and
           xref = recommendation_link_class(id.text) and
-          ret << ["Requirement class", xref]
+          ret << [@labels["modspec"]["requirementclass"], xref]
         ret
       end
 
       def recommendation_attributes1_dependencies(node, head)
         node.xpath(ns("./inherit")).each do |i|
-          head << ["Dependency",
+          head << [@labels["modspec"]["dependency"],
                    recommendation_id(i.children.to_xml)]
         end
         node.xpath(ns("./classification[tag = 'indirect-dependency']/value"))
           .each do |v|
           xref = recommendation_id(v.children.to_xml) and
-            head << ["Indirect Dependency", xref]
+            head << [@labels["modspec"]["indirectdependency"], xref]
         end
         head
       end
@@ -197,17 +195,17 @@ module Metanorma
 
       def rec_subj(node)
         case node["type"]
-        when "class" then "Target type"
-        else "Subject"
+        when "class" then @labels["modspec"]["targettype"]
+        else @labels["default"]["subject"]
         end
       end
 
       def rec_target(node)
         case node["type"]
-        when "class" then "Target type"
-        when "conformanceclass" then "Requirements class"
-        when "verification", "abstracttest" then "Requirement"
-        else "Target"
+        when "class" then @labels["modspec"]["targettype"]
+        when "conformanceclass" then @labels["modspec"]["requirementclass"]
+        when "verification", "abstracttest" then @labels["default"]["requirement"]
+        else @labels["modspec"]["target"]
         end
       end
 
@@ -227,11 +225,13 @@ module Metanorma
       end
 
       def recommend_component_label(node)
-        case node["class"]
-        when "test-purpose" then "Test purpose"
-        when "test-method" then "Test method"
-        else Metanorma::Utils.strict_capitalize_first(node["class"])
-        end
+        c = case node["class"]
+            when "test-purpose" then "Test purpose"
+            when "test-method" then "Test method"
+            else node["class"]
+            end
+        @labels["default"][c] || @labels["modspec"][c] ||
+          Metanorma::Utils.strict_capitalize_first(c)
       end
     end
   end

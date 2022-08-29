@@ -1,0 +1,26 @@
+requirements:
+  default:
+    requirement: 要求
+    recommendation: 建议
+    permission: 容許
+    obligation: 义务
+    subject: 主体
+    inherits: 继承自
+  modspec:
+    recommendationtest: 推荐测试
+    requirementtest: 需求测试
+    permissiontest: 权限测试
+    recommendationclass: 推荐类
+    requirementclass: 需求类
+    permissionclass: 权限类
+    abstracttest: 抽象测试
+    conformanceclass: 一致性等级
+    conformancetest: Conformance test
+    targettype: Target type
+    target: Target
+    testpurpose: Test purpose
+    testmethod: Test method
+    dependency: Dependency
+    indirectdependency: Indirect Dependency
+    identifier: Identifier
+

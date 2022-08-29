@@ -304,103 +304,103 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-           <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-         <preface>
-           <foreword id='A' displayorder='1'>
-             <title>Preface</title>
-             <table id='A1' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Requirement 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>Identifier</td>
-                   <td>/ogc/recommendation/wfs/1</td>
-                 </tr>
-                 <tr>
-                   <td>Conformance test</td>
-                   <td>
-                     <xref target='A2'>
-                       Requirement test 1:
-                       <tt>/ogc/recommendation/wfs/2</tt>
-                     </xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='A2' class='modspec' type='recommendtest'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTestTitle'>Requirement test 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>Identifier</td>
-                   <td>/ogc/recommendation/wfs/2</td>
-                 </tr>
-                 <tr>
-                   <td>Requirement</td>
-                   <td>
-                     <xref target='A1'>/ogc/recommendation/wfs/1</xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='A3' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Requirements class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>Identifier</td>
-                   <td>/ogc/recommendation/wfs/3</td>
-                 </tr>
-                 <tr>
-                   <td>Conformance test</td>
-                   <td>
-                     <xref target='A4'>
-                       Conformance class 1:
-                       <tt>/ogc/recommendation/wfs/4</tt>
-                     </xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='A4' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Conformance class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>Identifier</td>
-                   <td>/ogc/recommendation/wfs/4</td>
-                 </tr>
-                 <tr>
-                   <td>Requirements class</td>
-                   <td>
-                     <xref target='A3'>/ogc/recommendation/wfs/3</xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-           </foreword>
-         </preface>
-       </ogc-standard>
+          <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
+        <preface>
+          <foreword id='A' displayorder='1'>
+            <title>Preface</title>
+            <table id='A1' class='modspec' type='recommend'>
+              <thead>
+                <tr>
+                  <th scope='colgroup' colspan='2'>
+                    <p class='RecommendationTitle'>Requirement 1</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Identifier</td>
+                  <td>/ogc/recommendation/wfs/1</td>
+                </tr>
+                <tr>
+                  <td>Conformance test</td>
+                  <td>
+                    <xref target='A2'>
+                      Requirement test 1:
+                      <tt>/ogc/recommendation/wfs/2</tt>
+                    </xref>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table id='A2' class='modspec' type='recommendtest'>
+              <thead>
+                <tr>
+                  <th scope='colgroup' colspan='2'>
+                    <p class='RecommendationTestTitle'>Requirement test 1</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Identifier</td>
+                  <td>/ogc/recommendation/wfs/2</td>
+                </tr>
+                <tr>
+                  <td>Requirement</td>
+                  <td>
+                    <xref target='A1'>/ogc/recommendation/wfs/1</xref>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table id='A3' class='modspec' type='recommendclass'>
+              <thead>
+                <tr>
+                  <th scope='colgroup' colspan='2'>
+                    <p class='RecommendationTitle'>Requirements class 1</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Identifier</td>
+                  <td>/ogc/recommendation/wfs/3</td>
+                </tr>
+                <tr>
+                  <td>Conformance test</td>
+                  <td>
+                    <xref target='A4'>
+                      Conformance class 1:
+                      <tt>/ogc/recommendation/wfs/4</tt>
+                    </xref>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table id='A4' class='modspec' type='recommendclass'>
+              <thead>
+                <tr>
+                  <th scope='colgroup' colspan='2'>
+                    <p class='RecommendationTitle'>Conformance class 1</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Identifier</td>
+                  <td>/ogc/recommendation/wfs/4</td>
+                </tr>
+                <tr>
+                  <td>Requirements class</td>
+                  <td>
+                    <xref target='A3'>/ogc/recommendation/wfs/3</xref>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </foreword>
+        </preface>
+      </ogc-standard>
     PRESXML
     expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true)))

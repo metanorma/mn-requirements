@@ -1,6 +1,6 @@
 require_relative "../default/default"
 require_relative "../modspec/modspec"
-require "isodoc-i18n"
+require_relative "../../isodoc/i18n"
 
 module Metanorma
   class Requirements
@@ -8,15 +8,20 @@ module Metanorma
 
     def initialize(options)
       @default = options[:default]
-      @i18n = ::IsoDoc::I18n.new(options[:lang] || "en",
-                                 options[:script] || "Latn")
-      @labels = options[:labels]
+      @i18n = i18n_klass(options[:lang] || "en",
+                         options[:script] || "Latn",
+                         options[:i18nhash])
+      @labels = @i18n.get.merge(options[:labels] || {})["requirements"]
       @models = {}
       model_names.each { |k| @models[k] = create(k) }
     end
 
     def model_names
       %i[default ogc]
+    end
+
+    def i18n_klass(lang = "en", script = "Latn", i18nhash = nil)
+      ::IsoDoc::MnRequirementsI18n.new(lang, script, i18nhash: i18nhash)
     end
 
     # all roles that can be assigned to an example to make it a reqt,
