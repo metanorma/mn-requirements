@@ -85,6 +85,91 @@ RSpec.describe Metanorma::Requirements::Default do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "cross-references requirements in French" do
+    input = <<~INPUT
+                  <iso-standard xmlns="http://riboseinc.com/isoxml">
+                  <bibdata><language>fr</language></bibdata>
+                  <preface>
+          <foreword>
+          <p>
+          <xref target="N1"/>
+          <xref target="N2"/>
+          <xref target="N"/>
+          <xref target="note1"/>
+          <xref target="note2"/>
+          <xref target="AN"/>
+          <xref target="Anote1"/>
+          <xref target="Anote2"/>
+          </p>
+          </foreword>
+          <introduction id="intro">
+          <requirement id="N1" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+        <clause id="xyz"><title>Preparatory</title>
+          <requirement id="N2" unnumbered="true" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+      </clause>
+          </introduction>
+          </preface>
+          <sections>
+          <clause id="scope" type="scope"><title>Scope</title>
+          <requirement id="N" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+        <p><xref target="N"/></p>
+          </clause>
+          <terms id="terms"/>
+          <clause id="widgets"><title>Widgets</title>
+          <clause id="widgets1">
+          <requirement id="note1" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          <requirement id="note2" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+        <p>    <xref target="note1"/> <xref target="note2"/> </p>
+          </clause>
+          </clause>
+          </sections>
+          <annex id="annex1">
+          <clause id="annex1a">
+          <requirement id="AN" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          </clause>
+          <clause id="annex1b">
+          <requirement id="Anote1" unnumbered="true" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          <requirement id="Anote2" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          </clause>
+          </annex>
+          </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+          <foreword displayorder='1'>
+            <p>
+              <xref target='N1'>Introduction, Exigence 1</xref>
+      <xref target='N2'>Preparatory, Exigence (??)</xref>
+      <xref target='N'>Article 1, Exigence 2</xref>
+      <xref target='note1'>Article 3.1, Exigence 3</xref>
+      <xref target='note2'>Article 3.1, Exigence 4</xref>
+      <xref target='AN'>Exigence A.1</xref>
+      <xref target='Anote1'>Exigence (??)</xref>
+      <xref target='Anote2'>Exigence A.2</xref>
+            </p>
+          </foreword>
+    OUTPUT
+    expect(xmlpp(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true))
+      .at("//xmlns:foreword").to_xml))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "cross-references recommendations" do
     input = <<~INPUT
                   <iso-standard xmlns="http://riboseinc.com/isoxml">

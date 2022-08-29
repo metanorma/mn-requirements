@@ -7,22 +7,22 @@ module Metanorma
 
       def req_class_paths
         [
-          { klass: "permission", label: "permission",
+          { klass: "permission", label: @labels["default"]["permission"],
             xpath: "permission" },
-          { klass: "requirement", label: "requirement",
+          { klass: "requirement", label: @labels["default"]["requirement"],
             xpath: "requirement" },
-          { klass: "recommendation", label: "recommendation",
+          { klass: "recommendation", label: @labels["default"]["recommendation"],
             xpath: "recommendation" },
         ]
       end
 
       def req_nested_class_paths
         [
-          { klass: "permission", label: "permission",
+          { klass: "permission", label: @labels["default"]["permission"],
             xpath: "permission" },
-          { klass: "requirement", label: "requirement",
+          { klass: "requirement", label: @labels["default"]["requirement"],
             xpath: "requirement" },
-          { klass: "recommendation", label: "recommendation",
+          { klass: "recommendation", label: @labels["default"]["recommendation"],
             xpath: "recommendation" },
         ]
       end

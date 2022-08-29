@@ -92,7 +92,7 @@ module Metanorma
       def reqt_links_class(docxml)
         docxml.xpath(ns("//requirement | //recommendation | //permission"))
           .each_with_object({}) do |r, m|
-            next unless %w(class).include?(r["type"])
+            next unless %w(class conformanceclass).include?(r["type"])
 
             id = r.at(ns("./identifier")) or next
             r.xpath(ns("./requirement | ./recommendation | ./permission"))

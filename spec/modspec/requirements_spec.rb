@@ -530,7 +530,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>/ogc/recommendation/wfs/10</td>
                 </tr>
                 <tr>
-                  <td>Requirements class</td>
+                  <td>Included in</td>
                   <td>
                     <xref target='A1'>
                       Permissions class 1:
@@ -577,6 +577,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <permission model="ogc" id="B" type="conformanceclass">
           <identifier>ABC</identifier>
           </permission>
+          <permission model="ogc" id="B2">
+        <identifier>Permission 1</identifier>
+        </permission>
           </foreword></preface>
           </ogc-standard>
     INPUT
@@ -634,8 +637,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>Permission</td>
                    <td>
-                     <xref target='A2'>
-                       Permission 1-1:
+                     <xref target='B2'>
+                       Permission 1:
                        <tt>Permission 1</tt>
                      </xref>
                    </td>
@@ -675,6 +678,30 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                </tbody>
              </table>
+             <table id='B2' class='modspec' type='recommend'>
+        <thead>
+          <tr>
+            <th scope='colgroup' colspan='2'>
+              <p class='RecommendationTitle'>Permission 1</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Identifier</td>
+            <td>Permission 1</td>
+          </tr>
+          <tr>
+            <td>Included in</td>
+            <td>
+              <xref target='A1'>
+                Conformance class 1:
+                <tt>/ogc/recommendation/wfs/2</tt>
+              </xref>
+            </td>
+          </tr>
+        </tbody>
+      </table>
            </foreword>
          </preface>
        </ogc-standard>
@@ -713,11 +740,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <permission model="ogc" id="B" type="conformanceclass">
           <identifier>ABC</identifier>
           </permission>
+          <permission model="ogc" id="B2">
+        <identifier>Permission 1</identifier>
+        </permission>
           </foreword></preface>
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
+      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
          <bibdata>
            <language current='true'>fr</language>
          </bibdata>
@@ -734,7 +764,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td/>
+                   <td>Identifiant</td>
                    <td>/ogc/recommendation/wfs/2</td>
                  </tr>
                  <tr>
@@ -748,23 +778,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <td/>
+                   <td>D&#xE9;pendance</td>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <td/>
+                   <td>D&#xE9;pendance</td>
                    <td>
                      <xref target='B'>ABC</xref>
                    </td>
                  </tr>
                  <tr>
-                   <td/>
+                   <td>D&#xE9;pendance indirecte</td>
                    <td>
                      <link target='http://www.example.com/'/>
                    </td>
                  </tr>
                  <tr>
-                   <td/>
+                   <td>D&#xE9;pendance indirecte</td>
                    <td>
                      <xref target='B'>ABC</xref>
                    </td>
@@ -772,8 +802,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>Autorisation</td>
                    <td>
-                     <xref target='A2'>
-                       Autorisation 1-1:
+                     <xref target='B2'>
+                       Autorisation 1:
                        <tt>Permission 1</tt>
                      </xref>
                    </td>
@@ -808,11 +838,35 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td/>
+                   <td>Identifiant</td>
                    <td>ABC</td>
                  </tr>
                </tbody>
              </table>
+             <table id='B2' class='modspec' type='recommend'>
+        <thead>
+          <tr>
+            <th scope='colgroup' colspan='2'>
+              <p class='RecommendationTitle'>Autorisation 1</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Identifiant</td>
+            <td>Permission 1</td>
+          </tr>
+          <tr>
+            <td>Inclus dans</td>
+            <td>
+              <xref target='A1'>
+                 Classe de confirmit&#xE9; 1:
+                <tt>/ogc/recommendation/wfs/2</tt>
+              </xref>
+            </td>
+          </tr>
+        </tbody>
+      </table>
            </foreword>
          </preface>
        </ogc-standard>
@@ -924,7 +978,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>Permission 1</td>
                  </tr>
                  <tr>
-                   <td>Requirements class</td>
+                   <td>Included in</td>
                    <td>
                      <xref target='A1'>
                        Requirements class 1:

@@ -15,12 +15,13 @@ requirements:
     permissionclass: 权限类
     abstracttest: 抽象测试
     conformanceclass: 一致性等级
-    conformancetest: Conformance test
-    targettype: Target type
-    target: Target
-    testpurpose: Test purpose
-    testmethod: Test method
-    dependency: Dependency
-    indirectdependency: Indirect Dependency
-    identifier: Identifier
+    conformancetest: 一致性测试
+    targettype: 目标类型
+    target: 目标
+    testpurpose: 测试目的
+    testmethod: 测试方法
+    dependency: 依赖
+    indirectdependency: 间接依赖
+    identifier: 标识符
+    included_in: 包含在
 

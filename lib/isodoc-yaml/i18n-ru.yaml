@@ -15,12 +15,13 @@ requirements:
     permissionclass: Класс разрешений
     abstracttest: Абстрактная проверка
     conformanceclass: Класс соответствия
-    conformancetest: Conformance test
-    targettype: Target type
-    target: Target
-    testpurpose: Test purpose
-    testmethod: Test method
-    dependency: Dependency
-    indirectdependency: Indirect Dependency
-    identifier: Identifier
+    conformancetest: Проверка на соответствие
+    targettype: Тип цели
+    target: Цель
+    testpurpose: Цель теста
+    testmethod: Метод теста
+    dependency: Зависимость
+    indirectdependency: Косвенная зависимость
+    identifier: Идентификатор
+    included_in: Входит в
 

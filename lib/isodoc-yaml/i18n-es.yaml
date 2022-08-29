@@ -15,12 +15,13 @@ requirements:
     permissionclass: Clase de permisos
     abstracttest: Prueba abstracta
     conformanceclass: Clase de conformidad
-    conformancetest: Conformance test
-    targettype: Target type
-    target: Target
-    testpurpose: Test purpose
-    testmethod: Test method
-    dependency: Dependency
-    indirectdependency: Indirect Dependency
-    identifier: Identifier
+    conformancetest: Prueba de conformidad
+    targettype: Tipo de objetivo
+    target: Objetivo
+    testpurpose: Propósito de prueba
+    testmethod: Método de prueba
+    dependency: Dependencia
+    indirectdependency: Dependencia indirecta
+    identifier: Identificador
+    included_in: Incluido en
 
