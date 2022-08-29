@@ -101,9 +101,10 @@ module Metanorma
           xref = recommendation_link_test(id.text) and
           ret << [@labels["modspec"]["conformancetest"], xref]
         ret
-        (node["type"].nil? || node["type"].empty?) and
+        (node["type"].nil? || node["type"].empty? ||
+        node["type"] == "verification") and
           xref = recommendation_link_class(id.text) and
-          ret << [@labels["modspec"]["requirementclass"], xref]
+          ret << [@labels["modspec"]["included_in"], xref]
         ret
       end
 

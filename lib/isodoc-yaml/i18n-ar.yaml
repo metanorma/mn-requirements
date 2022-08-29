@@ -15,12 +15,12 @@ requirements:
     permissionclass: فئة الأذونات
     abstracttest: اختبار تجريدي
     conformanceclass: فئة المطابقة
-    conformancetest: Conformance test
-    targettype: Target type
-    target: Target
-    testpurpose: Test purpose
-    testmethod: Test method
-    dependency: Dependency
-    indirectdependency: Indirect Dependency
-    identifier: Identifier
-
+    conformancetest: اختبار المطابقة
+    targettype: نوع الهدف
+    target: استهداف
+    testpurpose: هدف الاختبار
+    testmethod: طريقة اختبار
+    dependency: الاعتماد
+    indirectdependency: التبعية غير المباشرة
+    identifier: المعرف
+    included_in: مدرج في
