@@ -94,6 +94,8 @@ module Metanorma
           end
         end.join("\n")
       end
+
+      def validate(reqt, log); end
     end
   end
 end

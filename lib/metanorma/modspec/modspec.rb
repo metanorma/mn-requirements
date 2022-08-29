@@ -1,4 +1,5 @@
 require_relative "cleanup"
+require_relative "validate"
 require_relative "isodoc"
 
 module Metanorma

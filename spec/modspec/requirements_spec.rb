@@ -689,7 +689,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <tbody>
           <tr>
             <td>Identifier</td>
-            <td>Permission 1</td>
+            <td><tt>Permission 1</tt></td>
           </tr>
           <tr>
             <td>Included in</td>
@@ -765,7 +765,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <tbody>
                  <tr>
                    <td>Identifiant</td>
-                   <td>/ogc/recommendation/wfs/2</td>
+                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
                    <td>Sujet</td>
@@ -854,7 +854,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <tbody>
           <tr>
             <td>Identifiant</td>
-            <td>Permission 1</td>
+            <td><tt>Permission 1</tt></td>
           </tr>
           <tr>
             <td>Inclus dans</td>
