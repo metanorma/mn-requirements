@@ -44,8 +44,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                  <td scope='colgroup' colspan='2'>
+                  <tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                  <tr>
                    <td>Subject</td>
@@ -318,8 +318,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/1</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/1</tt></td>
                 </tr>
                 <tr>
                   <td>Conformance test</td>
@@ -342,8 +341,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <td>Requirement</td>
@@ -363,8 +361,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/3</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/3</tt></td>
                 </tr>
                 <tr>
                   <td>Conformance test</td>
@@ -387,8 +384,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/4</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/4</tt></td>
                 </tr>
                 <tr>
                   <td>Requirements class</td>

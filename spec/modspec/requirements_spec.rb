@@ -72,7 +72,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <table id="A1" class="modspec" type="recommend">
             <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead>
             <tbody>
-              <tr><td>Identifier</td><td><tt>/ogc/recommendation/wfs/2</tt></td></tr>
+              <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
               <tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
             <tr>
         <td>Control-class</td>
@@ -267,8 +267,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                <td>Identifier</td>
-                <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                  <tr>
                    <td>Subject</td>
@@ -402,7 +401,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <table id="A1" type="recommendtest" class="modspec">
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead>
         <tbody>
-          <tr><td>Identifier</td><td><tt>/ogc/recommendation/wfs/2</tt></td></tr>
+          <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
         <tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Control-class</td><td>Technical</td></tr><tr><td>Priority</td><td>P0</td></tr><tr><td>Family</td><td>System and Communications Protection</td></tr><tr><td>Family</td><td>System and Communications Protocols</td></tr>
 
         <tr><td colspan="2">
@@ -472,8 +471,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <td>Target type</td>
@@ -526,8 +524,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/10</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/10</tt></td>
                 </tr>
                 <tr>
                   <td>Included in</td>
@@ -599,8 +596,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td>Identifier</td>
-                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
                    <td>Subject</td>
@@ -673,8 +669,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td>Identifier</td>
-                   <td><tt>ABC</tt></td>
+                   <td scope='colgroup' colspan='2'><tt>ABC</tt></td>
                  </tr>
                </tbody>
              </table>
@@ -688,8 +683,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </thead>
         <tbody>
           <tr>
-            <td>Identifier</td>
-            <td><tt>Permission 1</tt></td>
+            <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
           </tr>
           <tr>
             <td>Included in</td>
@@ -764,8 +758,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td>Identifiant</td>
-                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
                    <td>Sujet</td>
@@ -838,8 +831,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td>Identifiant</td>
-                   <td><tt>ABC</tt></td>
+                   <td scope='colgroup' colspan='2'><tt>ABC</tt></td>
                  </tr>
                </tbody>
              </table>
@@ -853,8 +845,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </thead>
         <tbody>
           <tr>
-            <td>Identifiant</td>
-            <td><tt>Permission 1</tt></td>
+            <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
           </tr>
           <tr>
             <td>Inclus dans</td>
@@ -920,8 +911,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td>Identifier</td>
-                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
                    <td>Target type</td>
@@ -974,8 +964,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td>Identifier</td>
-                   <td><tt>Permission 1</tt></td>
+                   <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
                  </tr>
                  <tr>
                    <td>Included in</td>
@@ -1038,8 +1027,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <td>Target type</td>
@@ -1160,8 +1148,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <td>Subject</td>
@@ -1283,8 +1270,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td>Identifier</td>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
+                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <td>Subject</td>
