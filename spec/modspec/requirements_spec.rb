@@ -605,7 +605,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>Requirements class</td>
                    <td>
-                     <xref target='B'>ABC</xref>
+                     <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
@@ -615,7 +615,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>Dependency</td>
                    <td>
-                     <xref target='B'>ABC</xref>
+                     <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
@@ -627,7 +627,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>Indirect Dependency</td>
                    <td>
-                     <xref target='B'>ABC</xref>
+                     <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
@@ -767,7 +767,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>Classe d&#x2019;exigences</td>
                    <td>
-                     <xref target='B'>ABC</xref>
+                     <xref target='B'>Classe de confirmit&#xE9; 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
@@ -777,7 +777,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>D&#xE9;pendance</td>
                    <td>
-                     <xref target='B'>ABC</xref>
+                     <xref target='B'>Classe de confirmit&#xE9; 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
@@ -789,7 +789,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>D&#xE9;pendance indirecte</td>
                    <td>
-                     <xref target='B'>ABC</xref>
+                     <xref target='B'>Classe de confirmit&#xE9; 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>

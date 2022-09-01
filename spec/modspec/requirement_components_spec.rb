@@ -346,7 +346,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                   <td>Requirement</td>
                   <td>
-                    <xref target='A1'>/ogc/recommendation/wfs/1</xref>
+                    <xref target='A1'>Requirement 1: <tt>/ogc/recommendation/wfs/1</tt></xref>
                   </td>
                 </tr>
               </tbody>
@@ -389,7 +389,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                   <td>Requirements class</td>
                   <td>
-                    <xref target='A3'>/ogc/recommendation/wfs/3</xref>
+                    <xref target='A3'>Requirements class 1: <tt>/ogc/recommendation/wfs/3</tt></xref>
                   </td>
                 </tr>
               </tbody>

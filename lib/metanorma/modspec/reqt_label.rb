@@ -65,7 +65,8 @@ module Metanorma
         docxml.xpath(ns("//requirement | //recommendation | //permission"))
           .each_with_object({}) do |r, m|
             id = r.at(ns("./identifier")) or next
-            m[id.text] = r["id"]
+            m[id.text] =
+              { id: r["id"], lbl: @xrefs.anchor(r["id"], :xref, false) }
           end
       end
 
@@ -77,7 +78,7 @@ module Metanorma
 
             subj = r.at(ns("./classification[tag = 'target']/value"))
             id = r.at(ns("./identifier")) or next
-            lbl = @xrefs.anchor(@reqt_ids[id.text.strip], :xref, false)
+            lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
             next unless subj && lbl
 
             m[subj.text] = { lbl: lbl, id: r["id"] }
@@ -98,7 +99,7 @@ module Metanorma
             r.xpath(ns("./requirement | ./recommendation | ./permission"))
               .each do |r1|
               id1 = r1.at(ns("./identifier")) or next
-              lbl = @xrefs.anchor(@reqt_ids[id.text.strip], :xref, false)
+              lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
               next unless lbl
 
               m[id1.text] = { lbl: lbl, id: r["id"] }
@@ -113,7 +114,7 @@ module Metanorma
 
       def recommendation_id(ident)
         test = @reqt_ids[ident&.strip] or return ident&.strip
-        "<xref target='#{test}'>#{ident.strip}</xref>"
+        "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
       end
     end
   end
