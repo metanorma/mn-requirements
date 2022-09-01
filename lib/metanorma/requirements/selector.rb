@@ -11,7 +11,7 @@ module Metanorma
       @i18n = i18n_klass(options[:lang] || "en",
                          options[:script] || "Latn",
                          options[:i18nhash])
-      @labels = @i18n.get.merge(options[:labels] || {})["requirements"]
+      @labels = @i18n.get.deep_merge(options[:labels] || {})["requirements"]
       @models = {}
       model_names.each { |k| @models[k] = create(k) }
     end

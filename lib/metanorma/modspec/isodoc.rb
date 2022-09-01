@@ -51,7 +51,7 @@ module Metanorma
         return ret unless title &&
           node.ancestors("requirement, recommendation, permission").empty?
 
-        ret += l10n(": ") if name
+        ret += l10n(": ") unless !name || name.empty?
         ret += title.children.to_xml
         ret
       end
