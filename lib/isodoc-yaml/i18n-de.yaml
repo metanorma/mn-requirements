@@ -24,4 +24,4 @@ requirements:
     indirectdependency: Indirekte Abhängigkeit
     identifier: Kennung
     included_in: Enthalten in
-
+    statement: Aussage

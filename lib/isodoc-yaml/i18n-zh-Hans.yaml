@@ -24,4 +24,4 @@ requirements:
     indirectdependency: 间接依赖
     identifier: 标识符
     included_in: 包含在
-
+    statement: 陈述

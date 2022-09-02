@@ -24,4 +24,4 @@ requirements:
     indirectdependency: Dépendance indirecte
     identifier: Identifiant
     included_in: Inclus dans
-
+    statement: Déclaration

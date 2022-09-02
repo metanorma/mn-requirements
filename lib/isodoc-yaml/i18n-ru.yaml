@@ -24,4 +24,4 @@ requirements:
     indirectdependency: Косвенная зависимость
     identifier: Идентификатор
     included_in: Входит в
-
+    statement: Утверждение

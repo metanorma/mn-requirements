@@ -24,3 +24,4 @@ requirements:
     indirectdependency: التبعية غير المباشرة
     identifier: المعرف
     included_in: مدرج في
+    statement: بيان
