@@ -1,10 +1,13 @@
 require_relative "../default/default"
 require_relative "../modspec/modspec"
 require_relative "../../isodoc/i18n"
+require "metanorma-utils"
 
 module Metanorma
   class Requirements
     attr_accessor :i18n, :labels
+
+    Hash.include Metanorma::Utils::Hash
 
     def initialize(options)
       @default = options[:default]
@@ -12,8 +15,8 @@ module Metanorma
                          options[:script] || "Latn",
                          options[:i18nhash])
       @labels = @i18n.get.deep_merge(options[:labels] || {})["requirements"]
-      @models = {}
-      model_names.each { |k| @models[k] = create(k) }
+      @models =
+        model_names.each_with_object({}) { |k, m| m[k] = create(k) }
     end
 
     def model_names

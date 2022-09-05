@@ -24,15 +24,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
-  spec.add_dependency "isodoc-i18n", "~> 1.0.0"
-  spec.add_dependency "metanorma-utils", "~> 1.3.2"
+  spec.add_dependency "isodoc-i18n", "~> 1.0.7"
+  spec.add_dependency "metanorma-utils", "~> 1.4.0"
 
   spec.add_development_dependency "debug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
   spec.add_development_dependency "guard", "~> 2.14"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
-  spec.add_development_dependency "isodoc", "~> 2"
-  spec.add_development_dependency "metanorma-standoc", "~> 2"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.6"
   spec.add_development_dependency "rubocop", "~> 1.5.2"
