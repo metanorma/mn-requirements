@@ -126,10 +126,12 @@ module Metanorma
         return node unless node.at(ns("./component[@class = 'step']"))
 
         d = node.at(ns("./component[@class = 'step']"))
-        d = d.replace("<ol class='steps'><li>#{d.children.to_xml}</li></ol>")
+        id = d["id"] ? " id='#{d['id']}'" : ""
+        d = d.replace("<ol class='steps'><li#{id}>#{d.children.to_xml}</li></ol>")
           .first
         node.xpath(ns("./component[@class = 'step']")).each do |f|
-          f = f.replace("<li>#{f.children.to_xml}</li>").first
+          id = f["id"] ? " id='#{f['id']}'" : ""
+          f = f.replace("<li#{id}>#{f.children.to_xml}</li>").first
           d << f
         end
         node
@@ -137,7 +139,8 @@ module Metanorma
 
       def recommendation_attributes1_component(node, out)
         node = recommendation_steps(node)
-        out << "<tr><td>#{node['label']}</td><td>#{node.children}</td></tr>"
+        id = node["id"] ? " id='#{node['id']}'" : ""
+        out << "<tr#{id}><td>#{node['label']}</td><td>#{node.children}</td></tr>"
         out
       end
 
@@ -168,7 +171,8 @@ module Metanorma
           return reqt_dl(node.first_element_child, out)
         node.name == "component" and
           return recommendation_attributes1_component(node, out)
-        out.add_child("<tr><td colspan='2'></td></tr>").first
+        id = node["id"] ? " id='#{node['id']}'" : ""
+        out.add_child("<tr#{id}><td colspan='2'></td></tr>").first
           .at(ns(".//td")) <<
           (preserve_in_nested_table?(node) ? node : node.children)
         out
