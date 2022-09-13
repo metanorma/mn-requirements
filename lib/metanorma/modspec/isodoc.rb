@@ -6,7 +6,8 @@ module Metanorma
     class Modspec < Default
       def requirement_render1(node)
         init_lookups(node.document)
-        requirement_table_cleanup(super)
+        ret = requirement_guidance_parse(node, super)
+        requirement_table_cleanup(ret)
       end
 
       def recommendation_base(node, _klass)
@@ -86,9 +87,8 @@ module Metanorma
         subj = node.at(ns("./subject"))&.children and
           head << [rec_subj(node), subj]
         node.xpath(ns("./classification[tag = 'target']/value")).each do |v|
-          xref = recommendation_id(v.text) and head << [
-            rec_target(node), xref
-          ]
+          xref = recommendation_id(v.text) and
+            head << [rec_target(node), xref]
         end
         head += recommendation_backlinks(node)
         recommendation_attributes1_dependencies(node, head)
@@ -121,35 +121,37 @@ module Metanorma
         head
       end
 
+      def id_attr(node)
+        node["id"] ? " id='#{node['id']}'" : ""
+      end
+
       def recommendation_steps(node)
         node.elements.each { |e| recommendation_steps(e) }
         return node unless node.at(ns("./component[@class = 'step']"))
 
         d = node.at(ns("./component[@class = 'step']"))
-        id = d["id"] ? " id='#{d['id']}'" : ""
-        d = d.replace("<ol class='steps'><li#{id}>#{d.children.to_xml}</li></ol>")
-          .first
+        d = d.replace("<ol class='steps'><li#{id_attr(d)}>"\
+                      "#{d.children.to_xml}</li></ol>").first
         node.xpath(ns("./component[@class = 'step']")).each do |f|
-          id = f["id"] ? " id='#{f['id']}'" : ""
-          f = f.replace("<li#{id}>#{f.children.to_xml}</li>").first
+          f = f.replace("<li#{id_attr(f)}>#{f.children.to_xml}</li>").first
           d << f
         end
         node
       end
 
       def recommendation_attributes1_component(node, out)
+        return out if node["class"] == "guidance"
+
         node = recommendation_steps(node)
-        id = node["id"] ? " id='#{node['id']}'" : ""
-        out << "<tr#{id}><td>#{node['label']}</td><td>#{node.children}</td></tr>"
+        out << "<tr#{id_attr(node)}><td>#{node['label']}</td>"\
+               "<td>#{node.children}</td></tr>"
         out
       end
 
       def recommendation_attr_keyvalue(node, key, value)
-        tag = node.at(ns("./#{key}"))
-        value = node.at(ns("./#{value}"))
-        (tag && value && !%w(target
-                             indirect-dependency).include?(tag.text)) or
-          return nil
+        tag = node.at(ns("./#{key}")) or return nil
+        value = node.at(ns("./#{value}")) or return nil
+        !%w(target indirect-dependency).include?(tag.text) or return nil
         [tag.text.capitalize, value.children]
       end
 
@@ -165,16 +167,23 @@ module Metanorma
       end
 
       def requirement_component_parse(node, out)
-        return out if node["exclude"] == "true"
-
+        node["exclude"] == "true" and return out
         node.elements.size == 1 && node.first_element_child.name == "dl" and
           return reqt_dl(node.first_element_child, out)
         node.name == "component" and
           return recommendation_attributes1_component(node, out)
-        id = node["id"] ? " id='#{node['id']}'" : ""
-        out.add_child("<tr#{id}><td colspan='2'></td></tr>").first
+        out.add_child("<tr#{id_attr(node)}><td colspan='2'></td></tr>").first
           .at(ns(".//td")) <<
           (preserve_in_nested_table?(node) ? node : node.children)
+        out
+      end
+
+      def requirement_guidance_parse(node, out)
+        ins = out.at(ns("./tbody"))
+        node.xpath(ns("./component[@class = 'guidance']")).each do |f|
+          ins << "<tr#{id_attr(f)}><td>#{@labels['modspec']['guidance']}</td>"\
+                 "<td>#{f.children}</td></tr>"
+        end
         out
       end
 

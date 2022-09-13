@@ -15,7 +15,7 @@ module Metanorma
 
       def requirement_metadata_component_tags
         %w(test-purpose test-method test-method-type conditions part description
-           reference step requirement permission recommendation)
+           reference step requirement permission recommendation guidance)
       end
 
       def requirement_metadata1(reqt, dlist, ins)
@@ -59,9 +59,9 @@ module Metanorma
       end
 
       def requirement_metadata_to_component(reqt)
-        reqt.xpath(".//test-method | .//test-purpose | .//conditions | "\
-                   ".//part | .//test-method-type | .//step | .//reference")
-          .each do |c|
+        xpath = requirement_metadata_component_tags -
+          %w(description requirement permission recommendation)
+        reqt.xpath(xpath.map { |x| ".//#{x}" }.join(" | ")).each do |c|
           c["class"] = c.name
           c.name = "component"
         end
