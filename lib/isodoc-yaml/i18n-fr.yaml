@@ -25,3 +25,5 @@ requirements:
     identifier: Identifiant
     included_in: Inclus dans
     statement: Déclaration
+    guidance: Avis
+
