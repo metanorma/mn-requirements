@@ -25,3 +25,5 @@ requirements:
     identifier: 标识符
     included_in: 包含在
     statement: 陈述
+    guidance: 指导意见
+
