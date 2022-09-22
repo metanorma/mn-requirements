@@ -7,14 +7,14 @@ module Metanorma
 
         label = elem.at(ns("./identifier"))&.text
         if inject_crossreference_reqt?(elem, label)
-          recommendation_label_xref(elem, label, xrefs)
+          recommendation_label_xref(elem, label, xrefs, type)
         else
           type = recommendation_class_label(elem)
           super
         end
       end
 
-      def recommendation_label_xref(elem, label, xrefs)
+      def recommendation_label_xref(elem, label, xrefs, type)
         id = @reqtlabels[label]
         number = xrefs.anchor(id, :xref, false)
         number.nil? and return type
