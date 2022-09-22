@@ -9,6 +9,8 @@ require "rspec/matchers"
 require "equivalent-xml"
 require "rexml/document"
 require "mn-requirements"
+require "isodoc"
+require "metanorma-standoc"
 
 Dir[File.expand_path("./support/**/**/*.rb", __dir__)]
   .sort.each { |f| require f }
@@ -32,6 +34,34 @@ RSpec.configure do |config|
 end
 
 OPTIONS = [backend: :standoc, header_footer: true, agree_to_terms: true].freeze
+
+ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :novalid:
+  :no-isobib:
+  :data-uri-image: false
+
+HDR
+
+BLANK_HDR = <<~"HDR".freeze
+  <?xml version="1.0" encoding="UTF-8"?>
+  <standard-document xmlns="https://www.metanorma.org/ns/standoc" version="#{Metanorma::Standoc::VERSION}" type="semantic">
+  <bibdata type="standard">
+  <title language="en" format="text/plain">Document title</title>
+    <language>en</language>
+    <script>Latn</script>
+    <status><stage>published</stage></status>
+    <copyright>
+      <from>#{Time.new.year}</from>
+    </copyright>
+    <ext>
+    <doctype>standard</doctype>
+    </ext>
+  </bibdata>
+HDR
 
 def strip_guid(xml)
   xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
