@@ -198,8 +198,6 @@ module Metanorma
       end
 
       def requirement_table_cleanup(table)
-        return table unless table["type"] == "recommendclass"
-
         table.xpath(ns("./tbody/tr/td/table")).each do |t|
           x = t.at(ns("./thead/tr")) or next
           t.parent.parent.replace(x)
