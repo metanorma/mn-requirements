@@ -1,28 +1,41 @@
 module Metanorma
   class Requirements
     class Modspec < Default
+      REQT_TYPE_NORM = {
+        requirement: "general",
+        recommendation: "general",
+        permission: "general",
+        requirements_class: "class",
+        requirement_class: "class",
+        recommendation_class: "class",
+        permission_class: "class",
+        conformance_test: "verification",
+        conformance_class: "conformanceclass",
+        abstract_test: "abstracttest",
+      }.freeze
+
       def requirement_type_cleanup(reqt)
-        reqt["type"] = case reqt["type"]
-                       when "requirement", "recommendation", "permission"
-                         "general"
-                       when "requirements_class" then "class"
-                       when "conformance_test" then "verification"
-                       when "conformance_class" then "conformanceclass"
-                       when "abstract_test" then "abstracttest"
-                       else reqt["type"]
-                       end
+        ret = REQT_TYPE_NORM[reqt["type"]&.to_sym] or return
+        reqt["type"] = ret
       end
 
       def requirement_metadata_component_tags
         %w(test-purpose test-method test-method-type conditions part description
-           reference step requirement permission recommendation guidance)
+           reference step guidance) +
+          requirement_metadata_requirement_tags
+      end
+
+      def requirement_metadata_requirement_tags
+        %w(conformance-test conformance-class abstract-test requirement-class
+           recommendation-class permission-class requirement permission
+           recommendation)
       end
 
       def requirement_metadata1(reqt, dlist, ins)
         ins1 = super
         dlist.xpath("./dt").each do |e|
-          tag = e&.text&.gsub(/ /, "-")&.downcase
-          next unless requirement_metadata_component_tags.include? tag
+          tag = e.text&.gsub(/ /, "-")&.downcase
+          next unless requirement_metadata_component_tags.include?(tag)
 
           ins1.next = requirement_metadata1_component(e, tag)
           ins1 = ins1.next
@@ -36,9 +49,9 @@ module Metanorma
           requirement_metadata1(val, d, d)
           d.remove
         end
-        if REQS.include?(term.text) && !val.text.empty?
+        requirement_metadata_requirement_tags.include?(term.text) &&
+          !val.text.empty? and
           val.children = "<identifier>#{val.text.strip}</identifier>"
-        end
         val
       end
 
@@ -59,8 +72,8 @@ module Metanorma
       end
 
       def requirement_metadata_to_component(reqt)
-        xpath = requirement_metadata_component_tags -
-          %w(description requirement permission recommendation)
+        xpath = requirement_metadata_component_tags - %w(description) -
+          requirement_metadata_requirement_tags
         reqt.xpath(xpath.map { |x| ".//#{x}" }.join(" | ")).each do |c|
           c["class"] = c.name
           c.name = "component"
@@ -68,11 +81,23 @@ module Metanorma
       end
 
       def requirement_metadata_to_requirement(reqt)
-        reqt.xpath("./requirement | ./permission | ./recommendation")
-          .each do |c|
+        xpath = requirement_metadata_requirement_tags
+        reqt.xpath(xpath.map { |x| "./#{x}" }.join(" | ")).each do |c|
           c["id"] = Metanorma::Utils::anchor_or_uuid
           c["model"] = reqt["model"] # all requirements must have a model
+          requirement_metadata_to_requirement1(c)
         end
+      end
+
+      def requirement_metadata_to_requirement1(reqt)
+        reqt["type"] = reqt.name.sub(/-/, "_")
+        reqt.name =
+          case reqt.name
+          when "recommendation-class", "recommendation" then "recommendation"
+          when "permission-class", "permission" then "permission"
+          else "requirement"
+          end
+        requirement_type_cleanup(reqt)
       end
 
       def requirement_subparts_to_blocks(reqt)
