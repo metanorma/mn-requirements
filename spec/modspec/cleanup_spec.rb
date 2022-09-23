@@ -37,7 +37,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       #{BLANK_HDR}
          <sections>
-           <requirement id='A' model='ogc' type=''>
+           <requirement id='A' model='ogc'>
              <component exclude='false' class='Test method type'>
                <p id='_'>Manual Inspection</p>
              </component>
@@ -101,6 +101,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
       target:: http://www.example.com
       indirect-dependency:: http://www.example.com
       indirect-dependency:: <<ref3>>
+      conformance-class:: A1
+      conformance-test:: A2
+      abstract-test:: A3
+      requirement-class:: A4
+      recommendation-class:: A5
+      permission-class:: A6
 
       Logical models encoded as XSDs should be faithful to the original UML conceptual
       models.
@@ -184,7 +190,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <description>
                  <p id='_'>Interpolated description</p>
              </description>
-             <recommendation id='_' model="ogc" type=""><identifier>/label/1</identifier></recommendation>
+             <recommendation id='_' model="ogc" type="general"><identifier>/label/1</identifier></recommendation>
              <component class='part'>
                  <p id='_'>Widget has been suitably calibrated for aerodynamics</p>
              </component>
@@ -223,6 +229,24 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <component class='test-method-type'>
                <p id='_'>Method Type2</p>
              </component>
+             <requirement id='_' model='ogc' type='conformanceclass'>
+        <identifier>A1</identifier>
+      </requirement>
+      <requirement id='_' model='ogc' type='verification'>
+        <identifier>A2</identifier>
+      </requirement>
+      <requirement id='_' model='ogc' type='abstracttest'>
+        <identifier>A3</identifier>
+      </requirement>
+      <requirement id='_' model='ogc' type='class'>
+        <identifier>A4</identifier>
+      </requirement>
+      <recommendation id='_' model='ogc' type='class'>
+        <identifier>A5</identifier>
+      </recommendation>
+      <permission id='_' model='ogc' type='class'>
+        <identifier>A6</identifier>
+      </permission>
              <description>
                <p id='_'>
                  Logical models encoded as XSDs should be faithful to the original UML
@@ -271,7 +295,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
                 #{BLANK_HDR}
            <sections>
-         <requirement id='_' model='ogc' type="">
+         <requirement id='_' model='ogc'>
            <component exclude='false' class='Test method type'>
              <p id='_'>Manual Inspection</p>
            </component>
