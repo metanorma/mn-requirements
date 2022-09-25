@@ -70,7 +70,7 @@ module Metanorma
       end
 
       def recommendation_attr_parse(node, label)
-        "#{label}: #{node.children.to_xml}"
+        l10n("#{label}: #{node.children.to_xml}")
       end
 
       def recommendation_attr_keyvalue(node, key, value)
