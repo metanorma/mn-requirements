@@ -767,7 +767,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>Classe d&#x2019;exigences</td>
                    <td>
-                     <xref target='B'>Classe de confirmit&#xE9; 2: <tt>ABC</tt></xref>
+                     <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
@@ -777,7 +777,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>D&#xE9;pendance</td>
                    <td>
-                     <xref target='B'>Classe de confirmit&#xE9; 2: <tt>ABC</tt></xref>
+                     <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
@@ -789,14 +789,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <td>D&#xE9;pendance indirecte</td>
                    <td>
-                     <xref target='B'>Classe de confirmit&#xE9; 2: <tt>ABC</tt></xref>
+                     <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
                    <td>Autorisation</td>
                    <td>
                      <xref target='B2'>
-                       Autorisation 1:
+                       Autorisation 1&#xA0;:
                        <tt>Permission 1</tt>
                      </xref>
                    </td>
@@ -805,7 +805,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>Exigence</td>
                    <td>
                      <xref target='A3'>
-                       Exigence 1-1:
+                       Exigence 1-1&#xA0;:
                        <tt>Requirement 1</tt>
                      </xref>
                    </td>
@@ -814,7 +814,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>Recommandation</td>
                    <td>
                      <xref target='A4'>
-                       Recommandation 1-1:
+                       Recommandation 1-1&#xA0;:
                        <tt>Recommendation 1</tt>
                      </xref>
                    </td>
@@ -851,7 +851,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <td>Inclus dans</td>
             <td>
               <xref target='A1'>
-                 Classe de confirmit&#xE9; 1:
+                 Classe de confirmit&#xE9; 1&#xA0;:
                 <tt>/ogc/recommendation/wfs/2</tt>
               </xref>
             </td>

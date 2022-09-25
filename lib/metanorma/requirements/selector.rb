@@ -13,6 +13,7 @@ module Metanorma
       @default = options[:default]
       @i18n = i18n_klass(options[:lang] || "en",
                          options[:script] || "Latn",
+                         options[:locale],
                          options[:i18nhash])
       @labels = @i18n.get.deep_merge(options[:labels] || {})["requirements"]
       @models =
@@ -23,8 +24,9 @@ module Metanorma
       %i[default ogc]
     end
 
-    def i18n_klass(lang = "en", script = "Latn", i18nhash = nil)
-      ::IsoDoc::MnRequirementsI18n.new(lang, script, i18nhash: i18nhash)
+    def i18n_klass(lang, script, locale = nil, i18nhash = nil)
+      ::IsoDoc::MnRequirementsI18n.new(lang, script, locale: locale,
+                                                     i18nhash: i18nhash)
     end
 
     # all roles that can be assigned to an example to make it a reqt,

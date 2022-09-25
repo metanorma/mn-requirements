@@ -254,8 +254,8 @@ RSpec.describe Metanorma::Requirements::Default do
           <script current="true">Latn</script>
           </bibdata>
           <preface><foreword displayorder="1">
-          <requirement id="A" unnumbered="true" model="default"><name>Exigence:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Sujet: user</em><br/>
-      <em>H&#xE9;rite: /ss/584/2015/level/1</em></p><div type="requirement-description">
+          <requirement id="A" unnumbered="true" model="default"><name>Exigence&#xA0;:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Sujet&#xA0;: user</em><br/>
+      <em>H&#xE9;rite&#xA0;: /ss/584/2015/level/1</em></p><div type="requirement-description">
           <p id="_">I recommend <em>this</em>.</p>
         </div><div type="requirement-description">
           <p id="_">As for the measurement targets,</p>
