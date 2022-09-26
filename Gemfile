@@ -9,5 +9,3 @@ gemspec
 if File.exist? "Gemfile.devel"
   eval File.read("Gemfile.devel"), nil, "Gemfile.devel" # rubocop:disable Security/Eval
 end
-
-gem "isodoc", "~> 2.2.3.1"
