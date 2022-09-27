@@ -40,7 +40,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
 
       [[E1]]
-      [.recommendation,type=conformance_test]
+      [.recommendation,type=abstract_test]
       ====
       [%metadata]
       identifier:: E
@@ -144,7 +144,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
 
       [[E]]
-      [.recommendation,type=conformance_test]
+      [.recommendation,type=abstract_test]
       ====
       ====
 

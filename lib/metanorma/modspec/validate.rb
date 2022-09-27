@@ -27,6 +27,7 @@ module Metanorma
       def type2validate(reqt)
         type = reqt["type"]
         type = "general" if type.nil? || type.empty?
+        type = "verification" if type == "abstracttest"
         type
       end
 
