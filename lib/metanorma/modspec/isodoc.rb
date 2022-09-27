@@ -52,9 +52,9 @@ module Metanorma
         return ret unless title &&
           node.ancestors("requirement, recommendation, permission").empty?
 
-        ret += l10n(": ") unless !name || name.text.empty?
+        ret += ": " unless !name || name.text.empty?
         ret += title.children.to_xml
-        ret
+        l10n(ret)
       end
 
       def recommendation_attributes(node, out)

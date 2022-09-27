@@ -45,12 +45,12 @@ module Metanorma
         label, title, name = recommendation_labels(node)
         ret = name ? [name] : []
         if label || title
-          ret << l10n(":") unless ret.empty?
+          ret << ":" unless ret.empty?
           ret += ["<br/>", label]
-          ret << l10n(". ") if label && title
+          ret << ". " if label && title
           ret << title
         end
-        out << "<name>#{ret.compact.join}</name>"
+        out << "<name>#{l10n(ret.compact.join)}</name>"
         out
       end
 
