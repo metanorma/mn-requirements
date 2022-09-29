@@ -359,7 +359,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>Conformance test</td>
                   <td>
                     <xref target='A2'>
-                      Requirement test 1:
+                      Conformance test 1:
                       <tt>/ogc/recommendation/wfs/2</tt>
                     </xref>
                   </td>
@@ -370,7 +370,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <thead>
                 <tr>
                   <th scope='colgroup' colspan='2'>
-                    <p class='RecommendationTestTitle'>Requirement test 1</p>
+                    <p class='RecommendationTestTitle'>Conformance test 1</p>
                   </th>
                 </tr>
               </thead>

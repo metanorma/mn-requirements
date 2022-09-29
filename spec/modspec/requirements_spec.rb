@@ -261,7 +261,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <thead>
                  <tr>
                    <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTestTitle'>Permission test 1</p>
+                     <p class='RecommendationTestTitle'>Conformance test 1</p>
                    </th>
                  </tr>
                </thead>

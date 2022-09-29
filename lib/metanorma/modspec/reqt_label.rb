@@ -48,7 +48,7 @@ module Metanorma
 
       def recommendation_class_label(node)
         case node["type"]
-        when "verification" then @labels["modspec"]["#{node.name}test"]
+        when "verification" then @labels["modspec"]["conformancetest"]
         when "class" then @labels["modspec"]["#{node.name}class"]
         when "abstracttest" then @labels["modspec"]["abstracttest"]
         when "conformanceclass" then @labels["modspec"]["conformanceclass"]
