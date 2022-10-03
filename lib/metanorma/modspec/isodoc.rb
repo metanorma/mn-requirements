@@ -152,7 +152,7 @@ module Metanorma
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
         !%w(target indirect-dependency).include?(tag.text) or return nil
-        [tag.text.capitalize, value.children]
+        [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]
       end
 
       def reqt_component_type(node)

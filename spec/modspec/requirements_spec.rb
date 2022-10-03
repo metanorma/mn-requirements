@@ -10,7 +10,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></inherit>
         <subject>user</subject>
-        <classification> <tag>control-class</tag> <value>Technical</value> </classification><classification> <tag>priority</tag> <value>P0</value> </classification><classification> <tag>family</tag> <value>System and Communications Protection</value> </classification><classification> <tag>family</tag> <value>System and Communications Protocols</value> </classification>
+        <classification> <tag>control-CLASS</tag> <value>Technical</value> </classification><classification> <tag>priority</tag> <value>P0</value> </classification><classification> <tag>family</tag> <value>System and Communications Protection</value> </classification><classification> <tag>family</tag> <value>System and Communications Protocols</value> </classification>
         <description>
           <p id="_">I recommend <em>this</em>.</p>
         </description>
@@ -75,7 +75,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
               <tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
             <tr>
-        <td>Control-class</td>
+        <td>Control-CLASS</td>
         <td>Technical</td>
       </tr>
       <tr>

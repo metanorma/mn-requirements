@@ -384,14 +384,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       <foreword displayorder="1">
         <p>
-          <xref target='N1'>Introduction, Requirement test 1</xref>
-          <xref target='N2'>Preparatory, Requirement test (??)</xref>
-          <xref target='N'>Clause 1, Requirement test 2</xref>
-          <xref target='note1'>Clause 3.1, Requirement test 3</xref>
-          <xref target='note2'>Clause 3.1, Requirement test 4</xref>
-          <xref target='AN'>Requirement test A.1</xref>
-          <xref target='Anote1'>Requirement test (??)</xref>
-          <xref target='Anote2'>Requirement test A.2</xref>
+          <xref target='N1'>Introduction, Conformance test 1</xref>
+          <xref target='N2'>Preparatory, Conformance test (??)</xref>
+          <xref target='N'>Clause 1, Conformance test 2</xref>
+          <xref target='note1'>Clause 3.1, Conformance test 3</xref>
+          <xref target='note2'>Clause 3.1, Conformance test 4</xref>
+          <xref target='AN'>Conformance test A.1</xref>
+          <xref target='Anote1'>Conformance test (??)</xref>
+          <xref target='Anote2'>Conformance test A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -469,14 +469,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       <foreword displayorder='1'>
          <p>
-           <xref target='N1'>Introduction, Test d&#x2019;exigence 1</xref>
-           <xref target='N2'>Preparatory, Test d&#x2019;exigence (??)</xref>
-           <xref target='N'>Article 1, Test d&#x2019;exigence 2</xref>
-           <xref target='note1'>Article 3.1, Test d&#x2019;exigence 3</xref>
-           <xref target='note2'>Article 3.1, Test d&#x2019;exigence 4</xref>
-           <xref target='AN'>Test d&#x2019;exigence A.1</xref>
-           <xref target='Anote1'>Test d&#x2019;exigence (??)</xref>
-           <xref target='Anote2'>Test d&#x2019;exigence A.2</xref>
+           <xref target='N1'>Introduction, Test de conformit&#xE9; 1</xref>
+           <xref target='N2'>Preparatory, Test de conformit&#xE9; (??)</xref>
+           <xref target='N'>Article 1, Test de conformit&#xE9; 2</xref>
+           <xref target='note1'>Article 3.1, Test de conformit&#xE9; 3</xref>
+           <xref target='note2'>Article 3.1, Test de conformit&#xE9; 4</xref>
+           <xref target='AN'>Test de conformit&#xE9; A.1</xref>
+           <xref target='Anote1'>Test de conformit&#xE9; (??)</xref>
+           <xref target='Anote2'>Test de conformit&#xE9; A.2</xref>
          </p>
        </foreword>
     OUTPUT
@@ -637,14 +637,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       <foreword displayorder="1">
         <p>
-          <xref target='N1'>Introduction, Recommendation test 1</xref>
-          <xref target='N2'>Preparatory, Recommendation test (??)</xref>
-          <xref target='N'>Clause 1, Recommendation test 2</xref>
-          <xref target='note1'>Clause 3.1, Recommendation test 3</xref>
-          <xref target='note2'>Clause 3.1, Recommendation test 4</xref>
-          <xref target='AN'>Recommendation test A.1</xref>
-          <xref target='Anote1'>Recommendation test (??)</xref>
-          <xref target='Anote2'>Recommendation test A.2</xref>
+          <xref target='N1'>Introduction, Conformance test 1</xref>
+          <xref target='N2'>Preparatory, Conformance test (??)</xref>
+          <xref target='N'>Clause 1, Conformance test 2</xref>
+          <xref target='note1'>Clause 3.1, Conformance test 3</xref>
+          <xref target='note2'>Clause 3.1, Conformance test 4</xref>
+          <xref target='AN'>Conformance test A.1</xref>
+          <xref target='Anote1'>Conformance test (??)</xref>
+          <xref target='Anote2'>Conformance test A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -805,14 +805,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       <foreword displayorder="1">
         <p>
-          <xref target='N1'>Introduction, Permission test 1</xref>
-          <xref target='N2'>Preparatory, Permission test (??)</xref>
-          <xref target='N'>Clause 1, Permission test 2</xref>
-          <xref target='note1'>Clause 3.1, Permission test 3</xref>
-          <xref target='note2'>Clause 3.1, Permission test 4</xref>
-          <xref target='AN'>Permission test A.1</xref>
-          <xref target='Anote1'>Permission test (??)</xref>
-          <xref target='Anote2'>Permission test A.2</xref>
+          <xref target='N1'>Introduction, Conformance test 1</xref>
+          <xref target='N2'>Preparatory, Conformance test (??)</xref>
+          <xref target='N'>Clause 1, Conformance test 2</xref>
+          <xref target='note1'>Clause 3.1, Conformance test 3</xref>
+          <xref target='note2'>Clause 3.1, Conformance test 4</xref>
+          <xref target='AN'>Conformance test A.1</xref>
+          <xref target='Anote1'>Conformance test (??)</xref>
+          <xref target='Anote2'>Conformance test A.2</xref>
         </p>
       </foreword>
     OUTPUT
@@ -877,13 +877,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword displayorder="1">
         <p>
           <xref target='N1'>Clause 1, Permission 1</xref>
-          <xref target='N2'>Clause 1, Permission test 1-1</xref>
+          <xref target='N2'>Clause 1, Conformance test 1-1</xref>
           <xref target='N'>Clause 1, Permission 1-1-1</xref>
           <xref target='Q1'>Clause 1, Requirement 1-1</xref>
           <xref target='R1'>Clause 1, Recommendation 1-1</xref>
-          <xref target='AN1'>Permission test A.1</xref>
+          <xref target='AN1'>Conformance test A.1</xref>
           <xref target='AN2'>Permission A.1-1</xref>
-          <xref target='AN'>Permission test A.1-1-1</xref>
+          <xref target='AN'>Conformance test A.1-1-1</xref>
           <xref target='AQ1'>Requirement A.1-1</xref>
           <xref target='AR1'>Recommendation A.1-1</xref>
         </p>

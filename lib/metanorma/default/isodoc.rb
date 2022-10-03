@@ -76,7 +76,8 @@ module Metanorma
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
-        "#{tag.text.capitalize}: #{value.children.to_xml}"
+        l10n("#{Metanorma::Utils.strict_capitalize_first tag.text}: "\
+            "#{value.children.to_xml}")
       end
 
       def recommendation_attributes(node, out)
