@@ -7,7 +7,7 @@ module Metanorma
       def requirement_render1(node)
         init_lookups(node.document)
         ret = requirement_guidance_parse(node, super)
-        requirement_table_cleanup(ret)
+        requirement_table_cleanup(node, ret)
       end
 
       def recommendation_base(node, _klass)
@@ -197,7 +197,7 @@ module Metanorma
         out
       end
 
-      def requirement_table_cleanup(table)
+      def requirement_table_cleanup(_node, table)
         table.xpath(ns("./tbody/tr/td/table")).each do |t|
           x = t.at(ns("./thead/tr")) or next
           t.parent.parent.replace(x)

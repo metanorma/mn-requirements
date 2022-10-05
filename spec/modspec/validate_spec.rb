@@ -114,6 +114,52 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .not_to include "has no corresponding Conformance class"
   end
 
+  it "does not warn if no linkage issues for multiple targets" do
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :requirements-model: ogc
+
+      [[A1]]
+      [.requirement,type=requirement]
+      ====
+      [%metadata]
+      identifier:: A
+      ====
+
+      [[B1]]
+      [.requirement,type=recommendation]
+      ====
+      [%metadata]
+      identifier:: B
+      ====
+
+      [[C1]]
+      [.requirement,type=permission]
+      ====
+      [%metadata]
+      identifier:: C
+      ====
+
+      [[D1]]
+      [.requirement,type=conformance_test]
+      ====
+      [%metadata]
+      identifier:: D
+      classification:: target:A
+      classification:: target:B
+      classification:: target:C
+      ====
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "no corresponding Requirement"
+    expect(File.read("test.err"))
+      .not_to include "has no corresponding Conformance test"
+  end
+
   it "warns of disconnect between requirements and conformance tests, #1" do
     FileUtils.rm_f "test.err"
     Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
@@ -300,7 +346,6 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(File.read("test.err"))
       .to include "Requirement class I has no corresponding Requirement"
   end
-
 
   it "warns of disconnect between conformance classes and conformance tests" do
     FileUtils.rm_f "test.err"

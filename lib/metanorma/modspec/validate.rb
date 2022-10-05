@@ -49,7 +49,7 @@ module Metanorma
 
         r = @ids[:id][reqt["id"]]
         (r[:label] && @ids[:class][confclass]&.any? do |x|
-           x[:subject] == r[:label]
+           x[:subject].include?(r[:label])
          end) and return
         log_reqt(r, reqtclass, confclass)
       end
@@ -59,7 +59,7 @@ module Metanorma
 
         r = @ids[:id][reqt["id"]]
         (r[:subject] && @ids[:class][reqtclass]&.any? do |x|
-           r[:subject] == x[:label]
+           r[:subject].include?(x[:label])
          end) and return
         log_reqt(r, confclass, reqtclass)
       end
@@ -101,7 +101,8 @@ module Metanorma
 
       def reqt_links_struct(reqt)
         { id: reqt["id"], elem: reqt, label: reqt.at("./identifier")&.text,
-          subject: reqt.at("./classification[tag = 'target']/value")&.text,
+          subject: reqt.xpath("./classification[tag = 'target']/value")
+            .map(&:text),
           child: reqt.xpath("./requirement | ./recommendation | ./permission")
             .map do |r|
                    r.at("./identifier")&.text
