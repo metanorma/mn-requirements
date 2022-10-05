@@ -2,7 +2,7 @@ require "spec_helper"
 require "fileutils"
 
 RSpec.describe Metanorma::Requirements::Modspec do
-  it "uses  component types specific to Modspec" do
+  it "uses component types specific to Modspec" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
 
@@ -256,6 +256,38 @@ RSpec.describe Metanorma::Requirements::Modspec do
            </requirement>
          </sections>
        </standard-document>
+    OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "deals with live links in requirements dl" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      [requirement,model=ogc]
+      ====
+      [%metadata]
+      type:: class
+      identifier:: http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules[]
+      subject:: Encoding of logical models
+      inherit:: http://www.opengis.net/doc/IS/GML/3.2/clause/2.4[]
+      conformance-test:: http://www.opengis.net/doc/IS/GML/3.2/clause/2.4[]
+      ====
+    INPUT
+    output = <<~OUTPUT
+      #{BLANK_HDR}
+        <sections>
+          <requirement id='_' model='ogc' type='class'>
+            <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
+            <subject>Encoding of logical models</subject>
+            <inherit>http://www.opengis.net/doc/IS/GML/3.2/clause/2.4</inherit>
+            <requirement id='_' model='ogc' type='verification'>
+              <identifier>http://www.opengis.net/doc/IS/GML/3.2/clause/2.4</identifier>
+            </requirement>
+          </requirement>
+        </sections>
+      </standard-document>
     OUTPUT
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)

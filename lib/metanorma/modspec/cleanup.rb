@@ -49,9 +49,17 @@ module Metanorma
           requirement_metadata1(val, d, d)
           d.remove
         end
-        requirement_metadata_requirement_tags.include?(term.text) &&
-          !val.text.empty? and
+        requirement_metadata_requirement_tags.include?(term.text) or
+          return val
+        requirement_metadata1_component_val2id(val)
+      end
+
+      def requirement_metadata1_component_val2id(val)
+        if val.at(".//link") && val.text.strip.empty?
+          val.children = "<identifier>#{val.at('.//link')['target']}</identifier>"
+        elsif !val.text.strip.empty?
           val.children = "<identifier>#{val.text.strip}</identifier>"
+        end
         val
       end
 
