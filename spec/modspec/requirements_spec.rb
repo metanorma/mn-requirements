@@ -73,21 +73,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead>
             <tbody>
               <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
-              <tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Dependency</td><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
+              <tr><th>Subject</th><td>user</td></tr><tr><th>Dependency</th><td>/ss/584/2015/level/1</td></tr><tr><th>Dependency</th><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
             <tr>
-        <td>Control-CLASS</td>
+        <th>Control-CLASS</th>
         <td>Technical</td>
       </tr>
       <tr>
-        <td>Priority</td>
+        <th>Priority</th>
         <td>P0</td>
       </tr>
       <tr>
-        <td>Family</td>
+        <th>Family</th>
         <td>System and Communications Protection</td>
       </tr>
       <tr>
-        <td>Family</td>
+        <th>Family</th>
         <td>System and Communications Protocols</td>
       </tr>
       <tr>
@@ -100,11 +100,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </td>
       </tr>
       <tr>
-        <td>A</td>
+        <th>A</th>
         <td>B</td>
       </tr>
       <tr>
-        <td>C</td>
+        <th>C</th>
         <td>D</td>
       </tr>
       <tr>
@@ -126,49 +126,49 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </td>
       </tr>
              <tr>
-                   <td>Test purpose</td>
+                   <th>Test purpose</th>
                    <td>
                      <p>TEST PURPOSE</p>
                    </td>
                  </tr>
                  <tr>
-                   <td>Test method</td>
+                   <th>Test method</th>
                    <td>
                      <p>TEST METHOD</p>
                    </td>
                  </tr>
                  <tr>
-                   <td>Conditions</td>
+                   <th>Conditions</th>
                    <td>
                      <p>CONDITIONS</p>
                    </td>
                  </tr>
                  <tr>
-                   <td>A</td>
+                   <th>A</th>
                    <td>
                      <p>FIRST PART</p>
                    </td>
                  </tr>
                  <tr>
-                   <td>B</td>
+                   <th>B</th>
                    <td>
                      <p>SECOND PART</p>
                    </td>
                  </tr>
                  <tr>
-                   <td>C</td>
+                   <th>C</th>
                    <td>
                      <p>THIRD PART</p>
                    </td>
                  </tr>
                  <tr>
-                  <td>Reference</td>
+                  <th>Reference</th>
                   <td>
                     <p>REFERENCE PART</p>
                   </td>
                 </tr>
                 <tr>
-                  <td>Panda GHz express</td>
+                  <th>Panda GHz express</th>
                   <td>
                     <p>PANDA PART</p>
                   </td>
@@ -270,44 +270,44 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                  <tr>
-                   <td>Subject</td>
+                   <th>Subject</th>
                    <td>user</td>
                  </tr>
                  <tr>
-                   <td>Dependency</td>
+                   <th>Dependency</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <td>Control-class</td>
+                   <th>Control-class</th>
                    <td>Technical</td>
                  </tr>
                  <tr>
-                   <td>Priority</td>
+                   <th>Priority</th>
                    <td>P0</td>
                  </tr>
                  <tr>
-                   <td>Family</td>
+                   <th>Family</th>
                    <td>System and Communications Protection</td>
                  </tr>
                  <tr>
-                   <td>Family</td>
+                   <th>Family</th>
                    <td>System and Communications Protocols</td>
                  </tr>
                  <tr>
                    <td colspan='2'>
                      <p id='_'>
-                       I recommend#{' '}
+                       I recommend
                        <em>this</em>
                        .
                      </p>
                    </td>
                  </tr>
                  <tr>
-                   <td>A</td>
+                   <th>A</th>
                    <td>B</td>
                  </tr>
                  <tr>
-                   <td>C</td>
+                   <th>C</th>
                    <td>D</td>
                  </tr>
                  <tr>
@@ -402,11 +402,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead>
         <tbody>
           <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
-        <tr><td>Subject</td><td>user</td></tr><tr><td>Dependency</td><td>/ss/584/2015/level/1</td></tr><tr><td>Control-class</td><td>Technical</td></tr><tr><td>Priority</td><td>P0</td></tr><tr><td>Family</td><td>System and Communications Protection</td></tr><tr><td>Family</td><td>System and Communications Protocols</td></tr>
+        <tr><th>Subject</th><td>user</td></tr><tr><th>Dependency</th><td>/ss/584/2015/level/1</td></tr><tr><th>Control-class</th><td>Technical</td></tr><tr><th>Priority</th><td>P0</td></tr><tr><th>Family</th><td>System and Communications Protection</td></tr><tr><th>Family</th><td>System and Communications Protocols</td></tr>
 
         <tr><td colspan="2">
           <p id="_">I recommend <em>this</em>.</p>
-        </td></tr><tr><td>A</td><td>B</td></tr><tr><td>C</td><td>D</td></tr><tr><td colspan="2">
+        </td></tr><tr><th>A</th><td>B</td></tr><tr><th>C</th><td>D</td></tr><tr><td colspan="2">
           <p id="_">The measurement target shall be measured as:</p>
           <formula id="_"><name>1</name>
             <stem type="AsciiMath">r/1 = 0</stem>
@@ -474,19 +474,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
-                  <td>Target type</td>
+                  <th>Target type</th>
                   <td>user</td>
                 </tr>
                 <tr>
-                  <td>Dependency</td>
+                  <th>Dependency</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
-                  <td>Dependency</td>
+                  <th>Dependency</th>
                   <td>/ss/584/2015/level/2</td>
                 </tr>
                 <tr>
-                  <td>Permission</td>
+                  <th>Permission</th>
                   <td>
                     <xref target='B1'>
                       Permission 1:
@@ -495,7 +495,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   </td>
                 </tr>
                 <tr>
-                  <td>Requirement</td>
+                  <th>Requirement</th>
                   <td>
                     <xref target='A3'>
                       Requirement 1-1:
@@ -504,7 +504,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   </td>
                 </tr>
                 <tr>
-                  <td>Recommendation</td>
+                  <th>Recommendation</th>
                   <td>
                     <xref target='A4'>
                       Recommendation 1-1:
@@ -527,7 +527,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/10</tt></td>
                 </tr>
                 <tr>
-                  <td>Included in</td>
+                  <th>Included in</th>
                   <td>
                     <xref target='A1'>
                       Permissions class 1:
@@ -599,39 +599,39 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
-                   <td>Subject</td>
+                   <th>Subject</th>
                    <td>user</td>
                  </tr>
                  <tr>
-                   <td>Requirements class</td>
+                   <th>Requirements class</th>
                    <td>
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <td>Dependency</td>
+                   <th>Dependency</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <td>Dependency</td>
+                   <th>Dependency</th>
                    <td>
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <td>Indirect Dependency</td>
+                   <th>Indirect Dependency</th>
                    <td>
                      <link target='http://www.example.com/'/>
                    </td>
                  </tr>
                  <tr>
-                   <td>Indirect Dependency</td>
+                   <th>Indirect Dependency</th>
                    <td>
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <td>Permission</td>
+                   <th>Permission</th>
                    <td>
                      <xref target='B2'>
                        Permission 1:
@@ -640,7 +640,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <td>Requirement</td>
+                   <th>Requirement</th>
                    <td>
                      <xref target='A3'>
                        Requirement 1-1:
@@ -649,7 +649,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <td>Recommendation</td>
+                   <th>Recommendation</th>
                    <td>
                      <xref target='A4'>
                        Recommendation 1-1:
@@ -686,7 +686,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
           </tr>
           <tr>
-            <td>Included in</td>
+            <th>Included in</th>
             <td>
               <xref target='A1'>
                 Conformance class 1:
@@ -761,39 +761,39 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
-                   <td>Sujet</td>
+                   <th>Sujet</th>
                    <td>user</td>
                  </tr>
                  <tr>
-                   <td>Classe d&#x2019;exigences</td>
+                   <th>Classe d&#x2019;exigences</th>
                    <td>
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <td>D&#xE9;pendance</td>
+                   <th>D&#xE9;pendance</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <td>D&#xE9;pendance</td>
+                   <th>D&#xE9;pendance</th>
                    <td>
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <td>D&#xE9;pendance indirecte</td>
+                   <th>D&#xE9;pendance indirecte</th>
                    <td>
                      <link target='http://www.example.com/'/>
                    </td>
                  </tr>
                  <tr>
-                   <td>D&#xE9;pendance indirecte</td>
+                   <th>D&#xE9;pendance indirecte</th>
                    <td>
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <td>Autorisation</td>
+                   <th>Autorisation</th>
                    <td>
                      <xref target='B2'>
                        Autorisation 1&#xA0;:
@@ -802,7 +802,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <td>Exigence</td>
+                   <th>Exigence</th>
                    <td>
                      <xref target='A3'>
                        Exigence 1-1&#xA0;:
@@ -811,7 +811,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <td>Recommandation</td>
+                   <th>Recommandation</th>
                    <td>
                      <xref target='A4'>
                        Recommandation 1-1&#xA0;:
@@ -848,7 +848,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
           </tr>
           <tr>
-            <td>Inclus dans</td>
+            <th>Inclus dans</th>
             <td>
               <xref target='A1'>
                  Classe de confirmit&#xE9; 1&#xA0;:
@@ -914,19 +914,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
-                   <td>Target type</td>
+                   <th>Target type</th>
                    <td>user</td>
                  </tr>
                  <tr>
-                   <td>Dependency</td>
+                   <th>Dependency</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <td>Dependency</td>
+                   <th>Dependency</th>
                    <td>/ss/584/2015/level/2</td>
                  </tr>
                  <tr>
-                   <td>Permission</td>
+                   <th>Permission</th>
                    <td>
                      <xref target='A5'>
                        Permission 1:
@@ -935,7 +935,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <td>Requirement</td>
+                   <th>Requirement</th>
                    <td>
                      <xref target='A3'>
                        Requirement 1-1:
@@ -944,7 +944,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <td>Recommendation</td>
+                   <th>Recommendation</th>
                    <td>
                      <xref target='A4'>
                        Recommendation 1-1:
@@ -967,7 +967,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
                  </tr>
                  <tr>
-                   <td>Included in</td>
+                   <th>Included in</th>
                    <td>
                      <xref target='A1'>
                        Requirements class 1:
@@ -1030,19 +1030,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
-                  <td>Target type</td>
+                  <th>Target type</th>
                   <td>user</td>
                 </tr>
                 <tr>
-                  <td>Dependency</td>
+                  <th>Dependency</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
-                  <td>Dependency</td>
+                  <th>Dependency</th>
                   <td>/ss/584/2015/level/2</td>
                 </tr>
                 <tr>
-                  <td>Permission</td>
+                  <th>Permission</th>
                   <td>
                     <xref target='A2'>
                       Permission 1-1:
@@ -1051,7 +1051,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   </td>
                 </tr>
                 <tr>
-                  <td>Requirement</td>
+                  <th>Requirement</th>
                   <td>
                     <xref target='A3'>
                       Requirement 1-1:
@@ -1060,7 +1060,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   </td>
                 </tr>
                 <tr>
-                  <td>Recommendation</td>
+                  <th>Recommendation</th>
                   <td>
                     <xref target='A4'>
                       Recommendation 1-1:
@@ -1151,11 +1151,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
-                  <td>Subject</td>
+                  <th>Subject</th>
                   <td>user</td>
                 </tr>
                 <tr>
-                  <td>Dependency</td>
+                  <th>Dependency</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
@@ -1273,11 +1273,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
-                  <td>Subject</td>
+                  <th>Subject</th>
                   <td>user</td>
                 </tr>
                 <tr>
-                  <td>Dependency</td>
+                  <th>Dependency</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>

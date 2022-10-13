@@ -34,11 +34,11 @@ module Metanorma
       def recommendation_header(reqt, out)
         n = recommendation_name(reqt, nil)
         x = if reqt.ancestors("requirement, recommendation, permission").empty?
-              "<thead><tr><th scope='colgroup' colspan='2'>"\
-                "<p class='#{recommend_name_class(reqt)}'>#{n}</p>"\
+              "<thead><tr><th scope='colgroup' colspan='2'>" \
+                "<p class='#{recommend_name_class(reqt)}'>#{n}</p>" \
                 "</th></tr></thead>"
             else
-              "<thead><tr><td>#{recommendation_class_label(reqt)}</td>"\
+              "<thead><tr><th>#{recommendation_class_label(reqt)}</th>" \
                 "<td>#{n}</td></tr></thead>"
             end
         out << x
@@ -61,14 +61,14 @@ module Metanorma
         ins = out.add_child("<tbody></tbody>").first
         recommend_title(node, ins)
         recommendation_attributes1(node).each do |i|
-          ins.add_child("<tr><td>#{i[0]}</td><td>#{i[1]}</td></tr>")
+          ins.add_child("<tr><th>#{i[0]}</th><td>#{i[1]}</td></tr>")
         end
         ins
       end
 
       def recommend_title(node, out)
         label = node.at(ns("./identifier")) or return
-        out.add_child("<tr><td scope='colgroup' colspan='2'>"\
+        out.add_child("<tr><td scope='colgroup' colspan='2'>" \
                       "<tt>#{label.children.to_xml}</tt></td>")
       end
 
@@ -130,7 +130,7 @@ module Metanorma
         return node unless node.at(ns("./component[@class = 'step']"))
 
         d = node.at(ns("./component[@class = 'step']"))
-        d = d.replace("<ol class='steps'><li#{id_attr(d)}>"\
+        d = d.replace("<ol class='steps'><li#{id_attr(d)}>" \
                       "#{d.children.to_xml}</li></ol>").first
         node.xpath(ns("./component[@class = 'step']")).each do |f|
           f = f.replace("<li#{id_attr(f)}>#{f.children.to_xml}</li>").first
@@ -143,7 +143,7 @@ module Metanorma
         return out if node["class"] == "guidance"
 
         node = recommendation_steps(node)
-        out << "<tr#{id_attr(node)}><td>#{node['label']}</td>"\
+        out << "<tr#{id_attr(node)}><th>#{node['label']}</th>" \
                "<td>#{node.children}</td></tr>"
         out
       end
@@ -181,7 +181,7 @@ module Metanorma
       def requirement_guidance_parse(node, out)
         ins = out.at(ns("./tbody"))
         node.xpath(ns("./component[@class = 'guidance']")).each do |f|
-          ins << "<tr#{id_attr(f)}><td>#{@labels['modspec']['guidance']}</td>"\
+          ins << "<tr#{id_attr(f)}><th>#{@labels['modspec']['guidance']}</th>" \
                  "<td>#{f.children}</td></tr>"
         end
         out
@@ -191,7 +191,7 @@ module Metanorma
         node.xpath(ns("./dt")).each do |dt|
           dd = dt.next_element
           dd&.name == "dd" or next
-          out.add_child("<tr><td>#{dt.children.to_xml}</td>"\
+          out.add_child("<tr><th>#{dt.children.to_xml}</th>" \
                         "<td>#{dd.children.to_xml}</td></tr>")
         end
         out
