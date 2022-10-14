@@ -8,7 +8,7 @@ module Metanorma
       end
 
       def nested_reqt?(reqt)
-        reqt.at("./ancestor::requirement | ./ancestor::recommendation | "\
+        reqt.at("./ancestor::requirement | ./ancestor::recommendation | " \
                 "./ancestor::permission")
       end
 
@@ -22,6 +22,7 @@ module Metanorma
         class_to_children(reqt, "class", "general")
         class_to_children(reqt, "conformanceclass", "verification")
         children_to_class(reqt, "verification", "conformanceclass")
+        reqt_to_dependency(reqt)
       end
 
       def type2validate(reqt)
@@ -36,12 +37,34 @@ module Metanorma
         verification: "Conformance test",
         class: "Requirement class",
         conformanceclass: "Conformance class",
+        provision: "Provision",
+        prerequisite: "Prerequisite",
+        indirect_prerequisite: "Indirect prerequisite",
       }.freeze
 
       def log_reqt(reqt, leftclass, rightclass)
-        @log.add("Requirements", reqt[:elem],
-                 "#{CLASS2LABEL[leftclass.to_sym]} #{reqt[:label] || reqt[:id]} "\
-                 "has no corresponding #{CLASS2LABEL[rightclass.to_sym]}")
+        @log.add("Requirements", reqt[:elem], <<~MSG
+          #{CLASS2LABEL[leftclass.to_sym]} #{reqt[:label] || reqt[:id]} has no corresponding #{CLASS2LABEL[rightclass.to_sym]}
+        MSG
+        )
+      end
+
+      def log_reqt2(reqt, leftclass, target, rightclass)
+        @log.add("Requirements", reqt[:elem], <<~MSG
+          #{CLASS2LABEL[leftclass.to_sym]} #{reqt[:label] || reqt[:id]} points to #{CLASS2LABEL[rightclass.to_sym]} #{target} outside this document
+        MSG
+        )
+      end
+
+      def reqt_to_dependency(reqt)
+        r = @ids[:id][reqt["id"]]
+        r[:dependency].each do |d|
+          @ids[:label][d] or log_reqt2(r, "provision", d, "prerequisite")
+        end
+        r[:indirect_dependency].each do |d|
+          @ids[:label][d] or log_reqt2(r, "provision", d,
+                                       "indirect_prerequisite")
+        end
       end
 
       def reqt_to_conformance(reqt, reqtclass, confclass)
@@ -84,7 +107,7 @@ module Metanorma
 
       def reqt_links(docxml)
         docxml.xpath("//requirement | //recommendation | //permission")
-          .each_with_object({ id: {}, class: {} }) do |r, m|
+          .each_with_object({ id: {}, class: {}, label: {} }) do |r, m|
             next if nested_reqt?(r)
 
             reqt_links1(r, m)
@@ -93,9 +116,11 @@ module Metanorma
 
       def reqt_links1(reqt, hash)
         type = type2validate(reqt)
-        hash[:id][reqt["id"]] = reqt_links_struct(reqt)
+        a = reqt_links_struct(reqt)
+        hash[:id][reqt["id"]] = a
         hash[:class][type] ||= []
-        hash[:class][type] << hash[:id][reqt["id"]]
+        hash[:class][type] << a
+        hash[:label][a[:label]] = reqt["id"]
         hash
       end
 
@@ -104,9 +129,11 @@ module Metanorma
           subject: reqt.xpath("./classification[tag = 'target']/value")
             .map(&:text),
           child: reqt.xpath("./requirement | ./recommendation | ./permission")
-            .map do |r|
-                   r.at("./identifier")&.text
-                 end }
+            .map { |r| r.at("./identifier")&.text },
+          dependency: reqt.xpath("./inherit").map(&:text),
+          indirect_dependency: reqt
+            .xpath("./classification[tag = " \
+                   "'indirect-dependency']/value").map(&:text) }
       end
     end
   end
