@@ -878,6 +878,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit>/ss/584/2015/level/2</inherit>
+        <classification><tag>implements</target><value>Permission 1</value></classification>
         <subject>user</subject>
         <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
@@ -925,6 +926,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <th>Prerequisite</th>
                    <td>/ss/584/2015/level/2</td>
                  </tr>
+                 <tr>
+                 <th>Implements</th>
+           <td>
+             <xref target='A5'>
+               Permission 1:
+               <tt>Permission 1</tt>
+             </xref>
+           </td>
+         </tr>
                  <tr>
                    <th>Permission</th>
                    <td>

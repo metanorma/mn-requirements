@@ -107,6 +107,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       requirement-class:: A4
       recommendation-class:: A5
       permission-class:: A6
+      implements:: A7
+      implements:: A8
 
       Logical models encoded as XSDs should be faithful to the original UML conceptual
       models.
@@ -247,6 +249,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <permission id='_' model='ogc' type='class'>
         <identifier>A6</identifier>
       </permission>
+           <classification>
+       <tag>implements</tag>
+       <value>A7</value>
+     </classification>
+     <classification>
+       <tag>implements</tag>
+       <value>A8</value>
+     </classification>
              <description>
                <p id='_'>
                  Logical models encoded as XSDs should be faithful to the original UML

@@ -26,4 +26,4 @@ requirements:
     included_in: Enthalten in
     statement: Aussage
     guidance: Anleitung
-
+    implements: Implementiert

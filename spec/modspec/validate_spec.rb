@@ -389,6 +389,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       identifier:: A
       inherit:: B
       indirect-dependency:: C
+      implements:: D
       ====
 
     INPUT
@@ -396,6 +397,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .to include "Provision A points to Prerequisite B outside this document"
     expect(File.read("test.err"))
       .to include "Provision A points to Indirect prerequisite C outside this document"
+    expect(File.read("test.err"))
+      .to include "Provision A points to Implemented provision D outside this document"
 
     FileUtils.rm_f "test.err"
     Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
@@ -428,10 +431,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
       identifier:: C
       ====
 
+      [[D1]]
+      [.requirement,type=conformance_class]
+      ====
+      [%metadata]
+      identifier:: D
+      ====
+
     INPUT
     expect(File.read("test.err"))
       .not_to include "Provision A points to Prerequisite B outside this document"
     expect(File.read("test.err"))
       .not_to include "Provision A points to Indirect prerequisite C outside this document"
+    expect(File.read("test.err"))
+      .not_to include "Provision A points to Implemented provision D outside this document"
   end
 end

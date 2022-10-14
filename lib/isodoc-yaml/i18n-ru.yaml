@@ -26,4 +26,4 @@ requirements:
     included_in: Входит в
     statement: Утверждение
     guidance: Руководство
-
+    implements: Реализует

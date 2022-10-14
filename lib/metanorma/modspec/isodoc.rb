@@ -106,10 +106,11 @@ module Metanorma
           head << [@labels["modspec"]["dependency"],
                    recommendation_id(i.children.to_xml)]
         end
-        node.xpath(ns("./classification[tag = 'indirect-dependency']/value"))
-          .each do |v|
-          xref = recommendation_id(v.children.to_xml) and
-            head << [@labels["modspec"]["indirectdependency"], xref]
+        %w(indirect-dependency implements).each do |x|
+          node.xpath(ns("./classification[tag = '#{x}']/value")).each do |v|
+            xref = recommendation_id(v.children.to_xml) and
+              head << [@labels["modspec"][x.gsub(/-/, "")], xref]
+          end
         end
         head
       end
@@ -144,7 +145,8 @@ module Metanorma
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
-        !%w(target indirect-dependency).include?(tag.text) or return nil
+        !%w(target indirect-dependency implements).include?(tag.text) or
+          return nil
         [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]
       end
 

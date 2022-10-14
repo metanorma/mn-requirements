@@ -38,8 +38,9 @@ module Metanorma
         class: "Requirement class",
         conformanceclass: "Conformance class",
         provision: "Provision",
-        prerequisite: "Prerequisite",
-        indirect_prerequisite: "Indirect prerequisite",
+        dependency: "Prerequisite",
+        indirect_dependency: "Indirect prerequisite",
+        implements: "Implemented provision",
       }.freeze
 
       def log_reqt(reqt, leftclass, rightclass)
@@ -51,19 +52,17 @@ module Metanorma
 
       def log_reqt2(reqt, leftclass, target, rightclass)
         @log.add("Requirements", reqt[:elem], <<~MSG
-          #{CLASS2LABEL[leftclass.to_sym]} #{reqt[:label] || reqt[:id]} points to #{CLASS2LABEL[rightclass.to_sym]} #{target} outside this document
+          #{CLASS2LABEL[leftclass]} #{reqt[:label] || reqt[:id]} points to #{CLASS2LABEL[rightclass]} #{target} outside this document
         MSG
         )
       end
 
       def reqt_to_dependency(reqt)
         r = @ids[:id][reqt["id"]]
-        r[:dependency].each do |d|
-          @ids[:label][d] or log_reqt2(r, "provision", d, "prerequisite")
-        end
-        r[:indirect_dependency].each do |d|
-          @ids[:label][d] or log_reqt2(r, "provision", d,
-                                       "indirect_prerequisite")
+        %i(dependency indirect_dependency implements).each do |x|
+          r[x].each do |d|
+            @ids[:label][d] or log_reqt2(r, :provision, d, x)
+          end
         end
       end
 
@@ -124,16 +123,19 @@ module Metanorma
         hash
       end
 
+      def classif_tag(reqt, tag)
+        reqt.xpath("./classification[tag = '#{tag}']/value")
+          .map(&:text)
+      end
+
       def reqt_links_struct(reqt)
         { id: reqt["id"], elem: reqt, label: reqt.at("./identifier")&.text,
-          subject: reqt.xpath("./classification[tag = 'target']/value")
-            .map(&:text),
+          subject: classif_tag(reqt, "target"),
           child: reqt.xpath("./requirement | ./recommendation | ./permission")
             .map { |r| r.at("./identifier")&.text },
           dependency: reqt.xpath("./inherit").map(&:text),
-          indirect_dependency: reqt
-            .xpath("./classification[tag = " \
-                   "'indirect-dependency']/value").map(&:text) }
+          indirect_dependency: classif_tag(reqt, "indirect-dependency"),
+          implements: classif_tag(reqt, "implements") }
       end
     end
   end
