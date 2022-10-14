@@ -57,7 +57,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>user</td>
                  </tr>
                  <tr>
-                   <th>Dependency</th>
+                   <th>Prerequisite</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>

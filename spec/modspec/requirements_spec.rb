@@ -73,7 +73,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead>
             <tbody>
               <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
-              <tr><th>Subject</th><td>user</td></tr><tr><th>Dependency</th><td>/ss/584/2015/level/1</td></tr><tr><th>Dependency</th><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
+              <tr><th>Subject</th><td>user</td></tr><tr><th>Prerequisite</th><td>/ss/584/2015/level/1</td></tr><tr><th>Prerequisite</th><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
             <tr>
         <th>Control-CLASS</th>
         <td>Technical</td>
@@ -274,7 +274,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>user</td>
                  </tr>
                  <tr>
-                   <th>Dependency</th>
+                   <th>Prerequisite</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
@@ -402,7 +402,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead>
         <tbody>
           <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
-        <tr><th>Subject</th><td>user</td></tr><tr><th>Dependency</th><td>/ss/584/2015/level/1</td></tr><tr><th>Control-class</th><td>Technical</td></tr><tr><th>Priority</th><td>P0</td></tr><tr><th>Family</th><td>System and Communications Protection</td></tr><tr><th>Family</th><td>System and Communications Protocols</td></tr>
+        <tr><th>Subject</th><td>user</td></tr><tr><th>Prerequisite</th><td>/ss/584/2015/level/1</td></tr><tr><th>Control-class</th><td>Technical</td></tr><tr><th>Priority</th><td>P0</td></tr><tr><th>Family</th><td>System and Communications Protection</td></tr><tr><th>Family</th><td>System and Communications Protocols</td></tr>
 
         <tr><td colspan="2">
           <p id="_">I recommend <em>this</em>.</p>
@@ -478,11 +478,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>user</td>
                 </tr>
                 <tr>
-                  <th>Dependency</th>
+                  <th>Prerequisite</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
-                  <th>Dependency</th>
+                  <th>Prerequisite</th>
                   <td>/ss/584/2015/level/2</td>
                 </tr>
                 <tr>
@@ -609,23 +609,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <th>Dependency</th>
+                   <th>Prerequisite</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <th>Dependency</th>
+                   <th>Prerequisite</th>
                    <td>
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <th>Indirect Dependency</th>
+                   <th>Indirect prerequisite</th>
                    <td>
                      <link target='http://www.example.com/'/>
                    </td>
                  </tr>
                  <tr>
-                   <th>Indirect Dependency</th>
+                   <th>Indirect prerequisite</th>
                    <td>
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
@@ -771,23 +771,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <th>D&#xE9;pendance</th>
+                   <th>Pr&#xE9;requis</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <th>D&#xE9;pendance</th>
+                   <th>Pr&#xE9;requis</th>
                    <td>
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <th>D&#xE9;pendance indirecte</th>
+                   <th>Pr&#xE9;requis indirect</th>
                    <td>
                      <link target='http://www.example.com/'/>
                    </td>
                  </tr>
                  <tr>
-                   <th>D&#xE9;pendance indirecte</th>
+                   <th>Pr&#xE9;requis indirect</th>
                    <td>
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
@@ -918,11 +918,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>user</td>
                  </tr>
                  <tr>
-                   <th>Dependency</th>
+                   <th>Prerequisite</th>
                    <td>/ss/584/2015/level/1</td>
                  </tr>
                  <tr>
-                   <th>Dependency</th>
+                   <th>Prerequisite</th>
                    <td>/ss/584/2015/level/2</td>
                  </tr>
                  <tr>
@@ -1034,11 +1034,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>user</td>
                 </tr>
                 <tr>
-                  <th>Dependency</th>
+                  <th>Prerequisite</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
-                  <th>Dependency</th>
+                  <th>Prerequisite</th>
                   <td>/ss/584/2015/level/2</td>
                 </tr>
                 <tr>
@@ -1155,7 +1155,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>user</td>
                 </tr>
                 <tr>
-                  <th>Dependency</th>
+                  <th>Prerequisite</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
@@ -1277,7 +1277,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>user</td>
                 </tr>
                 <tr>
-                  <th>Dependency</th>
+                  <th>Prerequisite</th>
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>

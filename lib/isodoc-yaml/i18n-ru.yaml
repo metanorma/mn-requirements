@@ -20,8 +20,8 @@ requirements:
     target: Цель
     testpurpose: Цель теста
     testmethod: Метод теста
-    dependency: Зависимость
-    indirectdependency: Косвенная зависимость
+    dependency: Условие
+    indirectdependency: Косвенное условие
     identifier: Идентификатор
     included_in: Входит в
     statement: Утверждение

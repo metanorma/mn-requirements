@@ -20,8 +20,8 @@ requirements:
     target: استهداف
     testpurpose: هدف الاختبار
     testmethod: طريقة اختبار
-    dependency: الاعتماد
-    indirectdependency: التبعية غير المباشرة
+    dependency: المتطلبات المسبقة
+    indirectdependency: شرط مسبق غير مباشر
     identifier: المعرف
     included_in: مدرج في
     statement: بيان

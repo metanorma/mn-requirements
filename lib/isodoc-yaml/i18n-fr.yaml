@@ -20,8 +20,8 @@ requirements:
     target: Cible
     testpurpose: Objectif du test
     testmethod: Méthode du test
-    dependency: Dépendance
-    indirectdependency: Dépendance indirecte
+    dependency: Prérequis
+    indirectdependency: Prérequis indirect
     identifier: Identifiant
     included_in: Inclus dans
     statement: Déclaration

@@ -20,8 +20,8 @@ requirements:
     target: 目标
     testpurpose: 测试目的
     testmethod: 测试方法
-    dependency: 依赖
-    indirectdependency: 间接依赖
+    dependency: 先决条件
+    indirectdependency: 间接先决条件
     identifier: 标识符
     included_in: 包含在
     statement: 陈述

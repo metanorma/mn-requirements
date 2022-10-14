@@ -20,8 +20,8 @@ requirements:
     target: Objetivo
     testpurpose: Propósito de prueba
     testmethod: Método de prueba
-    dependency: Dependencia
-    indirectdependency: Dependencia indirecta
+    dependency: Requisito
+    indirectdependency: Requisito indirecto
     identifier: Identificador
     included_in: Incluido en
     statement: Declaración
