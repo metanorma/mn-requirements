@@ -399,7 +399,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/3</tt></td>
                 </tr>
                 <tr>
-                  <th>Conformance test</th>
+                  <th>Conformance class</th>
                   <td>
                     <xref target='A4'>
                       Conformance class 1:

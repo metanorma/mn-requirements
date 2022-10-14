@@ -97,15 +97,8 @@ module Metanorma
       def recommendation_backlinks(node)
         ret = []
         id = node.at(ns("./identifier")) or return ret
-        %w(general class).include?(node["type"]) and
-          xref = recommendation_link_test(id.text) and
-          ret << [@labels["modspec"]["conformancetest"], xref]
-        ret
-        (node["type"].nil? || node["type"].empty? ||
-        node["type"] == "verification") and
-          xref = recommendation_link_class(id.text) and
-          ret << [@labels["modspec"]["included_in"], xref]
-        ret
+        ret = recommendation_backlinks_test(node, id, ret)
+        recommendation_backlinks_class(node, id, ret)
       end
 
       def recommendation_attributes1_dependencies(node, head)

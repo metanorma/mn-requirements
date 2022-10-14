@@ -116,6 +116,22 @@ module Metanorma
         test = @reqt_ids[ident&.strip] or return ident&.strip
         "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
       end
+
+      def recommendation_backlinks_test(node, id, ret)
+        (%w(general class).include?(node["type"]) &&
+          xref = recommendation_link_test(id.text)) or return ret
+        lbl = node["type"] == "general" ? "conformancetest" : "conformanceclass"
+        ret << [@labels["modspec"][lbl], xref]
+        ret
+      end
+
+      def recommendation_backlinks_class(node, id, ret)
+        (node["type"].nil? || node["type"].empty? ||
+        node["type"] == "verification") and
+          xref = recommendation_link_class(id.text) and
+          ret << [@labels["modspec"]["included_in"], xref]
+        ret
+      end
     end
   end
 end
