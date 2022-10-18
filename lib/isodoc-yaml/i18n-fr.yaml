@@ -27,3 +27,21 @@ requirements:
     statement: Déclaration
     guidance: Avis
     implements: Implémente
+    provision: Déclaration normative
+inflection:
+  Déclaration normative:
+    sg: Déclaration normative
+    pl: Déclarations normatives
+  Test de conformité:
+    sg: Tests de conformité
+    pl: Tests de conformité
+  Déclaration:
+    sg: Déclaration
+    pl: Déclarations
+  Prérequis:
+    sg: Prérequis
+    pl: Prérequis
+  Dépendance indirecte:
+    sg: Prérequis indirect
+    pl: Prérequis indirects
+

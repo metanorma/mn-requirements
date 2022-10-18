@@ -1,5 +1,6 @@
 require_relative "xrefs"
 require_relative "reqt_label"
+require_relative "table_cleanup"
 
 module Metanorma
   class Requirements
@@ -190,14 +191,6 @@ module Metanorma
                         "<td>#{dd.children.to_xml}</td></tr>")
         end
         out
-      end
-
-      def requirement_table_cleanup(_node, table)
-        table.xpath(ns("./tbody/tr/td/table")).each do |t|
-          x = t.at(ns("./thead/tr")) or next
-          t.parent.parent.replace(x)
-        end
-        table
       end
 
       def rec_subj(node)

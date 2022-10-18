@@ -27,3 +27,17 @@ requirements:
     statement: Aussage
     guidance: Anleitung
     implements: Implementiert
+    provision: Normative Aussage
+inflection:
+  Normative Aussage:
+    sg: Normative Aussage
+    pl: Normative Aussagen
+  Conformance test:
+    sg: Konformitätstest
+    pl: Konformitätstests
+  Voraussetzung:
+    sg: Voraussetzung
+    pl: Voraussetzungen
+  Indirekte Voraussetzung:
+    sg: Indirekte Voraussetzung
+    pl: Indirekte Voraussetzungen

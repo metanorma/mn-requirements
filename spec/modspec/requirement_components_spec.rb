@@ -196,11 +196,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <th>Guidance</th>
             <td>
               <p>GUIDANCE #1</p>
-            </td>
-          </tr>
-          <tr id='A8'>
-            <th>Guidance</th>
-            <td>
+              <br/>
               <p>GUIDANCE #2</p>
             </td>
           </tr>

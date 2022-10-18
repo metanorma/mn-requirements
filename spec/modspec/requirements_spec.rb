@@ -73,7 +73,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead>
             <tbody>
               <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
-              <tr><th>Subject</th><td>user</td></tr><tr><th>Prerequisite</th><td>/ss/584/2015/level/1</td></tr><tr><th>Prerequisite</th><td><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
+              <tr><th>Subject</th><td>user</td></tr>
+              <tr><th>Prerequisites</th><td>/ss/584/2015/level/1<br/>
+              <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
             <tr>
         <th>Control-CLASS</th>
         <td>Technical</td>
@@ -84,11 +86,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </tr>
       <tr>
         <th>Family</th>
-        <td>System and Communications Protection</td>
-      </tr>
-      <tr>
-        <th>Family</th>
-        <td>System and Communications Protocols</td>
+        <td>System and Communications Protection<br/>
+        System and Communications Protocols</td>
       </tr>
       <tr>
         <td colspan='2'>
@@ -287,11 +286,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                  <tr>
                    <th>Family</th>
-                   <td>System and Communications Protection</td>
-                 </tr>
-                 <tr>
-                   <th>Family</th>
-                   <td>System and Communications Protocols</td>
+                   <td>System and Communications Protection<br/>
+                   System and Communications Protocols</td>
                  </tr>
                  <tr>
                    <td colspan='2'>
@@ -402,7 +398,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead>
         <tbody>
           <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
-        <tr><th>Subject</th><td>user</td></tr><tr><th>Prerequisite</th><td>/ss/584/2015/level/1</td></tr><tr><th>Control-class</th><td>Technical</td></tr><tr><th>Priority</th><td>P0</td></tr><tr><th>Family</th><td>System and Communications Protection</td></tr><tr><th>Family</th><td>System and Communications Protocols</td></tr>
+        <tr><th>Subject</th><td>user</td></tr><tr><th>Prerequisite</th><td>/ss/584/2015/level/1</td></tr><tr><th>Control-class</th><td>Technical</td></tr><tr><th>Priority</th><td>P0</td></tr>
+          <tr><th>Family</th><td>System and Communications Protection<br/>
+         System and Communications Protocols</td></tr>
 
         <tr><td colspan="2">
           <p id="_">I recommend <em>this</em>.</p>
@@ -478,34 +476,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>user</td>
                 </tr>
                 <tr>
-                  <th>Prerequisite</th>
-                  <td>/ss/584/2015/level/1</td>
+                  <th>Prerequisites</th>
+                  <td>/ss/584/2015/level/1<br/>
+                  /ss/584/2015/level/2</td>
                 </tr>
                 <tr>
-                  <th>Prerequisite</th>
-                  <td>/ss/584/2015/level/2</td>
-                </tr>
-                <tr>
-                  <th>Permission</th>
+                  <th>Normative statements</th>
                   <td>
                     <xref target='B1'>
                       Permission 1:
                       <tt>/ogc/recommendation/wfs/10</tt>
                     </xref>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Requirement</th>
-                  <td>
-                    <xref target='A3'>
+                    <br/>
+                      <xref target='A3'>
                       Requirement 1-1:
                       <tt>Requirement 1</tt>
                     </xref>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Recommendation</th>
-                  <td>
+                  <br/>
                     <xref target='A4'>
                       Recommendation 1-1:
                       <tt>Recommendation 1</tt>
@@ -609,48 +596,31 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </td>
                  </tr>
                  <tr>
-                   <th>Prerequisite</th>
-                   <td>/ss/584/2015/level/1</td>
-                 </tr>
-                 <tr>
-                   <th>Prerequisite</th>
-                   <td>
+                   <th>Prerequisites</th>
+                   <td>/ss/584/2015/level/1<br/>
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <th>Indirect prerequisite</th>
+                   <th>Indirect prerequisites</th>
                    <td>
-                     <link target='http://www.example.com/'/>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Indirect prerequisite</th>
-                   <td>
+                     <link target='http://www.example.com/'/><br/>
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <th>Permission</th>
+                   <th>Conformance tests</th>
                    <td>
                      <xref target='B2'>
                        Permission 1:
                        <tt>Permission 1</tt>
                      </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Requirement</th>
-                   <td>
+                   <br/>
                      <xref target='A3'>
                        Requirement 1-1:
                        <tt>Requirement 1</tt>
                      </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Recommendation</th>
-                   <td>
+                   <br/>
                      <xref target='A4'>
                        Recommendation 1-1:
                        <tt>Recommendation 1</tt>
@@ -772,47 +742,30 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tr>
                  <tr>
                    <th>Pr&#xE9;requis</th>
-                   <td>/ss/584/2015/level/1</td>
-                 </tr>
-                 <tr>
-                   <th>Pr&#xE9;requis</th>
-                   <td>
+                   <td>/ss/584/2015/level/1<br/>
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
                    <th>Pr&#xE9;requis indirect</th>
                    <td>
-                     <link target='http://www.example.com/'/>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Pr&#xE9;requis indirect</th>
-                   <td>
+                     <link target='http://www.example.com/'/><br/>
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
                  <tr>
-                   <th>Autorisation</th>
+                   <th>Tests de conformit&#xE9;</th>
                    <td>
                      <xref target='B2'>
                        Autorisation 1&#xA0;:
                        <tt>Permission 1</tt>
                      </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Exigence</th>
-                   <td>
+                   <br/>
                      <xref target='A3'>
                        Exigence 1-1&#xA0;:
                        <tt>Requirement 1</tt>
                      </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Recommandation</th>
-                   <td>
+                   <br/>
                      <xref target='A4'>
                        Recommandation 1-1&#xA0;:
                        <tt>Recommendation 1</tt>
@@ -919,12 +872,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>user</td>
                  </tr>
                  <tr>
-                   <th>Prerequisite</th>
-                   <td>/ss/584/2015/level/1</td>
-                 </tr>
-                 <tr>
-                   <th>Prerequisite</th>
-                   <td>/ss/584/2015/level/2</td>
+                   <th>Prerequisites</th>
+                   <td>/ss/584/2015/level/1<br/>
+                   /ss/584/2015/level/2</td>
                  </tr>
                  <tr>
                  <th>Implements</th>
@@ -936,26 +886,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
            </td>
          </tr>
                  <tr>
-                   <th>Permission</th>
+                   <th>Normative statements</th>
                    <td>
                      <xref target='A5'>
                        Permission 1:
                        <tt>Permission 1</tt>
                      </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Requirement</th>
-                   <td>
+                   <br/>
                      <xref target='A3'>
                        Requirement 1-1:
                        <tt>Requirement 1</tt>
                      </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Recommendation</th>
-                   <td>
+                   <br/>
                      <xref target='A4'>
                        Recommendation 1-1:
                        <tt>Recommendation 1</tt>
@@ -1011,9 +953,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
         </permission>
-        <requirement model="ogc" id="A3">
+        <permission model="ogc" id="A3">
         <identifier>Requirement 1</identifier>
-        </requirement>
+        </permission>
         <recommendation model="ogc" id="A4">
         <identifier>Recommendation 1</identifier>
         </recommendation>
@@ -1044,34 +986,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>user</td>
                 </tr>
                 <tr>
-                  <th>Prerequisite</th>
-                  <td>/ss/584/2015/level/1</td>
+                  <th>Prerequisites</th>
+                  <td>/ss/584/2015/level/1<br/>
+                  /ss/584/2015/level/2</td>
                 </tr>
                 <tr>
-                  <th>Prerequisite</th>
-                  <td>/ss/584/2015/level/2</td>
-                </tr>
-                <tr>
-                  <th>Permission</th>
+                  <th>Normative statements</th>
                   <td>
                     <xref target='A2'>
                       Permission 1-1:
                       <tt>Permission 1</tt>
                     </xref>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Requirement</th>
-                  <td>
+                    <br/>
                     <xref target='A3'>
-                      Requirement 1-1:
+                      Permission 1-2:
                       <tt>Requirement 1</tt>
                     </xref>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Recommendation</th>
-                  <td>
+                    <br/>
                     <xref target='A4'>
                       Recommendation 1-1:
                       <tt>Recommendation 1</tt>
