@@ -3,39 +3,54 @@ module Metanorma
     class Modspec < Default
       def req_class_paths
         [
-          { klass: "permissionclass", label: @labels["modspec"]["permissionclass"],
+          { klass: "permissionclass",
+            label: @labels["modspec"]["permissionclass"],
             xpath: "permission[@type = 'class']" },
-          { klass: "requirementclass", label: @labels["modspec"]["requirementclass"],
+          { klass: "requirementclass",
+            label: @labels["modspec"]["requirementclass"],
             xpath: "requirement[@type = 'class']" },
-          { klass: "recommendationclass", label: @labels["modspec"]["recommendationclass"],
+          { klass: "recommendationclass",
+            label: @labels["modspec"]["recommendationclass"],
             xpath: "recommendation[@type = 'class']" },
-          { klass: "permissiontest", label: @labels["modspec"]["conformancetest"],
+          { klass: "permissiontest",
+            label: @labels["modspec"]["conformancetest"],
             xpath: "permission[@type = 'verification']" },
-          { klass: "recommendationtest", label: @labels["modspec"]["conformancetest"],
+          { klass: "recommendationtest",
+            label: @labels["modspec"]["conformancetest"],
             xpath: "recommendation[@type = 'verification']" },
-          { klass: "requirementtest", label: @labels["modspec"]["conformancetest"],
+          { klass: "requirementtest",
+            label: @labels["modspec"]["conformancetest"],
             xpath: "requirement[@type = 'verification']" },
-          { klass: "abstracttest", label: @labels["modspec"]["abstracttest"],
+          { klass: "abstracttest",
+            label: @labels["modspec"]["abstracttest"],
             xpath: "permission[@type = 'abstracttest']" },
-          { klass: "abstracttest", label: @labels["modspec"]["abstracttest"],
+          { klass: "abstracttest",
+            label: @labels["modspec"]["abstracttest"],
             xpath: "requirement[@type = 'abstracttest']" },
-          { klass: "abstracttest", label: @labels["modspec"]["abstracttest"],
+          { klass: "abstracttest",
+            label: @labels["modspec"]["abstracttest"],
             xpath: "recommendation[@type = 'abstracttest']" },
-          { klass: "conformanceclass", label: @labels["modspec"]["conformanceclass"],
+          { klass: "conformanceclass",
+            label: @labels["modspec"]["conformanceclass"],
             xpath: "permission[@type = 'conformanceclass']" },
-          { klass: "conformanceclass", label: @labels["modspec"]["conformanceclass"],
+          { klass: "conformanceclass",
+            label: @labels["modspec"]["conformanceclass"],
             xpath: "requirement[@type = 'conformanceclass']" },
-          { klass: "conformanceclass", label: @labels["modspec"]["conformanceclass"],
+          { klass: "conformanceclass",
+            label: @labels["modspec"]["conformanceclass"],
             xpath: "recommendation[@type = 'conformanceclass']" },
-          { klass: "permission", label: @labels["default"]["permission"],
-            xpath: "permission[not(@type = 'verification' or @type = 'class' "\
+          { klass: "permission",
+            label: @labels["default"]["permission"],
+            xpath: "permission[not(@type = 'verification' or @type = 'class' " \
                    "or @type = 'abstracttest' or @type = 'conformanceclass')]" },
-          { klass: "recommendation", label: @labels["default"]["recommendation"],
-            xpath: "recommendation[not(@type = 'verification' or "\
-                   "@type = 'class' or @type = 'abstracttest' or "\
+          { klass: "recommendation",
+            label: @labels["default"]["recommendation"],
+            xpath: "recommendation[not(@type = 'verification' or " \
+                   "@type = 'class' or @type = 'abstracttest' or " \
                    "@type = 'conformanceclass')]" },
-          { klass: "requirement", label: @labels["default"]["requirement"],
-            xpath: "requirement[not(@type = 'verification' or @type = 'class' "\
+          { klass: "requirement",
+            label: @labels["default"]["requirement"],
+            xpath: "requirement[not(@type = 'verification' or @type = 'class' " \
                    "or @type = 'abstracttest' or @type = 'conformanceclass')]" },
         ]
       end

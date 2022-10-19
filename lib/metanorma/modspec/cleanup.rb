@@ -74,7 +74,9 @@ module Metanorma
       end
 
       def requirement_target_identifiers(reqt)
-        reqt.xpath("./classification[tag = 'target']/value[link]").each do |v|
+        reqt.xpath("./classification[tag][value/link]").each do |c|
+          c.at("./tag").text.casecmp("target").zero? or next
+          v = c.at("./value[link]")
           v.children = v.at("./link/@target").text
         end
       end

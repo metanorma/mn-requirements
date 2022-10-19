@@ -87,12 +87,18 @@ module Metanorma
           head << [@labels["default"]["obligation"], oblig]
         subj = node.at(ns("./subject"))&.children and
           head << [rec_subj(node), subj]
-        node.xpath(ns("./classification[tag = 'target']/value")).each do |v|
-          xref = recommendation_id(v.text) and
-            head << [rec_target(node), xref]
-        end
+        head = recommendation_attributes1_target(node, head)
         head += recommendation_backlinks(node)
         recommendation_attributes1_dependencies(node, head)
+      end
+
+      def recommendation_attributes1_target(node, head)
+        node.xpath(ns("./classification[tag][value]")).each do |c|
+          c.at(ns("./tag")).text.casecmp("target").zero? or next
+          xref = recommendation_id(c.at(ns("./value")).text) and
+            head << [rec_target(node), xref]
+        end
+        head
       end
 
       def recommendation_backlinks(node)
@@ -103,13 +109,23 @@ module Metanorma
       end
 
       def recommendation_attributes1_dependencies(node, head)
+        head = recommendation_attributes1_inherit(node, head)
+        recommendation_attributes_dependencies2(node, head)
+      end
+
+      def recommendation_attributes1_inherit(node, head)
         node.xpath(ns("./inherit")).each do |i|
           head << [@labels["modspec"]["dependency"],
                    recommendation_id(i.children.to_xml)]
         end
+        head
+      end
+
+      def recommendation_attributes_dependencies2(node, head)
         %w(indirect-dependency implements).each do |x|
-          node.xpath(ns("./classification[tag = '#{x}']/value")).each do |v|
-            xref = recommendation_id(v.children.to_xml) and
+          node.xpath(ns("./classification[tag][value]")).each do |c|
+            c.at(ns("./tag")).text.casecmp(x).zero? or next
+            xref = recommendation_id(c.at(ns("./value")).children.to_xml) and
               head << [@labels["modspec"][x.gsub(/-/, "")], xref]
           end
         end
@@ -146,7 +162,7 @@ module Metanorma
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
-        !%w(target indirect-dependency implements).include?(tag.text) or
+        !%w(target indirect-dependency implements).include?(tag.text.downcase) or
           return nil
         [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]
       end

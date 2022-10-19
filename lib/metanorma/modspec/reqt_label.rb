@@ -73,16 +73,26 @@ module Metanorma
       def reqt_links_test(docxml)
         docxml.xpath(ns("//requirement | //recommendation | //permission"))
           .each_with_object({}) do |r, m|
-            next unless %w(conformanceclass
-                           verification).include?(r["type"])
-
-            subj = r.at(ns("./classification[tag = 'target']/value"))
-            id = r.at(ns("./identifier")) or next
-            lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
-            next unless subj && lbl
-
-            m[subj.text] = { lbl: lbl, id: r["id"] }
+            reqt_links_test1(r, m)
           end
+      end
+
+      def reqt_links_test1(reqt, acc)
+        return unless %w(conformanceclass
+                         verification).include?(reqt["type"])
+
+        subj = reqt_extract_target(reqt)
+        id = reqt.at(ns("./identifier")) or return
+        lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
+        return unless subj && lbl
+
+        acc[subj.text] = { lbl: lbl, id: reqt["id"] }
+      end
+
+      def reqt_extract_target(reqt)
+        reqt.xpath(ns("./classification[tag][value]")).detect do |x|
+          x.at(ns("./tag")).text.casecmp("target").zero?
+        end&.at(ns("./value"))
       end
 
       def recommendation_link_test(ident)

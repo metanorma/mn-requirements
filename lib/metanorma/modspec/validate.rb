@@ -124,8 +124,11 @@ module Metanorma
       end
 
       def classif_tag(reqt, tag)
-        reqt.xpath("./classification[tag = '#{tag}']/value")
-          .map(&:text)
+        reqt.xpath("./classification[tag][value]")
+          .each_with_object([]) do |c, m|
+          c.at("./tag").text.casecmp(tag).zero? or next
+          m << c.at("./value").text
+        end
       end
 
       def reqt_links_struct(reqt)
