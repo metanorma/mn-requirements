@@ -372,4 +372,78 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(File.read("test.err"))
       .to include "Conformance test A has no corresponding Conformance class"
   end
+
+  it "warns of disconnect between prerequisites and provisions" do
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :requirements-model: ogc
+
+      [[A1]]
+      [.requirement,type=conformance_test]
+      ====
+      [%metadata]
+      identifier:: A
+      inherit:: B
+      indirect-dependency:: C
+      implements:: D
+      ====
+
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Provision A points to Prerequisite B outside this document"
+    expect(File.read("test.err"))
+      .to include "Provision A points to Indirect prerequisite C outside this document"
+    expect(File.read("test.err"))
+      .to include "Provision A points to Implemented provision D outside this document"
+
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :requirements-model: ogc
+
+      [[A1]]
+      [.requirement,type=conformance_test]
+      ====
+      [%metadata]
+      identifier:: A
+      inherit:: B
+      indirect-dependency:: C
+      ====
+
+      [[B1]]
+      [.requirement,type=conformance_class]
+      ====
+      [%metadata]
+      identifier:: B
+      ====
+
+      [[C1]]
+      [.requirement,type=conformance_class]
+      ====
+      [%metadata]
+      identifier:: C
+      ====
+
+      [[D1]]
+      [.requirement,type=conformance_class]
+      ====
+      [%metadata]
+      identifier:: D
+      ====
+
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "Provision A points to Prerequisite B outside this document"
+    expect(File.read("test.err"))
+      .not_to include "Provision A points to Indirect prerequisite C outside this document"
+    expect(File.read("test.err"))
+      .not_to include "Provision A points to Implemented provision D outside this document"
+  end
 end

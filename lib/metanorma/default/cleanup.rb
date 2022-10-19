@@ -16,8 +16,8 @@ module Metanorma
 
       def requirement_inherit_insert(reqt)
         ins = reqt.at("./classification") || reqt.at(
-          "./description | ./measurementtarget | ./specification | "\
-          "./verification | ./import | ./description | ./component | "\
+          "./description | ./measurementtarget | ./specification | " \
+          "./verification | ./import | ./description | ./component | " \
           "./requirement | ./recommendation | ./permission",
         ) and return ins
         requirement_inherit_insert1(reqt)
@@ -56,7 +56,7 @@ module Metanorma
       end
 
       def requirement_description_cleanup1(reqt)
-        while d = reqt.at("./description[following-sibling::*[1]"\
+        while d = reqt.at("./description[following-sibling::*[1]" \
                           "[self::description]]")
           n = d.next.remove
           d << n.children
@@ -115,7 +115,7 @@ module Metanorma
         dlist.xpath("./dt[text()='classification']").each do |e|
           val = e.at("./following::dd/p") || e.at("./following::dd")
           req_classif_parse(val.children.to_xml).each do |r|
-            ins.next = "<classification><tag>#{r[0]}</tag>"\
+            ins.next = "<classification><tag>#{r[0]}</tag>" \
                        "<value>#{r[1]}</value></classification>"
             ins = ins.next
           end
@@ -137,7 +137,7 @@ module Metanorma
 
       def reqt_dl_to_classif2(term, ins)
         val = term.at("./following::dd/p") || e.at("./following::dd")
-        ins.next = "<classification><tag>#{term.text}</tag>"\
+        ins.next = "<classification><tag>#{term.text}</tag>" \
                    "<value>#{val.children.to_xml}</value></classification>"
         ins.next
       end

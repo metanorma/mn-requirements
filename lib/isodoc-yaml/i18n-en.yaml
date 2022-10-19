@@ -20,10 +20,27 @@ requirements:
     target: Target
     testpurpose: Test purpose
     testmethod: Test method
-    dependency: Dependency
-    indirectdependency: Indirect Dependency
+    dependency: Prerequisite
+    indirectdependency: Indirect prerequisite
     identifier: Identifier
     included_in: Included in
     statement: Statement
     guidance: Guidance
-
+    implements: Implements
+    provision: Normative statement
+inflection:
+  Normative statement:
+    sg: Normative statement
+    pl: Normative statements
+  Conformance test:
+    sg: Conformance test
+    pl: Conformance tests
+  Statement:
+    sg: Statement
+    pl: Statements
+  Prerequisite:
+    sg: Prerequisite
+    pl: Prerequisites
+  Indirect prerequisite:
+    sg: Indirect prerequisite
+    pl: Indirect prerequisites

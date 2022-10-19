@@ -20,9 +20,25 @@ requirements:
     target: استهداف
     testpurpose: هدف الاختبار
     testmethod: طريقة اختبار
-    dependency: الاعتماد
-    indirectdependency: التبعية غير المباشرة
+    dependency: المتطلبات المسبقة
+    indirectdependency: شرط مسبق غير مباشر
     identifier: المعرف
     included_in: مدرج في
     statement: بيان
     guidance: إرشاد
+    implements: تنفذ
+    provision: بيان المعياري
+inflection:
+  بيان المعياري:
+    sg: بيان المعياري
+    pl: البيانات المعيارية
+  اختبار المطابقة:
+    sg: اختبار المطابقة
+    pl: اختبارات المطابقة
+  المتطلبات المسبقة:
+    sg: المتطلبات المسبقة
+    pl: المتطلبات الأساسية
+  شرط مسبق غير مباشر:
+    sg: شرط مسبق غير مباشر
+    pl: المتطلبات الأساسية غير المباشرة
+

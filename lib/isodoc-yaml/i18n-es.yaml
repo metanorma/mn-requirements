@@ -20,9 +20,28 @@ requirements:
     target: Objetivo
     testpurpose: Propósito de prueba
     testmethod: Método de prueba
-    dependency: Dependencia
-    indirectdependency: Dependencia indirecta
+    dependency: Requisito
+    indirectdependency: Requisito indirecto
     identifier: Identificador
     included_in: Incluido en
     statement: Declaración
     guidance: Orientación
+    implements: Implementa
+    provision: Declaración normativa
+inflection:
+  Declaración normativa:
+    sg: Declaración normativa
+    pl: Declaraciones normativas
+  Prueba de conformidad:
+    sg: Prueba de conformidad
+    pl: Pruebas de conformidad
+  Déclaration:
+    sg: Déclaration
+    pl: Déclarations
+  Prérequis:
+    sg: Prérequis
+    pl: Prérequis
+  Dépendance indirecte:
+    sg: Prérequis indirect
+    pl: Prérequis indirects
+

@@ -20,10 +20,24 @@ requirements:
     target: Ziel
     testpurpose: Testzweck
     testmethod: Testmethode
-    dependency: Abhängigkeit
-    indirectdependency: Indirekte Abhängigkeit
+    dependency: Voraussetzung
+    indirectdependency: Indirekte Voraussetzung
     identifier: Kennung
     included_in: Enthalten in
     statement: Aussage
     guidance: Anleitung
-
+    implements: Implementiert
+    provision: Normative Aussage
+inflection:
+  Normative Aussage:
+    sg: Normative Aussage
+    pl: Normative Aussagen
+  Conformance test:
+    sg: Konformitätstest
+    pl: Konformitätstests
+  Voraussetzung:
+    sg: Voraussetzung
+    pl: Voraussetzungen
+  Indirekte Voraussetzung:
+    sg: Indirekte Voraussetzung
+    pl: Indirekte Voraussetzungen
