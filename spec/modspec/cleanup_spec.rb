@@ -165,9 +165,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </classification>
              <classification>
                <tag>indirect-dependency</tag>
-               <value>
-                 <link target='http://www.example.com'/>
-               </value>
+               <value>http://www.example.com</value>
              </classification>
              <classification>
                <tag>Indirect-dependency</tag>
