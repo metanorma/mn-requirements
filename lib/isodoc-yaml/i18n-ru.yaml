@@ -25,6 +25,7 @@ requirements:
     identifier: Идентификатор
     included_in: Входит в
     statement: Утверждение
+    description: Описание
     guidance: Руководство
     implements: Реализует
     provision: Нормативное положение

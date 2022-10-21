@@ -25,6 +25,7 @@ requirements:
     identifier: 标识符
     included_in: 包含在
     statement: 陈述
+    description: 描述
     guidance: 指导意见
     implements: 它实现
     provision: 规范性陈述

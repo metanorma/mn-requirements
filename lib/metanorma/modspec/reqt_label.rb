@@ -142,6 +142,47 @@ module Metanorma
           ret << [@labels["modspec"]["included_in"], xref]
         ret
       end
+
+      def rec_subj(node)
+        case node["type"]
+        when "class" then @labels["modspec"]["targettype"]
+        else @labels["default"]["subject"]
+        end
+      end
+
+      def rec_target(node)
+        case node["type"]
+        when "class" then @labels["modspec"]["targettype"]
+        when "conformanceclass" then @labels["modspec"]["requirementclass"]
+        when "verification", "abstracttest" then @labels["default"]["requirement"]
+        else @labels["modspec"]["target"]
+        end
+      end
+
+      def recommend_class(node)
+        case node["type"]
+        when "verification", "abstracttest" then "recommendtest"
+        when "class", "conformanceclass" then "recommendclass"
+        else "recommend"
+        end
+      end
+
+      def recommend_name_class(node)
+        if %w(verification abstracttest).include?(node["type"])
+          "RecommendationTestTitle"
+        else "RecommendationTitle"
+        end
+      end
+
+      def recommend_component_label(node)
+        c = case node["class"]
+            when "test-purpose" then "Test purpose"
+            when "test-method" then "Test method"
+            else node["class"]
+            end
+        @labels["default"][c] || @labels["modspec"][c] ||
+          Metanorma::Utils.strict_capitalize_first(c)
+      end
     end
   end
 end

@@ -25,6 +25,7 @@ requirements:
     identifier: Identifiant
     included_in: Inclus dans
     statement: Déclaration
+    description: Description
     guidance: Avis
     implements: Implémente
     provision: Déclaration normative

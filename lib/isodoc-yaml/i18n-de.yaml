@@ -25,6 +25,7 @@ requirements:
     identifier: Kennung
     included_in: Enthalten in
     statement: Aussage
+    description: Beschreibung
     guidance: Anleitung
     implements: Implementiert
     provision: Normative Aussage

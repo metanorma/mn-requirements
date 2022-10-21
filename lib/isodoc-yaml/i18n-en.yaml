@@ -25,6 +25,7 @@ requirements:
     identifier: Identifier
     included_in: Included in
     statement: Statement
+    description: Description
     guidance: Guidance
     implements: Implements
     provision: Normative statement

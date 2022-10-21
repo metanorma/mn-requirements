@@ -72,7 +72,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <table id="A1" class="modspec" type="recommend">
             <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead>
             <tbody>
-              <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
+              <tr><th>Identifier</th><td><tt>/ogc/recommendation/wfs/2</tt></td></tr>
               <tr><th>Subject</th><td>user</td></tr>
               <tr><th>Prerequisites</th><td>/ss/584/2015/level/1<br/>
               <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td></tr>
@@ -90,7 +90,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         System and Communications Protocols</td>
       </tr>
       <tr>
-        <td colspan='2'>
+      <th>Statement</th>
+        <td>
           <p id='_'>
             I recommend
             <em>this</em>
@@ -266,7 +267,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                 <th>Identifier</th>
+                <td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                  <tr>
                    <th>Subject</th>
@@ -290,7 +292,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    System and Communications Protocols</td>
                  </tr>
                  <tr>
-                   <td colspan='2'>
+                 <th>Statement</th>
+                 <td>
                      <p id='_'>
                        I recommend
                        <em>this</em>
@@ -307,7 +310,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>D</td>
                  </tr>
                  <tr>
-                   <td colspan='2'>
+                   <td colspan="2">
                      <p id='_'>The measurement target shall be measured as:</p>
                      <formula id='_'>
                        <name>1</name>
@@ -397,19 +400,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <table id="A1" type="recommendtest" class="modspec">
       <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead>
         <tbody>
-          <tr><td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td></tr>
+          <tr>
+          <th>Identifier</th>
+        <td><tt>/ogc/recommendation/wfs/2</tt></td></tr>
         <tr><th>Subject</th><td>user</td></tr><tr><th>Prerequisite</th><td>/ss/584/2015/level/1</td></tr><tr><th>Control-class</th><td>Technical</td></tr><tr><th>Priority</th><td>P0</td></tr>
           <tr><th>Family</th><td>System and Communications Protection<br/>
          System and Communications Protocols</td></tr>
 
-        <tr><td colspan="2">
+        <tr><th>Statement</th>
+        <td>
           <p id="_">I recommend <em>this</em>.</p>
         </td></tr><tr><th>A</th><td>B</td></tr><tr><th>C</th><td>D</td></tr><tr><td colspan="2">
           <p id="_">The measurement target shall be measured as:</p>
           <formula id="_"><name>1</name>
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
-        </td></tr><tr><td colspan="2">
+        </td></tr><tr>
+        <td colspan="2">
           <p id="_">The following code will be run for verification:</p>
           <sourcecode id="_">CoreRoot(success): HttpResponse
             if (success)
@@ -469,7 +476,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <th>Target type</th>
@@ -511,7 +519,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/10</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/10</tt></td>
                 </tr>
                 <tr>
                   <th>Included in</th>
@@ -548,6 +557,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <classification><tag>target</target><value>ABC</value></classification>
         <classification><tag>indirect-dependency</target><value><link target="http://www.example.com/"/></value></classification>
         <classification><tag>indirect-dependency</target><value>ABC</value></classification>
+        <description>Hic incipit</description>
         <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
         </permission>
@@ -583,7 +593,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                 <th>Identifier</th>
+                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
                    <th>Subject</th>
@@ -608,6 +619,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
                      <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
                    </td>
                  </tr>
+                 <tr>
+            <th>Description</th>
+            <td>Hic incipit</td>
+          </tr>
                  <tr>
                    <th>Conformance tests</th>
                    <td>
@@ -639,7 +654,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td scope='colgroup' colspan='2'><tt>ABC</tt></td>
+                 <th>Identifier</th>
+                   <td><tt>ABC</tt></td>
                  </tr>
                </tbody>
              </table>
@@ -653,7 +669,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </thead>
         <tbody>
           <tr>
-            <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
+          <th>Identifier</th>
+            <td><tt>Permission 1</tt></td>
           </tr>
           <tr>
             <th>Included in</th>
@@ -691,6 +708,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <classification><tag>target</target><value>ABC</value></classification>
         <classification><tag>indirect-dependency</target><value><link target="http://www.example.com/"/></value></classification>
         <classification><tag>indirect-dependency</target><value>ABC</value></classification>
+        <description>Hic incipit</description>
         <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
         </permission>
@@ -728,7 +746,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                 <th>Identifiant</th>
+                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
                    <th>Sujet</th>
@@ -753,6 +772,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
                      <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
                    </td>
                  </tr>
+                 <tr>
+            <th>Description</th>
+            <td>Hic incipit</td>
+          </tr>
                  <tr>
                    <th>Tests de conformit&#xE9;</th>
                    <td>
@@ -784,7 +807,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td scope='colgroup' colspan='2'><tt>ABC</tt></td>
+                 <th>Identifiant</th>
+                   <td><tt>ABC</tt></td>
                  </tr>
                </tbody>
              </table>
@@ -798,7 +822,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </thead>
         <tbody>
           <tr>
-            <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
+          <th>Identifiant</th>
+            <td><tt>Permission 1</tt></td>
           </tr>
           <tr>
             <th>Inclus dans</th>
@@ -833,6 +858,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <inherit>/ss/584/2015/level/2</inherit>
         <classification><tag>implements</target><value>Permission 1</value></classification>
         <subject>user</subject>
+        <description>Hic incipit</description>
         <permission model="ogc" id="A2">
         <identifier>Permission 1</identifier>
         </permission>
@@ -865,7 +891,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                 <th>Identifier</th>
+                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
                  </tr>
                  <tr>
                    <th>Target type</th>
@@ -885,6 +912,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </xref>
            </td>
          </tr>
+         <tr>
+             <th>Description</th>
+            <td>Hic incipit</td>
+          </tr>
                  <tr>
                    <th>Normative statements</th>
                    <td>
@@ -916,7 +947,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </thead>
                <tbody>
                  <tr>
-                   <td scope='colgroup' colspan='2'><tt>Permission 1</tt></td>
+                 <th>Identifier</th>
+                   <td><tt>Permission 1</tt></td>
                  </tr>
                  <tr>
                    <th>Included in</th>
@@ -979,7 +1011,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <th>Target type</th>
@@ -1089,7 +1122,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <th>Subject</th>
@@ -1100,16 +1134,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
-                  <td colspan='2'>
+                <th>Statements</th>
+                  <td>
                     <p id='_'>
                       I recommend
                       <em>this</em>
                       .
                     </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan='2'>
+                  <br/>
                     <p id='_'>As for the measurement targets,</p>
                   </td>
                 </tr>
@@ -1211,7 +1243,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <th>Subject</th>
@@ -1222,16 +1255,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <td>/ss/584/2015/level/1</td>
                 </tr>
                 <tr>
-                  <td colspan='2'>
+                <th>Statements</th><td>
                     <p id='_'>
                       I recommend
                       <em>this</em>
                       .
                     </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan='2'>
+                    <br/>
                     <p id='_'>As for the measurement targets,</p>
                   </td>
                 </tr>

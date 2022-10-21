@@ -35,176 +35,180 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     presxml = <<~OUTPUT
       <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-         <preface>
-           <foreword id='A' displayorder='1'>
-             <title>Preface</title>
-             <table id='_' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Recommendation 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td scope='colgroup' colspan='2'>
-                     <tt>/ogc/recommendation/wfs/2</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Subject</th>
-                   <td>user</td>
-                 </tr>
-                 <tr>
-                   <th>Prerequisite</th>
-                   <td>/ss/584/2015/level/1</td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>1</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A1'>
-                   <th>Test purpose</th>
-                   <td>
-                     <p>TEST PURPOSE</p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>2</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>2a</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A2'>
-                   <th>Conditions</th>
-                   <td>
-                     <p>CONDITIONS</p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>3</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A3'>
-                   <th>A</th>
-                   <td>
-                     <p>FIRST PART</p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>4</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A4'>
-                   <th>B</th>
-                   <td>
-                     <p>SECOND PART</p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>5</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A5'>
-                   <th>Test method</th>
-                   <td>
-                     <p>TEST METHOD</p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>6</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A6'>
-                   <th>C</th>
-                   <td>
-                     <p>THIRD PART</p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>7</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>7a</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A7'>
-                   <th>Panda GHz express</th>
-                   <td>
-                     <p>PANDA PART</p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>
-                       I recommend
-                       <em>8</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr id='A7'>
-            <th>Guidance</th>
-            <td>
-              <p>GUIDANCE #1</p>
-              <br/>
-              <p>GUIDANCE #2</p>
-            </td>
-          </tr>
-               </tbody>
-             </table>
-           </foreword>
-         </preface>
-       </ogc-standard>
+            <preface>
+          <foreword id='A' displayorder='1'>
+            <title>Preface</title>
+            <table id='_' class='modspec' type='recommend'>
+              <thead>
+                <tr>
+                  <th scope='colgroup' colspan='2'>
+                    <p class='RecommendationTitle'>Recommendation 1</p>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Identifier</th>
+                  <td>
+                    <tt>/ogc/recommendation/wfs/2</tt>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Subject</th>
+                  <td>user</td>
+                </tr>
+                <tr>
+                  <th>Prerequisite</th>
+                  <td>/ss/584/2015/level/1</td>
+                </tr>
+                <tr>
+                  <th>Statement</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>1</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A1'>
+                  <th>Test purpose</th>
+                  <td>
+                    <p>TEST PURPOSE</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Statements</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>2</em>
+                      .
+                    </p>
+                    <br/>
+                    <p id='_'>
+                      I recommend
+                      <em>2a</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A2'>
+                  <th>Conditions</th>
+                  <td>
+                    <p>CONDITIONS</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Statement</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>3</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A3'>
+                  <th>A</th>
+                  <td>
+                    <p>FIRST PART</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Statement</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>4</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A4'>
+                  <th>B</th>
+                  <td>
+                    <p>SECOND PART</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Statement</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>5</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A5'>
+                  <th>Test method</th>
+                  <td>
+                    <p>TEST METHOD</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Statement</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>6</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A6'>
+                  <th>C</th>
+                  <td>
+                    <p>THIRD PART</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Statements</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>7</em>
+                      .
+                    </p>
+                    <br/>
+                    <p id='_'>
+                      I recommend
+                      <em>7a</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A7'>
+                  <th>Panda GHz express</th>
+                  <td>
+                    <p>PANDA PART</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Statement</th>
+                  <td>
+                    <p id='_'>
+                      I recommend
+                      <em>8</em>
+                      .
+                    </p>
+                  </td>
+                </tr>
+                <tr id='A7'>
+                  <th>Guidance</th>
+                  <td>
+                    <p>GUIDANCE #1</p>
+                    <br/>
+                    <p>GUIDANCE #2</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </foreword>
+        </preface>
+      </ogc-standard>
+
     OUTPUT
 
     expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
@@ -349,7 +353,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/1</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/1</tt></td>
                 </tr>
                 <tr>
                   <th>Conformance test</th>
@@ -372,7 +377,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/2</tt></td>
+                <th>Identifier</th><td><tt>/ogc/recommendation/wfs/2</tt></td>
                 </tr>
                 <tr>
                   <th>Requirement</th>
@@ -392,7 +397,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/3</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/3</tt></td>
                 </tr>
                 <tr>
                   <th>Conformance class</th>
@@ -415,7 +421,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </thead>
               <tbody>
                 <tr>
-                  <td scope='colgroup' colspan='2'><tt>/ogc/recommendation/wfs/4</tt></td>
+                <th>Identifier</th>
+                  <td><tt>/ogc/recommendation/wfs/4</tt></td>
                 </tr>
                 <tr>
                   <th>Requirements class</th>

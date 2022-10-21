@@ -69,8 +69,8 @@ module Metanorma
 
       def recommend_title(node, out)
         label = node.at(ns("./identifier")) or return
-        out.add_child("<tr><td scope='colgroup' colspan='2'>" \
-                      "<tt>#{label.children.to_xml}</tt></td>")
+        out.add_child("<tr><th>#{@labels['modspec']['identifier']}</th>" \
+                      "<td><tt>#{label.children.to_xml}</tt></td>")
       end
 
       def recommendation_attributes1(node)
@@ -162,7 +162,8 @@ module Metanorma
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
-        !%w(target indirect-dependency implements).include?(tag.text.downcase) or
+        !%w(target indirect-dependency
+            implements).include?(tag.text.downcase) or
           return nil
         [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]
       end
@@ -184,9 +185,20 @@ module Metanorma
           return reqt_dl(node.first_element_child, out)
         node.name == "component" and
           return recommendation_attributes1_component(node, out)
+        node.name == "description" and
+          return requirement_description_parse(node, out)
         out.add_child("<tr#{id_attr(node)}><td colspan='2'></td></tr>").first
           .at(ns(".//td")) <<
           (preserve_in_nested_table?(node) ? node : node.children)
+        out
+      end
+
+      def requirement_description_parse(node, out)
+        lbl = "statement"
+        recommend_class(node.parent) == "recommendclass" and
+          lbl = "description"
+        out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
+               "<td>#{node.children.to_xml}</td></tr>"
         out
       end
 
@@ -207,47 +219,6 @@ module Metanorma
                         "<td>#{dd.children.to_xml}</td></tr>")
         end
         out
-      end
-
-      def rec_subj(node)
-        case node["type"]
-        when "class" then @labels["modspec"]["targettype"]
-        else @labels["default"]["subject"]
-        end
-      end
-
-      def rec_target(node)
-        case node["type"]
-        when "class" then @labels["modspec"]["targettype"]
-        when "conformanceclass" then @labels["modspec"]["requirementclass"]
-        when "verification", "abstracttest" then @labels["default"]["requirement"]
-        else @labels["modspec"]["target"]
-        end
-      end
-
-      def recommend_class(node)
-        case node["type"]
-        when "verification", "abstracttest" then "recommendtest"
-        when "class", "conformanceclass" then "recommendclass"
-        else "recommend"
-        end
-      end
-
-      def recommend_name_class(node)
-        if %w(verification abstracttest).include?(node["type"])
-          "RecommendationTestTitle"
-        else "RecommendationTitle"
-        end
-      end
-
-      def recommend_component_label(node)
-        c = case node["class"]
-            when "test-purpose" then "Test purpose"
-            when "test-method" then "Test method"
-            else node["class"]
-            end
-        @labels["default"][c] || @labels["modspec"][c] ||
-          Metanorma::Utils.strict_capitalize_first(c)
       end
     end
   end

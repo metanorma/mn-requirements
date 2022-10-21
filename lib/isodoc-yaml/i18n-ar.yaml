@@ -25,6 +25,7 @@ requirements:
     identifier: المعرف
     included_in: مدرج في
     statement: بيان
+    description: وصف
     guidance: إرشاد
     implements: تنفذ
     provision: بيان المعياري
