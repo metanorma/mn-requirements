@@ -5,6 +5,7 @@ RSpec.describe Metanorma::Requirements::Default do
   it "processes recommendation" do
     input = <<~"INPUT"
       #{ASCIIDOC_BLANK_HDR}
+      [[id1]]
       [.recommendation,identifier="/ogc/recommendation/wfs/2",subject="user;developer, implementer",inherit="/ss/584/2015/level/1; /ss/584/2015/level/2",options="unnumbered",type=verification,model=ogc,tag=X,multilingual-rendering=common]
       ====
       I recommend this
@@ -12,18 +13,28 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     output = <<~"OUTPUT"
       #{BLANK_HDR}
-              <sections>
-         <recommendation id="_" unnumbered="true" type="verification" model="ogc" tag='X' multilingual-rendering='common'>
-         <identifier>/ogc/recommendation/wfs/2</identifier>
-       <subject>user</subject>
-       <subject>developer, implementer</subject>
-       <inherit>/ss/584/2015/level/1</inherit>
-       <inherit>/ss/584/2015/level/2</inherit>
-         <description><p id="_">I recommend this</p>
-       </description>
-       </recommendation>
-              </sections>
-              </standard-document>
+        <misc-container>
+          <table id='_'>
+            <tbody>
+              <tr>
+                <th>id1</th>
+                <td>/ogc/recommendation/wfs/2</td>
+              </tr>
+            </tbody>
+          </table>
+        </misc-container>
+        <sections>
+          <recommendation id="id1" unnumbered="true" type="verification" model="ogc" tag='X' multilingual-rendering='common'>
+             <identifier>/ogc/recommendation/wfs/2</identifier>
+             <subject>user</subject>
+             <subject>developer, implementer</subject>
+             <inherit>/ss/584/2015/level/1</inherit>
+             <inherit>/ss/584/2015/level/2</inherit>
+               <description><p id="_">I recommend this</p>
+             </description>
+          </recommendation>
+        </sections>
+      </standard-document>
     OUTPUT
 
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
