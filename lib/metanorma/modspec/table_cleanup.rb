@@ -4,6 +4,7 @@ module Metanorma
       def requirement_table_cleanup(node, table)
         table = requirement_table_nested_cleanup(node, table)
         requirement_table_consec_rows_cleanup(node, table)
+        truncate_id_base_in_reqt(table)
         table
       end
 
@@ -56,6 +57,14 @@ module Metanorma
         label = "provision"
         node["type"] == "conformanceclass" and label = "conformancetest"
         @i18n.get["requirements"]["modspec"][label]
+      end
+
+      def truncate_id_base_in_reqt(table)
+        base = @reqt_id_base[table["id"]] or return
+        table.xpath(ns(".//xref[@style = 'id']")).each do |x|
+          @reqt_id_base[x["target"]] or next # is a modspec requirement
+          x.children = x.children.to_xml.delete_prefix(base)
+        end
       end
     end
   end

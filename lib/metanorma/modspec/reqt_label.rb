@@ -31,6 +31,8 @@ module Metanorma
         @reqt_ids = reqt_ids(doc)
         @reqt_links_class = reqt_links_class(doc)
         @reqt_links_test = reqt_links_test(doc)
+        @reqt_id_base = reqt_id_base(doc)
+        truncate_id_base_outside_reqts(doc)
       end
 
       def reqtlabels(doc)
@@ -95,11 +97,18 @@ module Metanorma
         end&.at(ns("./value"))
       end
 
+      def reqt_extract_id_base(reqt)
+        reqt.xpath(ns("./classification[tag][value]")).detect do |x|
+          x.at(ns("./tag")).text.casecmp("identifier-base").zero?
+        end&.at(ns("./value"))
+      end
+
       def recommendation_link_test(ident)
         test = @reqt_links_test[ident&.strip] or return nil
         "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
       end
 
+      # we have not implemented multiple levels of nesting of classes
       def reqt_links_class(docxml)
         docxml.xpath(ns("//requirement | //recommendation | //permission"))
           .each_with_object({}) do |r, m|
@@ -108,13 +117,48 @@ module Metanorma
             id = r.at(ns("./identifier")) or next
             r.xpath(ns("./requirement | ./recommendation | ./permission"))
               .each do |r1|
-              id1 = r1.at(ns("./identifier")) or next
-              lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
-              next unless lbl
-
-              m[id1.text] = { lbl: lbl, id: r["id"] }
+              m = reqt_links_class1(id, r, r1, m)
             end
           end
+      end
+
+      def reqt_links_class1(id, parent_reqt, reqt, acc)
+        id1 = reqt.at(ns("./identifier")) or return acc
+        lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
+        return acc unless lbl
+
+        acc[id1.text] = { lbl: lbl, id: parent_reqt["id"] }
+        acc
+      end
+
+      def reqt_hierarchy_extract
+        @reqt_links_class.each_with_object({}) do |(k, v), m|
+          m[v[:id]] ||= []
+          m[v[:id]] << @reqt_ids[k][:id]
+        end
+      end
+
+      def reqt_id_base_init(docxml)
+        docxml.xpath(ns("//requirement | //recommendation | //permission"))
+          .each_with_object({}) do |r, m|
+            m[r["id"]] = reqt_extract_id_base(r)&.text
+          end
+      end
+
+      def reqt_id_base_inherit(ret, class2reqt)
+        ret.each_key do |k|
+          class2reqt[k]&.each do |k1|
+            ret[k1] ||= ret[k]
+          end
+        end
+        ret
+      end
+
+      def reqt_id_base(docxml)
+        ret = reqt_id_base_init(docxml)
+        ret = reqt_id_base_inherit(ret, reqt_hierarchy_extract)
+        @modspecidentifierbase or return ret
+        ret.each_key { |k| ret[k] ||= @modspecidentifierbase }
       end
 
       def recommendation_link_class(ident)
@@ -141,6 +185,17 @@ module Metanorma
           xref = recommendation_link_class(id.text) and
           ret << [@labels["modspec"]["included_in"], xref]
         ret
+      end
+
+      def truncate_id_base_outside_reqts(docxml)
+        @modspecidentifierbase or return
+
+        (docxml.xpath(ns("//xref[@style = 'id']")) - docxml
+          .xpath(ns("//requirement//xref | //permission//xref | " \
+                    "//recommendation//xref"))).each do |x|
+          @reqt_id_base[x["target"]] or next # is a modspec requirement
+          x.children = x.children.to_xml.delete_prefix(@modspecidentifierbase)
+        end
       end
 
       def rec_subj(node)

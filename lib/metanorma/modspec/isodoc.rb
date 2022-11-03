@@ -162,7 +162,7 @@ module Metanorma
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
-        !%w(target indirect-dependency
+        !%w(target indirect-dependency identifier-base
             implements).include?(tag.text.downcase) or
           return nil
         [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]
