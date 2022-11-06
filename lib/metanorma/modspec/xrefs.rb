@@ -73,7 +73,8 @@ module Metanorma
         super
         anchor[:xref_bare] = anchor[:xref]
         if l = block.at(ns("./identifier"))&.text
-          anchor[:xref] += l10n(": ") + "<tt>#{l}</tt>"
+          anchor[:xref] += l10n(": ") +
+            "<tt><xref style='id' target='#{block['id']}'>#{l}</xref></tt>"
         end
         anchor
       end

@@ -235,7 +235,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='B1'>
                        Permission 1:
-                       <tt>/ogc/recommendation/wfs/10</tt>
+                       <tt>/recommendation/wfs/10</tt>
                      </xref>
                      <br/>
                      <xref target='A3'>
@@ -281,7 +281,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='A1'>
                        Permissions class 1:
-                       <tt>/ogc/recommendation/wfs/2</tt>
+                       <tt>/recommendation/wfs/2</tt>
                      </xref>
                    </td>
                  </tr>
@@ -398,7 +398,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='B1'>
                        Permission 1:
-                       <tt>/ogc/recommendation/wfs/10</tt>
+                       <tt>/10</tt>
                      </xref>
                      <br/>
                      <xref target='A3'>
@@ -444,7 +444,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='A1'>
                        Permissions class 1:
-                       <tt>/ogc/recommendation/wfs/2</tt>
+                       <tt>/wfs/2</tt>
                      </xref>
                    </td>
                  </tr>
@@ -560,7 +560,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='B1'>
                        Permission 1:
-                       <tt>/ogc/recommendation/wfs/10</tt>
+                       <tt>/10</tt>
                      </xref>
                      <br/>
                      <xref target='A3'>
@@ -606,7 +606,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='A1'>
                        Permissions class 1:
-                       <tt>/ogc/recommendation/wfs/2</tt>
+                       <tt>/2</tt>
                      </xref>
                    </td>
                  </tr>
@@ -722,7 +722,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='B1'>
                        Permission 1:
-                       <tt>/ogc/recommendation/wfs/10</tt>
+                       <tt>/recommendation/wfs/10</tt>
                      </xref>
                      <br/>
                      <xref target='A3'>
@@ -768,7 +768,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='A1'>
                        Permissions class 1:
-                       <tt>/ogc/recommendation/wfs/2</tt>
+                       <tt>/2</tt>
                      </xref>
                    </td>
                  </tr>
