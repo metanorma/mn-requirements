@@ -4,7 +4,8 @@ module Metanorma
       def requirement_table_cleanup(node, table)
         table = requirement_table_nested_cleanup(node, table)
         requirement_table_consec_rows_cleanup(node, table)
-        truncate_id_base_in_reqt(table)
+        node.ancestors("requirement, recommendation, permission").empty? and
+          truncate_id_base_in_reqt(table)
         table
       end
 

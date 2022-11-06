@@ -722,7 +722,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <td>
                      <xref target='B1'>
                        Permission 1:
-                       <tt>/recommendation/wfs/10</tt>
+                       <tt>/10</tt>
                      </xref>
                      <br/>
                      <xref target='A3'>
