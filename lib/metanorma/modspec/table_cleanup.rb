@@ -59,11 +59,20 @@ module Metanorma
         @i18n.get["requirements"]["modspec"][label]
       end
 
+      def strip_id_base(elem, base)
+        return elem.children if base.nil?
+
+        elem.children.to_xml.delete_prefix(base)
+      end
+
       def truncate_id_base_in_reqt(table)
-        base = @reqt_id_base[table["id"]] or return
+        base = @reqt_id_base[table["id"]]
         table.xpath(ns(".//xref[@style = 'id']")).each do |x|
           @reqt_id_base[x["target"]] or next # is a modspec requirement
-          x.children = x.children.to_xml.delete_prefix(base)
+          x.children = strip_id_base(x, base)
+        end
+        table.xpath(ns(".//modspec-ident")).each do |x|
+          x.replace(strip_id_base(x, base))
         end
       end
     end

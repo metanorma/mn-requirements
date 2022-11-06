@@ -69,8 +69,11 @@ module Metanorma
 
       def recommend_title(node, out)
         label = node.at(ns("./identifier")) or return
-        out.add_child("<tr><th>#{@labels['modspec']['identifier']}</th>" \
-                      "<td><tt>#{label.children.to_xml}</tt></td>")
+        ret = <<~OUTPUT
+          <tr><th>#{@labels['modspec']['identifier']}</th>
+          <td><tt><modspec-ident>#{label.children.to_xml}</modspec-ident></tt></td>
+        OUTPUT
+        out.add_child(ret)
       end
 
       def recommendation_attributes1(node)

@@ -227,7 +227,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/2</tt>
+                     <tt>/recommendation/wfs/2</tt>
                    </td>
                  </tr>
                  <tr>
@@ -273,7 +273,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/10</tt>
+                     <tt>/recommendation/wfs/10</tt>
                    </td>
                  </tr>
                  <tr>
@@ -390,7 +390,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/2</tt>
+                     <tt>/2</tt>
                    </td>
                  </tr>
                  <tr>
@@ -436,7 +436,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/10</tt>
+                     <tt>/wfs/10</tt>
                    </td>
                  </tr>
                  <tr>
@@ -552,7 +552,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/2</tt>
+                     <tt>/2</tt>
                    </td>
                  </tr>
                  <tr>
@@ -598,7 +598,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/10</tt>
+                     <tt>/10</tt>
                    </td>
                  </tr>
                  <tr>
@@ -714,7 +714,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/2</tt>
+                     <tt>/2</tt>
                    </td>
                  </tr>
                  <tr>
@@ -760,7 +760,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tr>
                    <th>Identifier</th>
                    <td>
-                     <tt>/ogc/recommendation/wfs/10</tt>
+                     <tt>/10</tt>
                    </td>
                  </tr>
                  <tr>
