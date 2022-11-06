@@ -21,7 +21,7 @@ module Metanorma
 
       def requirement_metadata_component_tags
         %w(test-purpose test-method test-method-type conditions part description
-           reference step guidance) +
+           statement reference step guidance) +
           requirement_metadata_requirement_tags
       end
 
@@ -35,6 +35,7 @@ module Metanorma
         ins1 = super
         dlist.xpath("./dt").each do |e|
           tag = e.text&.gsub(/ /, "-")&.downcase
+          tag = "description" if tag == "statement"
           next unless requirement_metadata_component_tags.include?(tag)
 
           ins1.next = requirement_metadata1_component(e, tag)
@@ -83,7 +84,7 @@ module Metanorma
       end
 
       def requirement_metadata_to_component(reqt)
-        xpath = requirement_metadata_component_tags - %w(description) -
+        xpath = requirement_metadata_component_tags - %w(statement description) -
           requirement_metadata_requirement_tags
         reqt.xpath(xpath.map { |x| ".//#{x}" }.join(" | ")).each do |c|
           c["class"] = c.name

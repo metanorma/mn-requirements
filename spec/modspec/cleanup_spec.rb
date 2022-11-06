@@ -92,6 +92,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       description::: Method description
       step::: Step 1
       step:::: Step 2
+      statement:: Statement
       test-purpose:: Purpose
       test-method-type:: Method Type
       reference:: <<ref2>>
@@ -267,6 +268,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </component>
                </component>
              </component>
+             <description>
+               <p id='_'>Statement</p>
+             </description>
              <component class='test-purpose'>
                <p id='_'>Purpose</p>
              </component>
