@@ -111,6 +111,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       implements:: A7
       Implements:: A8
       identifier-base:: IDENT
+      identifier-base:: http://www.example.com
 
       Logical models encoded as XSDs should be faithful to the original UML conceptual
       models.
@@ -224,6 +225,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <classification>
                <tag>identifier-base</tag>
                <value>IDENT</value>
+             </classification>
+             <classification>
+                <tag>identifier-base</tag>
+                <value>http://www.example.com</value>
              </classification>
              <component class='conditions'>
                <ol id='_' type='arabic'>

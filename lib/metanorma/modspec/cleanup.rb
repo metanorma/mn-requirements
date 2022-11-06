@@ -75,7 +75,7 @@ module Metanorma
 
       def requirement_target_identifiers(reqt)
         reqt.xpath("./classification[tag][value/link]").each do |c|
-          %w(target indirect-dependency implements)
+          %w(target indirect-dependency implements identifier-base)
             .include?(c.at("./tag").text.downcase) or next
           v = c.at("./value[link]")
           v.children = v.at("./link/@target").text
