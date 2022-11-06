@@ -5,7 +5,7 @@ require "metanorma-utils"
 
 module Metanorma
   class Requirements
-    attr_accessor :i18n, :labels
+    attr_accessor :i18n, :labels, :modspecidentifierbase
 
     Hash.include Metanorma::Utils::Hash
 
@@ -17,6 +17,7 @@ module Metanorma
                          options[:labels])
       # @labels = @i18n.get.deep_merge(options[:labels] || {})["requirements"]
       @labels = @i18n.get["requirements"]
+      @modspecidentifierbase = options[:modspecidentifierbase]
       @models =
         model_names.each_with_object({}) { |k, m| m[k] = create(k) }
     end

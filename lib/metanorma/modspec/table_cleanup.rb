@@ -4,6 +4,8 @@ module Metanorma
       def requirement_table_cleanup(node, table)
         table = requirement_table_nested_cleanup(node, table)
         requirement_table_consec_rows_cleanup(node, table)
+        node.ancestors("requirement, recommendation, permission").empty? and
+          truncate_id_base_in_reqt(table)
         table
       end
 
@@ -56,6 +58,37 @@ module Metanorma
         label = "provision"
         node["type"] == "conformanceclass" and label = "conformancetest"
         @i18n.get["requirements"]["modspec"][label]
+      end
+
+      def strip_id_base(elem, base)
+        return elem.children if base.nil?
+
+        elem.children.to_xml.delete_prefix(base)
+      end
+
+      def truncate_id_base_in_reqt1(table, base)
+        table.xpath(ns(".//xref[@style = 'id']")).each do |x|
+          @reqt_id_base[x["target"]] or next # is a modspec requirement
+          x.children = strip_id_base(x, base)
+        end
+        table.xpath(ns(".//modspec-ident")).each do |x|
+          x.replace(strip_id_base(x, base))
+        end
+      end
+
+      # any xrefs not yet expanded out to rendering need to be expanded out,
+      # so that the identifier instances they contain can be truncated
+      def expand_xrefs_in_reqt(table)
+        table.xpath(ns(".//xref[not(@style)][normalize-space(text()) = '']"))
+          .each do |x|
+          x << @xrefs.anchor(x["target"], :xref, false)
+        end
+      end
+
+      def truncate_id_base_in_reqt(table)
+        base = @reqt_id_base[table["id"]]
+        expand_xrefs_in_reqt(table)
+        truncate_id_base_in_reqt1(table, base)
       end
     end
   end

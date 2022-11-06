@@ -69,8 +69,11 @@ module Metanorma
 
       def recommend_title(node, out)
         label = node.at(ns("./identifier")) or return
-        out.add_child("<tr><th>#{@labels['modspec']['identifier']}</th>" \
-                      "<td><tt>#{label.children.to_xml}</tt></td>")
+        ret = <<~OUTPUT
+          <tr><th>#{@labels['modspec']['identifier']}</th>
+          <td><tt><modspec-ident>#{label.children.to_xml}</modspec-ident></tt></td>
+        OUTPUT
+        out.add_child(ret)
       end
 
       def recommendation_attributes1(node)
@@ -162,7 +165,7 @@ module Metanorma
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
-        !%w(target indirect-dependency
+        !%w(target indirect-dependency identifier-base
             implements).include?(tag.text.downcase) or
           return nil
         [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]

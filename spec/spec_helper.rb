@@ -94,13 +94,10 @@ private
 def get_xml(search, code, opts)
   c = code.gsub(%r{[/\s:-]}, "_").sub(%r{_+$}, "").downcase
   file = examples_path("#{[c, opts.keys.join('_')].join '_'}.xml")
-  if File.exist? file
-    File.read file
-  else
-    xml = search.call(code)&.first&.first&.to_xml nil, opts
-    File.write file, xml
-    xml
-  end
+  File.exist?(file) and return File.read(file)
+  xml = search.call(code)&.first&.first&.to_xml nil, opts
+  File.write file, xml
+  xml
 end
 
 def mock_open_uri(code)

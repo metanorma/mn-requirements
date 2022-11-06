@@ -75,7 +75,7 @@ module Metanorma
 
       def requirement_target_identifiers(reqt)
         reqt.xpath("./classification[tag][value/link]").each do |c|
-          %w(target indirect-dependency implements)
+          %w(target indirect-dependency implements identifier-base)
             .include?(c.at("./tag").text.downcase) or next
           v = c.at("./value[link]")
           v.children = v.at("./link/@target").text
@@ -118,6 +118,40 @@ module Metanorma
 
           c.children = "<p>#{c.children.to_xml}</p>"
         end
+      end
+
+      def add_misc_container(xmldoc)
+        unless ins = xmldoc.at("//misc-container")
+          a = xmldoc.at("//termdocsource") || xmldoc.at("//bibdata")
+          a.next = "<misc-container/>"
+          ins = xmldoc.at("//misc-container")
+        end
+        ins
+      end
+
+      def add_misccontainer_anchor_aliases(xmldoc)
+        m = add_misc_container(xmldoc)
+        x = ".//table[@id = '_misccontainer_anchor_aliases']/tbody"
+        unless ins = m.at(x)
+          m << "<table id = '_misccontainer_anchor_aliases'><tbody/></table>"
+          ins = m.at(x)
+        end
+        ins
+      end
+
+      def requirement_anchor_aliases(reqt)
+        x = reqt.xpath("./identifier")
+        x.empty? and return
+        table = add_misccontainer_anchor_aliases(reqt.document)
+        ids = x.each_with_object([]) do |i, m|
+          m << "<td>#{i.text}</td>"
+        end
+        table << "<tr><th>#{reqt['id']}</th>#{ids.join}</tr>"
+      end
+
+      def requirement_identifier_cleanup(reqt)
+        super
+        requirement_anchor_aliases(reqt)
       end
     end
   end

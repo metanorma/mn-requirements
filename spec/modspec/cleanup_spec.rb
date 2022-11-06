@@ -62,6 +62,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
 
+      [[id1]]
       [requirement,model=ogc]
       ====
       [%metadata]
@@ -109,6 +110,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       permission-class:: A6
       implements:: A7
       Implements:: A8
+      identifier-base:: IDENT
+      identifier-base:: http://www.example.com
 
       Logical models encoded as XSDs should be faithful to the original UML conceptual
       models.
@@ -116,8 +119,46 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       #{BLANK_HDR}
+        <misc-container>
+          <table id='_'>
+            <tbody>
+              <tr>
+                <th>id1</th>
+                <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
+              </tr>
+                     <tr>
+         <th>_</th>
+         <td>/label/1</td>
+       </tr>
+       <tr>
+         <th>_</th>
+         <td>A1</td>
+       </tr>
+       <tr>
+         <th>_</th>
+         <td>A2</td>
+       </tr>
+       <tr>
+         <th>_</th>
+         <td>A3</td>
+       </tr>
+       <tr>
+         <th>_</th>
+         <td>A4</td>
+       </tr>
+       <tr>
+         <th>_</th>
+         <td>A5</td>
+       </tr>
+       <tr>
+         <th>_</th>
+         <td>A6</td>
+       </tr>
+            </tbody>
+          </table>
+        </misc-container>
                <sections>
-           <requirement id='_' model='ogc' obligation='recommendation,requirement' type='class'>
+           <requirement id='id1' model='ogc' obligation='recommendation,requirement' type='class'>
              <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
              <subject>Encoding of logical models</subject>
              <inherit>urn:iso:dis:iso:19156:clause:7.2.2</inherit>
@@ -180,6 +221,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <classification>
                <tag>Implements</tag>
                <value>A8</value>
+             </classification>
+             <classification>
+               <tag>identifier-base</tag>
+               <value>IDENT</value>
+             </classification>
+             <classification>
+                <tag>identifier-base</tag>
+                <value>http://www.example.com</value>
              </classification>
              <component class='conditions'>
                <ol id='_' type='arabic'>
@@ -269,7 +318,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </sections>
        </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))
+      .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -277,6 +327,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
 
+      [[id1]]
       [requirement,model=ogc]
       ====
       [%metadata]
@@ -289,8 +340,22 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       #{BLANK_HDR}
+        <misc-container>
+          <table id='_'>
+            <tbody>
+              <tr>
+                <th>id1</th>
+                <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
+              </tr>
+              <tr>
+                <th>_</th>
+                <td>http://www.opengis.net/doc/IS/GML/3.2/clause/2.4</td>
+              </tr>
+            </tbody>
+          </table>
+        </misc-container>
         <sections>
-          <requirement id='_' model='ogc' type='class'>
+          <requirement id='id1' model='ogc' type='class'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
             <subject>Encoding of logical models</subject>
             <inherit>http://www.opengis.net/doc/IS/GML/3.2/clause/2.4</inherit>
@@ -301,7 +366,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </sections>
       </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))
+      .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
       .to be_equivalent_to xmlpp(output)
   end
 
