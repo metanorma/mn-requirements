@@ -22,6 +22,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
         <xref target="A1">/ogc/recommendation/wfs/2</xref>
         <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
         </description>
       </permission>
       <permission model="ogc" id="B1">
@@ -96,6 +97,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                      <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
                      <xref target='A1'>/ogc/recommendation/wfs/2</xref>
                      <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                     <xref target='B1'>Permission 1: <tt>/ogc/recommendation/wfs/10</tt></xref>
                    </td>
                  </tr>
                </tbody>
@@ -184,6 +186,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
         <xref target="A1">/ogc/recommendation/wfs/2</xref>
         <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
         </description>
       </permission>
       <permission model="ogc" id="B1">
@@ -257,6 +260,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                      <xref target='B1' style='id'>/recommendation/wfs/10</xref>
                      <xref target='A1'>/ogc/recommendation/wfs/2</xref>
                      <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                     <xref target='B1'>Permission 1: <tt>/recommendation/wfs/10</tt></xref>
+
                    </td>
                  </tr>
                </tbody>
@@ -346,6 +351,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
         <xref target="A1">/ogc/recommendation/wfs/2</xref>
         <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
         </description>
       </permission>
       <permission model="ogc" id="B1">
@@ -420,6 +426,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                      <xref target='B1' style='id'>/10</xref>
                      <xref target='A1'>/ogc/recommendation/wfs/2</xref>
                      <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                     <xref target='B1'>Permission 1: <tt>/10</tt></xref>
                    </td>
                  </tr>
                </tbody>
@@ -509,6 +516,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
         <xref target="A1">/ogc/recommendation/wfs/2</xref>
         <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
         </description>
       </permission>
       <permission model="ogc" id="B1">
@@ -582,6 +590,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                      <xref target='B1' style='id'>/10</xref>
                      <xref target='A1'>/ogc/recommendation/wfs/2</xref>
                      <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                     <xref target='B1'>Permission 1: <tt>/10</tt></xref>
                    </td>
                  </tr>
                </tbody>
@@ -671,6 +680,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
         <xref target="A1">/ogc/recommendation/wfs/2</xref>
         <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
         </description>
       </permission>
       <permission model="ogc" id="B1">
@@ -744,6 +754,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                      <xref target='B1' style='id'>/10</xref>
                      <xref target='A1'>/ogc/recommendation/wfs/2</xref>
                      <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                     <xref target='B1'>Permission 1: <tt>/10</tt></xref>
                    </td>
                  </tr>
                </tbody>

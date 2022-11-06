@@ -66,8 +66,7 @@ module Metanorma
         elem.children.to_xml.delete_prefix(base)
       end
 
-      def truncate_id_base_in_reqt(table)
-        base = @reqt_id_base[table["id"]]
+      def truncate_id_base_in_reqt1(table, base)
         table.xpath(ns(".//xref[@style = 'id']")).each do |x|
           @reqt_id_base[x["target"]] or next # is a modspec requirement
           x.children = strip_id_base(x, base)
@@ -75,6 +74,21 @@ module Metanorma
         table.xpath(ns(".//modspec-ident")).each do |x|
           x.replace(strip_id_base(x, base))
         end
+      end
+
+      # any xrefs not yet expanded out to rendering need to be expanded out,
+      # so that the identifier instances they contain can be truncated
+      def expand_xrefs_in_reqt(table)
+        table.xpath(ns(".//xref[not(@style)][normalize-space(text()) = '']"))
+          .each do |x|
+          x << @xrefs.anchor(x["target"], :xref, false)
+        end
+      end
+
+      def truncate_id_base_in_reqt(table)
+        base = @reqt_id_base[table["id"]]
+        expand_xrefs_in_reqt(table)
+        truncate_id_base_in_reqt1(table, base)
       end
     end
   end
