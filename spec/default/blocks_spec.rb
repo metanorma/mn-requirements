@@ -238,7 +238,9 @@ RSpec.describe Metanorma::Requirements::Default do
           <mrow>
             <mn>1</mn>
           </mrow>
-          </mfrac><mo>=</mo><mn>0</mn></math></stem></formula></measurement-target>
+          </mfrac><mo>=</mo><mn>0</mn></math>
+          <asciimath>r/1 = 0</asciimath>
+          </stem></formula></measurement-target>
                  <verification exclude="false"><p id="_">The following code will be run for verification:</p><sourcecode  lang="CoreRoot" id="_">CoreRoot(success): HttpResponse
           if (success)
             recommendation(label: success-response)
