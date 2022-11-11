@@ -1,9 +1,12 @@
+require "tsort"
+
 module Metanorma
   class Requirements
     class Modspec < Default
       def validate(reqt, log)
         @log ||= log
         @ids ||= reqt_links(reqt.document)
+        reqt_cycles_validate
         reqt_link_validate(reqt)
       end
 
@@ -140,6 +143,54 @@ module Metanorma
           indirect_dependency: classif_tag(reqt, "indirect-dependency"),
           implements: classif_tag(reqt, "implements") }
       end
+
+      def reqt_cycles_validate
+        @cycles_validated and return
+        @cycles_validated = true
+        %i(child dependency indirect_dependency implements).each do |x|
+          reqt_cycles_validate1(x)
+        end
+      end
+
+      def reqt_cycles_validate1(link)
+        arr = TSHash.new(@ids[:id].values)
+        arr.link = link
+        TSort.each_strongly_connected_component(
+          lambda { |&b| arr.tsort_each_node(&b) },
+          lambda { |n, &b| arr.tsort_each_child(n, &b) },
+        ) do |c|
+          c.size == 1 and next
+          log_cycle(link, c)
+        end
+      end
+
+      def log_cycle(link, path)
+        @log.add("Requirements", nil, <<~MSG
+          Cycle in Modspec linkages through #{link}: #{(path << path.first).join(' => ')}
+        MSG
+        )
+      end
+
+      class TSHash
+        include TSort
+        attr_accessor :link
+
+        def initialize(arr)
+          @hash = arr.each_with_object({}) do |v, m|
+            m[v[:label]] = v
+          end
+        end
+
+        def tsort_each_node(&block)
+          @hash.keys.each(&block)
+        end
+
+        def tsort_each_child(node, &block)
+          (@hash[node] || {})[@link]&.each(&block)
+        end
+      end
+
+      def reqt_cycles_validate_dependency; end
     end
   end
 end
