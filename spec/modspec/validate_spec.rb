@@ -112,6 +112,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .not_to include "has no corresponding Requirement class"
     expect(File.read("test.err"))
       .not_to include "has no corresponding Conformance class"
+    expect(File.read("test.err"))
+      .not_to include "Cycle in Modspec linkages"
   end
 
   it "does not warn if no linkage issues for multiple targets" do
@@ -445,5 +447,72 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .not_to include "Provision A points to Indirect prerequisite C outside this document"
     expect(File.read("test.err"))
       .not_to include "Provision A points to Implemented provision D outside this document"
+  end
+
+  it "warns about cycles in links" do
+    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :requirements-model: ogc
+
+      [[A1]]
+      [.requirement,type=requirement_class]
+      ====
+      [%metadata]
+      identifier:: A
+      inherit:: B
+      indirect-dependency:: C
+      implements:: B
+      ====
+
+      [[B1]]
+      [.requirement,type=requirement]
+      ====
+      [%metadata]
+      identifier:: B
+      inherit:: C
+      implements:: A
+      indirect-dependency:: D
+      ====
+
+      [[C1]]
+      [.requirement,type=requirement]
+      ====
+      [%metadata]
+      identifier:: C
+      inherit:: A
+      indirect-dependency:: A
+      ====
+
+      [[D1]]
+      [.requirement,type=requirement]
+      ====
+      [%metadata]
+      identifier:: D
+      inherit:: E
+      indirect-dependency:: E
+      ====
+
+      [[E1]]
+      [.requirement,type=requirement]
+      ====
+      [%metadata]
+      identifier:: E
+      inherit:: D
+      ====
+
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Cycle in Modspec linkages through dependency: A => B => C => A"
+    expect(File.read("test.err"))
+      .to include "Cycle in Modspec linkages through dependency: D => E => D"
+    expect(File.read("test.err"))
+      .to include "Cycle in Modspec linkages through indirect_dependency: A => C => A"
+    expect(File.read("test.err"))
+      .not_to include "Cycle in Modspec linkages through indirect_dependency: B => D => E"
+    expect(File.read("test.err"))
+      .to include "Cycle in Modspec linkages through implements: A => B => A"
   end
 end

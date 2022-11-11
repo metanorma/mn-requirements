@@ -1,3 +1,10 @@
+class Nokogiri::XML::Document
+  def reqt_iter(&block)
+    xpath("//xmlns:requirement | //xmlns:recommendation | //xmlns:permission")
+      .each_with_object({}, &block)
+  end
+end
+
 module Metanorma
   class Requirements
     class Modspec < Default
@@ -36,10 +43,9 @@ module Metanorma
       end
 
       def reqtlabels(doc)
-        doc.xpath(ns("//requirement | //recommendation | //permission"))
-          .each_with_object({}) do |r, m|
-            l = r.at(ns("./identifier"))&.text and m[l] = r["id"]
-          end
+        doc.reqt_iter do |r, m|
+          l = r.at(ns("./identifier"))&.text and m[l] = r["id"]
+        end
       end
 
       # embedded reqts xref to reqts via label lookup
@@ -64,30 +70,23 @@ module Metanorma
       end
 
       def reqt_ids(docxml)
-        docxml.xpath(ns("//requirement | //recommendation | //permission"))
-          .each_with_object({}) do |r, m|
-            id = r.at(ns("./identifier")) or next
-            m[id.text] =
-              { id: r["id"], lbl: @xrefs.anchor(r["id"], :xref, false) }
-          end
+        docxml.reqt_iter do |r, m|
+          id = r.at(ns("./identifier")) or next
+          m[id.text] =
+            { id: r["id"], lbl: @xrefs.anchor(r["id"], :xref, false) }
+        end
       end
 
       def reqt_links_test(docxml)
-        docxml.xpath(ns("//requirement | //recommendation | //permission"))
-          .each_with_object({}) do |r, m|
-            reqt_links_test1(r, m)
-          end
+        docxml.reqt_iter { |r, m| reqt_links_test1(r, m) }
       end
 
       def reqt_links_test1(reqt, acc)
-        return unless %w(conformanceclass
-                         verification).include?(reqt["type"])
-
+        %w(conformanceclass verification).include?(reqt["type"]) or return
         subj = reqt_extract_target(reqt)
         id = reqt.at(ns("./identifier")) or return
         lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
-        return unless subj && lbl
-
+        (subj && lbl) or return
         acc[subj.text] = { lbl: lbl, id: reqt["id"] }
       end
 
@@ -110,23 +109,20 @@ module Metanorma
 
       # we have not implemented multiple levels of nesting of classes
       def reqt_links_class(docxml)
-        docxml.xpath(ns("//requirement | //recommendation | //permission"))
-          .each_with_object({}) do |r, m|
-            next unless %w(class conformanceclass).include?(r["type"])
-
-            id = r.at(ns("./identifier")) or next
-            r.xpath(ns("./requirement | ./recommendation | ./permission"))
-              .each do |r1|
-              m = reqt_links_class1(id, r, r1, m)
-            end
+        docxml.reqt_iter do |r, m|
+          %w(class conformanceclass).include?(r["type"]) or next
+          id = r.at(ns("./identifier")) or next
+          r.xpath(ns("./requirement | ./recommendation | ./permission"))
+            .each do |r1|
+            m = reqt_links_class1(id, r, r1, m)
           end
+        end
       end
 
       def reqt_links_class1(id, parent_reqt, reqt, acc)
         id1 = reqt.at(ns("./identifier")) or return acc
         lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
-        return acc unless lbl
-
+        lbl or return acc
         acc[id1.text] = { lbl: lbl, id: parent_reqt["id"] }
         acc
       end
@@ -139,10 +135,7 @@ module Metanorma
       end
 
       def reqt_id_base_init(docxml)
-        docxml.xpath(ns("//requirement | //recommendation | //permission"))
-          .each_with_object({}) do |r, m|
-            m[r["id"]] = reqt_extract_id_base(r)&.text
-          end
+        docxml.reqt_iter { |r, m| m[r["id"]] = reqt_extract_id_base(r)&.text }
       end
 
       def reqt_id_base_inherit(ret, class2reqt)

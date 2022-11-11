@@ -292,7 +292,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    System and Communications Protocols</td>
                  </tr>
                  <tr>
-                 <th>Statement</th>
+                 <th>Description</th>
                  <td>
                      <p id='_'>
                        I recommend
@@ -407,7 +407,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <tr><th>Family</th><td>System and Communications Protection<br/>
          System and Communications Protocols</td></tr>
 
-        <tr><th>Statement</th>
+        <tr><th>Description</th>
         <td>
           <p id="_">I recommend <em>this</em>.</p>
         </td></tr><tr><th>A</th><td>B</td></tr><tr><th>C</th><td>D</td></tr><tr><td colspan="2">

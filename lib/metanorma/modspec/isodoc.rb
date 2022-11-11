@@ -197,9 +197,9 @@ module Metanorma
       end
 
       def requirement_description_parse(node, out)
-        lbl = "statement"
-        recommend_class(node.parent) == "recommendclass" and
-          lbl = "description"
+        lbl = "description"
+        recommend_class(node.parent) == "recommend" and
+          lbl = "statement"
         out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
                "<td>#{node.children.to_xml}</td></tr>"
         out
