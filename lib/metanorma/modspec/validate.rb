@@ -4,10 +4,12 @@ module Metanorma
   class Requirements
     class Modspec < Default
       def validate(reqt, log)
+        @fatalerrors = []
         @log ||= log
         @ids ||= reqt_links(reqt.document)
         reqt_cycles_validate
         reqt_link_validate(reqt)
+        @fatalerrors
       end
 
       def nested_reqt?(reqt)
@@ -112,17 +114,26 @@ module Metanorma
           .each_with_object({ id: {}, class: {}, label: {} }) do |r, m|
             next if nested_reqt?(r)
 
-            reqt_links1(r, m)
+            reqt_links1(r, m, type2validate(r), reqt_links_struct(r))
           end
       end
 
-      def reqt_links1(reqt, hash)
-        type = type2validate(reqt)
-        a = reqt_links_struct(reqt)
-        hash[:id][reqt["id"]] = a
+      def reqt_links1(reqt, hash, type, struct)
+        hash[:id][reqt["id"]] = struct
         hash[:class][type] ||= []
-        hash[:class][type] << a
-        hash[:label][a[:label]] = reqt["id"]
+        hash[:class][type] << struct
+        reqt_links1_label(reqt, hash, struct)
+      end
+
+      def reqt_links1_label(reqt, hash, struct)
+        return hash unless struct[:label]
+
+        if hash[:label][struct[:label]]
+          msg = "Modspec identifier #{struct[:label]} is used more than once"
+          @log.add("Requirements", reqt, msg)
+          @fatalerrors << msg
+        end
+        hash[:label][struct[:label]] = reqt["id"]
         hash
       end
 

@@ -515,4 +515,40 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(File.read("test.err"))
       .to include "Cycle in Modspec linkages through implements: A => B => A"
   end
+
+  it "fatal error if not unique identifier" do
+    FileUtils.rm_f "test.xml"
+    FileUtils.rm_f "test.err"
+    begin
+      input = <<~INPUT
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :requirements-model: ogc
+
+        [[A1]]
+        [.requirement,type=requirement_class]
+        ====
+        [%metadata]
+        identifier:: A
+        ====
+
+
+        [[A2]]
+        [.requirement,type=requirement]
+        ====
+        [%metadata]
+        identifier:: A
+        ====
+      INPUT
+      expect do
+        Asciidoctor.convert(input, backend: :standoc, header_footer: true)
+      end.to raise_error(SystemExit)
+    rescue SystemExit, RuntimeError
+    end
+    expect(File.read("test.err"))
+      .to include "Modspec identifier A is used more than once"
+    expect(File.exist?("test.xml")).to be false
+  end
 end
