@@ -23,7 +23,7 @@ module Metanorma
 
       def recommendation_label_xref(elem, label, xrefs, type)
         id = @reqtlabels[label]
-        number = xrefs.anchor(id, :xref, false)
+        number = xrefs.anchor(id, :modspec, false)
         number.nil? and return type
         elem.ancestors("requirement, recommendation, permission").empty? and
           return number
@@ -73,7 +73,7 @@ module Metanorma
         docxml.reqt_iter do |r, m|
           id = r.at(ns("./identifier")) or next
           m[id.text] =
-            { id: r["id"], lbl: @xrefs.anchor(r["id"], :xref, false) }
+            { id: r["id"], lbl: @xrefs.anchor(r["id"], :modspec, false) }
         end
       end
 
@@ -85,7 +85,7 @@ module Metanorma
         %w(conformanceclass verification).include?(reqt["type"]) or return
         subj = reqt_extract_target(reqt)
         id = reqt.at(ns("./identifier")) or return
-        lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
+        lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :modspec, false)
         (subj && lbl) or return
         acc[subj.text] = { lbl: lbl, id: reqt["id"] }
       end
@@ -121,7 +121,7 @@ module Metanorma
 
       def reqt_links_class1(id, parent_reqt, reqt, acc)
         id1 = reqt.at(ns("./identifier")) or return acc
-        lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :xref, false)
+        lbl = @xrefs.anchor(@reqt_ids[id.text.strip][:id], :modspec, false)
         lbl or return acc
         acc[id1.text] = { lbl: lbl, id: parent_reqt["id"] }
         acc

@@ -201,6 +201,122 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "cross-references requirements with modspec style" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+        <preface>
+          <foreword>
+          <p>
+          <xref target="N1" style="modspec"/>
+          <xref target="N2" style="modspec"/>
+          <xref target="N" style="modspec"/>
+          <xref target="note1" style="modspec"/>
+          <xref target="note2" style="modspec"/>
+          <xref target="AN" style="modspec"/>
+          <xref target="Anote1" style="modspec"/>
+          <xref target="Anote2" style="modspec"/>
+          </p>
+          </foreword>
+          <introduction id="intro">
+          <requirement model="ogc" id="N1">
+          <identifier>/ogc/req1</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+        <clause id="xyz"><title>Preparatory</title>
+          <requirement model="ogc" id="N2" unnumbered="true">
+          <identifier>/ogc/req2</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+      </clause>
+          </introduction>
+          </preface>
+          <sections>
+          <clause id="scope" type="scope"><title>Scope</title>
+          <requirement model="ogc" id="N">
+          <identifier>/ogc/req3</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+        <p><xref target="N" style="modspec"/></p>
+          </clause>
+          <terms id="terms"/>
+          <clause id="widgets"><title>Widgets</title>
+          <clause id="widgets1">
+          <requirement model="ogc" id="note1">
+          <identifier>/ogc/req4</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          <requirement model="ogc" id="note2">
+          <identifier>/ogc/req5</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+        <p>    <xref target="note1" style="modspec"/> <xref target="note2" style="modspec"/> </p>
+          </clause>
+          </clause>
+          </sections>
+          <annex id="annex1">
+          <clause id="annex1a">
+          <requirement model="ogc" id="AN">
+          <identifier>/ogc/req6</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          </clause>
+          <clause id="annex1b">
+          <requirement model="ogc" id="Anote1" unnumbered="true">
+          <identifier>/ogc/req7</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          <requirement model="ogc" id="Anote2">
+          <identifier>/ogc/req8</identifier>
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          </clause>
+          </annex>
+          </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <foreword displayorder="1">
+              <p>
+                   <xref target='N1' style="modspec">
+           Requirement 1:
+           <tt>/ogc/req1</tt>
+         </xref>
+         <xref target='N2' style="modspec">
+           Requirement (??):
+           <tt>/ogc/req2</tt>
+         </xref>
+         <xref target='N' style="modspec">
+           Requirement 2:
+           <tt>/ogc/req3</tt>
+         </xref>
+         <xref target='note1' style="modspec">
+           Requirement 3:
+           <tt>/ogc/req4</tt>
+         </xref>
+         <xref target='note2' style="modspec">
+           Requirement 4:
+           <tt>/ogc/req5</tt>
+         </xref>
+         <xref target='AN' style="modspec">
+           Requirement A.1:
+           <tt>/ogc/req6</tt>
+         </xref>
+         <xref target='Anote1' style="modspec">
+           Requirement (??):
+           <tt>/ogc/req7</tt>
+         </xref>
+         <xref target='Anote2' style="modspec">
+           Requirement A.2:
+           <tt>/ogc/req8</tt>
+         </xref>
+              </p>
+      </foreword>
+    OUTPUT
+    expect(xmlpp(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true))
+      .at("//xmlns:foreword").to_xml))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "cross-references requirement parts" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">

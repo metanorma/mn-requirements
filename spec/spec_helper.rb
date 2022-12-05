@@ -72,16 +72,16 @@ def strip_src(xml)
 end
 
 def xmlpp(xml)
- xsl = <<~XSL
+  xsl = <<~XSL
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
       <xsl:strip-space elements="*"/>
       <xsl:template match="/">
-        <xsml:copy-of select="."/>
+        <xsl:copy-of select="."/>
       </xsl:template>
     </xsl:stylesheet>
   XSL
-  Nokogiri::XSLT(xsl).transform(Nokogiri::XML(xml))
+  Nokogiri::XSLT(xsl).transform(Nokogiri::XML(xml, &:noblanks))
     .to_xml(indent: 2, encoding: "UTF-8")
     .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
 end

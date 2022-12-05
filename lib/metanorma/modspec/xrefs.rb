@@ -72,10 +72,10 @@ module Metanorma
       def postprocess_anchor_struct(block, anchor)
         super
         anchor[:xref_bare] = anchor[:xref]
-        if l = block.at(ns("./identifier"))&.text
+        l = block.at(ns("./identifier")) and
           anchor[:xref] += l10n(": ") +
-            "<tt><xref style='id' target='#{block['id']}'>#{l}</xref></tt>"
-        end
+            "<tt><xref style='id' target='#{block['id']}'>#{l.text}</xref></tt>"
+        anchor[:modspec] = anchor[:xref]
         anchor
       end
     end
