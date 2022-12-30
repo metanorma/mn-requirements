@@ -187,6 +187,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <docidentifier type='IETF'>IETF RFC 2616</docidentifier>
                 <docidentifier type='IETF' scope='anchor'>IETF RFC2616</docidentifier>
                 <docidentifier type='DOI'>DOI 10.17487/RFC2616</docidentifier>
+                <biblio-tag>[1]<tab/>IETF RFC 2616, </biblio-tag>
           </bibitem>
             </references></bibliography>
                 </ogc-standard>
