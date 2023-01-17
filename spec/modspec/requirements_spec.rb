@@ -180,7 +180,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <bibitem id="rfc2616" type="standard">
               <formattedref>R. FIELDING, J. GETTYS, J. MOGUL, H. FRYSTYK, L. MASINTER, P. LEACH and T. BERNERS-LEE.
                <em>Hypertext Transfer Protocol&#x2009;&#x2014;&#x2009;HTTP/1.1</em>.
-              In: RFC. June 1999. Fremont, CA. <link target='https://www.rfc-editor.org/info/rfc2616'>https://www.rfc-editor.org/info/rfc2616</link>.</formattedref>
+              In: RFC. 1999. Fremont, CA. <link target='https://www.rfc-editor.org/info/rfc2616'>https://www.rfc-editor.org/info/rfc2616</link>.</formattedref>
                         <uri type='xml'>https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2616.xml</uri>
                 <uri type='src'>https://www.rfc-editor.org/info/rfc2616</uri>
                 <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
