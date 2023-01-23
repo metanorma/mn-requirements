@@ -120,7 +120,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       #{BLANK_HDR}
-        <misc-container>
+        <metanorma-extension>
           <table id='_'>
             <tbody>
               <tr>
@@ -157,7 +157,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
        </tr>
             </tbody>
           </table>
-        </misc-container>
+        </metanorma-extension>
                <sections>
            <requirement id='id1' model='ogc' obligation='recommendation,requirement' type='class'>
              <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
@@ -344,7 +344,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       #{BLANK_HDR}
-        <misc-container>
+        <metanorma-extension>
           <table id='_'>
             <tbody>
               <tr>
@@ -357,7 +357,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </tr>
             </tbody>
           </table>
-        </misc-container>
+        </metanorma-extension>
         <sections>
           <requirement id='id1' model='ogc' type='class'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
