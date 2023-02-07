@@ -86,17 +86,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </tr>
       <tr>
         <th>Family</th>
-        <td>System and Communications Protection<br/>
-        System and Communications Protocols</td>
+        <td>System and Communications Protection<br/>System and Communications Protocols</td>
       </tr>
       <tr>
       <th>Statement</th>
         <td>
-          <p id='_'>
-            I recommend
-            <em>this</em>
-            .
-          </p>
+          <p id='_'>I recommend <em>this</em>.</p>
         </td>
       </tr>
       <tr>
@@ -119,9 +114,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <tr>
         <td colspan='2'>
           <p id='_'>The following code will be run for verification:</p>
-          <sourcecode id='_'>
-            CoreRoot(success): HttpResponse if (success)
-            recommendation(label: success-response) end
+          <sourcecode id="_">CoreRoot(success): HttpResponse
+            if (success)
+            recommendation(label: success-response)
+            end
           </sourcecode>
         </td>
       </tr>
@@ -178,25 +174,25 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <bibliography><references id="_bibliography" obligation="informative" normative="false" displayorder="2">
             <title depth="1">Bibliography</title>
             <bibitem id="rfc2616" type="standard">
-              <formattedref>R. FIELDING, J. GETTYS, J. MOGUL, H. FRYSTYK, L. MASINTER, P. LEACH and T. BERNERS-LEE.
-               <em>Hypertext Transfer Protocol&#x2009;&#x2014;&#x2009;HTTP/1.1</em>.
-              In: RFC. 1999. Fremont, CA. <link target='https://www.rfc-editor.org/info/rfc2616'>https://www.rfc-editor.org/info/rfc2616</link>.</formattedref>
-                        <uri type='xml'>https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2616.xml</uri>
+            <formattedref>R. FIELDING, J. GETTYS, J. MOGUL, H. FRYSTYK, L. MASINTER, P. LEACH and T. BERNERS-LEE. <em>Hypertext Transfer Protocol — HTTP/1.1</em>. In: RFC. 1999. Fremont, CA. <link target="https://www.rfc-editor.org/info/rfc2616">https://www.rfc-editor.org/info/rfc2616</link>.</formattedref>
+                <uri type='xml'>https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2616.xml</uri>
                 <uri type='src'>https://www.rfc-editor.org/info/rfc2616</uri>
                 <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
-                <docidentifier type='IETF'>IETF RFC 2616</docidentifier>
-                <docidentifier type='IETF' scope='anchor'>IETF RFC2616</docidentifier>
+                <docidentifier type="IETF">IETF RFC 2616</docidentifier>
+                <docidentifier type="IETF" scope="anchor">IETF RFC2616</docidentifier>
                 <docidentifier type='DOI'>DOI 10.17487/RFC2616</docidentifier>
-                <biblio-tag>[1]<tab/>IETF RFC 2616, </biblio-tag>
+                <biblio-tag>[1]<tab/>IETF RFC 2616, </biblio-tag>
           </bibitem>
             </references></bibliography>
                 </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -335,10 +331,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
        </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-  .gsub(%r{^.*<body}m, "<body")
-  .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -429,10 +427,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-              .convert("test", input, true)
-  .gsub(%r{^.*<body}m, "<body")
-  .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -539,10 +539,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-            .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -689,10 +691,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
        </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -841,11 +845,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </preface>
        </ogc-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-       .convert("test", input, true)
-      .gsub(%r{<localized-strings>.*</localized-strings>}m, "")
-       .gsub(%r{^.*<body}m, "<body")
-       .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    out.at("//xmlns:localized-strings").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -967,10 +973,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
        </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -1050,10 +1058,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -1171,10 +1181,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -1291,10 +1303,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 end

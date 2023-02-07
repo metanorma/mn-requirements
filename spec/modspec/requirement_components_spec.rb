@@ -34,187 +34,154 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-            <preface>
-          <foreword id='A' displayorder='1'>
-            <title>Preface</title>
-            <table id='_' class='modspec' type='recommend'>
-              <thead>
-                <tr>
-                  <th scope='colgroup' colspan='2'>
-                    <p class='RecommendationTitle'>Recommendation 1</p>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Identifier</th>
-                  <td>
-                    <tt>/ogc/recommendation/wfs/2</tt>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Subject</th>
-                  <td>user</td>
-                </tr>
-                <tr>
-                  <th>Prerequisite</th>
-                  <td>/ss/584/2015/level/1</td>
-                </tr>
-                <tr>
-                  <th>Statement</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>1</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A1'>
-                  <th>Test purpose</th>
-                  <td>
-                    <p>TEST PURPOSE</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Statements</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>2</em>
-                      .
-                    </p>
-                    <br/>
-                    <p id='_'>
-                      I recommend
-                      <em>2a</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A2'>
-                  <th>Conditions</th>
-                  <td>
-                    <p>CONDITIONS</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Statement</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>3</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A3'>
-                  <th>A</th>
-                  <td>
-                    <p>FIRST PART</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Statement</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>4</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A4'>
-                  <th>B</th>
-                  <td>
-                    <p>SECOND PART</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Statement</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>5</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A5'>
-                  <th>Test method</th>
-                  <td>
-                    <p>TEST METHOD</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Statement</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>6</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A6'>
-                  <th>C</th>
-                  <td>
-                    <p>THIRD PART</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Statements</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>7</em>
-                      .
-                    </p>
-                    <br/>
-                    <p id='_'>
-                      I recommend
-                      <em>7a</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A7'>
-                  <th>Panda GHz express</th>
-                  <td>
-                    <p>PANDA PART</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Statement</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>8</em>
-                      .
-                    </p>
-                  </td>
-                </tr>
-                <tr id='A7'>
-                  <th>Guidance</th>
-                  <td>
-                    <p>GUIDANCE #1</p>
-                    <br/>
-                    <p>GUIDANCE #2</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </foreword>
-        </preface>
-      </ogc-standard>
-
+           <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
+         <preface>
+           <foreword id="A" displayorder="1">
+             <title>Preface</title>
+             <table id="A1" class="modspec" type="recommend">
+               <thead>
+                 <tr>
+                   <th scope="colgroup" colspan="2">
+                     <p class="RecommendationTitle">Permission 1</p>
+                   </th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <th>Identifier</th>
+                   <td>
+                     <tt>/ogc/recommendation/wfs/2</tt>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>Subject</th>
+                   <td>user</td>
+                 </tr>
+                 <tr>
+                   <th>Prerequisites</th>
+                   <td>/ss/584/2015/level/1<br/><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></td>
+                 </tr>
+                 <tr>
+                   <th>Control-CLASS</th>
+                   <td>Technical</td>
+                 </tr>
+                 <tr>
+                   <th>Priority</th>
+                   <td>P0</td>
+                 </tr>
+                 <tr>
+                   <th>Family</th>
+                   <td>System and Communications Protection<br/>System and Communications Protocols</td>
+                 </tr>
+                 <tr>
+                   <th>Statement</th>
+                   <td>
+                     <p id="_">I recommend <em>this</em>.</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>A</th>
+                   <td>B</td>
+                 </tr>
+                 <tr>
+                   <th>C</th>
+                   <td>D</td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <p id="_">The measurement target shall be measured as:</p>
+                     <formula id="_">
+                       <name>1</name>
+                       <stem type="AsciiMath">r/1 = 0</stem>
+                     </formula>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <p id="_">The following code will be run for verification:</p>
+                     <sourcecode id="_">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </sourcecode>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>Test purpose</th>
+                   <td>
+                     <p>TEST PURPOSE</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>Test method</th>
+                   <td>
+                     <p>TEST METHOD</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>Conditions</th>
+                   <td>
+                     <p>CONDITIONS</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>A</th>
+                   <td>
+                     <p>FIRST PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>B</th>
+                   <td>
+                     <p>SECOND PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>C</th>
+                   <td>
+                     <p>THIRD PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>Reference</th>
+                   <td>
+                     <p>REFERENCE PART</p>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>Panda GHz express</th>
+                   <td>
+                     <p>PANDA PART</p>
+                   </td>
+                 </tr>
+               </tbody>
+             </table>
+           </foreword>
+         </preface>
+         <bibliography>
+           <references id="_bibliography" obligation="informative" normative="false" displayorder="2">
+             <title depth="1">Bibliography</title>
+             <bibitem id="rfc2616" type="standard">
+               <formattedref>R. FIELDING, J. GETTYS, J. MOGUL, H. FRYSTYK, L. MASINTER, P. LEACH and T. BERNERS-LEE. <em>Hypertext Transfer Protocol — HTTP/1.1</em>. In: RFC. 1999. Fremont, CA. <link target="https://www.rfc-editor.org/info/rfc2616">https://www.rfc-editor.org/info/rfc2616</link>.</formattedref>
+               <uri type="xml">https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2616.xml</uri>
+               <uri type="src">https://www.rfc-editor.org/info/rfc2616</uri>
+               <docidentifier type="metanorma-ordinal">[1]</docidentifier>
+               <docidentifier type="IETF">IETF RFC 2616</docidentifier>
+               <docidentifier type="IETF" scope="anchor">IETF RFC2616</docidentifier>
+               <docidentifier type="DOI">DOI 10.17487/RFC2616</docidentifier>
+               <biblio-tag>[1]<tab/>IETF RFC 2616, </biblio-tag>
+             </bibitem>
+           </references>
+         </bibliography>
+       </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)
-      .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -311,8 +278,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </preface>
       </ogc-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -436,8 +407,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </preface>
       </ogc-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true)))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 end

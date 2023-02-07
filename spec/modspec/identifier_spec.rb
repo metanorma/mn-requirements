@@ -160,8 +160,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
        </ogc-standard>
     OUTPUT
 
-    expect(xmlpp(IsoDoc::PresentationXMLConvert.new({})
-            .convert("test", input, true)))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -323,9 +327,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </preface>
        </ogc-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::PresentationXMLConvert
-      .new({ modspecidentifierbase: "/ogc" })
-               .convert("test", input, true)))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -488,9 +495,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </preface>
        </ogc-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::PresentationXMLConvert
-      .new({})
-               .convert("test", input, true)))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -652,9 +662,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </preface>
        </ogc-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::PresentationXMLConvert
-      .new({})
-               .convert("test", input, true)))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 
@@ -816,9 +829,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </preface>
        </ogc-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::PresentationXMLConvert
-      .new({ modspecidentifierbase: "/ogc" })
-               .convert("test", input, true)))
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
+      .convert("test", input, true),
+    )
+    out.at("//xmlns:metanorma-extension").remove
+    expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
 end
