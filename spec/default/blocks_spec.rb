@@ -12,7 +12,7 @@ RSpec.describe Metanorma::Requirements::Default do
       ====
     INPUT
     output = <<~"OUTPUT"
-      #{BLANK_HDR}
+      #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
         <metanorma-extension>
           <table id='_'>
             <tbody>
@@ -22,7 +22,8 @@ RSpec.describe Metanorma::Requirements::Default do
               </tr>
             </tbody>
           </table>
-        </metanorma-extension>
+      EXT
+      )}
         <sections>
           <recommendation id="id1" unnumbered="true" type="verification" model="ogc" tag='X' multilingual-rendering='common'>
              <identifier>/ogc/recommendation/wfs/2</identifier>

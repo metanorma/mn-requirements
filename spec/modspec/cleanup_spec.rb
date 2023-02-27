@@ -119,45 +119,46 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
     INPUT
     output = <<~OUTPUT
-      #{BLANK_HDR}
-        <metanorma-extension>
-          <table id='_'>
-            <tbody>
-              <tr>
-                <th>id1</th>
-                <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
-              </tr>
-                     <tr>
-         <th>_</th>
-         <td>/label/1</td>
-       </tr>
-       <tr>
-         <th>_</th>
-         <td>A1</td>
-       </tr>
-       <tr>
-         <th>_</th>
-         <td>A2</td>
-       </tr>
-       <tr>
-         <th>_</th>
-         <td>A3</td>
-       </tr>
-       <tr>
-         <th>_</th>
-         <td>A4</td>
-       </tr>
-       <tr>
-         <th>_</th>
-         <td>A5</td>
-       </tr>
-       <tr>
-         <th>_</th>
-         <td>A6</td>
-       </tr>
-            </tbody>
-          </table>
-        </metanorma-extension>
+      #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
+         <metanorma-extension>
+           <table id='_'>
+             <tbody>
+               <tr>
+                 <th>id1</th>
+                 <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
+               </tr>
+                      <tr>
+          <th>_</th>
+          <td>/label/1</td>
+        </tr>
+        <tr>
+          <th>_</th>
+          <td>A1</td>
+        </tr>
+        <tr>
+          <th>_</th>
+          <td>A2</td>
+        </tr>
+        <tr>
+          <th>_</th>
+          <td>A3</td>
+        </tr>
+        <tr>
+          <th>_</th>
+          <td>A4</td>
+        </tr>
+        <tr>
+          <th>_</th>
+          <td>A5</td>
+        </tr>
+        <tr>
+          <th>_</th>
+          <td>A6</td>
+        </tr>
+             </tbody>
+           </table>
+      EXT
+      )}
                <sections>
            <requirement id='id1' model='ogc' obligation='recommendation,requirement' type='class'>
              <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
@@ -343,7 +344,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
     INPUT
     output = <<~OUTPUT
-      #{BLANK_HDR}
+      #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
         <metanorma-extension>
           <table id='_'>
             <tbody>
@@ -357,7 +358,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </tr>
             </tbody>
           </table>
-        </metanorma-extension>
+      EXT
+      )}
         <sections>
           <requirement id='id1' model='ogc' type='class'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
