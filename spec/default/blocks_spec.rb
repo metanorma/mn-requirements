@@ -232,16 +232,21 @@ RSpec.describe Metanorma::Requirements::Default do
                   <description><p id="_">I recommend <em>this</em>.</p>
                  </description><specification exclude="false" type="tabular" keep-with-next="true" keep-lines-together="true"><p id="_">This is the object of the recommendation:</p><table id="_">  <tbody>    <tr>      <td valign="top" align="left">Object</td>      <td valign="top" align="left">Value</td>    </tr>    <tr>      <td valign="top" align="left">Mission</td>      <td valign="top" align="left">Accomplished</td>    </tr>  </tbody></table></specification><description>
                  <p id="_">As for the measurement targets,</p>
-                 </description><measurement-target exclude="false"><p id="_">The measurement target shall be measured as:</p><formula id="_">  <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac>
-                 <mrow>
-            <mi>r</mi>
-          </mrow>
-          <mrow>
-            <mn>1</mn>
-          </mrow>
-          </mfrac><mo>=</mo><mn>0</mn></math>
-          <asciimath>r/1 = 0</asciimath>
-          </stem></formula></measurement-target>
+                 </description><measurement-target exclude="false"><p id="_">The measurement target shall be measured as:</p><formula id="_">  
+                                  <stem type="MathML">
+                   <math xmlns="http://www.w3.org/1998/Math/MathML">
+                     <mstyle displaystyle="true">
+                       <mfrac>
+                         <mi>r</mi>
+                         <mn>1</mn>
+                       </mfrac>
+                       <mo>=</mo>
+                       <mn>0</mn>
+                     </mstyle>
+                   </math>
+                   <asciimath>r/1 = 0</asciimath>
+                 </stem>
+          </formula></measurement-target>
                  <verification exclude="false"><p id="_">The following code will be run for verification:</p><sourcecode  lang="CoreRoot" id="_">CoreRoot(success): HttpResponse
           if (success)
             recommendation(label: success-response)
