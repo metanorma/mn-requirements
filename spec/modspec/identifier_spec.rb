@@ -51,9 +51,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-         <preface>
-           <foreword id='A' displayorder='1'>
+           <foreword id='A' displayorder='2'>
              <title>Preface</title>
              <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
                <thead>
@@ -156,15 +154,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
              </p>
            </foreword>
-         </preface>
-       </ogc-standard>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -218,9 +213,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-         <preface>
-           <foreword id='A' displayorder='1'>
+           <foreword id='A' displayorder='2'>
              <title>Preface</title>
              <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
                <thead>
@@ -324,14 +317,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
              </p>
            </foreword>
-         </preface>
-       </ogc-standard>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -387,9 +377,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-         <preface>
-           <foreword id='A' displayorder='1'>
+           <foreword id='A' displayorder='2'>
              <title>Preface</title>
              <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
                <thead>
@@ -492,14 +480,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
              </p>
                        </foreword>
-         </preface>
-       </ogc-standard>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -554,9 +539,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-         <preface>
-           <foreword id='A' displayorder='1'>
+           <foreword id='A' displayorder='2'>
              <title>Preface</title>
              <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
                <thead>
@@ -659,14 +642,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
              </p>
                        </foreword>
-         </preface>
-       </ogc-standard>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -721,9 +701,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-         <preface>
-           <foreword id='A' displayorder='1'>
+           <foreword id='A' displayorder='2'>
              <title>Preface</title>
              <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
                <thead>
@@ -826,14 +804,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
              </p>
                        </foreword>
-         </preface>
-       </ogc-standard>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end

@@ -63,8 +63,7 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface><foreword displayorder="1">
+          <foreword displayorder="2">
           <permission id="_" keep-with-next="true" keep-lines-together="true" model="default"><name>Permission 1:<br/>/ogc/recommendation/wfs/2</name><p><em>Subject: user</em><br/>
       <em>Subject: non-user</em><br/>
       <em>Inherits: /ss/584/2015/level/1</em><br/>
@@ -93,24 +92,12 @@ RSpec.describe Metanorma::Requirements::Default do
         </div><div exclude="false" class="component1" type="requirement-component1">
                   <p id="_">Hello</p>
                 </div></permission>
-          </foreword></preface>
-          <bibliography><references id="_bibliography" obligation="informative" normative="false" displayorder="2">
-      <title depth="1">Bibliography</title>
-      <bibitem id="rfc2616" type="standard"><formattedref>R. FIELDING, J. GETTYS, J. MOGUL, H. FRYSTYK, L. MASINTER, P. LEACH and T. BERNERS-LEE. <em>Hypertext Transfer Protocol&#x2009;&#x2014;&#x2009;HTTP/1.1</em>. In: RFC. 1999. Fremont, CA. <link target="https://www.rfc-editor.org/info/rfc2616">https://www.rfc-editor.org/info/rfc2616</link>.</formattedref><uri type="xml">https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2616.xml</uri><uri type="src">https://www.rfc-editor.org/info/rfc2616</uri>
-                     <docidentifier type="metanorma-ordinal">[1]</docidentifier>
-               <docidentifier type="IETF">IETF RFC 2616</docidentifier>
-               <docidentifier type="IETF" scope="anchor">IETF RFC2616</docidentifier>
-               <docidentifier type="DOI">DOI 10.17487/RFC2616</docidentifier>
-               <biblio-tag>[1]<tab/>IETF RFC 2616, </biblio-tag>
-        </bibitem>
-      </references></bibliography>
-          </iso-standard>
+          </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -170,8 +157,7 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface><foreword displayorder="1">
+          <foreword displayorder="2">
           <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default"><name>Requirement:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Subject: user</em><br/>
       <em>Inherits: /ss/584/2015/level/1</em></p><div type="requirement-description">
           <p id="_">I recommend <em>this</em>.</p>
@@ -192,14 +178,12 @@ RSpec.describe Metanorma::Requirements::Default do
         </div><div exclude="false" class="component1" type="requirement-component1">
                   <p id="_">Hello</p>
                 </div></requirement>
-          </foreword></preface>
-          </iso-standard>
+          </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -264,12 +248,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
 
     presxml = <<~OUTPUT
-          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <bibdata>
-          <language current="true">fr</language>
-          <script current="true">Latn</script>
-          </bibdata>
-          <preface><foreword displayorder="1">
+          <foreword displayorder="2">
           <requirement id="A" unnumbered="true" model="default"><name>Exigence&#xA0;:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Sujet&#xA0;: user</em><br/>
       <em>H&#xE9;rite&#xA0;: /ss/584/2015/level/1</em></p><div type="requirement-description">
           <p id="_">I recommend <em>this</em>.</p>
@@ -290,16 +269,13 @@ RSpec.describe Metanorma::Requirements::Default do
         </div><div exclude="false" class="component1" type="requirement-component1">
                   <p id="_">Hello</p>
                 </div></requirement>
-          </foreword></preface>
-          </iso-standard>
+          </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
-    out.at("//xmlns:localized-strings").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -360,8 +336,7 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface><foreword displayorder="1">
+          <foreword displayorder="2">
           <recommendation id="_" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default"><name>Recommendation 1:<br/>/ogc/recommendation/wfs/2</name><p><em>Obligation: shall,could</em><br/>
       <em>Subject: user</em><br/>
       <em>Inherits: /ss/584/2015/level/1</em><br/>
@@ -385,15 +360,13 @@ RSpec.describe Metanorma::Requirements::Default do
         </div><div exclude="false" class="component1" type="requirement-component1">
                   <p id="_">Hello</p>
                 </div></recommendation>
-          </foreword></preface>
-          </iso-standard>
+          </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end

@@ -34,9 +34,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <ogc-standard xmlns="https://standards.opengeospatial.org/document" type="presentation">
-         <preface>
-           <foreword id="A" displayorder="1">
+           <foreword id="A" displayorder="2">
              <title>Preface</title>
              <table id="_" class="modspec" type="recommend">
                <thead>
@@ -166,15 +164,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </tbody>
              </table>
            </foreword>
-         </preface>
-       </ogc-standard>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -216,9 +211,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-          <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-        <preface>
-          <foreword id='A' displayorder='1'>
+          <foreword id='A' displayorder='2'>
             <title>Preface</title>
             <table id='A1' class='modspec' type='recommend'>
               <thead>
@@ -269,14 +262,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </tbody>
             </table>
           </foreword>
-        </preface>
-      </ogc-standard>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
@@ -304,9 +294,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-          <ogc-standard xmlns='https://standards.opengeospatial.org/document' type='presentation'>
-        <preface>
-          <foreword id='A' displayorder='1'>
+          <foreword id='A' displayorder='2'>
             <title>Preface</title>
             <table id='A1' class='modspec' type='recommend'>
               <thead>
@@ -398,14 +386,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
               </tbody>
             </table>
           </foreword>
-        </preface>
-      </ogc-standard>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
-    )
-    out.at("//xmlns:metanorma-extension").remove
+    ).at("//xmlns:foreword")
     expect(xmlpp(out.to_xml))
       .to be_equivalent_to xmlpp(presxml)
   end
