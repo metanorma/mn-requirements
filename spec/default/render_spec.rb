@@ -67,7 +67,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <permission id="_" keep-with-next="true" keep-lines-together="true" model="default"><name>Permission 1:<br/>/ogc/recommendation/wfs/2</name><p><em>Subject: user</em><br/>
       <em>Subject: non-user</em><br/>
       <em>Inherits: /ss/584/2015/level/1</em><br/>
-      <em>Inherits: <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></em><br/>
+      <em>Inherits: <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref></em><br/>
       <em>Control-class: Technical</em><br/>
       <em>Priority: P0</em><br/>
       <em>Family: System and Communications Protection</em><br/>
