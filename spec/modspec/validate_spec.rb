@@ -2,8 +2,8 @@ require "spec_helper"
 
 RSpec.describe Metanorma::Requirements::Modspec do
   it "does not warn if no linkage issues" do
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -104,21 +104,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "no corresponding Requirement"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "has no corresponding Conformance test"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "has no corresponding Requirement class"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "has no corresponding Conformance class"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Cycle in Modspec linkages"
   end
 
   it "does not warn if no linkage issues for multiple targets" do
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -156,15 +156,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
       classification:: target:C
       ====
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "no corresponding Requirement"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "has no corresponding Conformance test"
   end
 
   it "warns of disconnect between requirements and conformance tests, #1" do
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -247,19 +247,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     INPUT
 
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Conformance test D has no corresponding Requirement"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Requirement A has no corresponding Conformance test"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Conformance class J has no corresponding Requirement class"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Requirement class G has no corresponding Conformance class"
   end
 
   it "warns of disconnect between requirements and conformance tests, #2" do
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -292,13 +292,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
     INPUT
 
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Conformance test D has no corresponding Requirement"
   end
 
   it "warns of disconnect between requirement classes and requirements" do
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -341,17 +341,17 @@ RSpec.describe Metanorma::Requirements::Modspec do
       identifier:: I
       ====
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Requirement class G has no corresponding Requirement"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Requirement class H has no corresponding Requirement"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Requirement class I has no corresponding Requirement"
   end
 
   it "warns of disconnect between conformance classes and conformance tests" do
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -369,15 +369,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Conformance class B has no corresponding Conformance test"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Conformance test A has no corresponding Conformance class"
   end
 
   it "warns of disconnect between prerequisites and provisions" do
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -395,15 +395,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Provision A points to Prerequisite B outside this document"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Provision A points to Indirect prerequisite C outside this document"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Provision A points to Implemented provision D outside this document"
 
-    FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -441,16 +441,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Provision A points to Prerequisite B outside this document"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Provision A points to Indirect prerequisite C outside this document"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Provision A points to Implemented provision D outside this document"
   end
 
   it "warns about cycles in links" do
-    Asciidoctor.convert(<<~"INPUT", backend: :standoc, header_footer: true)
+    Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc
@@ -504,21 +504,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
 
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Cycle in Modspec linkages through dependency: A => B => C => A"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Cycle in Modspec linkages through dependency: D => E => D"
-    expect(File.read("test.err"))
-      .to include "Cycle in Modspec linkages through indirect_dependency: A => C => A"
-    expect(File.read("test.err"))
-      .not_to include "Cycle in Modspec linkages through indirect_dependency: B => D => E"
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
+      .to include "Cycle in Modspec linkages through indirect_​dependency­: A => C => A"
+    expect(File.read("test.err.html"))
+      .not_to include "Cycle in Modspec linkages through indirect_​dependency­: B => D => E"
+    expect(File.read("test.err.html"))
       .to include "Cycle in Modspec linkages through implements: A => B => A"
   end
 
   it "fatal error if not unique identifier" do
     FileUtils.rm_f "test.xml"
-    FileUtils.rm_f "test.err"
+    FileUtils.rm_f "test.err.html"
     begin
       input = <<~INPUT
         = Document title
@@ -547,7 +547,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       end.to raise_error(SystemExit)
     rescue SystemExit, RuntimeError
     end
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Modspec identifier A is used more than once"
     expect(File.exist?("test.xml")).to be false
   end
