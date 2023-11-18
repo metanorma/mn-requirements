@@ -184,6 +184,7 @@ module Metanorma
 
       def requirement_component_parse(node, out)
         node["exclude"] == "true" and return out
+        descr_classif_render(node)
         node.elements.size == 1 && node.first_element_child.name == "dl" and
           return reqt_dl(node.first_element_child, out)
         node.name == "component" and

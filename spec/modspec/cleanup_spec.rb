@@ -252,14 +252,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </component>
              <description>
                <p id='_'>Interpolated description</p>
-               <classification>
-              <tag>scope</tag>
-              <value>random</value>
-            </classification>
-            <classification>
-              <tag>widgets</tag>
-              <value>randomer</value>
-            </classification>
+                      <classification>
+         <tag>scope</tag>
+         <value>random</value>
+       </classification>
+       <classification>
+         <tag>widgets</tag>
+         <value>randomer</value>
+       </classification>
              </description>
              <recommendation id='_' model='ogc' type='general'>
                <identifier>/label/1</identifier>
