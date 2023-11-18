@@ -95,15 +95,31 @@ module Metanorma
       end
 
       def requirement_component_parse(node, out)
-        return out if node["exclude"] == "true"
-
+        node["exclude"] == "true" and return out
         ret = node.dup
         if reqt_subpart?(node.name)
           ret["type"] = reqt_component_type(node)
           ret.name = "div"
         end
+        descr_classif_render(ret)
         out << ret
         out
+      end
+
+      def descr_classif_render(reqt)
+        reqt.at(ns("./classification")) or return
+        ins = reqt.at(ns("./classification")).before("<dl/>").previous
+        descr_classif_extract(reqt, ins)
+      end
+
+      def descr_classif_extract(desc, ins)
+        dlist = desc.xpath(ns("./classification"))
+        dlist.each do |x|
+          x.at(ns("./tag")).name = "dt"
+          x.at(ns("./value")).name = "dd"
+          ins << x.children
+          x.remove
+        end
       end
     end
   end

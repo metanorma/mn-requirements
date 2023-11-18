@@ -14,6 +14,7 @@ RSpec.describe Metanorma::Requirements::Default do
         <classification> <tag>control-class</tag> <value>Technical</value> </classification><classification> <tag>priority</tag> <value>P0</value> </classification><classification> <tag>family</tag> <value>System and Communications Protection</value> </classification><classification> <tag>family</tag> <value>System and Communications Protocols</value> </classification>
         <description>
           <p id="_">I recommend <em>this</em>.</p>
+          <classification><tag>scope</tag><value>random</value></classification><classification><tag>widgets</tag><value>randomer</value></classification>
         </description>
         <note id="N">This is a note</note>
         <specification exclude="true" type="tabular">
@@ -73,6 +74,12 @@ RSpec.describe Metanorma::Requirements::Default do
       <em>Family: System and Communications Protection</em><br/>
       <em>Family: System and Communications Protocols</em></p><div type="requirement-description">
           <p id="_">I recommend <em>this</em>.</p>
+                <dl>
+        <dt>scope</dt>
+        <dd>random</dd>
+        <dt>widgets</dt>
+        <dd>randomer</dd>
+      </dl>
         </div>
         <note id="N"><name>NOTE</name>This is a note</note>
         <div type="requirement-description">
