@@ -86,6 +86,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       part:: Determine travel distance by flight path
       guidance:: Guidance
       description:: Interpolated description
+      scope::: random
+      widgets::: randomer
       recommendation:: /label/1
       part:: Widget has been suitably calibrated for aerodynamics
       test-method:: Method
@@ -250,6 +252,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </component>
              <description>
                <p id='_'>Interpolated description</p>
+               <classification>
+              <tag>scope</tag>
+              <value>random</value>
+            </classification>
+            <classification>
+              <tag>widgets</tag>
+              <value>randomer</value>
+            </classification>
              </description>
              <recommendation id='_' model='ogc' type='general'>
                <identifier>/label/1</identifier>
