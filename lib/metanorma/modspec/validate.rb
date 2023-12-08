@@ -4,12 +4,10 @@ module Metanorma
   class Requirements
     class Modspec < Default
       def validate(reqt, log)
-        @fatalerrors = []
         @log ||= log
         @ids ||= reqt_links(reqt.document)
         reqt_cycles_validate
         reqt_link_validate(reqt)
-        @fatalerrors
       end
 
       def nested_reqt?(reqt)
@@ -130,8 +128,7 @@ module Metanorma
 
         if hash[:label][struct[:label]]
           msg = "Modspec identifier #{struct[:label]} is used more than once"
-          @log.add("Requirements", reqt, msg)
-          @fatalerrors << msg
+          @log.add("Requirements", reqt, msg, severity: 0)
         end
         hash[:label][struct[:label]] = reqt["id"]
         hash
