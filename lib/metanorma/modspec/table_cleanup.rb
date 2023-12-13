@@ -1,3 +1,5 @@
+require "uri"
+
 module Metanorma
   class Requirements
     class Modspec < Default
@@ -6,7 +8,23 @@ module Metanorma
         requirement_table_consec_rows_cleanup(node, table)
         node.ancestors("requirement, recommendation, permission").empty? and
           truncate_id_base_in_reqt(table)
+        cell2link(table)
         table
+      end
+
+      def cell2link(table)
+        table.xpath(ns(".//td")).each do |td|
+          td.elements.empty? or next
+          uri?(td.text.strip) or next
+          td.children = "<link target='#{td.text.strip}'/>"
+        end
+      end
+
+      def uri?(string)
+        uri = URI.parse(string)
+        %w(http https).include?(uri.scheme)
+      rescue URI::BadURIError, URI::InvalidURIError
+        false
       end
 
       def requirement_table_consec_rows_cleanup(_node, table)
@@ -19,7 +37,6 @@ module Metanorma
       def conflate_table_rows?(trow)
         tr1 = trow.next or return
         tr1.name == "tr" or return
-
         th = trow.at(ns("./th"))&.text
         th && th == tr1.at(ns("./th"))&.text
       end

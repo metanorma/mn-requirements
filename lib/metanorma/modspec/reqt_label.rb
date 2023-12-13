@@ -11,7 +11,6 @@ module Metanorma
       def recommendation_label(elem, type, xrefs)
         @xrefs ||= xrefs.dup
         init_lookups(elem.document)
-
         label = elem.at(ns("./identifier"))&.text
         if inject_crossreference_reqt?(elem, label)
           recommendation_label_xref(elem, label, xrefs, type)
@@ -182,7 +181,6 @@ module Metanorma
 
       def truncate_id_base_outside_reqts(docxml)
         @modspecidentifierbase or return
-
         (docxml.xpath(ns("//xref[@style = 'id']")) - docxml
           .xpath(ns("//requirement//xref | //permission//xref | " \
                     "//recommendation//xref"))).each do |x|

@@ -189,6 +189,105 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .to be_equivalent_to xmlpp(presxml)
   end
 
+  it "processes URIs in requirement components" do
+    input = <<~INPUT
+              <ogc-standard xmlns="https://standards.opengeospatial.org/document">
+        <preface><foreword id="A"><title>Preface</title>
+        <recommendation model="ogc" id="_">
+      <identifier>http://www.example1.com</identifier>
+      <inherit>http://www.example2.com</inherit>
+      <subject>http://www.example3.com</subject>
+      <description><p id="_">I recommend <em>1</em>.</p>
+              <classification>
+          <tag>http://www.example4.com</tag>
+          <value>http://www.example5.com</value>
+        </classification>
+      </description>
+      <component class="test-purpose" id="A1"><p>TEST PURPOSE</p></component>
+      <description><p id="_">http://www.example6.com</p></description>
+      <component class="panda GHz express" id="A7"><p>PANDA PART</p></component>
+      <description>http://www.example7.com</description>
+      </recommendation>
+      </foreword>
+      </preface>
+      </ogc-standard>
+    INPUT
+    presxml = <<~OUTPUT
+      <foreword id="A" displayorder="2">
+         <title>Preface</title>
+         <table id="_" class="modspec" type="recommend">
+           <thead>
+             <tr>
+               <th scope="colgroup" colspan="2">
+                 <p class="RecommendationTitle">Recommendation 1</p>
+               </th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <th>Identifier</th>
+               <td>
+                 <tt>http://www.example1.com</tt>
+               </td>
+             </tr>
+             <tr>
+               <th>Subject</th>
+               <td>
+                 <link target="http://www.example3.com"/>
+               </td>
+             </tr>
+             <tr>
+               <th>Prerequisite</th>
+               <td>
+                 <link target="http://www.example2.com"/>
+               </td>
+             </tr>
+             <tr>
+               <th>Statement</th>
+               <td>
+                 <p id="_">I recommend <em>1</em>.</p>
+                 <dl>
+                   <dt>http://www.example4.com</dt>
+                   <dd>http://www.example5.com</dd>
+                 </dl>
+               </td>
+             </tr>
+             <tr id="A1">
+               <th>Test purpose</th>
+               <td>
+                 <p>TEST PURPOSE</p>
+               </td>
+             </tr>
+             <tr>
+               <th>Statement</th>
+               <td>
+                 <p id="_">http://www.example6.com</p>
+               </td>
+             </tr>
+             <tr id="A7">
+               <th>Panda GHz express</th>
+               <td>
+                 <p>PANDA PART</p>
+               </td>
+             </tr>
+             <tr>
+               <th>Statement</th>
+               <td>
+                 <link target="http://www.example7.com"/>
+               </td>
+             </tr>
+           </tbody>
+         </table>
+       </foreword>
+    OUTPUT
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    ).at("//xmlns:foreword")
+    expect(xmlpp(out.to_xml))
+      .to be_equivalent_to xmlpp(presxml)
+  end
+
   it "processes nested requirement steps" do
     input = <<~INPUT
                 <ogc-standard xmlns="https://standards.opengeospatial.org/document">
