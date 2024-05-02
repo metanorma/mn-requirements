@@ -79,7 +79,7 @@ module Metanorma
         Metanorma::Utils::guid_anchor?(reqt["id"]) or return
         id = reqt.at("./identifier") or return
         anchor = id.text.strip
-        anchor.empty? and next
+        anchor.empty? and return
         reqt["id"] = Metanorma::Utils::to_ncname(anchor)
       end
 
