@@ -234,81 +234,81 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' class='modspec' type='recommendtest'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTestTitle'>Conformance test 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                 <th>Identifier</th>
-                <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                </tr>
-                 <tr>
-                   <th>Subject</th>
-                   <td>user</td>
-                 </tr>
-                 <tr>
-                   <th>Prerequisite</th>
-                   <td>/ss/584/2015/level/1</td>
-                 </tr>
-                 <tr>
-                   <th>Control-class</th>
-                   <td>Technical</td>
-                 </tr>
-                 <tr>
-                   <th>Priority</th>
-                   <td>P0</td>
-                 </tr>
-                 <tr>
-                   <th>Family</th>
-                   <td>System and Communications Protection<br/>
-                   System and Communications Protocols</td>
-                 </tr>
-                 <tr>
-                 <th>Description</th>
-                 <td>
-                     <p id='_'>
-                       I recommend
-                       <em>this</em>
-                       .
-                     </p>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>A</th>
-                   <td>B</td>
-                 </tr>
-                 <tr>
-                   <th>C</th>
-                   <td>D</td>
-                 </tr>
-                 <tr>
-                   <td colspan="2">
-                     <p id='_'>The measurement target shall be measured as:</p>
-                     <formula id='_'>
-                       <name>1</name>
-                       <stem type='AsciiMath'>r/1 = 0</stem>
-                     </formula>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan='2'>
-                     <p id='_'>The following code will be run for verification:</p>
-                     <sourcecode id='_'>
-                       CoreRoot(success): HttpResponse if (success)
-                       recommendation(label: success-response) end
-                     </sourcecode>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-           </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' class='modspec' type='recommendtest'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTestTitle'>Conformance test 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>Identifier</th>
+           <td><tt>/ogc/recommendation/wfs/2</tt></td>
+           </tr>
+            <tr>
+              <th>Subject</th>
+              <td>user</td>
+            </tr>
+            <tr>
+              <th>Prerequisite</th>
+              <td>/ss/584/2015/level/1</td>
+            </tr>
+            <tr>
+              <th>Control-class</th>
+              <td>Technical</td>
+            </tr>
+            <tr>
+              <th>Priority</th>
+              <td>P0</td>
+            </tr>
+            <tr>
+              <th>Family</th>
+              <td>System and Communications Protection<br/>
+              System and Communications Protocols</td>
+            </tr>
+            <tr>
+            <th>Description</th>
+            <td>
+                <p id='_'>
+                  I recommend
+                  <em>this</em>
+                  .
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th>A</th>
+              <td>B</td>
+            </tr>
+            <tr>
+              <th>C</th>
+              <td>D</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <p id='_'>The measurement target shall be measured as:</p>
+                <formula id='_'>
+                  <name>1</name>
+                  <stem type='AsciiMath'>r/1 = 0</stem>
+                </formula>
+              </td>
+            </tr>
+            <tr>
+              <td colspan='2'>
+                <p id='_'>The following code will be run for verification:</p>
+                <sourcecode id='_'>
+                  CoreRoot(success): HttpResponse if (success)
+                  recommendation(label: success-response) end
+                </sourcecode>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -438,76 +438,76 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-          <foreword id='A' displayorder='2'>
-            <title>Preface</title>
-            <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
-              <thead>
-                <tr>
-                  <th scope='colgroup' colspan='2'>
-                    <p class='RecommendationTitle'>Permissions class 1</p>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <th>Identifier</th>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                </tr>
-                <tr>
-                  <th>Target type</th>
-                  <td>user</td>
-                </tr>
-                <tr>
-                  <th>Prerequisites</th>
-                  <td>/ss/584/2015/level/1<br/>
-                  /ss/584/2015/level/2</td>
-                </tr>
-                <tr>
-                  <th>Normative statements</th>
-                  <td>
-                    <xref target='B1'>
-                      Permission 1:
-                      <tt>/ogc/recommendation/wfs/10</tt>
-                    </xref>
-                    <br/>
-                      <xref target='A3'>
-                      Requirement 1-1:
-                      <tt>Requirement 1</tt>
-                    </xref>
-                  <br/>
-                    <xref target='A4'>
-                      Recommendation 1-1:
-                      <tt>Recommendation 1</tt>
-                    </xref>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table id='B1' class='modspec' type='recommend'>
-              <thead>
-                <tr>
-                  <th scope='colgroup' colspan='2'>
-                    <p class='RecommendationTitle'>Permission 1</p>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <th>Identifier</th>
-                  <td><tt>/ogc/recommendation/wfs/10</tt></td>
-                </tr>
-                <tr>
-                  <th>Included in</th>
-                  <td>
-                    <xref target='A1'>
-                      Permissions class 1:
-                      <tt>/ogc/recommendation/wfs/2</tt>
-                    </xref>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permissions class 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>Identifier</th>
+              <td><tt>/ogc/recommendation/wfs/2</tt></td>
+            </tr>
+            <tr>
+              <th>Target type</th>
+              <td>user</td>
+            </tr>
+            <tr>
+              <th>Prerequisites</th>
+              <td>/ss/584/2015/level/1<br/>
+              /ss/584/2015/level/2</td>
+            </tr>
+            <tr>
+              <th>Normative statements</th>
+              <td>
+                <xref target='B1'>
+                  Permission 1:
+                  <tt>/ogc/recommendation/wfs/10</tt>
+                </xref>
+                <br/>
+                  <xref target='A3'>
+                  Requirement 1-1:
+                  <tt>Requirement 1</tt>
+                </xref>
+              <br/>
+                <xref target='A4'>
+                  Recommendation 1-1:
+                  <tt>Recommendation 1</tt>
+                </xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id='B1' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permission 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>Identifier</th>
+              <td><tt>/ogc/recommendation/wfs/10</tt></td>
+            </tr>
+            <tr>
+              <th>Included in</th>
+              <td>
+                <xref target='A1'>
+                  Permissions class 1:
+                  <tt>/ogc/recommendation/wfs/2</tt>
+                </xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -840,89 +840,89 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Requirements class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                 <th>Identifier</th>
-                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                 </tr>
-                 <tr>
-                   <th>Target type</th>
-                   <td>user</td>
-                 </tr>
-                 <tr>
-                   <th>Prerequisites</th>
-                   <td>/ss/584/2015/level/1<br/>
-                   /ss/584/2015/level/2</td>
-                 </tr>
-                 <tr>
-                 <th>Implements</th>
-           <td>
-             <xref target='A5'>
-               Permission 1:
-               <tt>Permission 1</tt>
-             </xref>
-           </td>
-         </tr>
-         <tr>
-             <th>Description</th>
-            <td>Hic incipit</td>
-          </tr>
-                 <tr>
-                   <th>Normative statements</th>
-                   <td>
-                     <xref target='A5'>
-                       Permission 1:
-                       <tt>Permission 1</tt>
-                     </xref>
-                   <br/>
-                     <xref target='A3'>
-                       Requirement 1-1:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                   <br/>
-                     <xref target='A4'>
-                       Recommendation 1-1:
-                       <tt>Recommendation 1</tt>
-                     </xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='A5' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permission 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                 <th>Identifier</th>
-                   <td><tt>Permission 1</tt></td>
-                 </tr>
-                 <tr>
-                   <th>Included in</th>
-                   <td>
-                     <xref target='A1'>
-                       Requirements class 1:
-                       <tt>/ogc/recommendation/wfs/2</tt>
-                     </xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-           </foreword>
+        <foreword id='A' displayorder='2'>
+          <title>Preface</title>
+          <table id='A1' class='modspec' type='recommendclass'>
+            <thead>
+              <tr>
+                <th scope='colgroup' colspan='2'>
+                  <p class='RecommendationTitle'>Requirements class 1</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <th>Identifier</th>
+                <td><tt>/ogc/recommendation/wfs/2</tt></td>
+              </tr>
+              <tr>
+                <th>Target type</th>
+                <td>user</td>
+              </tr>
+              <tr>
+                <th>Prerequisites</th>
+                <td>/ss/584/2015/level/1<br/>
+                /ss/584/2015/level/2</td>
+              </tr>
+              <tr>
+              <th>Implements</th>
+        <td>
+          <xref target='A5'>
+            Permission 1:
+            <tt>Permission 1</tt>
+          </xref>
+        </td>
+      </tr>
+      <tr>
+          <th>Description</th>
+         <td>Hic incipit</td>
+       </tr>
+              <tr>
+                <th>Normative statements</th>
+                <td>
+                  <xref target='A5'>
+                    Permission 1:
+                    <tt>Permission 1</tt>
+                  </xref>
+                <br/>
+                  <xref target='A3'>
+                    Requirement 1-1:
+                    <tt>Requirement 1</tt>
+                  </xref>
+                <br/>
+                  <xref target='A4'>
+                    Recommendation 1-1:
+                    <tt>Recommendation 1</tt>
+                  </xref>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table id='A5' class='modspec' type='recommend'>
+            <thead>
+              <tr>
+                <th scope='colgroup' colspan='2'>
+                  <p class='RecommendationTitle'>Permission 1</p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <th>Identifier</th>
+                <td><tt>Permission 1</tt></td>
+              </tr>
+              <tr>
+                <th>Included in</th>
+                <td>
+                  <xref target='A1'>
+                    Requirements class 1:
+                    <tt>/ogc/recommendation/wfs/2</tt>
+                  </xref>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -957,52 +957,52 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-          <foreword id='A' displayorder='2'>
-            <title>Preface</title>
-            <table id='A1' class='modspec' type='recommendclass'>
-              <thead>
-                <tr>
-                  <th scope='colgroup' colspan='2'>
-                    <p class='RecommendationTitle'>Recommendations class 1</p>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <th>Identifier</th>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                </tr>
-                <tr>
-                  <th>Target type</th>
-                  <td>user</td>
-                </tr>
-                <tr>
-                  <th>Prerequisites</th>
-                  <td>/ss/584/2015/level/1<br/>
-                  /ss/584/2015/level/2</td>
-                </tr>
-                <tr>
-                  <th>Normative statements</th>
-                  <td>
-                    <xref target='A2'>
-                      Permission 1-1:
-                      <tt>Permission 1</tt>
-                    </xref>
-                    <br/>
-                    <xref target='A3'>
-                      Permission 1-2:
-                      <tt>Requirement 1</tt>
-                    </xref>
-                    <br/>
-                    <xref target='A4'>
-                      Recommendation 1-1:
-                      <tt>Recommendation 1</tt>
-                    </xref>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' class='modspec' type='recommendclass'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Recommendations class 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>Identifier</th>
+              <td><tt>/ogc/recommendation/wfs/2</tt></td>
+            </tr>
+            <tr>
+              <th>Target type</th>
+              <td>user</td>
+            </tr>
+            <tr>
+              <th>Prerequisites</th>
+              <td>/ss/584/2015/level/1<br/>
+              /ss/584/2015/level/2</td>
+            </tr>
+            <tr>
+              <th>Normative statements</th>
+              <td>
+                <xref target='A2'>
+                  Permission 1-1:
+                  <tt>Permission 1</tt>
+                </xref>
+                <br/>
+                <xref target='A3'>
+                  Permission 1-2:
+                  <tt>Requirement 1</tt>
+                </xref>
+                <br/>
+                <xref target='A4'>
+                  Recommendation 1-1:
+                  <tt>Recommendation 1</tt>
+                </xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -1065,62 +1065,62 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-          <foreword id='A0' displayorder='2'>
-            <title>Preface</title>
-            <table id='A' unnumbered='true' class='modspec' type='recommend'>
-              <thead>
-                <tr>
-                  <th scope='colgroup' colspan='2'>
-                    <p class='RecommendationTitle'>Requirement: A New Requirement</p>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <th>Identifier</th>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                </tr>
-                <tr>
-                  <th>Subject</th>
-                  <td>user</td>
-                </tr>
-                <tr>
-                  <th>Prerequisite</th>
-                  <td>/ss/584/2015/level/1</td>
-                </tr>
-                <tr>
-                <th>Statements</th>
-                  <td>
-                    <p id='_'>
-                      I recommend
-                      <em>this</em>
-                      .
-                    </p>
-                  <br/>
-                    <p id='_'>As for the measurement targets,</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan='2'>
-                    <p id='_'>The measurement target shall be measured as:</p>
-                    <formula id='B'>
-                      <name>1</name>
-                      <stem type='AsciiMath'>r/1 = 0</stem>
-                    </formula>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan='2'>
-                    <p id='_'>The following code will be run for verification:</p>
-                    <sourcecode id='_'>
-                      CoreRoot(success): HttpResponse if (success)
-                      recommendation(label: success-response) end
-                    </sourcecode>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </foreword>
+      <foreword id='A0' displayorder='2'>
+        <title>Preface</title>
+        <table id='A' unnumbered='true' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Requirement: A New Requirement</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>Identifier</th>
+              <td><tt>/ogc/recommendation/wfs/2</tt></td>
+            </tr>
+            <tr>
+              <th>Subject</th>
+              <td>user</td>
+            </tr>
+            <tr>
+              <th>Prerequisite</th>
+              <td>/ss/584/2015/level/1</td>
+            </tr>
+            <tr>
+            <th>Statements</th>
+              <td>
+                <p id='_'>
+                  I recommend
+                  <em>this</em>
+                  .
+                </p>
+              <br/>
+                <p id='_'>As for the measurement targets,</p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan='2'>
+                <p id='_'>The measurement target shall be measured as:</p>
+                <formula id='B'>
+                  <name>1</name>
+                  <stem type='AsciiMath'>r/1 = 0</stem>
+                </formula>
+              </td>
+            </tr>
+            <tr>
+              <td colspan='2'>
+                <p id='_'>The following code will be run for verification:</p>
+                <sourcecode id='_'>
+                  CoreRoot(success): HttpResponse if (success)
+                  recommendation(label: success-response) end
+                </sourcecode>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -1133,7 +1133,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
   it "processes recommendations" do
     input = <<~INPUT
-            <ogc-standard xmlns="https://standards.opengeospatial.org/document">
+      <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
           <recommendation model="ogc" id="_">
         <identifier>/ogc/recommendation/wfs/2</identifier>
@@ -1183,61 +1183,61 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-          <foreword id='A' displayorder='2'>
-            <title>Preface</title>
-            <table id='_' class='modspec' type='recommend'>
-              <thead>
-                <tr>
-                  <th scope='colgroup' colspan='2'>
-                    <p class='RecommendationTitle'>Recommendation 1</p>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <th>Identifier</th>
-                  <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                </tr>
-                <tr>
-                  <th>Subject</th>
-                  <td>user</td>
-                </tr>
-                <tr>
-                  <th>Prerequisite</th>
-                  <td>/ss/584/2015/level/1</td>
-                </tr>
-                <tr>
-                <th>Statements</th><td>
-                    <p id='_'>
-                      I recommend
-                      <em>this</em>
-                      .
-                    </p>
-                    <br/>
-                    <p id='_'>As for the measurement targets,</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan='2'>
-                    <p id='_'>The measurement target shall be measured as:</p>
-                    <formula id='_'>
-                      <name>1</name>
-                      <stem type='AsciiMath'>r/1 = 0</stem>
-                    </formula>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan='2'>
-                    <p id='_'>The following code will be run for verification:</p>
-                    <sourcecode id='_'>
-                      CoreRoot(success): HttpResponse if (success)
-                      recommendation(label: success-response) end
-                    </sourcecode>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='_' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Recommendation 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>Identifier</th>
+              <td><tt>/ogc/recommendation/wfs/2</tt></td>
+            </tr>
+            <tr>
+              <th>Subject</th>
+              <td>user</td>
+            </tr>
+            <tr>
+              <th>Prerequisite</th>
+              <td>/ss/584/2015/level/1</td>
+            </tr>
+            <tr>
+            <th>Statements</th><td>
+                <p id='_'>
+                  I recommend
+                  <em>this</em>
+                  .
+                </p>
+                <br/>
+                <p id='_'>As for the measurement targets,</p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan='2'>
+                <p id='_'>The measurement target shall be measured as:</p>
+                <formula id='_'>
+                  <name>1</name>
+                  <stem type='AsciiMath'>r/1 = 0</stem>
+                </formula>
+              </td>
+            </tr>
+            <tr>
+              <td colspan='2'>
+                <p id='_'>The following code will be run for verification:</p>
+                <sourcecode id='_'>
+                  CoreRoot(success): HttpResponse if (success)
+                  recommendation(label: success-response) end
+                </sourcecode>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
