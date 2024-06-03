@@ -538,4 +538,35 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
   end
+
+  it "generates identifier-based anchor for requirement if none supplied" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      [requirement,model=ogc]
+      ====
+      [%metadata]
+      type:: class
+      identifier:: \\http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules
+      ====
+
+      [requirement,model=ogc]
+      ====
+      [%metadata]
+      type:: class
+      ====
+    INPUT
+    output = <<~OUTPUT
+      <sections>
+        <requirement id="http___www.opengis.net_spec_waterml_2.0_req_xsd-xml-rules" model="ogc" type="class">
+          <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
+        </requirement>
+        <requirement id="_" model="ogc" type="class"/>
+      </sections>
+    OUTPUT
+    xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    xml = xml.at("//xmlns:sections")
+    expect(xmlpp(strip_guid(xml.to_xml)))
+      .to be_equivalent_to xmlpp(output)
+  end
 end

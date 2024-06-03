@@ -72,6 +72,15 @@ module Metanorma
         requirement_metadata_to_requirement(reqt)
         requirement_subparts_to_blocks(reqt)
         requirement_target_identifiers(reqt)
+        requirement_anchor_identifier(reqt)
+      end
+
+      def requirement_anchor_identifier(reqt)
+        Metanorma::Utils::guid_anchor?(reqt["id"]) or return
+        id = reqt.at("./identifier") or return
+        anchor = id.text.strip
+        anchor.empty? and return
+        reqt["id"] = Metanorma::Utils::to_ncname(anchor)
       end
 
       def requirement_target_identifiers(reqt)
