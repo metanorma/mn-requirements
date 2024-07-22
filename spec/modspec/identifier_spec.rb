@@ -160,8 +160,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes id xrefs with modspec base id prefix" do
@@ -322,8 +322,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes id xrefs with base id prefix per requirement" do
@@ -485,8 +485,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes id xrefs with base id prefix per requirement with inheritance" do
@@ -647,8 +647,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes id xrefs with base id prefix per requirement with inheritance and modspec base id prefix" do
@@ -809,7 +809,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end

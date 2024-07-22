@@ -10,6 +10,7 @@ require "equivalent-xml"
 require "mn-requirements"
 require "isodoc"
 require "metanorma-standoc"
+require "xml-c14n"
 
 Dir[File.expand_path("./support/**/**/*.rb", __dir__)]
   .sort.each { |f| require f }
@@ -84,25 +85,11 @@ def strip_guid(xml)
   xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
     .gsub(%r{ target="_[^"]+"}, ' target="_"')
     .gsub(%r{ schema-version=['"][^'"]+['"]}, "")
+    .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
 end
 
 def strip_src(xml)
   xml.gsub(/\ssrc="[^"]+"/, ' src="_"')
-end
-
-def xmlpp(xml)
-  xsl = <<~XSL
-    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-      <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
-      <xsl:strip-space elements="*"/>
-      <xsl:template match="/">
-        <xsl:copy-of select="."/>
-      </xsl:template>
-    </xsl:stylesheet>
-  XSL
-  Nokogiri::XSLT(xsl).transform(Nokogiri::XML(xml, &:noblanks))
-    .to_xml(indent: 2, encoding: "UTF-8")
-    .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
 end
 
 def examples_path(path)

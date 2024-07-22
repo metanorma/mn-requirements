@@ -185,8 +185,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes URIs in requirement components" do
@@ -284,8 +284,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes nested requirement steps" do
@@ -381,8 +381,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes bidirectional requirement/conformance tests" do
@@ -505,7 +505,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end

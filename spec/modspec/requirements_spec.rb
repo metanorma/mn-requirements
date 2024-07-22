@@ -176,8 +176,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes permission verifications" do
@@ -315,8 +315,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes abstract tests" do
@@ -407,8 +407,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes permission classes" do
@@ -514,8 +514,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes conformance classes" do
@@ -661,8 +661,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes conformance classes in French" do
@@ -807,8 +807,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes requirement classes" do
@@ -929,8 +929,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes recommendation classes" do
@@ -1009,8 +1009,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes requirements" do
@@ -1127,8 +1127,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
   it "processes recommendations" do
@@ -1244,7 +1244,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(xmlpp(out.to_xml))
-      .to be_equivalent_to xmlpp(presxml)
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end

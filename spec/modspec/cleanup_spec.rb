@@ -54,8 +54,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </sections>
        </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "extends requirement dl syntax" do
@@ -333,9 +333,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
          </sections>
        </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))
       .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "deals with live links in requirements dl" do
@@ -382,9 +382,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </sections>
       </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))
       .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "allows nested steps in requirement test methods" do
@@ -450,8 +450,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
        </sections>
       </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "uses ModSpec requirement types" do
@@ -500,8 +500,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </sections>
        </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "uses ModSpec requirement style attributes" do
@@ -535,8 +535,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </sections>
        </standard-document>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "generates identifier-based anchor for requirement if none supplied" do
@@ -566,7 +566,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:sections")
-    expect(xmlpp(strip_guid(xml.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(xml.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end
