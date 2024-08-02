@@ -104,17 +104,22 @@ module Metanorma
       end
 
       def requirement_metadata1_set_insert(reqt, ins)
-        return ins if ins
-
+        ins and return ins
         reqt.children.first.previous = " "
         reqt.children.first
+      end
+
+      def unwrap_para(ddef)
+        e = ddef.elements and e.size == 1 && e.first.name == "p" and
+          ddef = e.first
+        ddef.children.to_xml
       end
 
       def reqt_dl_to_classif(ins, reqt, dlist)
         if a = reqt.at("./classification[last()]") then ins = a end
         dlist.xpath("./dt[text()='classification']").each do |e|
-          val = e.at("./following::dd/p") || e.at("./following::dd")
-          req_classif_parse(val.children.to_xml).each do |r|
+          val = e.at("./following::dd").text.strip
+          req_classif_parse(val).each do |r|
             ins.next = "<classification><tag>#{r[0]}</tag>" \
                        "<value>#{r[1]}</value></classification>"
             ins = ins.next
@@ -136,9 +141,9 @@ module Metanorma
       end
 
       def reqt_dl_to_classif2(term, ins)
-        val = term.at("./following::dd/p") || e.at("./following::dd")
+        val = unwrap_para(term.at("./following::dd"))
         ins.next = "<classification><tag>#{term.text}</tag>" \
-                   "<value>#{val.children.to_xml}</value></classification>"
+                   "<value>#{val}</value></classification>"
         ins.next
       end
     end

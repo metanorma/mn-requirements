@@ -169,4 +169,65 @@ RSpec.describe Metanorma::Requirements::Default do
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
   end
+
+  it "extends requirement dl syntax" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      == Clause
+
+      [.requirement,subsequence="A",inherit="/ss/584/2015/level/1 &amp; /ss/584/2015/level/2"]
+      ====
+      [%metadata]
+      model:: default
+      type:: class
+      identifier:: http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules[*req/core*]
+      widget:: producer
+      gromit:: A
+      +
+      --
+      * B
+      * C
+      * D
+      --
+      ====
+
+    INPUT
+    output = <<~OUTPUT
+        #{BLANK_HDR}
+           <sections>
+             <clause id="_" inline-header="false" obligation="normative">
+                <title>Clause</title>
+                <requirement id="_" subsequence="A" model="default" type="class">
+                   <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
+                   <inherit>/ss/584/2015/level/1 &amp; /ss/584/2015/level/2</inherit>
+                   <classification>
+                      <tag>widget</tag>
+                      <value>producer</value>
+                   </classification>
+                   <classification>
+                      <tag>gromit</tag>
+                      <value>
+                         <p id="_">A</p>
+                         <ul id="_">
+                            <li>
+                               <p id="_">B</p>
+                            </li>
+                            <li>
+                               <p id="_">C</p>
+                            </li>
+                            <li>
+                               <p id="_">D</p>
+                            </li>
+                         </ul>
+                      </value>
+                   </classification>
+                </requirement>
+             </clause>
+          </sections>
+      </standard-document>
+    OUTPUT
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
+  end
 end
