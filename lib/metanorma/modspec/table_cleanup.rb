@@ -54,8 +54,7 @@ module Metanorma
       def gather_consec_table_rows(trow, hdr)
         ret = []
         trow.xpath("./following-sibling::xmlns:tr").each do |r|
-          break unless r.at(ns("./th[text() = '#{hdr}']"))
-
+          r.at(ns("./th[text() = '#{hdr}']")) or break
           ret << r.remove.at(ns("./td")).children.to_xml
         end
         ret
@@ -78,8 +77,7 @@ module Metanorma
       end
 
       def strip_id_base(elem, base)
-        return elem.children if base.nil?
-
+        base.nil? and return elem.children
         elem.children.to_xml.delete_prefix(base)
       end
 
@@ -98,7 +96,8 @@ module Metanorma
       def expand_xrefs_in_reqt(table)
         table.xpath(ns(".//xref[not(@style)][normalize-space(text()) = '']"))
           .each do |x|
-          x << @xrefs.anchor(x["target"], :xref, false)
+          ref = @xrefs.anchor(x["target"], :xref, false) or next
+          x << ref
         end
       end
 

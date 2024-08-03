@@ -405,6 +405,50 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
+  it "deals with unresolved xrefs in requirement" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      [[id1]]
+      [requirement,model=ogc]
+      ====
+      [%metadata]
+      type:: class
+      identifier:: http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules[]
+      statement:: See <<xyz>>
+      ====
+    INPUT
+    output = <<~OUTPUT
+      #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
+        <metanorma-extension>
+          <table id='_'>
+            <tbody>
+              <tr>
+                <th>id1</th>
+                <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
+              </tr>
+            </tbody>
+          </table>
+      EXT
+      )}
+        <sections>
+          <requirement id='id1' model='ogc' type='class'>
+            <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
+                <description>
+                   <p id="_">
+                      See
+                      <xref target="xyz"/>
+                   </p>
+                </description>
+          </requirement>
+        </sections>
+      </standard-document>
+    OUTPUT
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))
+      .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
+      .to be_equivalent_to Xml::C14n.format(output)
+  end
+
   it "allows nested steps in requirement test methods" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
