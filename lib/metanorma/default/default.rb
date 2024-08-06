@@ -92,7 +92,7 @@ module Metanorma
             requirement_elems(node, ex)
             wrap_in_para(node, ex)
           end
-        end.join("")
+        end
       end
 
       def validate(_reqt, _log)
