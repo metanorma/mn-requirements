@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
 
   # precise version is on relaton-render
   spec.add_dependency "isodoc-i18n", ">= 1.1.0"
-  spec.add_dependency "metanorma-utils", ">= 0.9.0"
+  spec.add_dependency "metanorma-utils", ">= 0.10.0"
 
   spec.add_development_dependency "debug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
