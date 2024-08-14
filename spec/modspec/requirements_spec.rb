@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe Metanorma::Requirements::Modspec do
   it "processes permissions" do
     input = <<~INPUT
-              <ogc-standard xmlns="https://standards.opengeospatial.org/document">
+      <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
           <permission model="ogc" id="A1">
         <identifier>/ogc/recommendation/wfs/2</identifier>
@@ -1134,6 +1134,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
   it "processes recommendations" do
     input = <<~INPUT
       <ogc-standard xmlns="https://standards.opengeospatial.org/document">
+        <bibdata><language>en</language></bibdata>
           <preface><foreword id="A"><title>Preface</title>
           <recommendation model="ogc" id="_">
         <identifier>/ogc/recommendation/wfs/2</identifier>
@@ -1243,6 +1244,140 @@ RSpec.describe Metanorma::Requirements::Modspec do
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
+    ).at("//xmlns:foreword")
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
+
+    presxml = <<~OUTPUT
+      <foreword id="A" displayorder="2">
+         <title>Preface</title>
+         <table id="_" class="modspec" type="recommend">
+            <thead>
+               <tr>
+                  <th scope="colgroup" colspan="2">
+                     <p class="RecommendationTitle">Recommandation 1</p>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th>Identifiant</th>
+                  <td>
+                     <tt>/ogc/recommendation/wfs/2</tt>
+                  </td>
+               </tr>
+               <tr>
+                  <th>Sujet</th>
+                  <td>user</td>
+               </tr>
+               <tr>
+                  <th>Prérequis</th>
+                  <td>/ss/584/2015/level/1</td>
+               </tr>
+               <tr>
+                  <th>Déclarations</th>
+                  <td>
+                     <p id="_">
+                        I recommend
+                        <em>this</em>
+                        .
+                     </p>
+                     <br/>
+                     <p id="_">As for the measurement targets,</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="2">
+                     <p id="_">The measurement target shall be measured as:</p>
+                     <formula id="_">
+                        <name>1</name>
+                        <stem type="AsciiMath">r/1 = 0</stem>
+                     </formula>
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="2">
+                     <p id="_">The following code will be run for verification:</p>
+                     <sourcecode id="_">CoreRoot(success): HttpResponse
+            if (success)
+            recommendation(label: success-response)
+            end
+          </sourcecode>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </foreword>
+    OUTPUT
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input
+      .sub("<language>en</language>", "<language>fr</language>"), true),
+    ).at("//xmlns:foreword")
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n.format(presxml)
+
+    presxml = <<~OUTPUT
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='_' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Provision 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <th>Identifier</th>
+              <td><tt>/ogc/recommendation/wfs/2</tt></td>
+            </tr>
+            <tr>
+              <th>Subject</th>
+              <td>user</td>
+            </tr>
+            <tr>
+              <th>Prerequisite</th>
+              <td>/ss/584/2015/level/1</td>
+            </tr>
+            <tr>
+            <th>Statements</th><td>
+                <p id='_'>
+                  I recommend
+                  <em>this</em>
+                  .
+                </p>
+                <br/>
+                <p id='_'>As for the measurement targets,</p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan='2'>
+                <p id='_'>The measurement target shall be measured as:</p>
+                <formula id='_'>
+                  <name>1</name>
+                  <stem type='AsciiMath'>r/1 = 0</stem>
+                </formula>
+              </td>
+            </tr>
+            <tr>
+              <td colspan='2'>
+                <p id='_'>The following code will be run for verification:</p>
+                <sourcecode id='_'>
+                  CoreRoot(success): HttpResponse if (success)
+                  recommendation(label: success-response) end
+                </sourcecode>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </foreword>
+    OUTPUT
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input
+      .sub("<recommendation ", "<recommendation class='Provision' "), true),
     ).at("//xmlns:foreword")
     expect(Xml::C14n.format(out.to_xml))
       .to be_equivalent_to Xml::C14n.format(presxml)

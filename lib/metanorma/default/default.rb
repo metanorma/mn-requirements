@@ -65,6 +65,7 @@ module Metanorma
                     obligation: node.attr("obligation"),
                     filename: node.attr("filename"),
                     type: node.attr("type"),
+                    class: node.attr("class"),
                   ))
       end
 

@@ -72,7 +72,7 @@ module Metanorma
       end
 
       def requirement_metadata1_attrs
-        %w(obligation model type)
+        %w(obligation model type class)
       end
 
       def requirement_metadata1_tags

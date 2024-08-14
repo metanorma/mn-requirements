@@ -34,7 +34,7 @@ module Metanorma
       def requirement_metadata1(reqt, dlist, ins)
         ins1 = super
         dlist.xpath("./dt").each do |e|
-          tag = e.text&.gsub(/ /, "-")&.downcase
+          tag = e.text&.tr(" ", "-")&.downcase
           tag = "description" if tag == "statement"
           next unless requirement_metadata_component_tags.include?(tag)
 
@@ -93,7 +93,8 @@ module Metanorma
       end
 
       def requirement_metadata_to_component(reqt)
-        xpath = requirement_metadata_component_tags - %w(statement description) -
+        xpath = requirement_metadata_component_tags - %w(statement
+                                                         description) -
           requirement_metadata_requirement_tags
         reqt.xpath(xpath.map { |x| ".//#{x}" }.join(" | ")).each do |c|
           c["class"] = c.name

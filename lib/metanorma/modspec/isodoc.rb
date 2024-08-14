@@ -8,7 +8,9 @@ module Metanorma
       def requirement_render1(node)
         init_lookups(node.document)
         ret = requirement_guidance_parse(node, super)
-        requirement_table_cleanup(node, ret)
+        out = requirement_table_cleanup(node, ret)
+        out["class"] = "modspec" # deferred; node["class"] is labelling class
+        out
       end
 
       def recommendation_base(node, _klass)
@@ -17,7 +19,6 @@ module Metanorma
         %w(id keep-with-next keep-lines-together unnumbered).each do |x|
           out[x] = node[x] if node[x]
         end
-        out["class"] = "modspec"
         out["type"] = recommend_class(node)
         recommendation_component_labels(node)
         out
@@ -35,9 +36,9 @@ module Metanorma
       def recommendation_header(reqt, out)
         n = recommendation_name(reqt, nil)
         x = if reqt.ancestors("requirement, recommendation, permission").empty?
-              "<thead><tr><th scope='colgroup' colspan='2'>" \
-                "<p class='#{recommend_name_class(reqt)}'>#{n}</p>" \
-                "</th></tr></thead>"
+              <<~THEAD
+                <thead><tr><th scope='colgroup' colspan='2'><p class='#{recommend_name_class(reqt)}'>#{n}</p></th></tr></thead>
+              THEAD
             else
               "<thead><tr><th>#{recommendation_class_label(reqt)}</th>" \
                 "<td>#{n}</td></tr></thead>"
@@ -129,7 +130,7 @@ module Metanorma
           node.xpath(ns("./classification[tag][value]")).each do |c|
             c.at(ns("./tag")).text.casecmp(x).zero? or next
             xref = recommendation_id(c.at(ns("./value")).children.to_xml) and
-              head << [@labels["modspec"][x.gsub(/-/, "")], xref]
+              head << [@labels["modspec"][x.delete("-")], xref]
           end
         end
         head
