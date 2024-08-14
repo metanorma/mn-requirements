@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe Metanorma::Requirements::Modspec do
   it "processes permissions" do
     input = <<~INPUT
-              <ogc-standard xmlns="https://standards.opengeospatial.org/document">
+      <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A"><title>Preface</title>
           <permission model="ogc" id="A1">
         <identifier>/ogc/recommendation/wfs/2</identifier>

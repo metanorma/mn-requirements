@@ -376,5 +376,15 @@ RSpec.describe Metanorma::Requirements::Default do
     ).at("//xmlns:foreword")
     expect(Xml::C14n.format(out.to_xml))
       .to be_equivalent_to Xml::C14n.format(presxml)
+
+    out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input
+      .sub("<recommendation ", "<recommendation class='provision' "), true),
+    ).at("//xmlns:foreword")
+    expect(Xml::C14n.format(out.to_xml))
+      .to be_equivalent_to Xml::C14n
+        .format(presxml.sub("<recommendation ",
+                            "<recommendation class='provision' "))
   end
 end

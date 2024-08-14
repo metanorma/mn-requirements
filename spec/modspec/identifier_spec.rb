@@ -51,109 +51,109 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permissions class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/ogc/recommendation/wfs/2</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Normative statements</th>
-                   <td>
-                     <xref target='B1'>
-                       Permission 1:
-                       <tt>/ogc/recommendation/wfs/10</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A3'>
-                       Requirement 1-1:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A4'>
-                       Recommendation 1-1:
-                       <tt>Recommendation 1</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Description</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                     <xref target='B1'>Permission 1: <tt>/ogc/recommendation/wfs/10</tt></xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B1' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permission 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/ogc/recommendation/wfs/10</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Included in</th>
-                   <td>
-                     <xref target='A1'>
-                       Permissions class 1:
-                       <tt>/ogc/recommendation/wfs/2</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Statement</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <p>
-               <xref target='A1'>
-                 Permissions class 1:
-                 <tt>/ogc/recommendation/wfs/2</tt>
-               </xref>
-               <xref target='B1'>
-                 Permission 1:
-                 <tt>/ogc/recommendation/wfs/10</tt>
-               </xref>
-               <xref target='A1' style='id'>A1</xref>
-               <xref target='B1' style='id'>B1</xref>
-               <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
-               <xref target='A'>/ogc/recommendation/wfs/2</xref>
-               <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-             </p>
-           </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permissions class 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/ogc/recommendation/wfs/2</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Normative statements</th>
+              <td>
+                <xref target='B1'>
+                  Permission 1:
+                  <tt>/ogc/recommendation/wfs/10</tt>
+                </xref>
+                <br/>
+                <xref target='A3'>
+                  Requirement 1-1:
+                  <tt>Requirement 1</tt>
+                </xref>
+                <br/>
+                <xref target='A4'>
+                  Recommendation 1-1:
+                  <tt>Recommendation 1</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                <xref target='B1'>Permission 1: <tt>/ogc/recommendation/wfs/10</tt></xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id='B1' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permission 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/ogc/recommendation/wfs/10</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Included in</th>
+              <td>
+                <xref target='A1'>
+                  Permissions class 1:
+                  <tt>/ogc/recommendation/wfs/2</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Statement</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <xref target='A1'>
+            Permissions class 1:
+            <tt>/ogc/recommendation/wfs/2</tt>
+          </xref>
+          <xref target='B1'>
+            Permission 1:
+            <tt>/ogc/recommendation/wfs/10</tt>
+          </xref>
+          <xref target='A1' style='id'>A1</xref>
+          <xref target='B1' style='id'>B1</xref>
+          <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
+          <xref target='A'>/ogc/recommendation/wfs/2</xref>
+          <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+        </p>
+      </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -213,110 +213,110 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permissions class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/recommendation/wfs/2</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Normative statements</th>
-                   <td>
-                     <xref target='B1'>
-                       Permission 1:
-                       <tt>/recommendation/wfs/10</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A3'>
-                       Requirement 1-1:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A4'>
-                       Recommendation 1-1:
-                       <tt>Recommendation 1</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Description</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/recommendation/wfs/2</xref>
-                     <xref target='B1' style='id'>/recommendation/wfs/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                     <xref target='B1'>Permission 1: <tt>/recommendation/wfs/10</tt></xref>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permissions class 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/recommendation/wfs/2</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Normative statements</th>
+              <td>
+                <xref target='B1'>
+                  Permission 1:
+                  <tt>/recommendation/wfs/10</tt>
+                </xref>
+                <br/>
+                <xref target='A3'>
+                  Requirement 1-1:
+                  <tt>Requirement 1</tt>
+                </xref>
+                <br/>
+                <xref target='A4'>
+                  Recommendation 1-1:
+                  <tt>Recommendation 1</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/recommendation/wfs/2</xref>
+                <xref target='B1' style='id'>/recommendation/wfs/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                <xref target='B1'>Permission 1: <tt>/recommendation/wfs/10</tt></xref>
 
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B1' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permission 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/recommendation/wfs/10</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Included in</th>
-                   <td>
-                     <xref target='A1'>
-                       Permissions class 1:
-                       <tt>/recommendation/wfs/2</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Statement</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/recommendation/wfs/2</xref>
-                     <xref target='B1' style='id'>/recommendation/wfs/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <p>
-               <xref target='A1'>
-                 Permissions class 1:
-                 <tt>/ogc/recommendation/wfs/2</tt>
-               </xref>
-               <xref target='B1'>
-                 Permission 1:
-                 <tt>/ogc/recommendation/wfs/10</tt>
-               </xref>
-               <xref target='A1' style='id'>A1</xref>
-               <xref target='B1' style='id'>B1</xref>
-               <xref target='A1' style='id'>/recommendation/wfs/2</xref>
-               <xref target='B1' style='id'>/recommendation/wfs/10</xref>
-               <xref target='A'>/ogc/recommendation/wfs/2</xref>
-               <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-             </p>
-           </foreword>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id='B1' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permission 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/recommendation/wfs/10</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Included in</th>
+              <td>
+                <xref target='A1'>
+                  Permissions class 1:
+                  <tt>/recommendation/wfs/2</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Statement</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/recommendation/wfs/2</xref>
+                <xref target='B1' style='id'>/recommendation/wfs/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <xref target='A1'>
+            Permissions class 1:
+            <tt>/ogc/recommendation/wfs/2</tt>
+          </xref>
+          <xref target='B1'>
+            Permission 1:
+            <tt>/ogc/recommendation/wfs/10</tt>
+          </xref>
+          <xref target='A1' style='id'>A1</xref>
+          <xref target='B1' style='id'>B1</xref>
+          <xref target='A1' style='id'>/recommendation/wfs/2</xref>
+          <xref target='B1' style='id'>/recommendation/wfs/10</xref>
+          <xref target='A'>/ogc/recommendation/wfs/2</xref>
+          <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+        </p>
+      </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
@@ -377,109 +377,109 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permissions class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/2</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Normative statements</th>
-                   <td>
-                     <xref target='B1'>
-                       Permission 1:
-                       <tt>/10</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A3'>
-                       Requirement 1-1:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A4'>
-                       Recommendation 1-1:
-                       <tt>Recommendation 1</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Description</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/2</xref>
-                     <xref target='B1' style='id'>/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                     <xref target='B1'>Permission 1: <tt>/10</tt></xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B1' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permission 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/wfs/10</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Included in</th>
-                   <td>
-                     <xref target='A1'>
-                       Permissions class 1:
-                       <tt>/wfs/2</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Statement</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/wfs/2</xref>
-                     <xref target='B1' style='id'>/wfs/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <p>
-               <xref target='A1'>
-                 Permissions class 1:
-                 <tt>/ogc/recommendation/wfs/2</tt>
-               </xref>
-               <xref target='B1'>
-                 Permission 1:
-                 <tt>/ogc/recommendation/wfs/10</tt>
-               </xref>
-               <xref target='A1' style='id'>A1</xref>
-               <xref target='B1' style='id'>B1</xref>
-               <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
-               <xref target='A'>/ogc/recommendation/wfs/2</xref>
-               <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-             </p>
-                       </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permissions class 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/2</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Normative statements</th>
+              <td>
+                <xref target='B1'>
+                  Permission 1:
+                  <tt>/10</tt>
+                </xref>
+                <br/>
+                <xref target='A3'>
+                  Requirement 1-1:
+                  <tt>Requirement 1</tt>
+                </xref>
+                <br/>
+                <xref target='A4'>
+                  Recommendation 1-1:
+                  <tt>Recommendation 1</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/2</xref>
+                <xref target='B1' style='id'>/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                <xref target='B1'>Permission 1: <tt>/10</tt></xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id='B1' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permission 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/wfs/10</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Included in</th>
+              <td>
+                <xref target='A1'>
+                  Permissions class 1:
+                  <tt>/wfs/2</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Statement</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/wfs/2</xref>
+                <xref target='B1' style='id'>/wfs/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <xref target='A1'>
+            Permissions class 1:
+            <tt>/ogc/recommendation/wfs/2</tt>
+          </xref>
+          <xref target='B1'>
+            Permission 1:
+            <tt>/ogc/recommendation/wfs/10</tt>
+          </xref>
+          <xref target='A1' style='id'>A1</xref>
+          <xref target='B1' style='id'>B1</xref>
+          <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
+          <xref target='A'>/ogc/recommendation/wfs/2</xref>
+          <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+        </p>
+                  </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
@@ -539,109 +539,109 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permissions class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/2</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Normative statements</th>
-                   <td>
-                     <xref target='B1'>
-                       Permission 1:
-                       <tt>/10</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A3'>
-                       Requirement 1-1:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A4'>
-                       Recommendation 1-1:
-                       <tt>Recommendation 1</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Description</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/2</xref>
-                     <xref target='B1' style='id'>/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                     <xref target='B1'>Permission 1: <tt>/10</tt></xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B1' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permission 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/10</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Included in</th>
-                   <td>
-                     <xref target='A1'>
-                       Permissions class 1:
-                       <tt>/2</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Statement</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/2</xref>
-                     <xref target='B1' style='id'>/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <p>
-               <xref target='A1'>
-                 Permissions class 1:
-                 <tt>/ogc/recommendation/wfs/2</tt>
-               </xref>
-               <xref target='B1'>
-                 Permission 1:
-                 <tt>/ogc/recommendation/wfs/10</tt>
-               </xref>
-               <xref target='A1' style='id'>A1</xref>
-               <xref target='B1' style='id'>B1</xref>
-               <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
-               <xref target='A'>/ogc/recommendation/wfs/2</xref>
-               <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-             </p>
-                       </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permissions class 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/2</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Normative statements</th>
+              <td>
+                <xref target='B1'>
+                  Permission 1:
+                  <tt>/10</tt>
+                </xref>
+                <br/>
+                <xref target='A3'>
+                  Requirement 1-1:
+                  <tt>Requirement 1</tt>
+                </xref>
+                <br/>
+                <xref target='A4'>
+                  Recommendation 1-1:
+                  <tt>Recommendation 1</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/2</xref>
+                <xref target='B1' style='id'>/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                <xref target='B1'>Permission 1: <tt>/10</tt></xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id='B1' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permission 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/10</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Included in</th>
+              <td>
+                <xref target='A1'>
+                  Permissions class 1:
+                  <tt>/2</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Statement</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/2</xref>
+                <xref target='B1' style='id'>/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <xref target='A1'>
+            Permissions class 1:
+            <tt>/ogc/recommendation/wfs/2</tt>
+          </xref>
+          <xref target='B1'>
+            Permission 1:
+            <tt>/ogc/recommendation/wfs/10</tt>
+          </xref>
+          <xref target='A1' style='id'>A1</xref>
+          <xref target='B1' style='id'>B1</xref>
+          <xref target='A1' style='id'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1' style='id'>/ogc/recommendation/wfs/10</xref>
+          <xref target='A'>/ogc/recommendation/wfs/2</xref>
+          <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+        </p>
+                  </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
@@ -701,109 +701,109 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permissions class 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/2</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Normative statements</th>
-                   <td>
-                     <xref target='B1'>
-                       Permission 1:
-                       <tt>/10</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A3'>
-                       Requirement 1-1:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                     <br/>
-                     <xref target='A4'>
-                       Recommendation 1-1:
-                       <tt>Recommendation 1</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Description</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/2</xref>
-                     <xref target='B1' style='id'>/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                     <xref target='B1'>Permission 1: <tt>/10</tt></xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B1' class='modspec' type='recommend'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Permission 1</p>
-                   </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <th>Identifier</th>
-                   <td>
-                     <tt>/10</tt>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Included in</th>
-                   <td>
-                     <xref target='A1'>
-                       Permissions class 1:
-                       <tt>/2</tt>
-                     </xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Statement</th>
-                   <td>
-                     <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='A1' style='id'>/2</xref>
-                     <xref target='B1' style='id'>/10</xref>
-                     <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-                     <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-             <p>
-               <xref target='A1'>
-                 Permissions class 1:
-                 <tt>/ogc/recommendation/wfs/2</tt>
-               </xref>
-               <xref target='B1'>
-                 Permission 1:
-                 <tt>/ogc/recommendation/wfs/10</tt>
-               </xref>
-               <xref target='A1' style='id'>A1</xref>
-               <xref target='B1' style='id'>B1</xref>
-               <xref target='A1' style='id'>/recommendation/wfs/2</xref>
-               <xref target='B1' style='id'>/recommendation/wfs/10</xref>
-               <xref target='A'>/ogc/recommendation/wfs/2</xref>
-               <xref target='A1'>/ogc/recommendation/wfs/2</xref>
-               <xref target='B1'>/ogc/recommendation/wfs/10</xref>
-             </p>
-                       </foreword>
+      <foreword id='A' displayorder='2'>
+        <title>Preface</title>
+        <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permissions class 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/2</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Normative statements</th>
+              <td>
+                <xref target='B1'>
+                  Permission 1:
+                  <tt>/10</tt>
+                </xref>
+                <br/>
+                <xref target='A3'>
+                  Requirement 1-1:
+                  <tt>Requirement 1</tt>
+                </xref>
+                <br/>
+                <xref target='A4'>
+                  Recommendation 1-1:
+                  <tt>Recommendation 1</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/2</xref>
+                <xref target='B1' style='id'>/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+                <xref target='B1'>Permission 1: <tt>/10</tt></xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id='B1' class='modspec' type='recommend'>
+          <thead>
+            <tr>
+              <th scope='colgroup' colspan='2'>
+                <p class='RecommendationTitle'>Permission 1</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Identifier</th>
+              <td>
+                <tt>/10</tt>
+              </td>
+            </tr>
+            <tr>
+              <th>Included in</th>
+              <td>
+                <xref target='A1'>
+                  Permissions class 1:
+                  <tt>/2</tt>
+                </xref>
+              </td>
+            </tr>
+            <tr>
+              <th>Statement</th>
+              <td>
+                <xref target='A' style='id'>/ogc/recommendation/wfs/2</xref>
+                <xref target='A1' style='id'>/2</xref>
+                <xref target='B1' style='id'>/10</xref>
+                <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+                <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <xref target='A1'>
+            Permissions class 1:
+            <tt>/ogc/recommendation/wfs/2</tt>
+          </xref>
+          <xref target='B1'>
+            Permission 1:
+            <tt>/ogc/recommendation/wfs/10</tt>
+          </xref>
+          <xref target='A1' style='id'>A1</xref>
+          <xref target='B1' style='id'>B1</xref>
+          <xref target='A1' style='id'>/recommendation/wfs/2</xref>
+          <xref target='B1' style='id'>/recommendation/wfs/10</xref>
+          <xref target='A'>/ogc/recommendation/wfs/2</xref>
+          <xref target='A1'>/ogc/recommendation/wfs/2</xref>
+          <xref target='B1'>/ogc/recommendation/wfs/10</xref>
+        </p>
+                  </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })

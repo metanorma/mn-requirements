@@ -10,6 +10,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <xref target="N1"/>
           <xref target="N2"/>
           <xref target="N"/>
+          <xref target="N3"/>
           <xref target="note1"/>
           <xref target="note2"/>
           <xref target="AN"/>
@@ -31,6 +32,9 @@ RSpec.describe Metanorma::Requirements::Default do
           <sections>
           <clause id="scope" type="scope"><title>Scope</title>
           <requirement id="N" model="default">
+        <stem type="AsciiMath">r = 1 %</stem>
+        </requirement>
+          <requirement id="N" model="default" class="Provision">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p><xref target="N"/></p>
