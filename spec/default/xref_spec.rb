@@ -34,7 +34,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <requirement id="N" model="default">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
-          <requirement id="N" model="default" class="Provision">
+          <requirement id="N3" model="default" class="Provision">
         <stem type="AsciiMath">r = 1 %</stem>
         </requirement>
         <p><xref target="N"/></p>
@@ -75,6 +75,7 @@ RSpec.describe Metanorma::Requirements::Default do
               <xref target='N1'>Introduction, Requirement 1</xref>
       <xref target='N2'>Preparatory, Requirement (??)</xref>
       <xref target='N'>Clause 1, Requirement 2</xref>
+      <xref target="N3">Clause 1, Provision 1</xref>
       <xref target='note1'>Clause 3.1, Requirement 3</xref>
       <xref target='note2'>Clause 3.1, Requirement 4</xref>
       <xref target='AN'>Requirement A.1</xref>

@@ -1,7 +1,11 @@
-class Nokogiri::XML::Document
-  def reqt_iter(&block)
-    xpath("//xmlns:requirement | //xmlns:recommendation | //xmlns:permission")
-      .each_with_object({}, &block)
+module Nokogiri
+  module XML
+    class Document
+      def reqt_iter(&block)
+        xpath("//xmlns:requirement | //xmlns:recommendation | //xmlns:permission")
+          .each_with_object({}, &block)
+      end
+    end
   end
 end
 
@@ -54,17 +58,13 @@ module Metanorma
       end
 
       def recommendation_class_label(node)
+        node["class"] and return node["class"]
         case node["type"]
-        when "verification" then @labels["modspec"]["conformancetest"]
         when "class" then @labels["modspec"]["#{node.name}class"]
-        when "abstracttest" then @labels["modspec"]["abstracttest"]
-        when "conformanceclass" then @labels["modspec"]["conformanceclass"]
-        else
-          case node.name
-          when "recommendation" then @labels["default"]["recommendation"]
-          when "requirement" then @labels["default"]["requirement"]
-          when "permission" then @labels["default"]["permission"]
-          end
+        when "verification" then @labels["modspec"]["conformancetest"]
+        when "abstracttest", "conformanceclass"
+          @labels["modspec"][node["type"]]
+        else @labels["default"][node.name]
         end
       end
 

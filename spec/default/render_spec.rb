@@ -385,6 +385,7 @@ RSpec.describe Metanorma::Requirements::Default do
     expect(Xml::C14n.format(out.to_xml))
       .to be_equivalent_to Xml::C14n
         .format(presxml.sub("<recommendation ",
-                            "<recommendation class='provision' "))
+                            "<recommendation class='provision' ")
+      .sub("Recommendation 1:", "Provision 1:"))
   end
 end
