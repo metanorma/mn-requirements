@@ -1,0 +1,31 @@
+requirements:
+  default:
+    requirement: 要求
+    recommendation: 推奨
+    permission: 許可
+    obligation: 義務
+    subject: 主題
+    inherits: 継承
+  modspec:
+    recommendationtest: 要求テスト
+    requirementtest: 要求テスト
+    permissiontest: 許可テスト
+    recommendationclass: 要求クラス
+    requirementclass: 要求クラス
+    permissionclass: 許可クラス
+    abstracttest: 抽象テスト
+    conformanceclass: 適合クラス
+    conformancetest: 適合性テスト
+    targettype: ターゲットタイプ
+    target: ターゲット
+    testpurpose: テスト目的
+    testmethod: 試験方法
+    dependency: 前提条件
+    indirectdependency: 間接的な前提条件
+    identifier: 識別子
+    included_in: 含まれる
+    statement: 声明
+    description: 説明
+    guidance: ガイダンス
+    implements: 実装
+    provision: 規範的声明
