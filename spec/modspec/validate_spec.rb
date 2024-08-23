@@ -105,15 +105,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     INPUT
     expect(File.read("test.err.html"))
-      .not_to include "no corresponding Requirement"
+      .not_to include("no corresponding Requirement")
     expect(File.read("test.err.html"))
-      .not_to include "has no corresponding Conformance test"
+      .not_to include("has no corresponding Conformance test")
     expect(File.read("test.err.html"))
-      .not_to include "has no corresponding Requirement class"
+      .not_to include("has no corresponding Requirement class")
     expect(File.read("test.err.html"))
-      .not_to include "has no corresponding Conformance class"
+      .not_to include("has no corresponding Conformance class")
     expect(File.read("test.err.html"))
-      .not_to include "Cycle in Modspec linkages"
+      .not_to include("Cycle in Modspec linkages")
   end
 
   it "does not warn if no linkage issues for multiple targets" do
@@ -157,9 +157,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
     INPUT
     expect(File.read("test.err.html"))
-      .not_to include "no corresponding Requirement"
+      .not_to include("no corresponding Requirement")
     expect(File.read("test.err.html"))
-      .not_to include "has no corresponding Conformance test"
+      .not_to include("has no corresponding Conformance test")
   end
 
   it "warns of disconnect between requirements and conformance tests, #1" do
@@ -248,13 +248,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     expect(File.read("test.err.html"))
-      .to include "Conformance test D has no corresponding Requirement"
+      .to include("Conformance test D has no corresponding Requirement")
     expect(File.read("test.err.html"))
-      .to include "Requirement A has no corresponding Conformance test"
+      .to include("Requirement A has no corresponding Conformance test")
     expect(File.read("test.err.html"))
-      .to include "Conformance class J has no corresponding Requirement class"
+      .to include("Conformance class J has no corresponding Requirement class")
     expect(File.read("test.err.html"))
-      .to include "Requirement class G has no corresponding Conformance class"
+      .to include("Requirement class G has no corresponding Conformance class")
   end
 
   it "warns of disconnect between requirements and conformance tests, #2" do
@@ -293,7 +293,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     expect(File.read("test.err.html"))
-      .not_to include "Conformance test D has no corresponding Requirement"
+      .not_to include("Conformance test D has no corresponding Requirement")
   end
 
   it "warns of disconnect between requirement classes and requirements" do
@@ -342,11 +342,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
     INPUT
     expect(File.read("test.err.html"))
-      .to include "Requirement class G has no corresponding Requirement"
+      .to include("Requirement class G has no corresponding Requirement")
     expect(File.read("test.err.html"))
-      .to include "Requirement class H has no corresponding Requirement"
+      .to include("Requirement class H has no corresponding Requirement")
     expect(File.read("test.err.html"))
-      .to include "Requirement class I has no corresponding Requirement"
+      .to include("Requirement class I has no corresponding Requirement")
   end
 
   it "warns of disconnect between conformance classes and conformance tests" do
@@ -370,9 +370,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     INPUT
     expect(File.read("test.err.html"))
-      .to include "Conformance class B has no corresponding Conformance test"
+      .to include("Conformance class B has no corresponding Conformance test")
     expect(File.read("test.err.html"))
-      .to include "Conformance test A has no corresponding Conformance class"
+      .to include("Conformance test A has no corresponding Conformance class")
   end
 
   it "warns of disconnect between prerequisites and provisions" do
@@ -396,11 +396,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     INPUT
     expect(File.read("test.err.html"))
-      .to include "Provision A points to Prerequisite B outside this document"
+      .to include("Provision A points to Prerequisite B outside this document")
     expect(File.read("test.err.html"))
-      .to include "Provision A points to Indirect prerequisite C outside this document"
+      .to include("Provision A points to Indirect prerequisite C outside this document")
     expect(File.read("test.err.html"))
-      .to include "Provision A points to Implemented provision D outside this document"
+      .to include("Provision A points to Implemented provision D outside this document")
 
     FileUtils.rm_f "test.err.html"
     Asciidoctor.convert(<<~INPUT, backend: :standoc, header_footer: true)
@@ -442,11 +442,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     INPUT
     expect(File.read("test.err.html"))
-      .not_to include "Provision A points to Prerequisite B outside this document"
+      .not_to include("Provision A points to Prerequisite B outside this document")
     expect(File.read("test.err.html"))
-      .not_to include "Provision A points to Indirect prerequisite C outside this document"
+      .not_to include("Provision A points to Indirect prerequisite C outside this document")
     expect(File.read("test.err.html"))
-      .not_to include "Provision A points to Implemented provision D outside this document"
+      .not_to include("Provision A points to Implemented provision D outside this document")
   end
 
   it "warns about cycles in links" do
@@ -505,15 +505,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
     INPUT
     expect(File.read("test.err.html"))
-      .to include "Cycle in Modspec linkages through dependency: A => B => C => A"
+      .to include("Cycle in Modspec linkages through dependency: A => B => C => A")
     expect(File.read("test.err.html"))
-      .to include "Cycle in Modspec linkages through dependency: D => E => D"
+      .to include("Cycle in Modspec linkages through dependency: D => E => D")
     expect(File.read("test.err.html"))
-      .to include "Cycle in Modspec linkages through indirect_​dependency­: A => C => A"
+      .to include("Cycle in Modspec linkages through indirect_​dependency­: A => C => A")
     expect(File.read("test.err.html"))
-      .not_to include "Cycle in Modspec linkages through indirect_​dependency­: B => D => E"
+      .not_to include("Cycle in Modspec linkages through indirect_​dependency­: B => D => E")
     expect(File.read("test.err.html"))
-      .to include "Cycle in Modspec linkages through implements: A => B => A"
+      .to include("Cycle in Modspec linkages through implements: A => B => A")
   end
 
   it "fatal error if not unique identifier" do
@@ -548,7 +548,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     rescue SystemExit, RuntimeError
     end
     expect(File.read("test.err.html"))
-      .to include "Modspec identifier A is used more than once"
+      .to include("Modspec identifier A is used more than once")
     expect(File.exist?("test.xml")).to be false
   end
 end
