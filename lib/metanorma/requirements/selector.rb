@@ -66,11 +66,25 @@ module Metanorma
     # and picks the model for each requirement; then that model's method is
     # applied to that particular requirement instance
     def requirement_cleanup(xmldoc)
+      requirement_preprocess(xmldoc)
       requirement_metadata_cleanup(xmldoc)
       requirement_type_cleanup(xmldoc)
       requirement_inherit_cleanup(xmldoc)
       requirement_descriptions_cleanup(xmldoc)
       requirement_identifier_cleanup(xmldoc)
+      requirement_postprocess(xmldoc)
+    end
+
+    def requirement_preprocess(xmldoc)
+      xmldoc.xpath(REQRECPER).each do |r|
+        model(r["model"]).requirement_preprocess(r)
+      end
+    end
+
+    def requirement_postprocess(xmldoc)
+      xmldoc.xpath(REQRECPER).each do |r|
+        model(r["model"]).requirement_postprocess(r)
+      end
     end
 
     def requirement_type_cleanup(xmldoc)
