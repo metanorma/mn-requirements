@@ -1,0 +1,1 @@
+gem "modspec", git: "https://github.com/metanorma/modspec-ruby", branch: "fix/safe-validate-mappings"

@@ -1,6 +1,8 @@
 module Metanorma
   class Requirements
     class Default
+      def requirement_preprocess(reqt); end
+      def requirement_postprocess(reqt); end
       def requirement_type_cleanup(reqt); end
 
       def requirement_identifier_cleanup(reqt)
