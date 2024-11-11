@@ -71,6 +71,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     output = <<~OUTPUT
           <foreword displayorder='2'>
+          <title>Foreword</title>
             <p>
               <xref target='N1'>Introduction, Requirement 1</xref>
       <xref target='N2'>Preparatory, Requirement (??)</xref>
@@ -157,6 +158,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     output = <<~OUTPUT
           <foreword displayorder='2'>
+          <title>Avant-propos</title>
             <p>
               <xref target='N1'>Introduction, Exigence 1</xref>
       <xref target='N2'>Preparatory, Exigence (??)</xref>
@@ -241,6 +243,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     output = <<~OUTPUT
           <foreword displayorder='2'>
+          <title>Foreword</title>
             <p>
               <xref target='N1'>Introduction, Recommendation 1</xref>
       <xref target='N2'>Preparatory, Recommendation (??)</xref>
@@ -325,6 +328,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     output = <<~OUTPUT
                  <foreword displayorder='2'>
+          <title>Foreword</title>
                    <p>
                      <xref target='N1'>Introduction, Permission 1</xref>
       <xref target='N2'>Preparatory, Permission (??)</xref>
@@ -392,6 +396,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     output = <<~OUTPUT
                 <foreword displayorder='2'>
+          <title>Foreword</title>
                   <p>
                      <xref target='N1'>Clause 1, Permission 1</xref>
       <xref target='N2'>Clause 1, Permission 1-1</xref>

@@ -65,6 +65,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     presxml = <<~OUTPUT
           <foreword displayorder="2">
+          <title>Foreword</title>
           <permission id="_" keep-with-next="true" keep-lines-together="true" model="default"><name>Permission 1:<br/>/ogc/recommendation/wfs/2</name><p><em>Subject: user</em><br/>
       <em>Subject: non-user</em><br/>
       <em>Inherits: /ss/584/2015/level/1</em><br/>
@@ -86,7 +87,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <p id="_">As for the measurement targets,</p>
         </div><div exclude="false" type="requirement-measurement-target">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_"><name>1</name>
+          <formula id="_"><name>(1)</name>
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </div><div exclude="false" type="requirement-verification">
@@ -165,6 +166,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     presxml = <<~OUTPUT
           <foreword displayorder="2">
+          <title>Foreword</title>
           <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default"><name>Requirement:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Subject: user</em><br/>
       <em>Inherits: /ss/584/2015/level/1</em></p><div type="requirement-description">
           <p id="_">I recommend <em>this</em>.</p>
@@ -172,7 +174,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <p id="_">As for the measurement targets,</p>
         </div><div exclude="false" keep-with-next="true" keep-lines-together="true" type="requirement-measurement-target">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="B"><name>1</name>
+          <formula id="B"><name>(1)</name>
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </div><div exclude="false" type="requirement-verification">
@@ -255,7 +257,8 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
 
     presxml = <<~OUTPUT
-          <foreword displayorder="2">
+      <foreword displayorder="2">
+          <title>Avant-propos</title>
           <requirement id="A" unnumbered="true" model="default"><name>Exigence&#xA0;:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Sujet&#xA0;: user</em><br/>
       <em>H&#xE9;rite&#xA0;: /ss/584/2015/level/1</em></p><div type="requirement-description">
           <p id="_">I recommend <em>this</em>.</p>
@@ -263,7 +266,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <p id="_">As for the measurement targets,</p>
         </div><div exclude="false" type="requirement-measurement-target">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="B"><name>1</name>
+          <formula id="B"><name>(1)</name>
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </div><div exclude="false" type="requirement-verification">
@@ -344,6 +347,7 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
     presxml = <<~OUTPUT
           <foreword displayorder="2">
+          <title>Foreword</title>
           <recommendation id="_" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default"><name>Recommendation 1:<br/>/ogc/recommendation/wfs/2</name><p><em>Obligation: shall,could</em><br/>
       <em>Subject: user</em><br/>
       <em>Inherits: /ss/584/2015/level/1</em><br/>
@@ -354,7 +358,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <p id="_">As for the measurement targets,</p>
         </div><div exclude="false" type="requirement-measurement-target">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_"><name>1</name>
+          <formula id="_"><name>(1)</name>
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </div><div exclude="false" type="requirement-verification">

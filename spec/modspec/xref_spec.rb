@@ -67,6 +67,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Requirement 1</xref>
           <xref target='N2'>Preparatory, Requirement (??)</xref>
@@ -159,6 +160,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
               <p>
                    <xref target='N1'>
            Introduction, Requirement 1:
@@ -275,6 +277,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
               <p>
                    <xref target='N1' style="modspec">
            Requirement 1:
@@ -407,6 +410,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder='2'>
+      <title>Foreword</title>
         <p>
           <xref target='N1a'>Introduction, Requirement 1 A</xref>
           <xref target='N1b'>Introduction, Requirement 1 B</xref>
@@ -499,6 +503,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Conformance test 1</xref>
           <xref target='N2'>Preparatory, Conformance test (??)</xref>
@@ -584,6 +589,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder='2'>
+      <title>Avant-propos</title>
          <p>
            <xref target='N1'>Introduction, Test de conformit&#xE9; 1</xref>
            <xref target='N2'>Preparatory, Test de conformit&#xE9; (??)</xref>
@@ -668,6 +674,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Recommendation 1</xref>
           <xref target='N2'>Preparatory, Recommendation (??)</xref>
@@ -752,6 +759,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Conformance test 1</xref>
           <xref target='N2'>Preparatory, Conformance test (??)</xref>
@@ -836,6 +844,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Permission 1</xref>
           <xref target='N2'>Preparatory, Permission (??)</xref>
@@ -920,6 +929,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Conformance test 1</xref>
           <xref target='N2'>Preparatory, Conformance test (??)</xref>
@@ -991,7 +1001,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-        <p>
+      <title>Foreword</title>
+      <p>
           <xref target='N1'>Clause 1, Permission 1</xref>
           <xref target='N2'>Clause 1, Conformance test 1-1</xref>
           <xref target='N'>Clause 1, Permission 1-1-1</xref>
@@ -1077,6 +1088,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Abstract test 1</xref>
           <xref target='N2'>Preparatory, Abstract test (??)</xref>
@@ -1100,6 +1112,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                   <iso-standard xmlns="http://riboseinc.com/isoxml">
                   <preface>
           <foreword>
+      <title>Foreword</title>
           <p>
           <xref target="N1"/>
           <xref target="N2"/>
@@ -1161,6 +1174,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
+      <title>Foreword</title>
         <p>
           <xref target='N1'>Introduction, Conformance class 1</xref>
           <xref target='N2'>Preparatory, Conformance class (??)</xref>
