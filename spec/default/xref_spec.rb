@@ -70,24 +70,72 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-          <foreword displayorder='2'>
-          <title>Foreword</title>
-            <p>
-              <xref target='N1'>Introduction, Requirement 1</xref>
-      <xref target='N2'>Preparatory, Requirement (??)</xref>
-      <xref target='N'>Clause 1, Requirement 2</xref>
-      <xref target="N3">Clause 1, Provision 1</xref>
-      <xref target='note1'>Clause 3.1, Requirement 3</xref>
-      <xref target='note2'>Clause 3.1, Requirement 4</xref>
-      <xref target='AN'>Requirement A.1</xref>
-      <xref target='Anote1'>Requirement (??)</xref>
-      <xref target='Anote2'>Requirement A.2</xref>
-            </p>
-          </foreword>
+      <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                ,
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                ,
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                ,
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="N3">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                ,
+                <span class="fmt-element-name">Provision</span>
+                <semx element="autonum" source="N3">1</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -157,23 +205,65 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-          <foreword displayorder='2'>
-          <title>Avant-propos</title>
-            <p>
-              <xref target='N1'>Introduction, Exigence 1</xref>
-      <xref target='N2'>Preparatory, Exigence (??)</xref>
-      <xref target='N'>Article 1, Exigence 2</xref>
-      <xref target='note1'>Article 3.1, Exigence 3</xref>
-      <xref target='note2'>Article 3.1, Exigence 4</xref>
-      <xref target='AN'>Exigence A.1</xref>
-      <xref target='Anote1'>Exigence (??)</xref>
-      <xref target='Anote2'>Exigence A.2</xref>
-            </p>
-          </foreword>
+      <foreword displayorder="2">
+          <title id="_">Avant-propos</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Avant-propos</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                ,
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                ,
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Article</span>
+                <semx element="autonum" source="scope">1</semx>
+                ,
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Article</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Article</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -242,23 +332,65 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-          <foreword displayorder='2'>
-          <title>Foreword</title>
-            <p>
-              <xref target='N1'>Introduction, Recommendation 1</xref>
-      <xref target='N2'>Preparatory, Recommendation (??)</xref>
-      <xref target='N'>Clause 1, Recommendation 2</xref>
-      <xref target='note1'>Clause 3.1, Recommendation 3</xref>
-      <xref target='note2'>Clause 3.1, Recommendation 4</xref>
-      <xref target='AN'>Recommendation A.1</xref>
-      <xref target='Anote1'>Recommendation (??)</xref>
-      <xref target='Anote2'>Recommendation A.2</xref>
-            </p>
-          </foreword>
+       <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                ,
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                ,
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                ,
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -327,23 +459,65 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-                 <foreword displayorder='2'>
-          <title>Foreword</title>
-                   <p>
-                     <xref target='N1'>Introduction, Permission 1</xref>
-      <xref target='N2'>Preparatory, Permission (??)</xref>
-      <xref target='N'>Clause 1, Permission 2</xref>
-      <xref target='note1'>Clause 3.1, Permission 3</xref>
-      <xref target='note2'>Clause 3.1, Permission 4</xref>
-      <xref target='AN'>Permission A.1</xref>
-      <xref target='Anote1'>Permission (??)</xref>
-      <xref target='Anote2'>Permission A.2</xref>
-                   </p>
-                 </foreword>
+      <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -395,25 +569,75 @@ RSpec.describe Metanorma::Requirements::Default do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-                <foreword displayorder='2'>
-          <title>Foreword</title>
-                  <p>
-                     <xref target='N1'>Clause 1, Permission 1</xref>
-      <xref target='N2'>Clause 1, Permission 1-1</xref>
-      <xref target='N'>Clause 1, Permission 1-1-1</xref>
-      <xref target='Q1'>Clause 1, Requirement 1-1</xref>
-      <xref target='R1'>Clause 1, Recommendation 1-1</xref>
-      <xref target='AN1'>Permission A.1</xref>
-      <xref target='AN2'>Permission A.1-1</xref>
-      <xref target='AN'>Permission A.1-1-1</xref>
-      <xref target='AQ1'>Requirement A.1-1</xref>
-      <xref target='AR1'>Recommendation A.1-1</xref>
-                  </p>
-                </foreword>
+      <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="xyz">1</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="xyz">1</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N2">1-1</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="xyz">1</semx>
+                ,
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N">1-1-1</semx>
+             </xref>
+             <xref target="Q1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="xyz">1</semx>
+                ,
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Q1">1-1</semx>
+             </xref>
+             <xref target="R1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="xyz">1</semx>
+                ,
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="R1">1-1</semx>
+             </xref>
+             <xref target="AN1">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="AN1">A.1</semx>
+             </xref>
+             <xref target="AN2">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="AN2">A.1-1</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="AN">A.1-1-1</semx>
+             </xref>
+             <xref target="AQ1">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="AQ1">A.1-1</semx>
+             </xref>
+             <xref target="AR1">
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="AR1">A.1-1</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 end

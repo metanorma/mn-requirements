@@ -49,8 +49,8 @@ module Metanorma
 
       def recommendation_name(node, _out)
         ret = ""
-        name = node.at(ns("./name")) and ret += name.children.to_xml
-        title = node.at(ns("./title"))
+        name = node.at(ns("./fmt-name")) and ret += name.children.to_xml
+        title = node.at(ns("./fmt-title"))
         return ret unless title &&
           node.ancestors("requirement, recommendation, permission").empty?
 

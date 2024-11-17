@@ -27,10 +27,11 @@ module Metanorma
       def recommendation_label_xref(elem, label, xrefs, type)
         id = @reqtlabels[label]
         number = xrefs.anchor(id, :modspec, false)
-        number.nil? and return type
+        number.nil? and return "<span class='fmt-element-name'>#{type}</span>"
         elem.ancestors("requirement, recommendation, permission").empty? and
           return number
-        "<xref target='#{id}'>#{number}</xref>"
+        #"<xref target='#{id}'>#{number}</xref>"
+        number
       end
 
       def init_lookups(doc)
@@ -103,7 +104,8 @@ module Metanorma
 
       def recommendation_link_test(ident)
         test = @reqt_links_test[ident&.strip] or return nil
-        "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
+        #"<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
+        test[:lbl]
       end
 
       # we have not implemented multiple levels of nesting of classes
@@ -155,12 +157,15 @@ module Metanorma
 
       def recommendation_link_class(ident)
         test = @reqt_links_class[ident&.strip] or return nil
-        "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
+        #"<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
+        test[:lbl]
       end
 
       def recommendation_id(ident)
         test = @reqt_ids[ident&.strip] or return ident&.strip
-        "<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
+        #require "debug"; binding.b if test.include?("<xref")
+        #"<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
+        test[:lbl]
       end
 
       def recommendation_backlinks_test(node, id, ret)

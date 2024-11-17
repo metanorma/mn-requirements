@@ -176,7 +176,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -315,7 +315,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -407,7 +407,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -514,7 +514,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -661,7 +661,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -807,7 +807,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -929,7 +929,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -1009,7 +1009,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -1127,7 +1127,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -1245,7 +1245,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
 
     presxml = <<~OUTPUT
@@ -1314,7 +1314,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<language>en</language>", "<language>fr</language>"), true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
 
     presxml = <<~OUTPUT
@@ -1379,7 +1379,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<recommendation ", "<recommendation class='Provision' "), true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end

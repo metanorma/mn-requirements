@@ -5,7 +5,7 @@ RSpec.describe Metanorma::Requirements::Default do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword>
-          <permission id="_"   keep-with-next="true" keep-lines-together="true" model="default">
+          <permission id="A"   keep-with-next="true" keep-lines-together="true" model="default">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <inherit><eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref></inherit>
@@ -37,7 +37,7 @@ RSpec.describe Metanorma::Requirements::Default do
         </description>
         <measurement-target exclude="false">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_">
+          <formula id="B">
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </measurement-target>
@@ -64,49 +64,112 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-          <foreword displayorder="2">
-          <title>Foreword</title>
-          <permission id="_" keep-with-next="true" keep-lines-together="true" model="default"><name>Permission 1:<br/>/ogc/recommendation/wfs/2</name><p><em>Subject: user</em><br/>
-      <em>Subject: non-user</em><br/>
-      <em>Inherits: /ss/584/2015/level/1</em><br/>
-      <em>Inherits: <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref></em><br/>
-      <em>Control-class: Technical</em><br/>
-      <em>Priority: P0</em><br/>
-      <em>Family: System and Communications Protection</em><br/>
-      <em>Family: System and Communications Protocols</em></p><div type="requirement-description">
-          <p id="_">I recommend <em>this</em>.</p>
+      <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <permission id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
+             <fmt-name>
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="A">1</semx>
+                </span>
+                :
+                <br/>
+                /ogc/recommendation/wfs/2
+             </fmt-name>
+             <p>
+                <em>Subject: user</em>
+                <br/>
+                <em>Subject: non-user</em>
+                <br/>
+                <em>Inherits: /ss/584/2015/level/1</em>
+                <br/>
+                <em>
+                   Inherits:
+                   <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref>
+                </em>
+                <br/>
+                <em>Control-class: Technical</em>
+                <br/>
+                <em>Priority: P0</em>
+                <br/>
+                <em>Family: System and Communications Protection</em>
+                <br/>
+                <em>Family: System and Communications Protocols</em>
+             </p>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="A">1</semx>
+             </fmt-xref-label>
+             <div type="requirement-description">
+                <p id="_">
+                   I recommend
+                   <em>this</em>
+                   .
+                </p>
                 <dl>
-        <dt>scope</dt>
-        <dd>random</dd>
-        <dt>widgets</dt>
-        <dd>randomer</dd>
-      </dl>
-        </div>
-        <note id="N"><name>NOTE</name>This is a note</note>
-        <div type="requirement-description">
-          <p id="_">As for the measurement targets,</p>
-        </div><div exclude="false" type="requirement-measurement-target">
-          <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_"><name>(1)</name>
-            <stem type="AsciiMath">r/1 = 0</stem>
-          </formula>
-        </div><div exclude="false" type="requirement-verification">
-          <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
-            if (success)
-            recommendation(label: success-response)
-            end
-          </sourcecode>
-        </div><div exclude="false" class="component1" type="requirement-component1">
-                  <p id="_">Hello</p>
-                </div></permission>
-          </foreword>
+                   <dt>scope</dt>
+                   <dd>random</dd>
+                   <dt>widgets</dt>
+                   <dd>randomer</dd>
+                </dl>
+             </div>
+             <note id="N" autonum="">
+                <fmt-name>
+                   <span class="fmt-caption-label">
+                      <span class="fmt-element-name">NOTE</span>
+                   </span>
+                </fmt-name>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Note</span>
+                </fmt-xref-label>
+                This is a note
+             </note>
+             <div type="requirement-description">
+                <p id="_">As for the measurement targets,</p>
+             </div>
+             <div exclude="false" type="requirement-measurement-target">
+                <p id="_">The measurement target shall be measured as:</p>
+                <formula id="B" autonum="1">
+                   <fmt-name>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-autonum-delim">(</span>
+                         1
+                         <span class="fmt-autonum-delim">)</span>
+                      </span>
+                   </fmt-name>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Formula</span>
+                      <span class="fmt-autonum-delim">(</span>
+                      <semx element="autonum" source="B">1</semx>
+                      <span class="fmt-autonum-delim">)</span>
+                   </fmt-xref-label>
+                   <stem type="AsciiMath">r/1 = 0</stem>
+                </formula>
+             </div>
+             <div exclude="false" type="requirement-verification">
+                <p id="_">The following code will be run for verification:</p>
+                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </sourcecode>
+             </div>
+             <div exclude="false" class="component1" type="requirement-component1">
+                <p id="_">Hello</p>
+             </div>
+          </permission>
+       </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -165,35 +228,79 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-          <foreword displayorder="2">
-          <title>Foreword</title>
-          <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default"><name>Requirement:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Subject: user</em><br/>
-      <em>Inherits: /ss/584/2015/level/1</em></p><div type="requirement-description">
-          <p id="_">I recommend <em>this</em>.</p>
-        </div><div type="requirement-description">
-          <p id="_">As for the measurement targets,</p>
-        </div><div exclude="false" keep-with-next="true" keep-lines-together="true" type="requirement-measurement-target">
-          <p id="_">The measurement target shall be measured as:</p>
-          <formula id="B"><name>(1)</name>
-            <stem type="AsciiMath">r/1 = 0</stem>
-          </formula>
-        </div><div exclude="false" type="requirement-verification">
-          <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
-            if (success)
-            recommendation(label: success-response)
-            end
-          </sourcecode>
-        </div><div exclude="false" class="component1" type="requirement-component1">
-                  <p id="_">Hello</p>
-                </div></requirement>
-          </foreword>
+      <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
+             <fmt-name>
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Requirement</span>
+                </span>
+                :
+                <br/>
+                /ogc/recommendation/wfs/2. A New Requirement
+             </fmt-name>
+             <p>
+                <em>Subject: user</em>
+                <br/>
+                <em>Inherits: /ss/584/2015/level/1</em>
+             </p>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="A">(??)</semx>
+             </fmt-xref-label>
+             <div type="requirement-description">
+                <p id="_">
+                   I recommend
+                   <em>this</em>
+                   .
+                </p>
+             </div>
+             <div type="requirement-description">
+                <p id="_">As for the measurement targets,</p>
+             </div>
+             <div exclude="false" keep-with-next="true" keep-lines-together="true" type="requirement-measurement-target">
+                <p id="_">The measurement target shall be measured as:</p>
+                <formula id="B" autonum="1">
+                   <fmt-name>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-autonum-delim">(</span>
+                         1
+                         <span class="fmt-autonum-delim">)</span>
+                      </span>
+                   </fmt-name>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Formula</span>
+                      <span class="fmt-autonum-delim">(</span>
+                      <semx element="autonum" source="B">1</semx>
+                      <span class="fmt-autonum-delim">)</span>
+                   </fmt-xref-label>
+                   <stem type="AsciiMath">r/1 = 0</stem>
+                </formula>
+             </div>
+             <div exclude="false" type="requirement-verification">
+                <p id="_">The following code will be run for verification:</p>
+                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </sourcecode>
+             </div>
+             <div exclude="false" class="component1" type="requirement-component1">
+                <p id="_">Hello</p>
+             </div>
+          </requirement>
+       </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -204,7 +311,7 @@ RSpec.describe Metanorma::Requirements::Default do
           <language>fr</language>
           <script>Latn</script>
           </bibdata>
-          <preface><foreword>
+          <preface><foreword id="F">
           <requirement id="A" unnumbered="true" model="default">
         <title>A New Requirement</title>
         <identifier>/ogc/recommendation/wfs/2</identifier>
@@ -257,36 +364,80 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword displayorder="2">
-          <title>Avant-propos</title>
-          <requirement id="A" unnumbered="true" model="default"><name>Exigence&#xA0;:<br/>/ogc/recommendation/wfs/2. A New Requirement</name><p><em>Sujet&#xA0;: user</em><br/>
-      <em>H&#xE9;rite&#xA0;: /ss/584/2015/level/1</em></p><div type="requirement-description">
-          <p id="_">I recommend <em>this</em>.</p>
-        </div><div type="requirement-description">
-          <p id="_">As for the measurement targets,</p>
-        </div><div exclude="false" type="requirement-measurement-target">
-          <p id="_">The measurement target shall be measured as:</p>
-          <formula id="B"><name>(1)</name>
-            <stem type="AsciiMath">r/1 = 0</stem>
-          </formula>
-        </div><div exclude="false" type="requirement-verification">
-          <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
-        if (success)
-        recommendation(label: success-response)
-       end
-       </sourcecode>
-        </div><div exclude="false" class="component1" type="requirement-component1">
-                  <p id="_">Hello</p>
-                </div></requirement>
-          </foreword>
+      <foreword id="F" displayorder="2">
+          <title id="_">Avant-propos</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Avant-propos</semx>
+             </span>
+          </fmt-title>
+          <requirement id="A" unnumbered="true" model="default">
+             <fmt-name>
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Exigence</span>
+                </span>
+                :
+                <br/>
+                /ogc/recommendation/wfs/2. A New Requirement
+             </fmt-name>
+             <p>
+                <em>Sujet : user</em>
+                <br/>
+                <em>Hérite : /ss/584/2015/level/1</em>
+             </p>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="A">(??)</semx>
+             </fmt-xref-label>
+             <div type="requirement-description">
+                <p id="_">
+                   I recommend
+                   <em>this</em>
+                   .
+                </p>
+             </div>
+             <div type="requirement-description">
+                <p id="_">As for the measurement targets,</p>
+             </div>
+             <div exclude="false" type="requirement-measurement-target">
+                <p id="_">The measurement target shall be measured as:</p>
+                <formula id="B" autonum="1">
+                   <fmt-name>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-autonum-delim">(</span>
+                         1
+                         <span class="fmt-autonum-delim">)</span>
+                      </span>
+                   </fmt-name>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Formule</span>
+                      <span class="fmt-autonum-delim">(</span>
+                      <semx element="autonum" source="B">1</semx>
+                      <span class="fmt-autonum-delim">)</span>
+                   </fmt-xref-label>
+                   <stem type="AsciiMath">r/1 = 0</stem>
+                </formula>
+             </div>
+             <div exclude="false" type="requirement-verification">
+                <p id="_">The following code will be run for verification:</p>
+                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </sourcecode>
+             </div>
+             <div exclude="false" class="component1" type="requirement-component1">
+                <p id="_">Hello</p>
+             </div>
+          </requirement>
+       </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -294,7 +445,7 @@ RSpec.describe Metanorma::Requirements::Default do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword>
-          <recommendation id="_" obligation="shall,could"   keep-with-next="true" keep-lines-together="true" model="default">
+          <recommendation id="A" obligation="shall,could"   keep-with-next="true" keep-lines-together="true" model="default">
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <classification><tag>type</tag><value>text</value></classification>
@@ -323,7 +474,7 @@ RSpec.describe Metanorma::Requirements::Default do
         </description>
         <measurement-target exclude="false">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_">
+          <formula id="B">
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </measurement-target>
@@ -346,39 +497,87 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-          <foreword displayorder="2">
-          <title>Foreword</title>
-          <recommendation id="_" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default"><name>Recommendation 1:<br/>/ogc/recommendation/wfs/2</name><p><em>Obligation: shall,could</em><br/>
-      <em>Subject: user</em><br/>
-      <em>Inherits: /ss/584/2015/level/1</em><br/>
-      <em>Type: text</em><br/>
-      <em>Language: BASIC</em></p><div type="requirement-description">
-          <p id="_">I recommend <em>this</em>.</p>
-        </div><div type="requirement-description">
-          <p id="_">As for the measurement targets,</p>
-        </div><div exclude="false" type="requirement-measurement-target">
-          <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_"><name>(1)</name>
-            <stem type="AsciiMath">r/1 = 0</stem>
-          </formula>
-        </div><div exclude="false" type="requirement-verification">
-          <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
-            if (success)
-            recommendation(label: success-response)
-            end
-          </sourcecode>
-        </div><div exclude="false" class="component1" type="requirement-component1">
-                  <p id="_">Hello</p>
-                </div></recommendation>
-          </foreword>
+      <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <recommendation id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
+             <fmt-name>
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="A">1</semx>
+                </span>
+                :
+                <br/>
+                /ogc/recommendation/wfs/2
+             </fmt-name>
+             <p>
+                <em>Obligation: shall,could</em>
+                <br/>
+                <em>Subject: user</em>
+                <br/>
+                <em>Inherits: /ss/584/2015/level/1</em>
+                <br/>
+                <em>Type: text</em>
+                <br/>
+                <em>Language: BASIC</em>
+             </p>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="A">1</semx>
+             </fmt-xref-label>
+             <div type="requirement-description">
+                <p id="_">
+                   I recommend
+                   <em>this</em>
+                   .
+                </p>
+             </div>
+             <div type="requirement-description">
+                <p id="_">As for the measurement targets,</p>
+             </div>
+             <div exclude="false" type="requirement-measurement-target">
+                <p id="_">The measurement target shall be measured as:</p>
+                <formula id="B" autonum="1">
+                   <fmt-name>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-autonum-delim">(</span>
+                         1
+                         <span class="fmt-autonum-delim">)</span>
+                      </span>
+                   </fmt-name>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Formula</span>
+                      <span class="fmt-autonum-delim">(</span>
+                      <semx element="autonum" source="B">1</semx>
+                      <span class="fmt-autonum-delim">)</span>
+                   </fmt-xref-label>
+                   <stem type="AsciiMath">r/1 = 0</stem>
+                </formula>
+             </div>
+             <div exclude="false" type="requirement-verification">
+                <p id="_">The following code will be run for verification:</p>
+                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </sourcecode>
+             </div>
+             <div exclude="false" class="component1" type="requirement-component1">
+                <p id="_">Hello</p>
+             </div>
+          </recommendation>
+       </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
 
     out = Nokogiri::XML(
@@ -386,10 +585,13 @@ RSpec.describe Metanorma::Requirements::Default do
       .convert("test", input
       .sub("<recommendation ", "<recommendation class='provision' "), true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n
         .format(presxml.sub("<recommendation ",
                             "<recommendation class='provision' ")
-      .sub("Recommendation 1:", "Provision 1:"))
+      .gsub(/<fmt-name>\s*<span class="fmt-caption-label">\s*<span class="fmt-element-name">Recommendation/,
+            '<fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">Provision')
+      .gsub(/<fmt-xref-label>\s*<span class="fmt-element-name">Recommendation/,
+            '<fmt-xref-label><span class="fmt-element-name">provision'))
   end
 end

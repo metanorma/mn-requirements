@@ -6,13 +6,16 @@ module Metanorma
       end
 
       def recommendation_label(elem, type, xrefs)
-        number = xrefs.anchor(elem["id"], :label, false)
-        (number.nil? ? type : "#{type} #{number}")
+        num = xrefs.anchor(elem["id"], :label, false)
+        type = "<span class='fmt-element-name'>#{type}</span>"
+        num.nil? and return type
+        num = "<semx element='autonum' source='#{elem['id']}'>#{num}</semx>"
+        "#{type} #{num}"
       end
 
       def reqt_metadata_node?(node)
         %w(identifier title subject classification tag value
-           inherit name).include? node.name
+           inherit name fmt-name fmt-xref-label fmt-title).include? node.name
       end
 
       def requirement_render1(node)
@@ -35,7 +38,7 @@ module Metanorma
 
       def recommendation_labels(node)
         [node.at(ns("./identifier")), node.at(ns("./title")),
-         node.at(ns("./name"))]
+         node.at(ns("./fmt-name"))]
           .map do |n|
           n&.children&.to_xml
         end
@@ -50,7 +53,7 @@ module Metanorma
           ret << ". " if label && title
           ret << title
         end
-        out << "<name>#{l10n(ret.compact.join)}</name>"
+        out << "<fmt-name>#{l10n(ret.compact.join)}</fmt-name>"
         out
       end
 
