@@ -63,10 +63,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                      <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permissions class</span>
                             <semx element="autonum" source="A1">1</semx>
                          </span>
+                      </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -132,10 +134,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permission</span>
                             <semx element="autonum" source="B1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -263,10 +267,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permissions class</span>
                             <semx element="autonum" source="A1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -332,10 +338,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permission</span>
                             <semx element="autonum" source="B1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -464,10 +472,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permissions class</span>
                             <semx element="autonum" source="A1">1</semx>
                          </span>
+                      </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -533,10 +543,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permission</span>
                             <semx element="autonum" source="B1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -664,10 +676,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permissions class</span>
                             <semx element="autonum" source="A1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -733,10 +747,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permission</span>
                             <semx element="autonum" source="B1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -864,10 +880,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permissions class</span>
                             <semx element="autonum" source="A1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -933,10 +951,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Permission</span>
                             <semx element="autonum" source="B1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>

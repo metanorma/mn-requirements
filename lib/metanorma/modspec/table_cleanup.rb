@@ -65,6 +65,8 @@ module Metanorma
           x = t.at(ns("./thead/tr")) or next
           x.at(ns("./th")).children =
             requirement_table_nested_cleanup_hdr(node)
+          f = x.at(ns("./td/fmt-name")) and
+            f.replace(f.children)
           t.parent.parent.replace(x)
         end
         table

@@ -55,10 +55,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Recommendation</span>
                             <semx element="autonum" source="_">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -235,10 +237,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Recommendation</span>
                             <semx element="autonum" source="_">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -357,10 +361,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Requirement</span>
                             <semx element="autonum" source="A1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -449,10 +455,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Requirement</span>
                             <semx element="autonum" source="A1">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -482,10 +490,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTestTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Conformance test</span>
                             <semx element="autonum" source="A2">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -515,10 +525,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Requirements class</span>
                             <semx element="autonum" source="A3">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>
@@ -548,10 +560,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tr>
                    <th scope="colgroup" colspan="2">
                       <p class="RecommendationTitle">
+                       <fmt-name>
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">Conformance class</span>
                             <semx element="autonum" source="A4">1</semx>
                          </span>
+                       </fmt-name>
                       </p>
                    </th>
                 </tr>

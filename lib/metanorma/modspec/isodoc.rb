@@ -34,7 +34,7 @@ module Metanorma
       end
 
       def recommendation_header(reqt, out)
-        n = recommendation_name(reqt, nil)
+        n = reqt.at(ns("./fmt-name"))
         x = if reqt.ancestors("requirement, recommendation, permission").empty?
               <<~THEAD
                 <thead><tr><th scope='colgroup' colspan='2'><p class='#{recommend_name_class(reqt)}'>#{n}</p></th></tr></thead>
@@ -47,6 +47,7 @@ module Metanorma
         out
       end
 
+=begin
       def recommendation_name(node, _out)
         ret = ""
         name = node.at(ns("./fmt-name")) and ret += name.children.to_xml
@@ -57,6 +58,25 @@ module Metanorma
         ret += ": " unless !name || name.text.empty?
         ret += title.children.to_xml
         l10n(ret)
+      end
+=end
+
+      def recommendation_label_add(elem, _label, title)
+        title or return ""
+        r = recommendation_label_caption_delim
+        title and
+          r += "<semx element='title' source='#{elem['id']}'>#{title}</semx>"
+        r
+      end
+
+      def recommendation_label_caption_delim
+        "<span class='fmt-caption-delim'>: </span>"
+      end
+
+      def recommendation_labels(node)
+        node.ancestors("requirement, recommendation, permission").empty? or
+          return [nil, nil]
+        super
       end
 
       def recommendation_attributes(node, out)

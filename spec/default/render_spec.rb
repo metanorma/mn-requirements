@@ -76,11 +76,17 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Permission</span>
                    <semx element="autonum" source="A">1</semx>
+                   <span class="fmt-caption-delim">
+                      :
+                      <br/>
+                   </span>
+                   <semx element="identifier" source="A">/ogc/recommendation/wfs/2</semx>
                 </span>
-                :
-                <br/>
-                /ogc/recommendation/wfs/2
              </fmt-name>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="A">1</semx>
+             </fmt-xref-label>
              <p>
                 <em>Subject: user</em>
                 <br/>
@@ -101,10 +107,6 @@ RSpec.describe Metanorma::Requirements::Default do
                 <br/>
                 <em>Family: System and Communications Protocols</em>
              </p>
-             <fmt-xref-label>
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="A">1</semx>
-             </fmt-xref-label>
              <div type="requirement-description">
                 <p id="_">
                    I recommend
@@ -239,20 +241,24 @@ RSpec.describe Metanorma::Requirements::Default do
              <fmt-name>
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Requirement</span>
+                   <span class="fmt-caption-delim">
+                      :
+                      <br/>
+                   </span>
+                   <semx element="identifier" source="A">/ogc/recommendation/wfs/2</semx>
+                   .
+                   <semx element="title" source="A">A New Requirement</semx>
                 </span>
-                :
-                <br/>
-                /ogc/recommendation/wfs/2. A New Requirement
              </fmt-name>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="A">(??)</semx>
+             </fmt-xref-label>
              <p>
                 <em>Subject: user</em>
                 <br/>
                 <em>Inherits: /ss/584/2015/level/1</em>
              </p>
-             <fmt-xref-label>
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="A">(??)</semx>
-             </fmt-xref-label>
              <div type="requirement-description">
                 <p id="_">
                    I recommend
@@ -375,20 +381,24 @@ RSpec.describe Metanorma::Requirements::Default do
              <fmt-name>
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Exigence</span>
+                   <span class="fmt-caption-delim">
+                      :
+                      <br/>
+                   </span>
+                   <semx element="identifier" source="A">/ogc/recommendation/wfs/2</semx>
+                   .
+                   <semx element="title" source="A">A New Requirement</semx>
                 </span>
-                :
-                <br/>
-                /ogc/recommendation/wfs/2. A New Requirement
              </fmt-name>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Exigence</span>
+                <semx element="autonum" source="A">(??)</semx>
+             </fmt-xref-label>
              <p>
                 <em>Sujet : user</em>
                 <br/>
                 <em>Hérite : /ss/584/2015/level/1</em>
              </p>
-             <fmt-xref-label>
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="A">(??)</semx>
-             </fmt-xref-label>
              <div type="requirement-description">
                 <p id="_">
                    I recommend
@@ -509,11 +519,17 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Recommendation</span>
                    <semx element="autonum" source="A">1</semx>
+                   <span class="fmt-caption-delim">
+                      :
+                      <br/>
+                   </span>
+                   <semx element="identifier" source="A">/ogc/recommendation/wfs/2</semx>
                 </span>
-                :
-                <br/>
-                /ogc/recommendation/wfs/2
              </fmt-name>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="A">1</semx>
+             </fmt-xref-label>
              <p>
                 <em>Obligation: shall,could</em>
                 <br/>
@@ -525,10 +541,6 @@ RSpec.describe Metanorma::Requirements::Default do
                 <br/>
                 <em>Language: BASIC</em>
              </p>
-             <fmt-xref-label>
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="A">1</semx>
-             </fmt-xref-label>
              <div type="requirement-description">
                 <p id="_">
                    I recommend
