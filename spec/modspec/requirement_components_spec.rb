@@ -44,15 +44,25 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     presxml = <<~OUTPUT
       <foreword id="A" displayorder="2">
-        <title>Preface</title>
-        <table id="_" class="modspec" type="recommend">
-          <thead>
-            <tr>
-              <th scope="colgroup" colspan="2">
-                <p class="RecommendationTitle">Recommendation 1</p>
-              </th>
-            </tr>
-          </thead>
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Preface</semx>
+             </span>
+          </fmt-title>
+          <table id="_" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Recommendation</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </span>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
           <tbody>
             <tr>
               <th>Identifier</th>
@@ -185,7 +195,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -214,15 +224,25 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     presxml = <<~OUTPUT
       <foreword id="A" displayorder="2">
-         <title>Preface</title>
-         <table id="_" class="modspec" type="recommend">
-           <thead>
-             <tr>
-               <th scope="colgroup" colspan="2">
-                 <p class="RecommendationTitle">Recommendation 1</p>
-               </th>
-             </tr>
-           </thead>
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Preface</semx>
+             </span>
+          </fmt-title>
+          <table id="_" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Recommendation</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </span>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
            <tbody>
              <tr>
                <th>Identifier</th>
@@ -284,7 +304,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -325,63 +345,72 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-      <foreword id='A' displayorder='2'>
-        <title>Preface</title>
-        <table id='A1' class='modspec' type='recommend'>
-          <thead>
-            <tr>
-              <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Requirement 1</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Test method type</th>
-              <td>
-                <p id='_'>Manual Inspection</p>
-              </td>
-            </tr>
-            <tr>
-              <th>Test method</th>
-              <td>
-                <p id='1'>
-                  <ol class="steps">
-                    <li>
-                      <p id='2'>For each UML class defined or referenced in the Tunnel Package:</p>
-                      <ol class="steps">
-                        <li>
-                          <p id='3'>
-                             Validate that the Implementation Specification
-                            contains a data element which represents the same
-                            concept as that defined for the UML class.
-                          </p>
-                        </li>
-                        <li>
-                          <p id='4'>
-                             Validate that the data element has the same
-                            relationships with other elements as those defined for
-                            the UML class. Validate that those relationships have
-                            the same source, target, direction, roles, and
-                            multiplicies as those documented in the Conceptual
-                            Model.
-                          </p>
-                        </li>
-                      </ol>
-                    </li>
-                  </ol>
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </foreword>
+      <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Preface</semx>
+             </span>
+          </fmt-title>
+          <table id="A1" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Requirement</span>
+                            <semx element="autonum" source="A1">1</semx>
+                         </span>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Test method type</th>
+                   <td>
+                      <p id="_">Manual Inspection</p>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Test method</th>
+                   <td>
+                      <p id="1">
+                         <ol class="steps">
+                            <li>
+                               <p id="2">For each UML class defined or referenced in the Tunnel Package:</p>
+                               <ol class="steps">
+                                  <li>
+                                     <p id="3">
+                   Validate that the Implementation Specification contains a data
+                   element which represents the same concept as that defined for
+                   the UML class.
+                 </p>
+                                  </li>
+                                  <li>
+                                     <p id="4">
+                   Validate that the data element has the same relationships with
+                   other elements as those defined for the UML class. Validate that
+                   those relationships have the same source, target, direction,
+                   roles, and multiplicies as those documented in the Conceptual
+                   Model.
+                 </p>
+                                  </li>
+                               </ol>
+                            </li>
+                         </ol>
+                      </p>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </foreword>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -408,104 +437,152 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-      <foreword id='A' displayorder='2'>
-        <title>Preface</title>
-        <table id='A1' class='modspec' type='recommend'>
-          <thead>
-            <tr>
-              <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Requirement 1</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <th>Identifier</th>
-              <td><tt>/ogc/recommendation/wfs/1</tt></td>
-            </tr>
-            <tr>
-              <th>Conformance test</th>
-              <td>
-                <xref target='A2'>
-                  Conformance test 1:
-                  <tt>/ogc/recommendation/wfs/2</tt>
-                </xref>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table id='A2' class='modspec' type='recommendtest'>
-          <thead>
-            <tr>
-              <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTestTitle'>Conformance test 1</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <th>Identifier</th><td><tt>/ogc/recommendation/wfs/2</tt></td>
-            </tr>
-            <tr>
-              <th>Requirement</th>
-              <td>
-                <xref target='A1'>Requirement 1: <tt>/ogc/recommendation/wfs/1</tt></xref>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table id='A3' class='modspec' type='recommendclass'>
-          <thead>
-            <tr>
-              <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Requirements class 1</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <th>Identifier</th>
-              <td><tt>/ogc/recommendation/wfs/3</tt></td>
-            </tr>
-            <tr>
-              <th>Conformance class</th>
-              <td>
-                <xref target='A4'>
-                  Conformance class 1:
-                  <tt>/ogc/recommendation/wfs/4</tt>
-                </xref>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table id='A4' class='modspec' type='recommendclass'>
-          <thead>
-            <tr>
-              <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Conformance class 1</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <th>Identifier</th>
-              <td><tt>/ogc/recommendation/wfs/4</tt></td>
-            </tr>
-            <tr>
-              <th>Requirements class</th>
-              <td>
-                <xref target='A3'>Requirements class 1: <tt>/ogc/recommendation/wfs/3</tt></xref>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </foreword>
+      <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Preface</semx>
+             </span>
+          </fmt-title>
+          <table id="A1" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Requirement</span>
+                            <semx element="autonum" source="A1">1</semx>
+                         </span>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/1</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Conformance test</th>
+                   <td>
+                      <span class="fmt-element-name">Conformance test</span>
+                      <semx element="autonum" source="A2">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A2">/ogc/recommendation/wfs/2</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+          <table id="A2" type="recommendtest" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTestTitle">
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Conformance test</span>
+                            <semx element="autonum" source="A2">1</semx>
+                         </span>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/2</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Requirement</th>
+                   <td>
+                      <span class="fmt-element-name">Requirement</span>
+                      <semx element="autonum" source="A1">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A1">/ogc/recommendation/wfs/1</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+          <table id="A3" type="recommendclass" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Requirements class</span>
+                            <semx element="autonum" source="A3">1</semx>
+                         </span>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/3</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Conformance class</th>
+                   <td>
+                      <span class="fmt-element-name">Conformance class</span>
+                      <semx element="autonum" source="A4">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A4">/ogc/recommendation/wfs/4</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+          <table id="A4" type="recommendclass" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Conformance class</span>
+                            <semx element="autonum" source="A4">1</semx>
+                         </span>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/4</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Requirements class</th>
+                   <td>
+                      <span class="fmt-element-name">Requirements class</span>
+                      <semx element="autonum" source="A3">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A3">/ogc/recommendation/wfs/3</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </foreword>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end
