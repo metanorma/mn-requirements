@@ -76,34 +76,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N1">1</semx>
              </xref>
              <xref target="N2">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N2">(??)</semx>
              </xref>
              <xref target="N">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N">2</semx>
              </xref>
              <xref target="note1">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note1">3</semx>
              </xref>
              <xref target="note2">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note2">4</semx>
              </xref>
@@ -211,7 +211,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N1">1</semx>
                 :
@@ -219,7 +219,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </xref>
              <xref target="N2">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N2">(??)</semx>
                 :
@@ -228,7 +228,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <xref target="N">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N">2</semx>
                 :
@@ -237,7 +237,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <xref target="note1">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note1">3</semx>
                 :
@@ -246,7 +246,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <xref target="note2">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note2">4</semx>
                 :
@@ -516,67 +516,67 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1a">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N1a">1 A</semx>
              </xref>
              <xref target="N1b">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N1b">1 B</semx>
              </xref>
              <xref target="N2a">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N2a"> A</semx>
              </xref>
              <xref target="N2b">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="N2b"> B</semx>
              </xref>
              <xref target="Na">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="Na">2 A</semx>
              </xref>
              <xref target="Nb">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="Nb">2 B</semx>
              </xref>
              <xref target="note1a">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note1a">3 A</semx>
              </xref>
              <xref target="note1b">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note1b">3 B</semx>
              </xref>
              <xref target="note2a">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note2a">4 A</semx>
              </xref>
              <xref target="note2b">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="note2b">4 B</semx>
              </xref>
@@ -688,34 +688,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="N1">1</semx>
              </xref>
              <xref target="N2">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="N2">(??)</semx>
              </xref>
              <xref target="N">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="N">2</semx>
              </xref>
              <xref target="note1">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="note1">3</semx>
              </xref>
              <xref target="note2">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="note2">4</semx>
              </xref>
@@ -816,34 +816,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Test de conformité</span>
                 <semx element="autonum" source="N1">1</semx>
              </xref>
              <xref target="N2">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Test de conformité</span>
                 <semx element="autonum" source="N2">(??)</semx>
              </xref>
              <xref target="N">
                 <span class="fmt-element-name">Article</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Test de conformité</span>
                 <semx element="autonum" source="N">2</semx>
              </xref>
              <xref target="note1">
                 <span class="fmt-element-name">Article</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Test de conformité</span>
                 <semx element="autonum" source="note1">3</semx>
              </xref>
              <xref target="note2">
                 <span class="fmt-element-name">Article</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Test de conformité</span>
                 <semx element="autonum" source="note2">4</semx>
              </xref>
@@ -943,34 +943,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="N1">1</semx>
              </xref>
              <xref target="N2">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="N2">(??)</semx>
              </xref>
              <xref target="N">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="N">2</semx>
              </xref>
              <xref target="note1">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="note1">3</semx>
              </xref>
              <xref target="note2">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="note2">4</semx>
              </xref>
@@ -1070,34 +1070,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="N1">1</semx>
              </xref>
              <xref target="N2">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="N2">(??)</semx>
              </xref>
              <xref target="N">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="N">2</semx>
              </xref>
              <xref target="note1">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="note1">3</semx>
              </xref>
              <xref target="note2">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="note2">4</semx>
              </xref>
@@ -1197,34 +1197,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p>
              <xref target="N1">
                 <semx element="introduction" source="intro">Introduction</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="N1">1</semx>
              </xref>
              <xref target="N2">
                 <semx element="clause" source="xyz">Preparatory</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="N2">(??)</semx>
              </xref>
              <xref target="N">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="scope">1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="N">2</semx>
              </xref>
              <xref target="note1">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="note1">3</semx>
              </xref>
              <xref target="note2">
                 <span class="fmt-element-name">Clause</span>
                 <semx element="autonum" source="widgets1">3.1</semx>
-                ,
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="note2">4</semx>
              </xref>
@@ -1324,34 +1324,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <p>
               <xref target="N1">
                  <semx element="introduction" source="intro">Introduction</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance test</span>
                  <semx element="autonum" source="N1">1</semx>
               </xref>
               <xref target="N2">
                  <semx element="clause" source="xyz">Preparatory</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance test</span>
                  <semx element="autonum" source="N2">(??)</semx>
               </xref>
               <xref target="N">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="scope">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance test</span>
                  <semx element="autonum" source="N">2</semx>
               </xref>
               <xref target="note1">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="widgets1">3.1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance test</span>
                  <semx element="autonum" source="note1">3</semx>
               </xref>
               <xref target="note2">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="widgets1">3.1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance test</span>
                  <semx element="autonum" source="note2">4</semx>
               </xref>
@@ -1439,35 +1439,35 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <xref target="N1">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="xyz">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Permission</span>
                  <semx element="autonum" source="N1">1</semx>
               </xref>
               <xref target="N2">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="xyz">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance test</span>
                  <semx element="autonum" source="N2">1-1</semx>
               </xref>
               <xref target="N">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="xyz">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Permission</span>
                  <semx element="autonum" source="N">1-1-1</semx>
               </xref>
               <xref target="Q1">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="xyz">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="Q1">1-1</semx>
               </xref>
               <xref target="R1">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="xyz">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Recommendation</span>
                  <semx element="autonum" source="R1">1-1</semx>
               </xref>
@@ -1575,34 +1575,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <p>
               <xref target="N1">
                  <semx element="introduction" source="intro">Introduction</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Abstract test</span>
                  <semx element="autonum" source="N1">1</semx>
               </xref>
               <xref target="N2">
                  <semx element="clause" source="xyz">Preparatory</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Abstract test</span>
                  <semx element="autonum" source="N2">(??)</semx>
               </xref>
               <xref target="N">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="scope">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Abstract test</span>
                  <semx element="autonum" source="N">2</semx>
               </xref>
               <xref target="note1">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="widgets1">3.1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Abstract test</span>
                  <semx element="autonum" source="note1">3</semx>
               </xref>
               <xref target="note2">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="widgets1">3.1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Abstract test</span>
                  <semx element="autonum" source="note2">4</semx>
               </xref>
@@ -1703,34 +1703,34 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <p>
               <xref target="N1">
                  <semx element="introduction" source="intro">Introduction</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance class</span>
                  <semx element="autonum" source="N1">1</semx>
               </xref>
               <xref target="N2">
                  <semx element="clause" source="xyz">Preparatory</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance class</span>
                  <semx element="autonum" source="N2">(??)</semx>
               </xref>
               <xref target="N">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="scope">1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance class</span>
                  <semx element="autonum" source="N">2</semx>
               </xref>
               <xref target="note1">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="widgets1">3.1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance class</span>
                  <semx element="autonum" source="note1">3</semx>
               </xref>
               <xref target="note2">
                  <span class="fmt-element-name">Clause</span>
                  <semx element="autonum" source="widgets1">3.1</semx>
-                 ,
+                 <span class="fmt-comma">,</span>
                  <span class="fmt-element-name">Conformance class</span>
                  <semx element="autonum" source="note2">4</semx>
               </xref>
