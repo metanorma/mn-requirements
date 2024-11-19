@@ -96,7 +96,7 @@ module Metanorma
       # any xrefs not yet expanded out to rendering need to be expanded out,
       # so that the identifier instances they contain can be truncated
       def expand_xrefs_in_reqt(table)
-        table.xpath(ns(".//xref[not(@style)][normalize-space(text()) = '']"))
+        table.xpath(ns(".//xref[not(@style)][string-length() = 0]"))
           .each do |x|
           ref = @xrefs.anchor(x["target"], :xref, false) or next
           x << ref
