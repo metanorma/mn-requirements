@@ -631,4 +631,351 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(Xml::C14n.format(strip_guid(xml.to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
+
+  it "uses Modspec YAML" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      [[E]]
+      [conformance_test,model=ogc]
+      ====
+      [source,yaml]
+      ----
+      name: Verify expression of duration as GeoPose_Duration
+      identifier: /conf/series-regular/duration
+      targets:
+      - /req/series-regular/duration
+      dependencies:
+      - /conf/time/duration
+      description: |
+        To confirm that the `Regular_Series.interPoseDuration` attribute is
+        represented by an instance of the `GeoPose_Duration` object.
+      purpose: To confirm the correct properties of a GeoPose Duration.
+      ----
+      ====
+
+      [requirement_class,model=ogc]
+      ====
+      [source,yaml]
+      ----
+      name: Tangent point height value specification
+      identifier: /req/tangent-point/height
+      statement: |
+          An instance of a GeoPose `tangentPoint.h` attribute SHALL be expressed as
+          a height in meters above the WGS-84 ellipsoid, represented as a signed as
+          a signed floating point value conforming to IEEE 754. If the tangent point
+          is above the WGS-84 ellipsoid, the value SHALL be positive. If the tangent
+          point is below the WGS-84 ellipsoid, the value SHALL be negative.
+      ----
+      ====
+    INPUT
+    output = <<~OUTPUT
+      #{BLANK_HDR}
+         <sections>
+           <requirement id='A' model='ogc'>
+             <component exclude='false' class='Test method type'>
+               <p id='_'>Manual Inspection</p>
+             </component>
+             <component exclude='false' class='Test method'>
+               <p id='_'>Step #2</p>
+             </component>
+             <component exclude='false' class='step'>
+               <p id='_'>Step</p>
+             </component>
+             <component exclude='false' class='guidance'>
+               <p id='_'>Guidance</p>
+             </component>
+           </requirement>
+         </sections>
+       </standard-document>
+    OUTPUT
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
+      .convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
+
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      [[E]]
+      [conformance_class,model=ogc]
+      ====
+      [source,yaml]
+      ----
+      name: Regular_Series logical model SDU conformance
+      identifier: /conf/series-regular
+      target:
+      - /req/series-regular
+      classification: "Target Type: SDU"
+      description: To confirm that components of a Regular Series conform to the Logical Model.
+      dependencies:
+      - /conf/global
+      - /conf/frame-spec
+      - /conf/time
+
+      tests:
+
+      - name: Verify expression of duration as GeoPose_Duration
+        identifier: /conf/series-regular/duration
+        targets:
+        - /req/series-regular/duration
+        dependencies:
+        - /conf/time/duration
+        description: |
+          To confirm that the `Regular_Series.interPoseDuration` attribute is
+          represented by an instance of the `GeoPose_Duration` object.
+        purpose: To confirm the correct properties of a GeoPose Duration.
+
+      - name: Verify expression of outer frame
+        identifier: /conf/series-regular/outer-frame
+        targets:
+        - /req/series-regular/outer-frame
+        purpose: |
+          The `Regular_Series.outerFrame` attribute shall represent the first frame
+          in the series with the `ExplicitFrameSpec` object.
+
+      - name: Verify expression of inner frames
+        identifier: /conf/series-regular/inner-frame-series
+        targets:
+        - /req/series-regular/inner-frame-series
+        purpose: |
+          The `Regular_Series.innerFrameSeries` attribute shall represent the
+          succession of inner frames as an array of `ExplicitFrameSpec` objects.
+
+      - name: Verify expression of series header
+        identifier: /conf/series-regular/header
+        targets:
+        - /req/series-regular/header
+        description: |
+          Verify that the `Regular_Series.header` attribute is implemented as an
+          instance of SeriesHeader.
+        purpose: |
+          To confirm that the implementation of Series Header conforms to the
+          Logical Model.
+
+      - name: Verify expression of series trailer
+        identifier: /conf/series-regular/trailer
+        targets:
+        - /req/series-regular/trailer
+        description: |
+          Verify that the `Regular_Series.trailer` attribute is implemented as an
+          instance of SeriesTrailer.
+        purpose: |
+          To confirm that the implementation of SeriesTrailer conforms to the
+          Logical Model.
+      ----
+      ====
+
+      [requirement_class,model=ogc]
+      ====
+      [source,yaml]
+      ----
+      ---
+      name: Tangent point requirements
+      identifier: /req/tangent-point
+      description: |
+        Common tangent point requirements for SDUs that include tangent points.
+      guidance: |
+        The tangent plane `longitude`, `latitude`, and `h` parameters are
+        specified without any conditions or constraints on precision to be used in
+        an implementation. Any such constraints would be found as requirements on a
+        specific implementation as an encoding.
+
+      normative_statements:
+
+      - name: Tangent point height value specification
+        identifier: /req/tangent-point/height
+        statement: |
+          An instance of a GeoPose `tangentPoint.h` attribute SHALL be expressed as
+          a height in meters above the WGS-84 ellipsoid, represented as a signed as
+          a signed floating point value conforming to IEEE 754. If the tangent point
+          is above the WGS-84 ellipsoid, the value SHALL be positive. If the tangent
+          point is below the WGS-84 ellipsoid, the value SHALL be negative.
+
+      - name: Tangent point latitude value specification
+        identifier: /req/tangent-point/latitude
+        statement: |
+          An instance of GeoPose tangentPoint.latitude attribute SHALL be expressed
+          as decimal degrees and represented as a signed floating point
+          value conforming to IEEE 754.. The minimum value shall be 90.0 degrees
+          and the maximum value shall be 90.0 degrees.
+
+      - name: Tangent point longitude value specification
+        identifier: /req/tangent-point/longitude
+        statement: |
+          An instance of a GeoPose tangentPoint.longitude attribute SHALL be
+          expressed as decimal degrees and represented as a signed floating point
+          value conforming to IEEE 754. The minimum value shall be -180.0 degrees
+          and the maximum value shall be 180.0 degrees.
+      ----
+      ====
+
+    INPUT
+    output = <<~OUTPUT
+      #{BLANK_HDR}
+         <sections>
+           <requirement id='A' model='ogc'>
+             <component exclude='false' class='Test method type'>
+               <p id='_'>Manual Inspection</p>
+             </component>
+             <component exclude='false' class='Test method'>
+               <p id='_'>Step #2</p>
+             </component>
+             <component exclude='false' class='step'>
+               <p id='_'>Step</p>
+             </component>
+             <component exclude='false' class='guidance'>
+               <p id='_'>Guidance</p>
+             </component>
+           </requirement>
+         </sections>
+       </standard-document>
+    OUTPUT
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
+      .convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
+  end
+
+  it "uses Modspec YAML for suites" do
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      [[E]]
+      [conformance_class,model=ogc]
+      ====
+      [source,yaml]
+      ----
+      conformance_classes:
+      - name: Regular_Series logical model SDU conformance
+        identifier: /conf/series-regular
+        target:
+        - /req/series-regular
+        classification: "Target Type: SDU"
+        description: To confirm that components of a Regular Series conform to the Logical Model.
+        dependencies:
+        - /conf/global
+        - /conf/frame-spec
+        - /conf/time
+
+        tests:
+
+        - name: Verify expression of duration as GeoPose_Duration
+          identifier: /conf/series-regular/duration
+          targets:
+          - /req/series-regular/duration
+          dependencies:
+          - /conf/time/duration
+          description: |
+            To confirm that the `Regular_Series.interPoseDuration` attribute is
+            represented by an instance of the `GeoPose_Duration` object.
+          purpose: To confirm the correct properties of a GeoPose Duration.
+
+        - name: Verify expression of outer frame
+          identifier: /conf/series-regular/outer-frame
+          targets:
+          - /req/series-regular/outer-frame
+          purpose: |
+            The `Regular_Series.outerFrame` attribute shall represent the first frame
+            in the series with the `ExplicitFrameSpec` object.
+
+        - name: Verify expression of inner frames
+          identifier: /conf/series-regular/inner-frame-series
+          targets:
+          - /req/series-regular/inner-frame-series
+          purpose: |
+            The `Regular_Series.innerFrameSeries` attribute shall represent the
+            succession of inner frames as an array of `ExplicitFrameSpec` objects.
+
+        - name: Verify expression of series header
+          identifier: /conf/series-regular/header
+          targets:
+          - /req/series-regular/header
+          description: |
+            Verify that the `Regular_Series.header` attribute is implemented as an
+            instance of SeriesHeader.
+          purpose: |
+            To confirm that the implementation of Series Header conforms to the
+            Logical Model.
+
+        - name: Verify expression of series trailer
+          identifier: /conf/series-regular/trailer
+          targets:
+          - /req/series-regular/trailer
+          description: |
+            Verify that the `Regular_Series.trailer` attribute is implemented as an
+            instance of SeriesTrailer.
+          purpose: |
+            To confirm that the implementation of SeriesTrailer conforms to the
+            Logical Model.
+      ----
+      ====
+
+      [requirement_class,model=ogc]
+      ====
+      [source,yaml]
+      ----
+      ---
+      normative_statements_classes:
+      - name: Tangent point requirements
+        identifier: /req/tangent-point
+        description: |
+          Common tangent point requirements for SDUs that include tangent points.
+        guidance: |
+          The tangent plane `longitude`, `latitude`, and `h` parameters are
+          specified without any conditions or constraints on precision to be used in
+          an implementation. Any such constraints would be found as requirements on a
+          specific implementation as an encoding.
+
+        normative_statements:
+
+        - name: Tangent point height value specification
+          identifier: /req/tangent-point/height
+          statement: |
+            An instance of a GeoPose `tangentPoint.h` attribute SHALL be expressed as
+            a height in meters above the WGS-84 ellipsoid, represented as a signed as
+            a signed floating point value conforming to IEEE 754. If the tangent point
+            is above the WGS-84 ellipsoid, the value SHALL be positive. If the tangent
+            point is below the WGS-84 ellipsoid, the value SHALL be negative.
+
+        - name: Tangent point latitude value specification
+          identifier: /req/tangent-point/latitude
+          statement: |
+            An instance of GeoPose tangentPoint.latitude attribute SHALL be expressed
+            as decimal degrees and represented as a signed floating point
+            value conforming to IEEE 754.. The minimum value shall be 90.0 degrees
+            and the maximum value shall be 90.0 degrees.
+
+        - name: Tangent point longitude value specification
+          identifier: /req/tangent-point/longitude
+          statement: |
+            An instance of a GeoPose tangentPoint.longitude attribute SHALL be
+            expressed as decimal degrees and represented as a signed floating point
+            value conforming to IEEE 754. The minimum value shall be -180.0 degrees
+            and the maximum value shall be 180.0 degrees.
+      ----
+      ====
+
+    INPUT
+    output = <<~OUTPUT
+      #{BLANK_HDR}
+         <sections>
+           <requirement id='A' model='ogc'>
+             <component exclude='false' class='Test method type'>
+               <p id='_'>Manual Inspection</p>
+             </component>
+             <component exclude='false' class='Test method'>
+               <p id='_'>Step #2</p>
+             </component>
+             <component exclude='false' class='step'>
+               <p id='_'>Step</p>
+             </component>
+             <component exclude='false' class='guidance'>
+               <p id='_'>Guidance</p>
+             </component>
+           </requirement>
+         </sections>
+       </standard-document>
+    OUTPUT
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
+  end
 end

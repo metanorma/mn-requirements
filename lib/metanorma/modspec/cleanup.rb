@@ -1,3 +1,5 @@
+require "modspec"
+
 module Metanorma
   class Requirements
     class Modspec < Default
@@ -15,8 +17,42 @@ module Metanorma
       }.freeze
 
       def requirement_type_cleanup(reqt)
-        ret = REQT_TYPE_NORM[reqt["type"]&.to_sym] or return
-        reqt["type"] = ret
+        if ret = REQT_TYPE_NORM[reqt["type"]&.to_sym]
+          reqt["type"] = ret
+        else ret = "general"
+        end
+        s = modspec_yaml(reqt) and
+          yaml2modspec(reqt, s.children.to_xml, ret)
+      end
+
+      def modspec_yaml(reqt)
+        s = reqt.at("./sourcecode")
+        s && s["lang"] == "yaml" ? s : nil
+      end
+
+      def yaml2modspec(reqt, yaml, type)
+        m = case type
+            when "general" then Lutaml::NormativeStatement
+            when "class" then Lutaml::NormativeStatementClass
+            when "verification" then Lutaml::ConformanceTest
+            when "conformanceclass" then Lutaml::ConformanceClass
+            when "abstracttest" then Lutaml::ConformanceText
+            end
+        require "debug"; binding.b
+        a= m.from_yaml(yaml)
+          a.to_xml
+        reqt.children = m.from_yaml(yaml).to_xml.children
+        reqt["yaml"] = true
+      end
+
+      def requirement_inherit_cleanup(reqt)
+        reqt["yaml"] and return
+        super
+      end
+
+      def requirement_descriptions_cleanup(reqt)
+        reqt["yaml"] and return
+        super
       end
 
       def requirement_metadata_component_tags
@@ -67,10 +103,12 @@ module Metanorma
       # separate from default model requirement_metadata_cleanup,
       # which extracts model:: ogc into reqt["model"]
       def requirement_metadata_cleanup(reqt)
-        super
-        requirement_metadata_to_component(reqt)
-        requirement_metadata_to_requirement(reqt)
-        requirement_subparts_to_blocks(reqt)
+        unless reqt["yaml"] # skip if YAML: serialisation takes care of these
+          super
+          requirement_metadata_to_component(reqt)
+          requirement_metadata_to_requirement(reqt)
+          requirement_subparts_to_blocks(reqt)
+        end
         requirement_target_identifiers(reqt)
         requirement_anchor_identifier(reqt)
       end
@@ -160,9 +198,16 @@ module Metanorma
         table << "<tr><th>#{reqt['id']}</th>#{ids.join}</tr>"
       end
 
+      # include YAML serialised modspec in postprocessing
       def requirement_identifier_cleanup(reqt)
         super
         requirement_anchor_aliases(reqt)
+      end
+
+      def requirement_preprocess(reqt); end
+
+      def requirement_postprocess(reqt)
+        reqt.delete("yaml")
       end
     end
   end
