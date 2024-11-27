@@ -112,7 +112,7 @@ module Metanorma
       def unwrap_para(ddef)
         e = ddef.elements and e.size == 1 && e.first.name == "p" and
           ddef = e.first
-        ddef.children.to_xml
+        to_xml(ddef.children)
       end
 
       def reqt_dl_to_classif(ins, reqt, dlist)

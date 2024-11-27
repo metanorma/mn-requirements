@@ -62,7 +62,7 @@ module Metanorma
       def recommendation_labels(node)
         [node.at(ns("./identifier")), node.at(ns("./title"))]
           .map do |n|
-          n&.children&.to_xml
+          to_xml(n&.children)
         end
       end
 
@@ -82,14 +82,14 @@ module Metanorma
       end
 
       def recommendation_attr_parse(node, label)
-        l10n("#{label}: #{node.children.to_xml}")
+        l10n("#{label}: #{to_xml(node.children)}")
       end
 
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
         l10n("#{Metanorma::Utils.strict_capitalize_first tag.text}: " \
-             "#{value.children.to_xml}")
+             "#{to_xml(value.children)}")
       end
 
       def recommendation_attributes(node, out)

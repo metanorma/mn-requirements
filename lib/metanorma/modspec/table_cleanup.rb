@@ -46,7 +46,7 @@ module Metanorma
         hdr = th.text
         th.children = @i18n.inflect(hdr, number: "pl")
         td = th.next_element
-        res = [td.children.to_xml]
+        res = [to_xml(td.children)]
         res += gather_consec_table_rows(trow, hdr)
         td.children = res.join("<br/>")
       end
@@ -55,7 +55,7 @@ module Metanorma
         ret = []
         trow.xpath("./following-sibling::xmlns:tr").each do |r|
           r.at(ns("./th[text() = '#{hdr}']")) or break
-          ret << r.remove.at(ns("./td")).children.to_xml
+          ret << to_xml(r.remove.at(ns("./td")).children)
         end
         ret
       end
@@ -80,7 +80,7 @@ module Metanorma
 
       def strip_id_base(elem, base)
         base.nil? and return elem.children
-        elem.children.to_xml.delete_prefix(base)
+        to_xml(elem.children).delete_prefix(base)
       end
 
       def truncate_id_base_in_reqt1(table, base)

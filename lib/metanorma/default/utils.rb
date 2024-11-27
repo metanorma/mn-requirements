@@ -22,6 +22,11 @@ module Metanorma
       def ns(xpath)
         Metanorma::Utils.ns(xpath)
       end
+
+      def to_xml(node)
+        node&.to_xml(encoding: "UTF-8", indent: 0,
+                   save_with: Nokogiri::XML::Node::SaveOptions::AS_XML)
+      end
     end
   end
 end

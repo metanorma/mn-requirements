@@ -190,7 +190,7 @@ module Metanorma
           .xpath(ns("//requirement//xref | //permission//xref | " \
                     "//recommendation//xref"))).each do |x|
           @reqt_id_base[x["target"]] or next # is a modspec requirement
-          x.children = x.children.to_xml.delete_prefix(@modspecidentifierbase)
+          x.children = to_xml(x.children).delete_prefix(@modspecidentifierbase)
         end
       end
 
