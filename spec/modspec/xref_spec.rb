@@ -67,22 +67,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Requirement 1</xref>
-          <xref target='N2'>Preparatory, Requirement (??)</xref>
-          <xref target='N'>Clause 1, Requirement 2</xref>
-          <xref target='note1'>Clause 3.1, Requirement 3</xref>
-          <xref target='note2'>Clause 3.1, Requirement 4</xref>
-          <xref target='AN'>Requirement A.1</xref>
-          <xref target='Anote1'>Requirement (??)</xref>
-          <xref target='Anote2'>Requirement A.2</xref>
-        </p>
-      </foreword>
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -160,46 +202,80 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-              <p>
-                   <xref target='N1'>
-           Introduction, Requirement 1:
-           <tt>/ogc/req1</tt>
-         </xref>
-         <xref target='N2'>
-           Preparatory, Requirement (??):
-           <tt>/ogc/req2</tt>
-         </xref>
-         <xref target='N'>
-           Clause 1, Requirement 2:
-           <tt>/ogc/req3</tt>
-         </xref>
-         <xref target='note1'>
-           Clause 3.1, Requirement 3:
-           <tt>/ogc/req4</tt>
-         </xref>
-         <xref target='note2'>
-           Clause 3.1, Requirement 4:
-           <tt>/ogc/req5</tt>
-         </xref>
-         <xref target='AN'>
-           Requirement A.1:
-           <tt>/ogc/req6</tt>
-         </xref>
-         <xref target='Anote1'>
-           Requirement (??):
-           <tt>/ogc/req7</tt>
-         </xref>
-         <xref target='Anote2'>
-           Requirement A.2:
-           <tt>/ogc/req8</tt>
-         </xref>
-              </p>
-      </foreword>
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N1">1</semx>
+                :
+                <tt>/ogc/req1</tt>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N2">(??)</semx>
+                :
+                <tt>/ogc/req2</tt>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N">2</semx>
+                :
+                <tt>/ogc/req3</tt>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note1">3</semx>
+                :
+                <tt>/ogc/req4</tt>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note2">4</semx>
+                :
+                <tt>/ogc/req5</tt>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="AN">A.1</semx>
+                :
+                <tt>/ogc/req6</tt>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+                :
+                <tt>/ogc/req7</tt>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+                :
+                <tt>/ogc/req8</tt>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -277,46 +353,67 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-              <p>
-                   <xref target='N1' style="modspec">
-           Requirement 1:
-           <tt>/ogc/req1</tt>
-         </xref>
-         <xref target='N2' style="modspec">
-           Requirement (??):
-           <tt>/ogc/req2</tt>
-         </xref>
-         <xref target='N' style="modspec">
-           Requirement 2:
-           <tt>/ogc/req3</tt>
-         </xref>
-         <xref target='note1' style="modspec">
-           Requirement 3:
-           <tt>/ogc/req4</tt>
-         </xref>
-         <xref target='note2' style="modspec">
-           Requirement 4:
-           <tt>/ogc/req5</tt>
-         </xref>
-         <xref target='AN' style="modspec">
-           Requirement A.1:
-           <tt>/ogc/req6</tt>
-         </xref>
-         <xref target='Anote1' style="modspec">
-           Requirement (??):
-           <tt>/ogc/req7</tt>
-         </xref>
-         <xref target='Anote2' style="modspec">
-           Requirement A.2:
-           <tt>/ogc/req8</tt>
-         </xref>
-              </p>
-      </foreword>
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N1">1</semx>
+                :
+                <tt>/ogc/req1</tt>
+             </xref>
+             <xref target="N2" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N2">(??)</semx>
+                :
+                <tt>/ogc/req2</tt>
+             </xref>
+             <xref target="N" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N">2</semx>
+                :
+                <tt>/ogc/req3</tt>
+             </xref>
+             <xref target="note1" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note1">3</semx>
+                :
+                <tt>/ogc/req4</tt>
+             </xref>
+             <xref target="note2" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note2">4</semx>
+                :
+                <tt>/ogc/req5</tt>
+             </xref>
+             <xref target="AN" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="AN">A.1</semx>
+                :
+                <tt>/ogc/req6</tt>
+             </xref>
+             <xref target="Anote1" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+                :
+                <tt>/ogc/req7</tt>
+             </xref>
+             <xref target="Anote2" style="modspec">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+                :
+                <tt>/ogc/req8</tt>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -409,31 +506,110 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder='2'>
-      <title>Foreword</title>
-        <p>
-          <xref target='N1a'>Introduction, Requirement 1 A</xref>
-          <xref target='N1b'>Introduction, Requirement 1 B</xref>
-          <xref target='N2a'>Preparatory, Requirement A</xref>
-          <xref target='N2b'>Preparatory, Requirement B</xref>
-          <xref target='Na'>Clause 1, Requirement 2 A</xref>
-          <xref target='Nb'>Clause 1, Requirement 2 B</xref>
-          <xref target='note1a'>Clause 3.1, Requirement 3 A</xref>
-          <xref target='note1b'>Clause 3.1, Requirement 3 B</xref>
-          <xref target='note2a'>Clause 3.1, Requirement 4 A</xref>
-          <xref target='note2b'>Clause 3.1, Requirement 4 B</xref>
-          <xref target='ANa'>Requirement A.1 A</xref>
-          <xref target='ANb'>Requirement A.1 B</xref>
-          <xref target='Anote1a'>Requirement A. A</xref>
-          <xref target='Anote1b'>Requirement A. B</xref>
-          <xref target='Anote2a'>Requirement A.2 A</xref>
-          <xref target='Anote2b'>Requirement A.2 B</xref>
-        </p>
-      </foreword>
+      <foreword displayorder="2">
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1a">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N1a">1 A</semx>
+             </xref>
+             <xref target="N1b">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N1b">1 B</semx>
+             </xref>
+             <xref target="N2a">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N2a"> A</semx>
+             </xref>
+             <xref target="N2b">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="N2b"> B</semx>
+             </xref>
+             <xref target="Na">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Na">2 A</semx>
+             </xref>
+             <xref target="Nb">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Nb">2 B</semx>
+             </xref>
+             <xref target="note1a">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note1a">3 A</semx>
+             </xref>
+             <xref target="note1b">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note1b">3 B</semx>
+             </xref>
+             <xref target="note2a">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note2a">4 A</semx>
+             </xref>
+             <xref target="note2b">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="note2b">4 B</semx>
+             </xref>
+             <xref target="ANa">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="ANa">A.1 A</semx>
+             </xref>
+             <xref target="ANb">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="ANb">A.1 B</semx>
+             </xref>
+             <xref target="Anote1a">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote1a">A. A</semx>
+             </xref>
+             <xref target="Anote1b">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote1b">A. B</semx>
+             </xref>
+             <xref target="Anote2a">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote2a">A.2 A</semx>
+             </xref>
+             <xref target="Anote2b">
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="Anote2b">A.2 B</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -503,22 +679,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Conformance test 1</xref>
-          <xref target='N2'>Preparatory, Conformance test (??)</xref>
-          <xref target='N'>Clause 1, Conformance test 2</xref>
-          <xref target='note1'>Clause 3.1, Conformance test 3</xref>
-          <xref target='note2'>Clause 3.1, Conformance test 4</xref>
-          <xref target='AN'>Conformance test A.1</xref>
-          <xref target='Anote1'>Conformance test (??)</xref>
-          <xref target='Anote2'>Conformance test A.2</xref>
-        </p>
-      </foreword>
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -588,23 +806,65 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder='2'>
-      <title>Avant-propos</title>
-         <p>
-           <xref target='N1'>Introduction, Test de conformit&#xE9; 1</xref>
-           <xref target='N2'>Preparatory, Test de conformit&#xE9; (??)</xref>
-           <xref target='N'>Article 1, Test de conformit&#xE9; 2</xref>
-           <xref target='note1'>Article 3.1, Test de conformit&#xE9; 3</xref>
-           <xref target='note2'>Article 3.1, Test de conformit&#xE9; 4</xref>
-           <xref target='AN'>Test de conformit&#xE9; A.1</xref>
-           <xref target='Anote1'>Test de conformit&#xE9; (??)</xref>
-           <xref target='Anote2'>Test de conformit&#xE9; A.2</xref>
-         </p>
+      <foreword displayorder="2">
+          <title id="_">Avant-propos</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Avant-propos</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Article</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Article</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Article</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Test de conformité</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -674,22 +934,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Recommendation 1</xref>
-          <xref target='N2'>Preparatory, Recommendation (??)</xref>
-          <xref target='N'>Clause 1, Recommendation 2</xref>
-          <xref target='note1'>Clause 3.1, Recommendation 3</xref>
-          <xref target='note2'>Clause 3.1, Recommendation 4</xref>
-          <xref target='AN'>Recommendation A.1</xref>
-          <xref target='Anote1'>Recommendation (??)</xref>
-          <xref target='Anote2'>Recommendation A.2</xref>
-        </p>
-      </foreword>
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -759,22 +1061,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Conformance test 1</xref>
-          <xref target='N2'>Preparatory, Conformance test (??)</xref>
-          <xref target='N'>Clause 1, Conformance test 2</xref>
-          <xref target='note1'>Clause 3.1, Conformance test 3</xref>
-          <xref target='note2'>Clause 3.1, Conformance test 4</xref>
-          <xref target='AN'>Conformance test A.1</xref>
-          <xref target='Anote1'>Conformance test (??)</xref>
-          <xref target='Anote2'>Conformance test A.2</xref>
-        </p>
-      </foreword>
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Conformance test</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -844,22 +1188,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Permission 1</xref>
-          <xref target='N2'>Preparatory, Permission (??)</xref>
-          <xref target='N'>Clause 1, Permission 2</xref>
-          <xref target='note1'>Clause 3.1, Permission 3</xref>
-          <xref target='note2'>Clause 3.1, Permission 4</xref>
-          <xref target='AN'>Permission A.1</xref>
-          <xref target='Anote1'>Permission (??)</xref>
-          <xref target='Anote2'>Permission A.2</xref>
-        </p>
-      </foreword>
+          <title id="_">Foreword</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Foreword</semx>
+             </span>
+          </fmt-title>
+          <p>
+             <xref target="N1">
+                <semx element="introduction" source="intro">Introduction</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N1">1</semx>
+             </xref>
+             <xref target="N2">
+                <semx element="clause" source="xyz">Preparatory</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N2">(??)</semx>
+             </xref>
+             <xref target="N">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="scope">1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="N">2</semx>
+             </xref>
+             <xref target="note1">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="note1">3</semx>
+             </xref>
+             <xref target="note2">
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="widgets1">3.1</semx>
+                <span class="fmt-comma">,</span>
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="note2">4</semx>
+             </xref>
+             <xref target="AN">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="AN">A.1</semx>
+             </xref>
+             <xref target="Anote1">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="Anote1">(??)</semx>
+             </xref>
+             <xref target="Anote2">
+                <span class="fmt-element-name">Permission</span>
+                <semx element="autonum" source="Anote2">A.2</semx>
+             </xref>
+          </p>
+       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -929,22 +1315,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Conformance test 1</xref>
-          <xref target='N2'>Preparatory, Conformance test (??)</xref>
-          <xref target='N'>Clause 1, Conformance test 2</xref>
-          <xref target='note1'>Clause 3.1, Conformance test 3</xref>
-          <xref target='note2'>Clause 3.1, Conformance test 4</xref>
-          <xref target='AN'>Conformance test A.1</xref>
-          <xref target='Anote1'>Conformance test (??)</xref>
-          <xref target='Anote2'>Conformance test A.2</xref>
-        </p>
-      </foreword>
+           <title id="_">Foreword</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Foreword</semx>
+              </span>
+           </fmt-title>
+           <p>
+              <xref target="N1">
+                 <semx element="introduction" source="intro">Introduction</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="N1">1</semx>
+              </xref>
+              <xref target="N2">
+                 <semx element="clause" source="xyz">Preparatory</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="N2">(??)</semx>
+              </xref>
+              <xref target="N">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="scope">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="N">2</semx>
+              </xref>
+              <xref target="note1">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="widgets1">3.1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="note1">3</semx>
+              </xref>
+              <xref target="note2">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="widgets1">3.1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="note2">4</semx>
+              </xref>
+              <xref target="AN">
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="AN">A.1</semx>
+              </xref>
+              <xref target="Anote1">
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="Anote1">(??)</semx>
+              </xref>
+              <xref target="Anote2">
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="Anote2">A.2</semx>
+              </xref>
+           </p>
+        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -1001,24 +1429,74 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-      <p>
-          <xref target='N1'>Clause 1, Permission 1</xref>
-          <xref target='N2'>Clause 1, Conformance test 1-1</xref>
-          <xref target='N'>Clause 1, Permission 1-1-1</xref>
-          <xref target='Q1'>Clause 1, Requirement 1-1</xref>
-          <xref target='R1'>Clause 1, Recommendation 1-1</xref>
-          <xref target='AN1'>Conformance test A.1</xref>
-          <xref target='AN2'>Permission A.1-1</xref>
-          <xref target='AN'>Conformance test A.1-1-1</xref>
-          <xref target='AQ1'>Requirement A.1-1</xref>
-          <xref target='AR1'>Recommendation A.1-1</xref>
-        </p>
-      </foreword>
+           <title id="_">Foreword</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Foreword</semx>
+              </span>
+           </fmt-title>
+           <p>
+              <xref target="N1">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="xyz">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Permission</span>
+                 <semx element="autonum" source="N1">1</semx>
+              </xref>
+              <xref target="N2">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="xyz">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="N2">1-1</semx>
+              </xref>
+              <xref target="N">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="xyz">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Permission</span>
+                 <semx element="autonum" source="N">1-1-1</semx>
+              </xref>
+              <xref target="Q1">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="xyz">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Requirement</span>
+                 <semx element="autonum" source="Q1">1-1</semx>
+              </xref>
+              <xref target="R1">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="xyz">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Recommendation</span>
+                 <semx element="autonum" source="R1">1-1</semx>
+              </xref>
+              <xref target="AN1">
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="AN1">A.1</semx>
+              </xref>
+              <xref target="AN2">
+                 <span class="fmt-element-name">Permission</span>
+                 <semx element="autonum" source="AN2">A.1-1</semx>
+              </xref>
+              <xref target="AN">
+                 <span class="fmt-element-name">Conformance test</span>
+                 <semx element="autonum" source="AN">A.1-1-1</semx>
+              </xref>
+              <xref target="AQ1">
+                 <span class="fmt-element-name">Requirement</span>
+                 <semx element="autonum" source="AQ1">A.1-1</semx>
+              </xref>
+              <xref target="AR1">
+                 <span class="fmt-element-name">Recommendation</span>
+                 <semx element="autonum" source="AR1">A.1-1</semx>
+              </xref>
+           </p>
+        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -1088,22 +1566,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Abstract test 1</xref>
-          <xref target='N2'>Preparatory, Abstract test (??)</xref>
-          <xref target='N'>Clause 1, Abstract test 2</xref>
-          <xref target='note1'>Clause 3.1, Abstract test 3</xref>
-          <xref target='note2'>Clause 3.1, Abstract test 4</xref>
-          <xref target='AN'>Abstract test A.1</xref>
-          <xref target='Anote1'>Abstract test (??)</xref>
-          <xref target='Anote2'>Abstract test A.2</xref>
-        </p>
-      </foreword>
+           <title id="_">Foreword</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Foreword</semx>
+              </span>
+           </fmt-title>
+           <p>
+              <xref target="N1">
+                 <semx element="introduction" source="intro">Introduction</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="N1">1</semx>
+              </xref>
+              <xref target="N2">
+                 <semx element="clause" source="xyz">Preparatory</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="N2">(??)</semx>
+              </xref>
+              <xref target="N">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="scope">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="N">2</semx>
+              </xref>
+              <xref target="note1">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="widgets1">3.1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="note1">3</semx>
+              </xref>
+              <xref target="note2">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="widgets1">3.1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="note2">4</semx>
+              </xref>
+              <xref target="AN">
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="AN">A.1</semx>
+              </xref>
+              <xref target="Anote1">
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="Anote1">(??)</semx>
+              </xref>
+              <xref target="Anote2">
+                 <span class="fmt-element-name">Abstract test</span>
+                 <semx element="autonum" source="Anote2">A.2</semx>
+              </xref>
+           </p>
+        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 
@@ -1174,22 +1694,64 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <foreword displayorder="2">
-      <title>Foreword</title>
-        <p>
-          <xref target='N1'>Introduction, Conformance class 1</xref>
-          <xref target='N2'>Preparatory, Conformance class (??)</xref>
-          <xref target='N'>Clause 1, Conformance class 2</xref>
-          <xref target='note1'>Clause 3.1, Conformance class 3</xref>
-          <xref target='note2'>Clause 3.1, Conformance class 4</xref>
-          <xref target='AN'>Conformance class A.1</xref>
-          <xref target='Anote1'>Conformance class (??)</xref>
-          <xref target='Anote2'>Conformance class A.2</xref>
-        </p>
-      </foreword>
+           <title id="_">Foreword</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Foreword</semx>
+              </span>
+           </fmt-title>
+           <p>
+              <xref target="N1">
+                 <semx element="introduction" source="intro">Introduction</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="N1">1</semx>
+              </xref>
+              <xref target="N2">
+                 <semx element="clause" source="xyz">Preparatory</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="N2">(??)</semx>
+              </xref>
+              <xref target="N">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="scope">1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="N">2</semx>
+              </xref>
+              <xref target="note1">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="widgets1">3.1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="note1">3</semx>
+              </xref>
+              <xref target="note2">
+                 <span class="fmt-element-name">Clause</span>
+                 <semx element="autonum" source="widgets1">3.1</semx>
+                 <span class="fmt-comma">,</span>
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="note2">4</semx>
+              </xref>
+              <xref target="AN">
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="AN">A.1</semx>
+              </xref>
+              <xref target="Anote1">
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="Anote1">(??)</semx>
+              </xref>
+              <xref target="Anote2">
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="Anote2">A.2</semx>
+              </xref>
+           </p>
+        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
-      .at("//xmlns:foreword").to_xml))
+      .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
 end

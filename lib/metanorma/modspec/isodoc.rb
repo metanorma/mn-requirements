@@ -34,7 +34,7 @@ module Metanorma
       end
 
       def recommendation_header(reqt, out)
-        n = recommendation_name(reqt, nil)
+        n = reqt.at(ns("./fmt-name"))
         x = if reqt.ancestors("requirement, recommendation, permission").empty?
               <<~THEAD
                 <thead><tr><th scope='colgroup' colspan='2'><p class='#{recommend_name_class(reqt)}'>#{n}</p></th></tr></thead>
@@ -47,16 +47,36 @@ module Metanorma
         out
       end
 
+=begin
       def recommendation_name(node, _out)
         ret = ""
-        name = node.at(ns("./name")) and ret += name.children.to_xml
-        title = node.at(ns("./title"))
+        name = node.at(ns("./fmt-name")) and ret += name.children.to_xml
+        title = node.at(ns("./fmt-title"))
         return ret unless title &&
           node.ancestors("requirement, recommendation, permission").empty?
 
         ret += ": " unless !name || name.text.empty?
         ret += title.children.to_xml
         l10n(ret)
+      end
+=end
+
+      def recommendation_label_add(elem, _label, title)
+        title or return ""
+        r = recommendation_label_caption_delim
+        title and
+          r += "<semx element='title' source='#{elem['id']}'>#{title}</semx>"
+        r
+      end
+
+      def recommendation_label_caption_delim
+        "<span class='fmt-caption-delim'>: </span>"
+      end
+
+      def recommendation_labels(node)
+        node.ancestors("requirement, recommendation, permission").empty? or
+          return [nil, nil]
+        super
       end
 
       def recommendation_attributes(node, out)
@@ -72,7 +92,7 @@ module Metanorma
         label = node.at(ns("./identifier")) or return
         ret = <<~OUTPUT
           <tr><th>#{@labels['modspec']['identifier']}</th>
-          <td><tt><modspec-ident>#{label.children.to_xml}</modspec-ident></tt></td>
+          <td><tt><modspec-ident>#{to_xml(label.children)}</modspec-ident></tt></td>
         OUTPUT
         out.add_child(ret)
       end
@@ -120,7 +140,7 @@ module Metanorma
       def recommendation_attributes1_inherit(node, head)
         node.xpath(ns("./inherit")).each do |i|
           head << [@labels["modspec"]["dependency"],
-                   recommendation_id(i.children.to_xml)]
+                   recommendation_id(to_xml(i.children))]
         end
         head
       end
@@ -129,7 +149,7 @@ module Metanorma
         %w(indirect-dependency implements).each do |x|
           node.xpath(ns("./classification[tag][value]")).each do |c|
             c.at(ns("./tag")).text.casecmp(x).zero? or next
-            xref = recommendation_id(c.at(ns("./value")).children.to_xml) and
+            xref = recommendation_id(to_xml(c.at(ns("./value")).children)) and
               head << [@labels["modspec"][x.delete("-")], xref]
           end
         end
@@ -146,9 +166,9 @@ module Metanorma
 
         d = node.at(ns("./component[@class = 'step']"))
         d = d.replace("<ol class='steps'><li#{id_attr(d)}>" \
-                      "#{d.children.to_xml}</li></ol>").first
+                      "#{to_xml(d.children)}</li></ol>").first
         node.xpath(ns("./component[@class = 'step']")).each do |f|
-          f = f.replace("<li#{id_attr(f)}>#{f.children.to_xml}</li>").first
+          f = f.replace("<li#{id_attr(f)}>#{to_xml(f.children)}</li>").first
           d << f
         end
         node
@@ -203,7 +223,7 @@ module Metanorma
         recommend_class(node.parent) == "recommend" and
           lbl = "statement"
         out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
-               "<td>#{node.children.to_xml}</td></tr>"
+               "<td>#{to_xml(node.children)}</td></tr>"
         out
       end
 
@@ -220,8 +240,8 @@ module Metanorma
         node.xpath(ns("./dt")).each do |dt|
           dd = dt.next_element
           dd&.name == "dd" or next
-          out.add_child("<tr><th>#{dt.children.to_xml}</th>" \
-                        "<td>#{dd.children.to_xml}</td></tr>")
+          out.add_child("<tr><th>#{to_xml(dt.children)}</th>" \
+                        "<td>#{to_xml(dd.children)}</td></tr>")
         end
         out
       end

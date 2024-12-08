@@ -84,6 +84,7 @@ HDR
 
 def strip_guid(xml)
   xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
+    .gsub(%r{ source="_[^"]+"}, ' id="_"')
     .gsub(%r{ target="_[^"]+"}, ' target="_"')
     .gsub(%r{ schema-version=['"][^'"]+['"]}, "")
     .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")

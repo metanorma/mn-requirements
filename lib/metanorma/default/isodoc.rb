@@ -6,13 +6,33 @@ module Metanorma
       end
 
       def recommendation_label(elem, type, xrefs)
-        number = xrefs.anchor(elem["id"], :label, false)
-        (number.nil? ? type : "#{type} #{number}")
+        label, title = recommendation_labels(elem)
+        type = "<span class='fmt-element-name'>#{type}</span>"
+        num = xrefs.anchor(elem["id"], :label, false)
+        num &&= "<semx element='autonum' source='#{elem['id']}'>#{num}</semx>"
+        ret = "#{type} #{num}".strip
+        label || title and
+          ret += recommendation_label_add(elem, label, title)
+        ret
+      end
+
+      def recommendation_label_add(elem, label, title)
+        r = recommendation_label_caption_delim
+        label and
+          r += "<semx element='identifier' source='#{elem['id']}'>#{label}</semx>"
+        label && title and r += ". "
+        title and
+          r += "<semx element='title' source='#{elem['id']}'>#{title}</semx>"
+        r
+      end
+
+      def recommendation_label_caption_delim
+        "<span class='fmt-caption-delim'>:<br/></span>"
       end
 
       def reqt_metadata_node?(node)
         %w(identifier title subject classification tag value
-           inherit name).include? node.name
+           inherit name fmt-name fmt-xref-label fmt-title).include? node.name
       end
 
       def requirement_render1(node)
@@ -25,33 +45,25 @@ module Metanorma
         out
       end
 
+      def recommendation_header(_node, out)
+        out
+      end
+
       def recommendation_base(node, klass)
         out = node.document.create_element(klass)
         node.attributes.each do |k, v|
           out[k] = v
         end
+        n = node.at(ns("./fmt-name")) and out << n
+        n = node.at(ns("./fmt-xref-label")) and out << n
         out
       end
 
       def recommendation_labels(node)
-        [node.at(ns("./identifier")), node.at(ns("./title")),
-         node.at(ns("./name"))]
+        [node.at(ns("./identifier")), node.at(ns("./title"))]
           .map do |n|
-          n&.children&.to_xml
+          to_xml(n&.children)
         end
-      end
-
-      def recommendation_header(node, out)
-        label, title, name = recommendation_labels(node)
-        ret = name ? [name] : []
-        if label || title
-          ret << ":" unless ret.empty?
-          ret += ["<br/>", label]
-          ret << ". " if label && title
-          ret << title
-        end
-        out << "<name>#{l10n(ret.compact.join)}</name>"
-        out
       end
 
       def recommendation_attributes1(node, out)
@@ -70,14 +82,14 @@ module Metanorma
       end
 
       def recommendation_attr_parse(node, label)
-        l10n("#{label}: #{node.children.to_xml}")
+        l10n("#{label}: #{to_xml(node.children)}")
       end
 
       def recommendation_attr_keyvalue(node, key, value)
         tag = node.at(ns("./#{key}")) or return nil
         value = node.at(ns("./#{value}")) or return nil
         l10n("#{Metanorma::Utils.strict_capitalize_first tag.text}: " \
-             "#{value.children.to_xml}")
+             "#{to_xml(value.children)}")
       end
 
       def recommendation_attributes(node, out)

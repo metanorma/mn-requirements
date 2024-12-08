@@ -34,7 +34,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </description>
         <measurement-target exclude="false">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_">
+          <formula id="B">
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </measurement-target>
@@ -67,9 +67,24 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-                <foreword id="A" displayorder="2"><title>Preface</title>
+            <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
                 <table id="A1" class="modspec" type="recommend">
-            <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTitle">Permission 1</p></th></tr></thead>
+            <thead><tr><th scope="colgroup" colspan="2">
+                          <p class="RecommendationTitle">
+                       <fmt-name>
+                 <span class="fmt-caption-label">
+                    <span class="fmt-element-name">Permission</span>
+                    <semx element="autonum" source="A1">1</semx>
+                 </span>
+                       </fmt-name>
+              </p>
+            </th></tr></thead>
             <tbody>
               <tr><th>Identifier</th><td><tt>/ogc/recommendation/wfs/2</tt></td></tr>
               <tr><th>Subject</th><td>user</td></tr>
@@ -104,8 +119,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <tr>
         <td colspan='2'>
           <p id='_'>The measurement target shall be measured as:</p>
-          <formula id='_'>
-            <name>(1)</name>
+            <formula id="B" autonum="1">
+                  <fmt-name>
+                     <span class="fmt-caption-label">
+                        <span class="fmt-autonum-delim">(</span>
+                        1
+                        <span class="fmt-autonum-delim">)</span>
+                     </span>
+                  </fmt-name>
+                  <fmt-xref-label>
+                     <span class="fmt-element-name">Formula</span>
+                     <span class="fmt-autonum-delim">(</span>
+                     <semx element="autonum" source="B">1</semx>
+                     <span class="fmt-autonum-delim">)</span>
+                  </fmt-xref-label>
             <stem type='AsciiMath'>r/1 = 0</stem>
           </formula>
         </td>
@@ -113,7 +140,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <tr>
         <td colspan='2'>
           <p id='_'>The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
+          <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
             if (success)
             recommendation(label: success-response)
             end
@@ -176,7 +203,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -213,7 +240,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </description>
         <measurement-target exclude="false">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_">
+          <formula id="B">
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </measurement-target>
@@ -234,13 +261,25 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id='A' displayorder='2'>
-        <title>Preface</title>
+            <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
         <table id='A1' class='modspec' type='recommendtest'>
           <thead>
             <tr>
               <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTestTitle'>Conformance test 1</p>
+                <p class="RecommendationTestTitle">
+                       <fmt-name>
+                  <span class="fmt-caption-label">
+                     <span class="fmt-element-name">Conformance test</span>
+                     <semx element="autonum" source="A1">1</semx>
+                  </span>
+                       </fmt-name>
+               </p>
               </th>
             </tr>
           </thead>
@@ -291,8 +330,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan="2">
                 <p id='_'>The measurement target shall be measured as:</p>
-                <formula id='_'>
-                  <name>(1)</name>
+                  <formula id="B" autonum="1">
+                 <fmt-name>
+                    <span class="fmt-caption-label">
+                       <span class="fmt-autonum-delim">(</span>
+                       1
+                       <span class="fmt-autonum-delim">)</span>
+                    </span>
+                 </fmt-name>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Formula</span>
+                    <span class="fmt-autonum-delim">(</span>
+                    <semx element="autonum" source="B">1</semx>
+                    <span class="fmt-autonum-delim">)</span>
+                 </fmt-xref-label>
                   <stem type='AsciiMath'>r/1 = 0</stem>
                 </formula>
               </td>
@@ -300,7 +351,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan='2'>
                 <p id='_'>The following code will be run for verification:</p>
-                <sourcecode id='_'>
+                <sourcecode id='_' autonum="2">
                   CoreRoot(success): HttpResponse if (success)
                   recommendation(label: success-response) end
                 </sourcecode>
@@ -315,7 +366,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -352,7 +403,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </description>
         <measurement-target exclude="false">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_">
+          <formula id="B">
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </measurement-target>
@@ -372,9 +423,24 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-              <foreword id="A" displayorder="2"><title>Preface</title>
+            <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
           <table id="A1" type="recommendtest" class="modspec">
-      <thead><tr><th scope="colgroup" colspan="2"><p class="RecommendationTestTitle">Abstract test 1</p></th></tr></thead>
+      <thead><tr><th scope="colgroup" colspan="2">
+                     <p class="RecommendationTestTitle">
+                       <fmt-name>
+                  <span class="fmt-caption-label">
+                     <span class="fmt-element-name">Abstract test</span>
+                     <semx element="autonum" source="A1">1</semx>
+                  </span>
+                       </fmt-name>
+               </p>
+        </th></tr></thead>
         <tbody>
           <tr>
           <th>Identifier</th>
@@ -388,13 +454,26 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <p id="_">I recommend <em>this</em>.</p>
         </td></tr><tr><th>A</th><td>B</td></tr><tr><th>C</th><td>D</td></tr><tr><td colspan="2">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_"><name>(1)</name>
+            <formula id="B" autonum="1">
+                 <fmt-name>
+                    <span class="fmt-caption-label">
+                       <span class="fmt-autonum-delim">(</span>
+                       1
+                       <span class="fmt-autonum-delim">)</span>
+                    </span>
+                 </fmt-name>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Formula</span>
+                    <span class="fmt-autonum-delim">(</span>
+                    <semx element="autonum" source="B">1</semx>
+                    <span class="fmt-autonum-delim">)</span>
+                 </fmt-xref-label>
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </td></tr><tr>
         <td colspan="2">
           <p id="_">The following code will be run for verification:</p>
-          <sourcecode id="_">CoreRoot(success): HttpResponse
+          <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
             if (success)
             recommendation(label: success-response)
             end
@@ -407,7 +486,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -438,83 +517,123 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id='A' displayorder='2'>
-        <title>Preface</title>
-        <table id='A1' keep-with-next='true' keep-lines-together='true' class='modspec' type='recommendclass'>
-          <thead>
-            <tr>
-              <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Permissions class 1</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <th>Identifier</th>
-              <td><tt>/ogc/recommendation/wfs/2</tt></td>
-            </tr>
-            <tr>
-              <th>Target type</th>
-              <td>user</td>
-            </tr>
-            <tr>
-              <th>Prerequisites</th>
-              <td>/ss/584/2015/level/1<br/>
-              /ss/584/2015/level/2</td>
-            </tr>
-            <tr>
-              <th>Normative statements</th>
-              <td>
-                <xref target='B1'>
-                  Permission 1:
-                  <tt>/ogc/recommendation/wfs/10</tt>
-                </xref>
-                <br/>
-                  <xref target='A3'>
-                  Requirement 1-1:
-                  <tt>Requirement 1</tt>
-                </xref>
-              <br/>
-                <xref target='A4'>
-                  Recommendation 1-1:
-                  <tt>Recommendation 1</tt>
-                </xref>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table id='B1' class='modspec' type='recommend'>
-          <thead>
-            <tr>
-              <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Permission 1</p>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            <th>Identifier</th>
-              <td><tt>/ogc/recommendation/wfs/10</tt></td>
-            </tr>
-            <tr>
-              <th>Included in</th>
-              <td>
-                <xref target='A1'>
-                  Permissions class 1:
-                  <tt>/ogc/recommendation/wfs/2</tt>
-                </xref>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </foreword>
+      <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Preface</semx>
+             </span>
+          </fmt-title>
+          <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Permissions class</span>
+                            <semx element="autonum" source="A1">1</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/2</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Target type</th>
+                   <td>user</td>
+                </tr>
+                <tr>
+                   <th>Prerequisites</th>
+                   <td>
+                      /ss/584/2015/level/1
+                      <br/>
+                      /ss/584/2015/level/2
+                   </td>
+                </tr>
+                <tr>
+                   <th>Normative statements</th>
+                   <td>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Permission</span>
+                         <semx element="autonum" source="B1">1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="B1">/ogc/recommendation/wfs/10</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Requirement</span>
+                         <semx element="autonum" source="A3">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A3">Requirement 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Recommendation</span>
+                         <semx element="autonum" source="A4">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A4">Recommendation 1</xref>
+                         </tt>
+                      </span>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+          <table id="B1" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Permission</span>
+                            <semx element="autonum" source="B1">1</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/10</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Included in</th>
+                   <td>
+                      <span class="fmt-element-name">Permissions class</span>
+                      <semx element="autonum" source="A1">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A1">/ogc/recommendation/wfs/2</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -552,116 +671,180 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Conformance class 1</p>
+      <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Preface</semx>
+             </span>
+          </fmt-title>
+          <table id="A1" type="recommendclass" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Conformance class</span>
+                            <semx element="autonum" source="A1">1</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
                    </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                 <th>Identifier</th>
-                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                 </tr>
-                 <tr>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/2</tt>
+                   </td>
+                </tr>
+                <tr>
                    <th>Subject</th>
                    <td>user</td>
-                 </tr>
-                 <tr>
+                </tr>
+                <tr>
                    <th>Requirements class</th>
                    <td>
-                     <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
+                      <span class="fmt-element-name">Conformance class</span>
+                      <semx element="autonum" source="B">2</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="B">ABC</xref>
+                      </tt>
                    </td>
-                 </tr>
-                 <tr>
+                </tr>
+                <tr>
                    <th>Prerequisites</th>
-                   <td>/ss/584/2015/level/1<br/>
-                     <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
+                   <td>
+                      /ss/584/2015/level/1
+                      <br/>
+                      <span class="fmt-element-name">Conformance class</span>
+                      <semx element="autonum" source="B">2</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="B">ABC</xref>
+                      </tt>
                    </td>
-                 </tr>
-                 <tr>
+                </tr>
+                <tr>
                    <th>Indirect prerequisites</th>
                    <td>
-                     <link target='http://www.example.com/'/><br/>
-                     <xref target='B'>Conformance class 2: <tt>ABC</tt></xref>
+                      <link target="http://www.example.com/"/>
+                      <br/>
+                      <span class="fmt-element-name">Conformance class</span>
+                      <semx element="autonum" source="B">2</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="B">ABC</xref>
+                      </tt>
                    </td>
-                 </tr>
-                 <tr>
-            <th>Description</th>
-            <td>Hic incipit</td>
-          </tr>
-                 <tr>
+                </tr>
+                <tr>
+                   <th>Description</th>
+                   <td>Hic incipit</td>
+                </tr>
+                <tr>
                    <th>Conformance tests</th>
                    <td>
-                     <xref target='B2'>
-                       Permission 1:
-                       <tt>Permission 1</tt>
-                     </xref>
-                   <br/>
-                     <xref target='A3'>
-                       Requirement 1-1:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                   <br/>
-                     <xref target='A4'>
-                       Recommendation 1-1:
-                       <tt>Recommendation 1</tt>
-                     </xref>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Permission</span>
+                         <semx element="autonum" source="B2">1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="B2">Permission 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Requirement</span>
+                         <semx element="autonum" source="A3">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A3">Requirement 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Recommendation</span>
+                         <semx element="autonum" source="A4">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A4">Recommendation 1</xref>
+                         </tt>
+                      </span>
                    </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Conformance class 2</p>
+                </tr>
+             </tbody>
+          </table>
+          <table id="B" type="recommendclass" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Conformance class</span>
+                            <semx element="autonum" source="B">2</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
                    </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                 <th>Identifier</th>
-                   <td><tt>ABC</tt></td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B2' class='modspec' type='recommend'>
-        <thead>
-          <tr>
-            <th scope='colgroup' colspan='2'>
-              <p class='RecommendationTitle'>Permission 1</p>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-          <th>Identifier</th>
-            <td><tt>Permission 1</tt></td>
-          </tr>
-          <tr>
-            <th>Included in</th>
-            <td>
-              <xref target='A1'>
-                Conformance class 1:
-                <tt>/ogc/recommendation/wfs/2</tt>
-              </xref>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-           </foreword>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>ABC</tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+          <table id="B2" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Permission</span>
+                            <semx element="autonum" source="B2">1</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>Permission 1</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Included in</th>
+                   <td>
+                      <span class="fmt-element-name">Conformance class</span>
+                      <semx element="autonum" source="A1">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A1">/ogc/recommendation/wfs/2</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -699,115 +882,179 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <foreword id='A' displayorder='2'>
-             <title>Preface</title>
-             <table id='A1' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Classe de confirmit&#xE9; 1</p>
+      <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <span class="fmt-caption-label">
+                <semx element="title" id="_">Preface</semx>
+             </span>
+          </fmt-title>
+          <table id="A1" type="recommendclass" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Classe de confirmité</span>
+                            <semx element="autonum" source="A1">1</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
                    </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                 <th>Identifiant</th>
-                   <td><tt>/ogc/recommendation/wfs/2</tt></td>
-                 </tr>
-                 <tr>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifiant</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/2</tt>
+                   </td>
+                </tr>
+                <tr>
                    <th>Sujet</th>
                    <td>user</td>
-                 </tr>
-                 <tr>
-                   <th>Classe d&#x2019;exigences</th>
+                </tr>
+                <tr>
+                   <th>Classe d’exigences</th>
                    <td>
-                     <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
+                      <span class="fmt-element-name">Classe de confirmité</span>
+                      <semx element="autonum" source="B">2</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="B">ABC</xref>
+                      </tt>
                    </td>
-                 </tr>
-                 <tr>
-                   <th>Pr&#xE9;requis</th>
-                   <td>/ss/584/2015/level/1<br/>
-                     <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
-                   </td>
-                 </tr>
-                 <tr>
-                   <th>Pr&#xE9;requis indirect</th>
+                </tr>
+                <tr>
+                   <th>Prérequis</th>
                    <td>
-                     <link target='http://www.example.com/'/><br/>
-                     <xref target='B'>Classe de confirmit&#xE9; 2&#xA0;: <tt>ABC</tt></xref>
+                      /ss/584/2015/level/1
+                      <br/>
+                      <span class="fmt-element-name">Classe de confirmité</span>
+                      <semx element="autonum" source="B">2</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="B">ABC</xref>
+                      </tt>
                    </td>
-                 </tr>
-                 <tr>
-            <th>Description</th>
-            <td>Hic incipit</td>
-          </tr>
-                 <tr>
-                   <th>Tests de conformit&#xE9;</th>
+                </tr>
+                <tr>
+                   <th>Prérequis indirect</th>
                    <td>
-                     <xref target='B2'>
-                       Autorisation 1&#xA0;:
-                       <tt>Permission 1</tt>
-                     </xref>
-                   <br/>
-                     <xref target='A3'>
-                       Exigence 1-1&#xA0;:
-                       <tt>Requirement 1</tt>
-                     </xref>
-                   <br/>
-                     <xref target='A4'>
-                       Recommandation 1-1&#xA0;:
-                       <tt>Recommendation 1</tt>
-                     </xref>
+                      <link target="http://www.example.com/"/>
+                      <br/>
+                      <span class="fmt-element-name">Classe de confirmité</span>
+                      <semx element="autonum" source="B">2</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="B">ABC</xref>
+                      </tt>
                    </td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B' class='modspec' type='recommendclass'>
-               <thead>
-                 <tr>
-                   <th scope='colgroup' colspan='2'>
-                     <p class='RecommendationTitle'>Classe de confirmit&#xE9; 2</p>
+                </tr>
+                <tr>
+                   <th>Description</th>
+                   <td>Hic incipit</td>
+                </tr>
+                <tr>
+                   <th>Tests de conformité</th>
+                   <td>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Autorisation</span>
+                         <semx element="autonum" source="B2">1</semx>
+                          :
+                         <tt>
+                            <xref style="id" target="B2">Permission 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Exigence</span>
+                         <semx element="autonum" source="A3">1-1</semx>
+                          :
+                         <tt>
+                            <xref style="id" target="A3">Requirement 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Recommandation</span>
+                         <semx element="autonum" source="A4">1-1</semx>
+                          :
+                         <tt>
+                            <xref style="id" target="A4">Recommendation 1</xref>
+                         </tt>
+                      </span>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+          <table id="B" type="recommendclass" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Classe de confirmité</span>
+                            <semx element="autonum" source="B">2</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
                    </th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                 <th>Identifiant</th>
-                   <td><tt>ABC</tt></td>
-                 </tr>
-               </tbody>
-             </table>
-             <table id='B2' class='modspec' type='recommend'>
-        <thead>
-          <tr>
-            <th scope='colgroup' colspan='2'>
-              <p class='RecommendationTitle'>Autorisation 1</p>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-          <th>Identifiant</th>
-            <td><tt>Permission 1</tt></td>
-          </tr>
-          <tr>
-            <th>Inclus dans</th>
-            <td>
-              <xref target='A1'>
-                 Classe de confirmit&#xE9; 1&#xA0;:
-                <tt>/ogc/recommendation/wfs/2</tt>
-              </xref>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-           </foreword>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifiant</th>
+                   <td>
+                      <tt>ABC</tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+          <table id="B2" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Autorisation</span>
+                            <semx element="autonum" source="B2">1</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifiant</th>
+                   <td>
+                      <tt>Permission 1</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Inclus dans</th>
+                   <td>
+                      <span class="fmt-element-name">Classe de confirmité</span>
+                      <semx element="autonum" source="A1">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A1">/ogc/recommendation/wfs/2</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
+          </table>
+       </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -840,96 +1087,138 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-        <foreword id='A' displayorder='2'>
-          <title>Preface</title>
+      <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
           <table id='A1' class='modspec' type='recommendclass'>
             <thead>
               <tr>
                 <th scope='colgroup' colspan='2'>
-                  <p class='RecommendationTitle'>Requirements class 1</p>
+                <p class="RecommendationTitle">
+                       <fmt-name>
+                  <span class="fmt-caption-label">
+                     <span class="fmt-element-name">Requirements class</span>
+                     <semx element="autonum" source="A1">1</semx>
+                  </span>
+                       </fmt-name>
+               </p>
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-              <th>Identifier</th>
-                <td><tt>/ogc/recommendation/wfs/2</tt></td>
-              </tr>
-              <tr>
-                <th>Target type</th>
-                <td>user</td>
-              </tr>
-              <tr>
-                <th>Prerequisites</th>
-                <td>/ss/584/2015/level/1<br/>
-                /ss/584/2015/level/2</td>
-              </tr>
-              <tr>
-              <th>Implements</th>
-        <td>
-          <xref target='A5'>
-            Permission 1:
-            <tt>Permission 1</tt>
-          </xref>
-        </td>
-      </tr>
-      <tr>
-          <th>Description</th>
-         <td>Hic incipit</td>
-       </tr>
-              <tr>
-                <th>Normative statements</th>
-                <td>
-                  <xref target='A5'>
-                    Permission 1:
-                    <tt>Permission 1</tt>
-                  </xref>
-                <br/>
-                  <xref target='A3'>
-                    Requirement 1-1:
-                    <tt>Requirement 1</tt>
-                  </xref>
-                <br/>
-                  <xref target='A4'>
-                    Recommendation 1-1:
-                    <tt>Recommendation 1</tt>
-                  </xref>
-                </td>
-              </tr>
-            </tbody>
+                         <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>/ogc/recommendation/wfs/2</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Target type</th>
+                   <td>user</td>
+                </tr>
+                <tr>
+                   <th>Prerequisites</th>
+                   <td>
+                      /ss/584/2015/level/1
+                      <br/>
+                      /ss/584/2015/level/2
+                   </td>
+                </tr>
+                <tr>
+                   <th>Implements</th>
+                   <td>
+                      <span class="fmt-element-name">Permission</span>
+                      <semx element="autonum" source="A5">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A5">Permission 1</xref>
+                      </tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Description</th>
+                   <td>Hic incipit</td>
+                </tr>
+                <tr>
+                   <th>Normative statements</th>
+                   <td>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Permission</span>
+                         <semx element="autonum" source="A5">1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A5">Permission 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Requirement</span>
+                         <semx element="autonum" source="A3">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A3">Requirement 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Recommendation</span>
+                         <semx element="autonum" source="A4">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A4">Recommendation 1</xref>
+                         </tt>
+                      </span>
+                   </td>
+                </tr>
+             </tbody>
           </table>
-          <table id='A5' class='modspec' type='recommend'>
-            <thead>
-              <tr>
-                <th scope='colgroup' colspan='2'>
-                  <p class='RecommendationTitle'>Permission 1</p>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-              <th>Identifier</th>
-                <td><tt>Permission 1</tt></td>
-              </tr>
-              <tr>
-                <th>Included in</th>
-                <td>
-                  <xref target='A1'>
-                    Requirements class 1:
-                    <tt>/ogc/recommendation/wfs/2</tt>
-                  </xref>
-                </td>
-              </tr>
-            </tbody>
+          <table id="A5" type="recommend" class="modspec">
+             <thead>
+                <tr>
+                   <th scope="colgroup" colspan="2">
+                      <p class="RecommendationTitle">
+                       <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">Permission</span>
+                            <semx element="autonum" source="A5">1</semx>
+                         </span>
+                       </fmt-name>
+                      </p>
+                   </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <th>Identifier</th>
+                   <td>
+                      <tt>Permission 1</tt>
+                   </td>
+                </tr>
+                <tr>
+                   <th>Included in</th>
+                   <td>
+                      <span class="fmt-element-name">Requirements class</span>
+                      <semx element="autonum" source="A1">1</semx>
+                      :
+                      <tt>
+                         <xref style="id" target="A1">/ogc/recommendation/wfs/2</xref>
+                      </tt>
+                   </td>
+                </tr>
+             </tbody>
           </table>
-        </foreword>
+       </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -957,13 +1246,25 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id='A' displayorder='2'>
-        <title>Preface</title>
+            <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
         <table id='A1' class='modspec' type='recommendclass'>
           <thead>
             <tr>
               <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Recommendations class 1</p>
+                <p class="RecommendationTitle">
+                       <fmt-name>
+                  <span class="fmt-caption-label">
+                     <span class="fmt-element-name">Recommendations class</span>
+                     <semx element="autonum" source="A1">1</semx>
+                  </span>
+                       </fmt-name>
+               </p>
               </th>
             </tr>
           </thead>
@@ -982,24 +1283,36 @@ RSpec.describe Metanorma::Requirements::Modspec do
               /ss/584/2015/level/2</td>
             </tr>
             <tr>
-              <th>Normative statements</th>
-              <td>
-                <xref target='A2'>
-                  Permission 1-1:
-                  <tt>Permission 1</tt>
-                </xref>
-                <br/>
-                <xref target='A3'>
-                  Permission 1-2:
-                  <tt>Requirement 1</tt>
-                </xref>
-                <br/>
-                <xref target='A4'>
-                  Recommendation 1-1:
-                  <tt>Recommendation 1</tt>
-                </xref>
-              </td>
-            </tr>
+                   <th>Normative statements</th>
+                   <td>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Permission</span>
+                         <semx element="autonum" source="A2">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A2">Permission 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Permission</span>
+                         <semx element="autonum" source="A3">1-2</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A3">Requirement 1</xref>
+                         </tt>
+                      </span>
+                      <br/>
+                      <span class="fmt-caption-label">
+                         <span class="fmt-element-name">Recommendation</span>
+                         <semx element="autonum" source="A4">1-1</semx>
+                         :
+                         <tt>
+                            <xref style="id" target="A4">Recommendation 1</xref>
+                         </tt>
+                      </span>
+                   </td>
+                </tr>
           </tbody>
         </table>
       </foreword>
@@ -1009,7 +1322,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -1065,13 +1378,26 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id='A0' displayorder='2'>
-        <title>Preface</title>
+            <foreword id="A0" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
         <table id='A' unnumbered='true' class='modspec' type='recommend'>
           <thead>
             <tr>
               <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Requirement: A New Requirement</p>
+                <p class="RecommendationTitle">
+                       <fmt-name>
+                  <span class="fmt-caption-label">
+                     <span class="fmt-element-name">Requirement</span>
+                     <span class="fmt-caption-delim">: </span>
+                        <semx element="title" source="A">A New Requirement</semx>
+                  </span>
+                       </fmt-name>
+               </p>
               </th>
             </tr>
           </thead>
@@ -1103,8 +1429,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan='2'>
                 <p id='_'>The measurement target shall be measured as:</p>
-                <formula id='B'>
-                  <name>(1)</name>
+                  <formula id="B" autonum="1">
+                 <fmt-name>
+                    <span class="fmt-caption-label">
+                       <span class="fmt-autonum-delim">(</span>
+                       1
+                       <span class="fmt-autonum-delim">)</span>
+                    </span>
+                 </fmt-name>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Formula</span>
+                    <span class="fmt-autonum-delim">(</span>
+                    <semx element="autonum" source="B">1</semx>
+                    <span class="fmt-autonum-delim">)</span>
+                 </fmt-xref-label>
                   <stem type='AsciiMath'>r/1 = 0</stem>
                 </formula>
               </td>
@@ -1112,7 +1450,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan='2'>
                 <p id='_'>The following code will be run for verification:</p>
-                <sourcecode id='_'>
+                <sourcecode id='_' autonum="2">
                   CoreRoot(success): HttpResponse if (success)
                   recommendation(label: success-response) end
                 </sourcecode>
@@ -1127,7 +1465,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 
@@ -1163,7 +1501,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         </description>
         <measurement-target exclude="false">
           <p id="_">The measurement target shall be measured as:</p>
-          <formula id="_">
+          <formula id="B">
             <stem type="AsciiMath">r/1 = 0</stem>
           </formula>
         </measurement-target>
@@ -1184,13 +1522,25 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id='A' displayorder='2'>
-        <title>Preface</title>
+            <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
         <table id='_' class='modspec' type='recommend'>
           <thead>
             <tr>
               <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Recommendation 1</p>
+                            <p class="RecommendationTitle">
+                       <fmt-name>
+                 <span class="fmt-caption-label">
+                    <span class="fmt-element-name">Recommendation</span>
+                    <semx element="autonum" source="_">1</semx>
+                 </span>
+                       </fmt-name>
+              </p>
               </th>
             </tr>
           </thead>
@@ -1221,8 +1571,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan='2'>
                 <p id='_'>The measurement target shall be measured as:</p>
-                <formula id='_'>
-                  <name>(1)</name>
+                              <formula id="B" autonum="1">
+                 <fmt-name>
+                    <span class="fmt-caption-label">
+                       <span class="fmt-autonum-delim">(</span>
+                       1
+                       <span class="fmt-autonum-delim">)</span>
+                    </span>
+                 </fmt-name>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Formula</span>
+                    <span class="fmt-autonum-delim">(</span>
+                    <semx element="autonum" source="B">1</semx>
+                    <span class="fmt-autonum-delim">)</span>
+                 </fmt-xref-label>
                   <stem type='AsciiMath'>r/1 = 0</stem>
                 </formula>
               </td>
@@ -1230,7 +1592,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan='2'>
                 <p id='_'>The following code will be run for verification:</p>
-                <sourcecode id='_'>
+                <sourcecode id='_' autonum="1">
                   CoreRoot(success): HttpResponse if (success)
                   recommendation(label: success-response) end
                 </sourcecode>
@@ -1245,17 +1607,29 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
 
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
-         <title>Preface</title>
+            <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
          <table id="_" class="modspec" type="recommend">
             <thead>
                <tr>
                   <th scope="colgroup" colspan="2">
-                     <p class="RecommendationTitle">Recommandation 1</p>
+                  <p class="RecommendationTitle">
+                       <fmt-name>
+                 <span class="fmt-caption-label">
+                    <span class="fmt-element-name">Recommandation</span>
+                    <semx element="autonum" source="_">1</semx>
+                 </span>
+                       </fmt-name>
+              </p>
                   </th>
                </tr>
             </thead>
@@ -1289,8 +1663,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <tr>
                   <td colspan="2">
                      <p id="_">The measurement target shall be measured as:</p>
-                     <formula id="_">
-                        <name>(1)</name>
+                                   <formula id="B" autonum="1">
+                 <fmt-name>
+                    <span class="fmt-caption-label">
+                       <span class="fmt-autonum-delim">(</span>
+                       1
+                       <span class="fmt-autonum-delim">)</span>
+                    </span>
+                 </fmt-name>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Formule</span>
+                    <span class="fmt-autonum-delim">(</span>
+                    <semx element="autonum" source="B">1</semx>
+                    <span class="fmt-autonum-delim">)</span>
+                 </fmt-xref-label>
                         <stem type="AsciiMath">r/1 = 0</stem>
                      </formula>
                   </td>
@@ -1298,7 +1684,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <tr>
                   <td colspan="2">
                      <p id="_">The following code will be run for verification:</p>
-                     <sourcecode id="_">CoreRoot(success): HttpResponse
+                     <sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
             if (success)
             recommendation(label: success-response)
             end
@@ -1314,17 +1700,29 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<language>en</language>", "<language>fr</language>"), true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
 
     presxml = <<~OUTPUT
-      <foreword id='A' displayorder='2'>
-        <title>Preface</title>
+            <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <span class="fmt-caption-label">
+                 <semx element="title" id="_">Preface</semx>
+              </span>
+           </fmt-title>
         <table id='_' class='modspec' type='recommend'>
           <thead>
             <tr>
               <th scope='colgroup' colspan='2'>
-                <p class='RecommendationTitle'>Provision 1</p>
+                <p class="RecommendationTitle">
+                       <fmt-name>
+                  <span class="fmt-caption-label">
+                     <span class="fmt-element-name">Provision</span>
+                     <semx element="autonum" source="_">1</semx>
+                  </span>
+                       </fmt-name>
+               </p>
               </th>
             </tr>
           </thead>
@@ -1355,8 +1753,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan='2'>
                 <p id='_'>The measurement target shall be measured as:</p>
-                <formula id='_'>
-                  <name>(1)</name>
+                              <formula id="B" autonum="1">
+                 <fmt-name>
+                    <span class="fmt-caption-label">
+                       <span class="fmt-autonum-delim">(</span>
+                       1
+                       <span class="fmt-autonum-delim">)</span>
+                    </span>
+                 </fmt-name>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Formula</span>
+                    <span class="fmt-autonum-delim">(</span>
+                    <semx element="autonum" source="B">1</semx>
+                    <span class="fmt-autonum-delim">)</span>
+                 </fmt-xref-label>
                   <stem type='AsciiMath'>r/1 = 0</stem>
                 </formula>
               </td>
@@ -1364,7 +1774,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <tr>
               <td colspan='2'>
                 <p id='_'>The following code will be run for verification:</p>
-                <sourcecode id='_'>
+                <sourcecode id='_' autonum="1">
                   CoreRoot(success): HttpResponse if (success)
                   recommendation(label: success-response) end
                 </sourcecode>
@@ -1379,7 +1789,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<recommendation ", "<recommendation class='Provision' "), true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(out.to_xml))
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end

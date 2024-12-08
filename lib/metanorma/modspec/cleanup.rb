@@ -127,7 +127,7 @@ module Metanorma
           next if %w(p ol ul dl table component description)
             .include?(c&.elements&.first&.name)
 
-          c.children = "<p>#{c.children.to_xml}</p>"
+          c.children = "<p>#{to_xml(c.children)}</p>"
         end
       end
 
