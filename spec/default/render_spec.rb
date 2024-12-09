@@ -67,9 +67,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Foreword</semx>
-             </span>
           </fmt-title>
           <permission id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
              <fmt-name>
@@ -125,6 +123,9 @@ RSpec.describe Metanorma::Requirements::Default do
                    <span class="fmt-caption-label">
                       <span class="fmt-element-name">NOTE</span>
                    </span>
+                   <span class="fmt-label-delim">
+               <tab/>
+            </span>
                 </fmt-name>
                 <fmt-xref-label>
                    <span class="fmt-element-name">Note</span>
@@ -233,9 +234,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Foreword</semx>
-             </span>
           </fmt-title>
           <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
              <fmt-name>
@@ -373,9 +372,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword id="F" displayorder="2">
           <title id="_">Avant-propos</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Avant-propos</semx>
-             </span>
           </fmt-title>
           <requirement id="A" unnumbered="true" model="default">
              <fmt-name>
@@ -425,6 +422,16 @@ RSpec.describe Metanorma::Requirements::Default do
                       <semx element="autonum" source="B">1</semx>
                       <span class="fmt-autonum-delim">)</span>
                    </fmt-xref-label>
+           <fmt-xref-label container="F">
+              <span class="fmt-xref-container">
+                 <semx element="foreword" source="F">Avant-propos</semx>
+              </span>
+              <span class="fmt-comma">,</span>
+              <span class="fmt-element-name">Formule</span>
+              <span class="fmt-autonum-delim">(</span>
+              <semx element="autonum" source="B">1</semx>
+              <span class="fmt-autonum-delim">)</span>
+           </fmt-xref-label>
                    <stem type="AsciiMath">r/1 = 0</stem>
                 </formula>
              </div>
@@ -510,9 +517,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Foreword</semx>
-             </span>
           </fmt-title>
           <recommendation id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
              <fmt-name>

@@ -54,9 +54,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Preface</semx>
-             </span>
           </fmt-title>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
@@ -258,9 +256,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Preface</semx>
-             </span>
           </fmt-title>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
@@ -463,9 +459,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Preface</semx>
-             </span>
           </fmt-title>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
@@ -667,9 +661,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Preface</semx>
-             </span>
           </fmt-title>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
@@ -871,9 +863,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <span class="fmt-caption-label">
                 <semx element="title" id="_">Preface</semx>
-             </span>
           </fmt-title>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
