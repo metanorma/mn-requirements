@@ -98,6 +98,7 @@ module Metanorma
       def expand_xrefs_in_reqt(table)
         table.xpath(ns(".//xref[not(@style)][string-length() = 0]"))
           .each do |x|
+          @xrefs.anchor(x["target"], :modspec, false) or next # modspec xrefs only
           ref = @xrefs.anchor(x["target"], :xref, false) or next
           x << ref
         end
