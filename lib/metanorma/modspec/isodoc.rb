@@ -101,8 +101,8 @@ module Metanorma
       def recommendation_attributes1_head(node, head)
         oblig = node["obligation"] and
           head << [@labels["default"]["obligation"], oblig]
-        subj = node.at(ns("./subject"))&.children and
-          head << [rec_subj(node), subj]
+        subj = node.at(ns("./subject")) and
+          head << [rec_subj(node), semx_fmt_dup(subj)]
         head = recommendation_attributes1_target(node, head)
         head += recommendation_backlinks(node)
         recommendation_attributes1_dependencies(node, head)

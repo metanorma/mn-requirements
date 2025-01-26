@@ -84,11 +84,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <inherit>/ss/584/2015/level/1</inherit>
-             <inherit>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <inherit id="_">
                 <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref>
              </inherit>
-             <subject>user</subject>
+             <subject id="_">user</subject>
              <classification>
                 <tag id="_">control-CLASS</tag>
                 <value id="_">Technical</value>
@@ -200,14 +200,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       </tr>
                       <tr>
                          <th>Subject</th>
-                         <td>user</td>
+                         <td>
+                            <semx element="subject" id="_">user</semx>
+                         </td>
                       </tr>
                       <tr>
                          <th>Prerequisites</th>
                          <td>
-                            /ss/584/2015/level/1
+                            <semx element="inherit" id="_">/ss/584/2015/level/1</semx>
                             <br/>
-                            <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref>
+                            <semx element="inherit" id="_">
+                               <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref>
+                            </semx>
                          </td>
                       </tr>
                       <tr>
@@ -436,7 +440,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" id="_">Preface</semx>
@@ -453,8 +457,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <inherit>/ss/584/2015/level/1</inherit>
-             <subject>user</subject>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <subject id="_">user</subject>
              <classification>
                 <tag id="_">control-class</tag>
                 <value id="_">Technical</value>
@@ -542,11 +546,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       </tr>
                       <tr>
                          <th>Subject</th>
-                         <td>user</td>
+                         <td>
+                            <semx element="subject" id="_">user</semx>
+                         </td>
                       </tr>
                       <tr>
                          <th>Prerequisite</th>
-                         <td>/ss/584/2015/level/1</td>
+                         <td>
+                            <semx element="inherit" id="_">/ss/584/2015/level/1</semx>
+                         </td>
                       </tr>
                       <tr>
                          <th>
@@ -714,6 +722,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <fmt-title depth="1">
               <semx element="title" id="_">Preface</semx>
            </fmt-title>
+           <permission model="ogc" id="A1" type="abstracttest">
                    <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
         <subject>user</subject>

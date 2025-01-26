@@ -61,7 +61,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
-             <subject>user</subject>
+             <subject id="_">user</subject>
              <description id="_">
                 <p original-id="_">
                    I recommend
@@ -194,7 +194,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       </tr>
                       <tr>
                          <th>Subject</th>
-                         <td>user</td>
+                         <td>
+                            <semx element="subject" id="_">user</semx>
+                         </td>
                       </tr>
                       <tr>
                          <th>Prerequisite</th>
@@ -433,7 +435,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </fmt-xref-label>
              <identifier id="_">http://www.example1.com</identifier>
              <inherit id="_">http://www.example2.com</inherit>
-             <subject>http://www.example3.com</subject>
+             <subject id="_">http://www.example3.com</subject>
              <description id="_">
                 <p original-id="_">
                    I recommend
@@ -483,7 +485,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Subject</th>
                          <td>
-                            <link target="http://www.example3.com">http://www.example3.com</link>
+                            <link target="http://www.example3.com">
+                               <semx element="subject" id="_">http://www.example3.com</semx>
+                            </link>
                          </td>
                       </tr>
                       <tr>
