@@ -9,8 +9,14 @@ module Metanorma
         init_lookups(node.document)
         ret = requirement_guidance_parse(node, super)
         out = requirement_table_cleanup(node, ret)
-        out["class"] = "modspec" # deferred; node["class"] is labelling class
         out
+      end
+
+      def requirement_presentation(node, out)
+        ret = node.document.create_element("fmt-provision")
+        ret << out
+        out = ret
+        super
       end
 
       def recommendation_base(node, _klass)
@@ -47,20 +53,6 @@ module Metanorma
         out
       end
 
-=begin
-      def recommendation_name(node, _out)
-        ret = ""
-        name = node.at(ns("./fmt-name")) and ret += name.children.to_xml
-        title = node.at(ns("./fmt-title"))
-        return ret unless title &&
-          node.ancestors("requirement, recommendation, permission").empty?
-
-        ret += ": " unless !name || name.text.empty?
-        ret += title.children.to_xml
-        l10n(ret)
-      end
-=end
-
       def recommendation_label_add(elem, _label, title)
         title or return ""
         r = recommendation_label_caption_delim
@@ -92,7 +84,7 @@ module Metanorma
         label = node.at(ns("./identifier")) or return
         ret = <<~OUTPUT
           <tr><th>#{@labels['modspec']['identifier']}</th>
-          <td><tt><modspec-ident>#{to_xml(label.children)}</modspec-ident></tt></td>
+          <td><tt><modspec-ident>#{to_xml(semx_fmt_dup(label))}</modspec-ident></tt></td>
         OUTPUT
         out.add_child(ret)
       end
@@ -100,8 +92,8 @@ module Metanorma
       def recommendation_attributes1(node)
         ret = recommendation_attributes1_head(node, [])
         node.xpath(ns("./classification")).each do |c|
-          line = recommendation_attr_keyvalue(c, "tag",
-                                              "value") and ret << line
+          line = recommendation_attr_keyvalue(c, "tag", "value") and
+            ret << line
         end
         ret
       end
@@ -174,12 +166,12 @@ module Metanorma
         node
       end
 
-      def recommendation_attributes1_component(node, out)
-        return out if node["class"] == "guidance"
-
-        node = recommendation_steps(node)
+      def recommendation_attributes1_component(node, ret, out)
+        node["class"] == "guidance" and return out
+        ret = recommendation_steps(ret)
         out << "<tr#{id_attr(node)}><th>#{node['label']}</th>" \
-               "<td>#{node.children}</td></tr>"
+               "<td>#{to_xml(ret)}</td></tr>"
+        node.delete("label") # inserted in recommendation_component_labels
         out
       end
 
@@ -189,7 +181,9 @@ module Metanorma
         !%w(target indirect-dependency identifier-base
             implements).include?(tag.text.downcase) or
           return nil
-        [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]
+          lbl = semx_fmt_dup(tag)
+          lbl.children = Metanorma::Utils.strict_capitalize_first(lbl.text)
+        [to_xml(lbl), semx_fmt_dup(value)]
       end
 
       def reqt_component_type(node)
@@ -205,13 +199,15 @@ module Metanorma
 
       def requirement_component_parse(node, out)
         node["exclude"] == "true" and return out
-        descr_classif_render(node)
-        node.elements.size == 1 && node.first_element_child.name == "dl" and
-          return reqt_dl(node.first_element_child, out)
+        ret = semx_fmt_dup(node)
+        descr_classif_render(node, ret)
+        ret.elements.size == 1 && ret.first_element_child.name == "dl" and
+          return reqt_dl(ret.first_element_child, out)
         node.name == "component" and
-          return recommendation_attributes1_component(node, out)
+          return recommendation_attributes1_component(node, ret, out)
         node.name == "description" and
-          return requirement_description_parse(node, out)
+          return requirement_description_parse(ret, out)
+        # TODO ?
         out.add_child("<tr#{id_attr(node)}><td colspan='2'></td></tr>").first
           .at(ns(".//td")) <<
           (preserve_in_nested_table?(node) ? node : node.children)
@@ -231,7 +227,7 @@ module Metanorma
         ins = out.at(ns("./tbody"))
         node.xpath(ns("./component[@class = 'guidance']")).each do |f|
           ins << "<tr#{id_attr(f)}><th>#{@labels['modspec']['guidance']}</th>" \
-                 "<td>#{f.children}</td></tr>"
+                 "<td>#{to_xml(semx_fmt_dup(f))}</td></tr>"
         end
         out
       end

@@ -190,7 +190,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-        <foreword displayorder="2">
+      <foreword displayorder="2">
            <title id="_">Foreword</title>
            <fmt-title depth="1">
               <semx element="title" id="_">Foreword</semx>
@@ -200,31 +200,41 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="N1">1</semx>
                  :
-                 <tt>/ogc/req1</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req1</semx>
+                 </tt>
               </xref>
               <xref target="N2">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="N2">(??)</semx>
                  :
-                 <tt>/ogc/req2</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req2</semx>
+                 </tt>
               </xref>
               <xref target="N">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="N">2</semx>
                  :
-                 <tt>/ogc/req3</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req3</semx>
+                 </tt>
               </xref>
               <xref target="note1">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="note1">3</semx>
                  :
-                 <tt>/ogc/req4</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req4</semx>
+                 </tt>
               </xref>
               <xref target="note2">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="note2">4</semx>
                  :
-                 <tt>/ogc/req5</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req5</semx>
+                 </tt>
               </xref>
               <xref target="AN">
                  <span class="fmt-element-name">Requirement</span>
@@ -232,13 +242,17 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <span class="fmt-autonum-delim">.</span>
                  <semx element="autonum" source="AN">1</semx>
                  :
-                 <tt>/ogc/req6</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req6</semx>
+                 </tt>
               </xref>
               <xref target="Anote1">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="Anote1">(??)</semx>
                  :
-                 <tt>/ogc/req7</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req7</semx>
+                 </tt>
               </xref>
               <xref target="Anote2">
                  <span class="fmt-element-name">Requirement</span>
@@ -246,7 +260,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <span class="fmt-autonum-delim">.</span>
                  <semx element="autonum" source="Anote2">2</semx>
                  :
-                 <tt>/ogc/req8</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req8</semx>
+                 </tt>
               </xref>
            </p>
         </foreword>
@@ -330,7 +346,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-        <foreword displayorder="2">
+      <foreword displayorder="2">
            <title id="_">Foreword</title>
            <fmt-title depth="1">
               <semx element="title" id="_">Foreword</semx>
@@ -340,31 +356,41 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="N1">1</semx>
                  :
-                 <tt>/ogc/req1</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req1</semx>
+                 </tt>
               </xref>
               <xref target="N2" style="modspec">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="N2">(??)</semx>
                  :
-                 <tt>/ogc/req2</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req2</semx>
+                 </tt>
               </xref>
               <xref target="N" style="modspec">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="N">2</semx>
                  :
-                 <tt>/ogc/req3</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req3</semx>
+                 </tt>
               </xref>
               <xref target="note1" style="modspec">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="note1">3</semx>
                  :
-                 <tt>/ogc/req4</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req4</semx>
+                 </tt>
               </xref>
               <xref target="note2" style="modspec">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="note2">4</semx>
                  :
-                 <tt>/ogc/req5</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req5</semx>
+                 </tt>
               </xref>
               <xref target="AN" style="modspec">
                  <span class="fmt-element-name">Requirement</span>
@@ -372,13 +398,17 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <span class="fmt-autonum-delim">.</span>
                  <semx element="autonum" source="AN">1</semx>
                  :
-                 <tt>/ogc/req6</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req6</semx>
+                 </tt>
               </xref>
               <xref target="Anote1" style="modspec">
                  <span class="fmt-element-name">Requirement</span>
                  <semx element="autonum" source="Anote1">(??)</semx>
                  :
-                 <tt>/ogc/req7</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req7</semx>
+                 </tt>
               </xref>
               <xref target="Anote2" style="modspec">
                  <span class="fmt-element-name">Requirement</span>
@@ -386,7 +416,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <span class="fmt-autonum-delim">.</span>
                  <semx element="autonum" source="Anote2">2</semx>
                  :
-                 <tt>/ogc/req8</tt>
+                 <tt>
+                    <semx element="identifier" id="_">/ogc/req8</semx>
+                 </tt>
               </xref>
            </p>
         </foreword>

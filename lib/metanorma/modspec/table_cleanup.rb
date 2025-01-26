@@ -3,13 +3,16 @@ require "uri"
 module Metanorma
   class Requirements
     class Modspec < Default
-      def requirement_table_cleanup(node, table)
+      def requirement_table_cleanup(node, out)
+        table = out.at(ns("./fmt-provision/table"))
         table = requirement_table_nested_cleanup(node, table)
         requirement_table_consec_rows_cleanup(node, table)
         node.ancestors("requirement, recommendation, permission").empty? and
           truncate_id_base_in_reqt(table)
         cell2link(table)
-        table
+        table["class"] = "modspec" # deferred; node["class"] is labelling class
+        out.xpath(ns("./fmt-name | ./fmt-identifier")).each(&:remove)
+        out
       end
 
       def cell2link(table)
