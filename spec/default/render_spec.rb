@@ -85,12 +85,7 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="A">1</semx>
              </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <fmt-identifier>
-                <tt>
-                   <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
-                </tt>
-             </fmt-identifier>
+             <identifier>/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <inherit id="_">
                 <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref>
@@ -236,10 +231,6 @@ RSpec.describe Metanorma::Requirements::Default do
                             <semx element="value" id="_">randomer</semx>
                          </dd>
                       </dl>
-                      <classification>
-                         <tag>widgets</tag>
-                         <value>randomer</value>
-                      </classification>
                    </semx>
                 </div>
                 <div>
@@ -389,12 +380,7 @@ RSpec.describe Metanorma::Requirements::Default do
                 <semx element="autonum" source="A">(??)</semx>
              </fmt-xref-label>
              <title>A New Requirement</title>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <fmt-identifier>
-                <tt>
-                   <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
-                </tt>
-             </fmt-identifier>
+             <identifier>/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
              <description id="_">
@@ -599,12 +585,7 @@ RSpec.describe Metanorma::Requirements::Default do
                 <semx element="autonum" source="A">(??)</semx>
              </fmt-xref-label>
              <title>A New Requirement</title>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <fmt-identifier>
-                <tt>
-                   <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
-                </tt>
-             </fmt-identifier>
+             <identifier>/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
              <description id="_">
@@ -814,12 +795,7 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="A">1</semx>
              </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <fmt-identifier>
-                <tt>
-                   <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
-                </tt>
-             </fmt-identifier>
+             <identifier>/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <classification>
                 <tag id="_">type</tag>

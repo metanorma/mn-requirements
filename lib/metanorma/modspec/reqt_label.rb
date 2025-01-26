@@ -162,7 +162,8 @@ module Metanorma
       end
 
       def recommendation_id(ident)
-        test = @reqt_ids[ident&.strip] or return ident&.strip
+        id = to_xml(ident.children)
+        test = @reqt_ids[id&.strip] or return to_xml(ident)
         #require "debug"; binding.b if test.include?("<xref")
         #"<xref target='#{test[:id]}'>#{test[:lbl]}</xref>"
         test[:lbl]

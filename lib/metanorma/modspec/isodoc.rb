@@ -111,7 +111,7 @@ module Metanorma
       def recommendation_attributes1_target(node, head)
         node.xpath(ns("./classification[tag][value]")).each do |c|
           c.at(ns("./tag")).text.casecmp("target").zero? or next
-          xref = recommendation_id(c.at(ns("./value")).text) and
+          xref = recommendation_id(semx_fmt_dup(c.at(ns("./value")))) and
             head << [rec_target(node), xref]
         end
         head
@@ -132,7 +132,7 @@ module Metanorma
       def recommendation_attributes1_inherit(node, head)
         node.xpath(ns("./inherit")).each do |i|
           head << [@labels["modspec"]["dependency"],
-                   recommendation_id(to_xml(i.children))]
+                   recommendation_id(semx_fmt_dup(i))]
         end
         head
       end
@@ -141,7 +141,7 @@ module Metanorma
         %w(indirect-dependency implements).each do |x|
           node.xpath(ns("./classification[tag][value]")).each do |c|
             c.at(ns("./tag")).text.casecmp(x).zero? or next
-            xref = recommendation_id(to_xml(c.at(ns("./value")).children)) and
+            xref = recommendation_id(c.at(ns("./value"))) and
               head << [@labels["modspec"][x.delete("-")], xref]
           end
         end
@@ -207,10 +207,9 @@ module Metanorma
           return recommendation_attributes1_component(node, ret, out)
         node.name == "description" and
           return requirement_description_parse(ret, out)
-        # TODO ?
         out.add_child("<tr#{id_attr(node)}><td colspan='2'></td></tr>").first
           .at(ns(".//td")) <<
-          (preserve_in_nested_table?(node) ? node : node.children)
+        (preserve_in_nested_table?(node) ? node.dup : semx_fmt_dup(node))
         out
       end
 
@@ -224,8 +223,9 @@ module Metanorma
       end
 
       def requirement_guidance_parse(node, out)
-        ins = out.at(ns("./tbody"))
-        node.xpath(ns("./component[@class = 'guidance']")).each do |f|
+        ins = out.at(ns("./fmt-provision/table/tbody"))
+        out.xpath(ns("./component[@class = 'guidance']")).each do |f|
+          f.delete("label")
           ins << "<tr#{id_attr(f)}><th>#{@labels['modspec']['guidance']}</th>" \
                  "<td>#{to_xml(semx_fmt_dup(f))}</td></tr>"
         end

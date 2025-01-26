@@ -17,9 +17,10 @@ module Metanorma
 
       def cell2link(table)
         table.xpath(ns(".//td")).each do |td|
-          td.elements.empty? or next
+          td.elements.empty? ||
+            (td.elements.size == 1 && td.elements.first.name == "semx") or next
           uri?(td.text.strip) or next
-          td.children = "<link target='#{td.text.strip}'/>"
+          td.children = "<link target='#{td.text.strip}'>#{to_xml(td.children)}</link>"
         end
       end
 

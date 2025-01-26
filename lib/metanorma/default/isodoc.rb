@@ -150,10 +150,11 @@ module Metanorma
       end
 
       def descr_classif_render(node, reqt)
-        c = reqt.at(ns("./classification")) or return
+        c = reqt.xpath(ns("./classification"))
+        c.empty? and return
         ins = reqt.at(ns("./classification")).before("<dl/>").previous
         descr_classif_extract(node, ins)
-        c.remove
+        c.each(&:remove)
       end
 
       def descr_classif_extract(desc, ins)

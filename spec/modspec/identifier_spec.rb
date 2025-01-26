@@ -56,6 +56,26 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
                 <semx element="title" id="_">Preface</semx>
           </fmt-title>
+                    <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true">
+        <identifier>/ogc/recommendation/wfs/2</identifier>
+        <permission model="ogc" id="A2">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        </permission>
+        <requirement model="ogc" id="A3">
+        <identifier>Requirement 1</identifier>
+        </requirement>
+        <recommendation model="ogc" id="A4">
+        <identifier>Recommendation 1</identifier>
+        </recommendation>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
+        </description>
+        <fmt-provision>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
                 <tr>
@@ -127,6 +147,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+          </fmt-provision>
+          </permission>
+                <permission model="ogc" id="B1">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        </description>
+          <fmt-provision>
           <table id="B1" type="recommend" class="modspec">
              <thead>
                 <tr>
@@ -172,6 +204,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+          </fmt-provision>
+          </permission>
           <p>
              <xref target="A1">
                 <span class="fmt-element-name">Permissions class</span>
@@ -258,6 +292,26 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
                 <semx element="title" id="_">Preface</semx>
           </fmt-title>
+                   <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true">
+        <identifier>/ogc/recommendation/wfs/2</identifier>
+        <permission model="ogc" id="A2">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        </permission>
+        <requirement model="ogc" id="A3">
+        <identifier>Requirement 1</identifier>
+        </requirement>
+        <recommendation model="ogc" id="A4">
+        <identifier>Recommendation 1</identifier>
+        </recommendation>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
+        </description>
+        <fmt-provision>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
                 <tr>
@@ -329,6 +383,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
+                <permission model="ogc" id="B1">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        </description>
+        <fmt-provision>
           <table id="B1" type="recommend" class="modspec">
              <thead>
                 <tr>
@@ -374,6 +440,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
           <p>
              <xref target="A1">
                 <span class="fmt-element-name">Permissions class</span>
@@ -461,6 +529,27 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
                 <semx element="title" id="_">Preface</semx>
           </fmt-title>
+                   <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true">
+        <identifier>/ogc/recommendation/wfs/2</identifier>
+        <classification><tag>identifier-base</tag><value>/ogc/recommendation/wfs</value></classification>
+        <permission model="ogc" id="A2">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        </permission>
+        <requirement model="ogc" id="A3">
+        <identifier>Requirement 1</identifier>
+        </requirement>
+        <recommendation model="ogc" id="A4">
+        <identifier>Recommendation 1</identifier>
+        </recommendation>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
+        </description>
+        <fmt-provision>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
                 <tr>
@@ -532,6 +621,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
+               <permission model="ogc" id="B1">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        <classification><tag>identifier-base</tag><value>/ogc/recommendation</value></classification>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        </description>
+        <fmt-provision>
           <table id="B1" type="recommend" class="modspec">
              <thead>
                 <tr>
@@ -577,6 +679,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
           <p>
              <xref target="A1">
                 <span class="fmt-element-name">Permissions class</span>
@@ -663,6 +767,27 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
                 <semx element="title" id="_">Preface</semx>
           </fmt-title>
+                  <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true">
+        <identifier>/ogc/recommendation/wfs/2</identifier>
+        <classification><tag>identifier-base</tag><value>/ogc/recommendation/wfs</value></classification>
+        <permission model="ogc" id="A2">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        </permission>
+        <requirement model="ogc" id="A3">
+        <identifier>Requirement 1</identifier>
+        </requirement>
+        <recommendation model="ogc" id="A4">
+        <identifier>Recommendation 1</identifier>
+        </recommendation>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
+        </description>
+        <fmt-provision>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
                 <tr>
@@ -734,6 +859,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
+                <permission model="ogc" id="B1">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        </description>
+        <fmt-provision>
           <table id="B1" type="recommend" class="modspec">
              <thead>
                 <tr>
@@ -779,6 +916,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
           <p>
              <xref target="A1">
                 <span class="fmt-element-name">Permissions class</span>
@@ -865,6 +1004,27 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
                 <semx element="title" id="_">Preface</semx>
           </fmt-title>
+                    <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true">
+        <identifier>/ogc/recommendation/wfs/2</identifier>
+        <classification><tag>identifier-base</tag><value>/ogc/recommendation/wfs</value></classification>
+        <permission model="ogc" id="A2">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        </permission>
+        <requirement model="ogc" id="A3">
+        <identifier>Requirement 1</identifier>
+        </requirement>
+        <recommendation model="ogc" id="A4">
+        <identifier>Recommendation 1</identifier>
+        </recommendation>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        <xref target="B1"/>
+        </description>
+        <fmt-provision>
           <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
              <thead>
                 <tr>
@@ -936,6 +1096,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
+                <permission model="ogc" id="B1">
+        <identifier>/ogc/recommendation/wfs/10</identifier>
+        <description>
+        <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+        <xref target="A1">/ogc/recommendation/wfs/2</xref>
+        <xref target="B1">/ogc/recommendation/wfs/10</xref>
+        </description>
+        <fmt-provision>
           <table id="B1" type="recommend" class="modspec">
              <thead>
                 <tr>
@@ -981,6 +1153,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tr>
              </tbody>
           </table>
+        </fmt-provision>
+          </permission>
           <p>
              <xref target="A1">
                 <span class="fmt-element-name">Permissions class</span>
