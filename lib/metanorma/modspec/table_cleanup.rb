@@ -47,18 +47,24 @@ module Metanorma
 
       def conflate_table_rows(trow)
         th = trow.at(ns("./th"))
-        hdr = th.text
-        th.children = @i18n.inflect(hdr, number: "pl")
+        hdr = plural_table_row_hdr(th)
         td = th.next_element
         res = [to_xml(td.children)]
         res += gather_consec_table_rows(trow, hdr)
         td.children = res.join("<br/>")
       end
 
+      def plural_table_row_hdr(thdr)
+        th1 = thdr.at(ns("./semx")) || thdr
+        hdr = th1.text
+        th1.children = @i18n.inflect(hdr, number: "pl")
+        hdr
+      end
+
       def gather_consec_table_rows(trow, hdr)
         ret = []
         trow.xpath("./following-sibling::xmlns:tr").each do |r|
-          r.at(ns("./th[text() = '#{hdr}']")) or break
+          r.at(ns("./th"))&.text&.strip == hdr or break
           ret << to_xml(r.remove.at(ns("./td")).children)
         end
         ret
