@@ -9,6 +9,7 @@ module Metanorma
         init_lookups(node.document)
         ret = requirement_guidance_parse(node, super)
         out = requirement_table_cleanup(node, ret)
+        truncate_id_base_fmtxreflabel(out)
         out
       end
 
@@ -141,7 +142,7 @@ module Metanorma
         %w(indirect-dependency implements).each do |x|
           node.xpath(ns("./classification[tag][value]")).each do |c|
             c.at(ns("./tag")).text.casecmp(x).zero? or next
-            xref = recommendation_id(c.at(ns("./value"))) and
+            xref = recommendation_id(semx_fmt_dup(c.at(ns("./value")))) and
               head << [@labels["modspec"][x.delete("-")], xref]
           end
         end
@@ -206,19 +207,19 @@ module Metanorma
         node.name == "component" and
           return recommendation_attributes1_component(node, ret, out)
         node.name == "description" and
-          return requirement_description_parse(ret, out)
+          return requirement_description_parse(node, ret, out)
         out.add_child("<tr#{id_attr(node)}><td colspan='2'></td></tr>").first
           .at(ns(".//td")) <<
         (preserve_in_nested_table?(node) ? node.dup : semx_fmt_dup(node))
         out
       end
 
-      def requirement_description_parse(node, out)
+      def requirement_description_parse(node, ret, out)
         lbl = "description"
         recommend_class(node.parent) == "recommend" and
           lbl = "statement"
         out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
-               "<td>#{to_xml(node.children)}</td></tr>"
+               "<td>#{to_xml(ret.children)}</td></tr>"
         out
       end
 

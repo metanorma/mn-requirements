@@ -5,7 +5,7 @@ module Metanorma
     class Modspec < Default
       def requirement_table_cleanup(node, out)
         table = out.at(ns("./fmt-provision/table"))
-        table = requirement_table_nested_cleanup(node, table)
+        table = requirement_table_nested_cleanup(node, out, table)
         requirement_table_consec_rows_cleanup(node, table)
         node.ancestors("requirement, recommendation, permission").empty? and
           truncate_id_base_in_reqt(table)
@@ -70,7 +70,8 @@ module Metanorma
         ret
       end
 
-      def requirement_table_nested_cleanup(node, table)
+      # KILL
+      def requirement_table_nested_cleanup(node, out, table)
         table.xpath(ns("./tbody/tr/td/table")).each do |t|
           x = t.at(ns("./thead/tr")) or next
           x.at(ns("./th")).children =
@@ -79,6 +80,23 @@ module Metanorma
             f.replace(f.children)
           t.parent.parent.replace(x)
         end
+        table
+      end
+
+      def requirement_table_nested_cleanup(node, out, table)
+        ins = table.at(ns("./tbody"))
+        #out.xpath(ns("./*/fmt-provision/table")).each do |t|
+        table.xpath(ns("./tbody/tr/td/*/fmt-provision/table")).each do |t|
+          x = t.at(ns("./thead/tr")) or next
+          x.at(ns("./th")).children =
+            requirement_table_nested_cleanup_hdr(node)
+          f = x.at(ns("./td/fmt-name")) and
+            f.replace(f.children)
+          #ins << x.dup
+          #t.parent.remove
+          t.parent.parent.parent.parent.replace(x)
+        end
+        out.xpath(ns("./*/fmt-provision")).each(&:remove)
         table
       end
 
@@ -96,10 +114,13 @@ module Metanorma
       def truncate_id_base_in_reqt1(table, base)
         table.xpath(ns(".//xref[@style = 'id']")).each do |x|
           @reqt_id_base[x["target"]] or next # is a modspec requirement
+          n = x.at(ns("./semx")) and x = n
           x.children = strip_id_base(x, base)
         end
         table.xpath(ns(".//modspec-ident")).each do |x|
-          x.replace(strip_id_base(x, base))
+          n = x.at(ns("./semx")) || x
+          n.children = strip_id_base(n, base)
+          n != x and x.replace(n)
         end
       end
 

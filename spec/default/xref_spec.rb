@@ -73,7 +73,7 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
              <xref target="N1">
@@ -194,7 +194,7 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Avant-propos</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Avant-propos</semx>
+             <semx element="title" source="_">Avant-propos</semx>
           </fmt-title>
           <p>
              <xref target="N1">
@@ -310,7 +310,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
              <xref target="N1">
@@ -426,7 +426,7 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
              <xref target="N1">
@@ -525,7 +525,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
              <xref target="N1">

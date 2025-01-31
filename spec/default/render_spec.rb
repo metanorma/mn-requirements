@@ -67,7 +67,7 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <permission id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
              <fmt-name>
@@ -166,52 +166,52 @@ RSpec.describe Metanorma::Requirements::Default do
                 <p>
                    <em>
                       Subject:
-                      <semx element="subject" id="_">user</semx>
+                      <semx element="subject" source="_">user</semx>
                    </em>
                    <br/>
                    <em>
                       Subject:
-                      <semx element="subject" id="_">non-user</semx>
+                      <semx element="subject" source="_">non-user</semx>
                    </em>
                    <br/>
                    <em>
                       Inherits:
-                      <semx element="inherit" id="_">/ss/584/2015/level/1</semx>
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
                    </em>
                    <br/>
                    <em>
                       Inherits:
-                      <semx element="inherit" id="_">
+                      <semx element="inherit" source="_">
                          <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref>
                       </semx>
                    </em>
                    <br/>
                    <em>
-                      <semx element="tag" id="_">Control-class</semx>
+                      <semx element="tag" source="_">Control-class</semx>
                       :
-                      <semx element="value" id="_">Technical</semx>
+                      <semx element="value" source="_">Technical</semx>
                    </em>
                    <br/>
                    <em>
-                      <semx element="tag" id="_">Priority</semx>
+                      <semx element="tag" source="_">Priority</semx>
                       :
-                      <semx element="value" id="_">P0</semx>
+                      <semx element="value" source="_">P0</semx>
                    </em>
                    <br/>
                    <em>
-                      <semx element="tag" id="_">Family</semx>
+                      <semx element="tag" source="_">Family</semx>
                       :
-                      <semx element="value" id="_">System and Communications Protection</semx>
+                      <semx element="value" source="_">System and Communications Protection</semx>
                    </em>
                    <br/>
                    <em>
-                      <semx element="tag" id="_">Family</semx>
+                      <semx element="tag" source="_">Family</semx>
                       :
-                      <semx element="value" id="_">System and Communications Protocols</semx>
+                      <semx element="value" source="_">System and Communications Protocols</semx>
                    </em>
                 </p>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">
                          I recommend
                          <em>this</em>
@@ -219,16 +219,16 @@ RSpec.describe Metanorma::Requirements::Default do
                       </p>
                       <dl>
                          <dt>
-                            <semx element="tag" id="_">scope</semx>
+                            <semx element="tag" source="_">scope</semx>
                          </dt>
                          <dd>
-                            <semx element="value" id="_">random</semx>
+                            <semx element="value" source="_">random</semx>
                          </dd>
                          <dt>
-                            <semx element="tag" id="_">widgets</semx>
+                            <semx element="tag" source="_">widgets</semx>
                          </dt>
                          <dd>
-                            <semx element="value" id="_">randomer</semx>
+                            <semx element="value" source="_">randomer</semx>
                          </dd>
                       </dl>
                    </semx>
@@ -250,12 +250,12 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">As for the measurement targets,</p>
                    </semx>
                 </div>
                 <div type="requirement-measurement-target">
-                   <semx element="measurement-target" id="_">
+                   <semx element="measurement-target" source="_">
                       <p original-id="_">The measurement target shall be measured as:</p>
                       <formula autonum="1" original-id="B">
                          <fmt-name>
@@ -276,7 +276,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-verification">
-                   <semx element="verification" id="_">
+                   <semx element="verification" source="_">
                       <p original-id="_">The following code will be run for verification:</p>
                       <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
@@ -286,7 +286,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-component1">
-                   <semx element="component" id="_">
+                   <semx element="component" source="_">
                       <p original-id="_">Hello</p>
                    </semx>
                 </div>
@@ -360,7 +360,7 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
              <fmt-name>
@@ -432,16 +432,16 @@ RSpec.describe Metanorma::Requirements::Default do
                 <p>
                    <em>
                       Subject:
-                      <semx element="subject" id="_">user</semx>
+                      <semx element="subject" source="_">user</semx>
                    </em>
                    <br/>
                    <em>
                       Inherits:
-                      <semx element="inherit" id="_">/ss/584/2015/level/1</semx>
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
                    </em>
                 </p>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">
                          I recommend
                          <em>this</em>
@@ -450,12 +450,12 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">As for the measurement targets,</p>
                    </semx>
                 </div>
                 <div type="requirement-measurement-target">
-                   <semx element="measurement-target" id="_">
+                   <semx element="measurement-target" source="_">
                       <p original-id="_">The measurement target shall be measured as:</p>
                       <formula autonum="1" original-id="B">
                          <fmt-name>
@@ -476,7 +476,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-verification">
-                   <semx element="verification" id="_">
+                   <semx element="verification" source="_">
                       <p original-id="_">The following code will be run for verification:</p>
                       <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
@@ -486,7 +486,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-component1">
-                   <semx element="component" id="_">
+                   <semx element="component" source="_">
                       <p original-id="_">Hello</p>
                    </semx>
                 </div>
@@ -565,7 +565,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword id="F" displayorder="2">
           <title id="_">Avant-propos</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Avant-propos</semx>
+             <semx element="title" source="_">Avant-propos</semx>
           </fmt-title>
           <requirement id="A" unnumbered="true" model="default">
              <fmt-name>
@@ -637,16 +637,16 @@ RSpec.describe Metanorma::Requirements::Default do
                 <p>
                    <em>
                       Sujet :
-                      <semx element="subject" id="_">user</semx>
+                      <semx element="subject" source="_">user</semx>
                    </em>
                    <br/>
                    <em>
                       Hérite :
-                      <semx element="inherit" id="_">/ss/584/2015/level/1</semx>
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
                    </em>
                 </p>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">
                          I recommend
                          <em>this</em>
@@ -655,12 +655,12 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">As for the measurement targets,</p>
                    </semx>
                 </div>
                 <div type="requirement-measurement-target">
-                   <semx element="measurement-target" id="_">
+                   <semx element="measurement-target" source="_">
                       <p original-id="_">The measurement target shall be measured as:</p>
                       <formula autonum="1" original-id="B">
                          <fmt-name>
@@ -691,7 +691,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-verification">
-                   <semx element="verification" id="_">
+                   <semx element="verification" source="_">
                       <p original-id="_">The following code will be run for verification:</p>
                       <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
@@ -701,7 +701,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-component1">
-                   <semx element="component" id="_">
+                   <semx element="component" source="_">
                       <p original-id="_">Hello</p>
                    </semx>
                 </div>
@@ -777,7 +777,7 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <recommendation id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
              <fmt-name>
@@ -857,28 +857,28 @@ RSpec.describe Metanorma::Requirements::Default do
                    <br/>
                    <em>
                       Subject:
-                      <semx element="subject" id="_">user</semx>
+                      <semx element="subject" source="_">user</semx>
                    </em>
                    <br/>
                    <em>
                       Inherits:
-                      <semx element="inherit" id="_">/ss/584/2015/level/1</semx>
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
                    </em>
                    <br/>
                    <em>
-                      <semx element="tag" id="_">Type</semx>
+                      <semx element="tag" source="_">Type</semx>
                       :
-                      <semx element="value" id="_">text</semx>
+                      <semx element="value" source="_">text</semx>
                    </em>
                    <br/>
                    <em>
-                      <semx element="tag" id="_">Language</semx>
+                      <semx element="tag" source="_">Language</semx>
                       :
-                      <semx element="value" id="_">BASIC</semx>
+                      <semx element="value" source="_">BASIC</semx>
                    </em>
                 </p>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">
                          I recommend
                          <em>this</em>
@@ -887,12 +887,12 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-description">
-                   <semx element="description" id="_">
+                   <semx element="description" source="_">
                       <p original-id="_">As for the measurement targets,</p>
                    </semx>
                 </div>
                 <div type="requirement-measurement-target">
-                   <semx element="measurement-target" id="_">
+                   <semx element="measurement-target" source="_">
                       <p original-id="_">The measurement target shall be measured as:</p>
                       <formula autonum="1" original-id="B">
                          <fmt-name>
@@ -913,7 +913,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-verification">
-                   <semx element="verification" id="_">
+                   <semx element="verification" source="_">
                       <p original-id="_">The following code will be run for verification:</p>
                       <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
@@ -923,7 +923,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    </semx>
                 </div>
                 <div type="requirement-component1">
-                   <semx element="component" id="_">
+                   <semx element="component" source="_">
                       <p original-id="_">Hello</p>
                    </semx>
                 </div>

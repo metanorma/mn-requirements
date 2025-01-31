@@ -46,7 +46,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Preface</semx>
+             <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <recommendation model="ogc" id="_" autonum="1">
              <fmt-xref-label>
@@ -55,7 +55,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 :
                 <tt>
                    <xref style="id" target="_">
-                      <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
+                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                    </xref>
                 </tt>
              </fmt-xref-label>
@@ -188,20 +188,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Identifier</th>
                          <td>
                             <tt>
-                               <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
+                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                             </tt>
                          </td>
                       </tr>
                       <tr>
                          <th>Subject</th>
                          <td>
-                            <semx element="subject" id="_">user</semx>
+                            <semx element="subject" source="_">user</semx>
                          </td>
                       </tr>
                       <tr>
                          <th>Prerequisite</th>
                          <td>
-                            <semx element="inherit" id="_">/ss/584/2015/level/1</semx>
+                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
                          </td>
                       </tr>
                       <tr>
@@ -214,16 +214,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             </p>
                             <dl>
                                <dt>
-                                  <semx element="tag" id="_">scope</semx>
+                                  <semx element="tag" source="_">scope</semx>
                                </dt>
                                <dd>
-                                  <semx element="value" id="_">random</semx>
+                                  <semx element="value" source="_">random</semx>
                                </dd>
                                <dt>
-                                  <semx element="tag" id="_">widgets</semx>
+                                  <semx element="tag" source="_">widgets</semx>
                                </dt>
                                <dd>
-                                  <semx element="value" id="_">randomer</semx>
+                                  <semx element="value" source="_">randomer</semx>
                                </dd>
                             </dl>
                          </td>
@@ -420,7 +420,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Preface</semx>
+             <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <recommendation model="ogc" id="_" autonum="1">
              <fmt-xref-label>
@@ -429,7 +429,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 :
                 <tt>
                    <xref style="id" target="_">
-                      <semx element="identifier" id="_">http://www.example1.com</semx>
+                      <semx element="identifier" source="_">http://www.example1.com</semx>
                    </xref>
                 </tt>
              </fmt-xref-label>
@@ -478,7 +478,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Identifier</th>
                          <td>
                             <tt>
-                               <semx element="identifier" id="_">http://www.example1.com</semx>
+                               <semx element="identifier" source="_">http://www.example1.com</semx>
                             </tt>
                          </td>
                       </tr>
@@ -486,7 +486,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Subject</th>
                          <td>
                             <link target="http://www.example3.com">
-                               <semx element="subject" id="_">http://www.example3.com</semx>
+                               <semx element="subject" source="_">http://www.example3.com</semx>
                             </link>
                          </td>
                       </tr>
@@ -494,7 +494,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Prerequisite</th>
                          <td>
                             <link target="http://www.example2.com">
-                               <semx element="inherit" id="_">http://www.example2.com</semx>
+                               <semx element="inherit" source="_">http://www.example2.com</semx>
                             </link>
                          </td>
                       </tr>
@@ -508,10 +508,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             </p>
                             <dl>
                                <dt>
-                                  <semx element="tag" id="_">http://www.example4.com</semx>
+                                  <semx element="tag" source="_">http://www.example4.com</semx>
                                </dt>
                                <dd>
-                                  <semx element="value" id="_">http://www.example5.com</semx>
+                                  <semx element="value" source="_">http://www.example5.com</semx>
                                </dd>
                             </dl>
                          </td>
@@ -598,7 +598,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Preface</semx>
+             <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <requirement model="ogc" id="A1" autonum="1">
              <fmt-xref-label>
@@ -651,7 +651,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <th>Test method type</th>
                          <td>
-                            <semx element="component" id="_">
+                            <semx element="component" source="_">
                                <p id="_">Manual Inspection</p>
                             </semx>
                          </td>
@@ -659,7 +659,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <th>Test method</th>
                          <td>
-                            <semx element="component" id="_">
+                            <semx element="component" source="_">
                                <p id="1">
                                   <ol class="steps">
                                      <li>
@@ -728,7 +728,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Preface</semx>
+             <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <requirement model="ogc" id="A1" type="general" autonum="1">
              <fmt-xref-label>
@@ -737,7 +737,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 :
                 <tt>
                    <xref style="id" target="A1">
-                      <semx element="identifier" id="_">/ogc/recommendation/wfs/1</semx>
+                      <semx element="identifier" source="_">/ogc/recommendation/wfs/1</semx>
                    </xref>
                 </tt>
              </fmt-xref-label>
@@ -763,7 +763,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Identifier</th>
                          <td>
                             <tt>
-                               <semx element="identifier" id="_">/ogc/recommendation/wfs/1</semx>
+                               <semx element="identifier" source="_">/ogc/recommendation/wfs/1</semx>
                             </tt>
                          </td>
                       </tr>
@@ -775,7 +775,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             :
                             <tt>
                                <xref style="id" target="A2">
-                                  <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
+                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                                </xref>
                             </tt>
                          </td>
@@ -791,7 +791,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 :
                 <tt>
                    <xref style="id" target="A2">
-                      <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
+                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                    </xref>
                 </tt>
              </fmt-xref-label>
@@ -821,7 +821,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Identifier</th>
                          <td>
                             <tt>
-                               <semx element="identifier" id="_">/ogc/recommendation/wfs/2</semx>
+                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                             </tt>
                          </td>
                       </tr>
@@ -833,7 +833,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             :
                             <tt>
                                <xref style="id" target="A1">
-                                  <semx element="identifier" id="_">/ogc/recommendation/wfs/1</semx>
+                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/1</semx>
                                </xref>
                             </tt>
                          </td>
@@ -849,7 +849,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 :
                 <tt>
                    <xref style="id" target="A3">
-                      <semx element="identifier" id="_">/ogc/recommendation/wfs/3</semx>
+                      <semx element="identifier" source="_">/ogc/recommendation/wfs/3</semx>
                    </xref>
                 </tt>
              </fmt-xref-label>
@@ -875,7 +875,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Identifier</th>
                          <td>
                             <tt>
-                               <semx element="identifier" id="_">/ogc/recommendation/wfs/3</semx>
+                               <semx element="identifier" source="_">/ogc/recommendation/wfs/3</semx>
                             </tt>
                          </td>
                       </tr>
@@ -887,7 +887,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             :
                             <tt>
                                <xref style="id" target="A4">
-                                  <semx element="identifier" id="_">/ogc/recommendation/wfs/4</semx>
+                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/4</semx>
                                </xref>
                             </tt>
                          </td>
@@ -903,7 +903,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 :
                 <tt>
                    <xref style="id" target="A4">
-                      <semx element="identifier" id="_">/ogc/recommendation/wfs/4</semx>
+                      <semx element="identifier" source="_">/ogc/recommendation/wfs/4</semx>
                    </xref>
                 </tt>
              </fmt-xref-label>
@@ -933,7 +933,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Identifier</th>
                          <td>
                             <tt>
-                               <semx element="identifier" id="_">/ogc/recommendation/wfs/4</semx>
+                               <semx element="identifier" source="_">/ogc/recommendation/wfs/4</semx>
                             </tt>
                          </td>
                       </tr>
@@ -945,7 +945,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             :
                             <tt>
                                <xref style="id" target="A3">
-                                  <semx element="identifier" id="_">/ogc/recommendation/wfs/3</semx>
+                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/3</semx>
                                </xref>
                             </tt>
                          </td>

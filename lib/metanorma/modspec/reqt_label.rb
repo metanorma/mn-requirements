@@ -190,9 +190,31 @@ module Metanorma
         (docxml.xpath(ns("//xref[@style = 'id']")) - docxml
           .xpath(ns("//requirement//xref | //permission//xref | " \
                     "//recommendation//xref"))).each do |x|
-          @reqt_id_base[x["target"]] or next # is a modspec requirement
-          x.children = to_xml(x.children).delete_prefix(@modspecidentifierbase)
+                      @reqt_id_base[x["target"]] or next # is a modspec requirement
+                      truncate_id_base_outside_reqts1(x, @modspecidentifierbase)
         end
+      end
+
+      def truncate_id_base_fmtxreflabel(node)
+        f = node.at(ns("./fmt-xref-label")) or return
+        x = f.at(ns(".//xref[@style = 'id']")) or return
+        if @reqt_id_base[x["target"]] && @modspecidentifierbase
+          f.next = f.dup
+          x = f.next_element.at(ns(".//xref[@style = 'id']"))
+          f.next_element["container"] = 'modspec-provision'
+          truncate_id_base_outside_reqts1(x, @modspecidentifierbase)
+        end
+        if base = @reqt_id_base[node["id"]]
+          f.next = f.dup
+          x = f.next_element.at(ns(".//xref[@style = 'id']"))
+          f["container"] = node["id"]
+          truncate_id_base_outside_reqts1(x, base)
+        end
+      end
+
+      def truncate_id_base_outside_reqts1(xref, base)
+        xref = xref.at(ns("./semx")) || xref
+        xref.children = to_xml(xref.children).delete_prefix(base)
       end
 
       def rec_subj(node)
