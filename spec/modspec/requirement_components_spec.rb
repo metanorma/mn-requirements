@@ -48,7 +48,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" id="_" autonum="1">
+          <recommendation model="ogc" original-id="_" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -422,7 +422,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" id="_" autonum="1">
+          <recommendation model="ogc" original-id="_" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -600,7 +600,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <requirement model="ogc" id="A1" autonum="1">
+          <requirement model="ogc" original-id="A1" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -730,7 +730,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <requirement model="ogc" id="A1" type="general" autonum="1">
+          <requirement model="ogc" original-id="A1" type="general" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -784,7 +784,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </requirement>
-          <requirement model="ogc" id="A2" type="verification" autonum="1">
+          <requirement model="ogc" original-id="A2" type="verification" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="A2">1</semx>
@@ -842,7 +842,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </requirement>
-          <requirement model="ogc" id="A3" type="class" autonum="1">
+          <requirement model="ogc" original-id="A3" type="class" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirements class</span>
                 <semx element="autonum" source="A3">1</semx>
@@ -896,7 +896,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </requirement>
-          <requirement model="ogc" id="A4" type="conformanceclass" autonum="1">
+          <requirement model="ogc" original-id="A4" type="conformanceclass" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Conformance class</span>
                 <semx element="autonum" source="A4">1</semx>

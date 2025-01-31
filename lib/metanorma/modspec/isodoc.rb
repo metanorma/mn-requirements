@@ -26,6 +26,8 @@ module Metanorma
         %w(id keep-with-next keep-lines-together unnumbered).each do |x|
           out[x] = node[x] if node[x]
         end
+        node["original-id"] = node["id"]
+        node.delete("id")
         out["type"] = recommend_class(node)
         recommendation_component_labels(node)
         out
@@ -155,8 +157,7 @@ module Metanorma
 
       def recommendation_steps(node)
         node.elements.each { |e| recommendation_steps(e) }
-        return node unless node.at(ns("./component[@class = 'step']"))
-
+        node.at(ns("./component[@class = 'step']")) or return node
         d = node.at(ns("./component[@class = 'step']"))
         d = d.replace("<ol class='steps'><li#{id_attr(d)}>" \
                       "#{to_xml(d.children)}</li></ol>").first

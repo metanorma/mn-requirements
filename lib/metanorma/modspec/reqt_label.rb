@@ -204,10 +204,10 @@ module Metanorma
           f.next_element["container"] = 'modspec-provision'
           truncate_id_base_outside_reqts1(x, @modspecidentifierbase)
         end
-        if base = @reqt_id_base[node["id"]]
+        if base = @reqt_id_base[node["original-id"] || node["id"]]
           f.next = f.dup
           x = f.next_element.at(ns(".//xref[@style = 'id']"))
-          f["container"] = node["id"]
+          f["container"] = node["original-id"] || node["id"]
           truncate_id_base_outside_reqts1(x, base)
         end
       end

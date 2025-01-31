@@ -72,7 +72,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" autonum="1">
+          <permission model="ogc" original-id="A1" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -441,7 +441,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="verification" autonum="1">
+          <permission model="ogc" original-id="A1" type="verification" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -709,12 +709,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="abstracttest" autonum="1">
+          <permission model="ogc" type="abstracttest" autonum="1" original-id="A1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Abstract test</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -961,7 +961,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true" autonum="1">
+          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Permissions class</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -976,13 +976,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <inherit id="_">/ss/584/2015/level/2</inherit>
              <subject id="_">user</subject>
-             <permission model="ogc" id="A2" autonum="1-1">
+             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
+             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
+             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
              <fmt-provision>
@@ -1065,7 +1065,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </permission>
-          <permission model="ogc" id="B1" autonum="1">
+          <permission model="ogc" autonum="1" original-id="B1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="B1">1</semx>
@@ -1164,267 +1164,267 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
-          <title id="_">Preface</title>
-          <fmt-title depth="1">
-             <semx element="title" source="_">Preface</semx>
-          </fmt-title>
-          <permission model="ogc" id="A1" type="conformanceclass" autonum="1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Conformance class</span>
-                <semx element="autonum" source="A1">1</semx>
-                :
-                <tt>
-                   <xref style="id" target="A1">
-                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <inherit id="_">/ss/584/2015/level/1</inherit>
-             <inherit id="_">ABC</inherit>
-             <subject id="_">user</subject>
-             <classification>
-                <tag>target</tag>
-                <value id="_">ABC</value>
-             </classification>
-             <classification>
-                <tag>indirect-dependency</tag>
-                <value id="_">
-                   <link target="http://www.example.com/"/>
-                </value>
-             </classification>
-             <classification>
-                <tag>indirect-dependency</tag>
-                <value id="_">ABC</value>
-             </classification>
-             <description id="_">Hic incipit</description>
-             <permission model="ogc" id="A2" autonum="1-1">
-                <identifier original-id="_">Permission 1</identifier>
-             </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
-                <identifier original-id="_">Requirement 1</identifier>
-             </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
-                <identifier original-id="_">Recommendation 1</identifier>
-             </recommendation>
-             <fmt-provision>
-                <table id="A1" type="recommendclass" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Conformance class</span>
-                                     <semx element="autonum" source="A1">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Subject</th>
-                         <td>
-                            <semx element="subject" source="_">user</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Requirements class</th>
-                         <td>
-                            <span class="fmt-element-name">Conformance class</span>
-                            <semx element="autonum" source="B">2</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="B">
-                                  <semx element="identifier" source="_">ABC</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Prerequisites</th>
-                         <td>
-                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
-                            <br/>
-                            <span class="fmt-element-name">Conformance class</span>
-                            <semx element="autonum" source="B">2</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="B">
-                                  <semx element="identifier" source="_">ABC</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Indirect prerequisites</th>
-                         <td>
-                            <semx element="value" source="_">
-                               <link target="http://www.example.com/"/>
-                            </semx>
-                            <br/>
-                            <span class="fmt-element-name">Conformance class</span>
-                            <semx element="autonum" source="B">2</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="B">
-                                  <semx element="identifier" source="_">ABC</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Description</th>
-                         <td>Hic incipit</td>
-                      </tr>
-                      <tr>
-                         <th>Conformance tests</th>
-                         <td>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="B2">1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="B2">
-                                     <semx element="identifier" source="_">Permission 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Requirement</span>
-                               <semx element="autonum" source="A3">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A3">
-                                     <semx element="identifier" source="_">Requirement 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Recommendation</span>
-                               <semx element="autonum" source="A4">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A4">
-                                     <semx element="identifier" source="_">Recommendation 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-          <permission model="ogc" id="B" type="conformanceclass" autonum="2">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Conformance class</span>
-                <semx element="autonum" source="B">2</semx>
-                :
-                <tt>
-                   <xref style="id" target="B">
-                      <semx element="identifier" source="_">ABC</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">ABC</identifier>
-             <fmt-provision>
-                <table id="B" type="recommendclass" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Conformance class</span>
-                                     <semx element="autonum" source="B">2</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">ABC</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-          <permission model="ogc" id="B2" autonum="1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="B2">1</semx>
-                :
-                <tt>
-                   <xref style="id" target="B2">
-                      <semx element="identifier" source="_">Permission 1</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">Permission 1</identifier>
-             <fmt-provision>
-                <table id="B2" type="recommend" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Permission</span>
-                                     <semx element="autonum" source="B2">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">Permission 1</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Included in</th>
-                         <td>
-                            <span class="fmt-element-name">Conformance class</span>
-                            <semx element="autonum" source="A1">1</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="A1">
-                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-       </foreword>
+        <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <semx element="title" source="_">Preface</semx>
+           </fmt-title>
+           <permission model="ogc" type="conformanceclass" autonum="1" original-id="A1">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="A1">1</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="A1">
+                       <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
+              <inherit id="_">/ss/584/2015/level/1</inherit>
+              <inherit id="_">ABC</inherit>
+              <subject id="_">user</subject>
+              <classification>
+                 <tag>target</tag>
+                 <value id="_">ABC</value>
+              </classification>
+              <classification>
+                 <tag>indirect-dependency</tag>
+                 <value id="_">
+                    <link target="http://www.example.com/"/>
+                 </value>
+              </classification>
+              <classification>
+                 <tag>indirect-dependency</tag>
+                 <value id="_">ABC</value>
+              </classification>
+              <description id="_">Hic incipit</description>
+              <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+                 <identifier original-id="_">Permission 1</identifier>
+              </permission>
+              <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+                 <identifier original-id="_">Requirement 1</identifier>
+              </requirement>
+              <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+                 <identifier original-id="_">Recommendation 1</identifier>
+              </recommendation>
+              <fmt-provision>
+                 <table id="A1" type="recommendclass" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Conformance class</span>
+                                      <semx element="autonum" source="A1">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Subject</th>
+                          <td>
+                             <semx element="subject" source="_">user</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Requirements class</th>
+                          <td>
+                             <span class="fmt-element-name">Conformance class</span>
+                             <semx element="autonum" source="B">2</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="B">
+                                   <semx element="identifier" source="_">ABC</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Prerequisites</th>
+                          <td>
+                             <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                             <br/>
+                             <span class="fmt-element-name">Conformance class</span>
+                             <semx element="autonum" source="B">2</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="B">
+                                   <semx element="identifier" source="_">ABC</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Indirect prerequisites</th>
+                          <td>
+                             <semx element="value" source="_">
+                                <link target="http://www.example.com/"/>
+                             </semx>
+                             <br/>
+                             <span class="fmt-element-name">Conformance class</span>
+                             <semx element="autonum" source="B">2</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="B">
+                                   <semx element="identifier" source="_">ABC</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Description</th>
+                          <td>Hic incipit</td>
+                       </tr>
+                       <tr>
+                          <th>Conformance tests</th>
+                          <td>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Permission</span>
+                                <semx element="autonum" source="B2">1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="B2">
+                                      <semx element="identifier" source="_">Permission 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Requirement</span>
+                                <semx element="autonum" source="A3">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A3">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Recommendation</span>
+                                <semx element="autonum" source="A4">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A4">
+                                      <semx element="identifier" source="_">Recommendation 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+           <permission model="ogc" type="conformanceclass" autonum="2" original-id="B">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Conformance class</span>
+                 <semx element="autonum" source="B">2</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="B">
+                       <semx element="identifier" source="_">ABC</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">ABC</identifier>
+              <fmt-provision>
+                 <table id="B" type="recommendclass" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Conformance class</span>
+                                      <semx element="autonum" source="B">2</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">ABC</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+           <permission model="ogc" autonum="1" original-id="B2">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Permission</span>
+                 <semx element="autonum" source="B2">1</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="B2">
+                       <semx element="identifier" source="_">Permission 1</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">Permission 1</identifier>
+              <fmt-provision>
+                 <table id="B2" type="recommend" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Permission</span>
+                                      <semx element="autonum" source="B2">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">Permission 1</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Included in</th>
+                          <td>
+                             <span class="fmt-element-name">Conformance class</span>
+                             <semx element="autonum" source="A1">1</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="A1">
+                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+        </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -1469,267 +1469,267 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
-          <title id="_">Preface</title>
-          <fmt-title depth="1">
-             <semx element="title" source="_">Preface</semx>
-          </fmt-title>
-          <permission model="ogc" id="A1" type="conformanceclass" autonum="1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Classe de confirmité</span>
-                <semx element="autonum" source="A1">1</semx>
-                 :
-                <tt>
-                   <xref style="id" target="A1">
-                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <inherit id="_">/ss/584/2015/level/1</inherit>
-             <inherit id="_">ABC</inherit>
-             <subject id="_">user</subject>
-             <classification>
-                <tag>target</tag>
-                <value id="_">ABC</value>
-             </classification>
-             <classification>
-                <tag>indirect-dependency</tag>
-                <value id="_">
-                   <link target="http://www.example.com/"/>
-                </value>
-             </classification>
-             <classification>
-                <tag>indirect-dependency</tag>
-                <value id="_">ABC</value>
-             </classification>
-             <description id="_">Hic incipit</description>
-             <permission model="ogc" id="A2" autonum="1-1">
-                <identifier original-id="_">Permission 1</identifier>
-             </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
-                <identifier original-id="_">Requirement 1</identifier>
-             </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
-                <identifier original-id="_">Recommendation 1</identifier>
-             </recommendation>
-             <fmt-provision>
-                <table id="A1" type="recommendclass" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Classe de confirmité</span>
-                                     <semx element="autonum" source="A1">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifiant</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Sujet</th>
-                         <td>
-                            <semx element="subject" source="_">user</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Classe d’exigences</th>
-                         <td>
-                            <span class="fmt-element-name">Classe de confirmité</span>
-                            <semx element="autonum" source="B">2</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="B">
-                                  <semx element="identifier" source="_">ABC</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Prérequis</th>
-                         <td>
-                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
-                            <br/>
-                            <span class="fmt-element-name">Classe de confirmité</span>
-                            <semx element="autonum" source="B">2</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="B">
-                                  <semx element="identifier" source="_">ABC</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Prérequis indirect</th>
-                         <td>
-                            <semx element="value" source="_">
-                               <link target="http://www.example.com/"/>
-                            </semx>
-                            <br/>
-                            <span class="fmt-element-name">Classe de confirmité</span>
-                            <semx element="autonum" source="B">2</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="B">
-                                  <semx element="identifier" source="_">ABC</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Description</th>
-                         <td>Hic incipit</td>
-                      </tr>
-                      <tr>
-                         <th>Tests de conformité</th>
-                         <td>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Autorisation</span>
-                               <semx element="autonum" source="B2">1</semx>
-                                :
-                               <tt>
-                                  <xref style="id" target="B2">
-                                     <semx element="identifier" source="_">Permission 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Exigence</span>
-                               <semx element="autonum" source="A3">1-1</semx>
-                                :
-                               <tt>
-                                  <xref style="id" target="A3">
-                                     <semx element="identifier" source="_">Requirement 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Recommandation</span>
-                               <semx element="autonum" source="A4">1-1</semx>
-                                :
-                               <tt>
-                                  <xref style="id" target="A4">
-                                     <semx element="identifier" source="_">Recommendation 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-          <permission model="ogc" id="B" type="conformanceclass" autonum="2">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Classe de confirmité</span>
-                <semx element="autonum" source="B">2</semx>
-                 :
-                <tt>
-                   <xref style="id" target="B">
-                      <semx element="identifier" source="_">ABC</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">ABC</identifier>
-             <fmt-provision>
-                <table id="B" type="recommendclass" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Classe de confirmité</span>
-                                     <semx element="autonum" source="B">2</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifiant</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">ABC</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-          <permission model="ogc" id="B2" autonum="1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Autorisation</span>
-                <semx element="autonum" source="B2">1</semx>
-                 :
-                <tt>
-                   <xref style="id" target="B2">
-                      <semx element="identifier" source="_">Permission 1</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">Permission 1</identifier>
-             <fmt-provision>
-                <table id="B2" type="recommend" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Autorisation</span>
-                                     <semx element="autonum" source="B2">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifiant</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">Permission 1</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Inclus dans</th>
-                         <td>
-                            <span class="fmt-element-name">Classe de confirmité</span>
-                            <semx element="autonum" source="A1">1</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="A1">
-                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-       </foreword>
+        <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <semx element="title" source="_">Preface</semx>
+           </fmt-title>
+           <permission model="ogc" type="conformanceclass" autonum="1" original-id="A1">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Classe de confirmité</span>
+                 <semx element="autonum" source="A1">1</semx>
+                  :
+                 <tt>
+                    <xref style="id" target="A1">
+                       <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
+              <inherit id="_">/ss/584/2015/level/1</inherit>
+              <inherit id="_">ABC</inherit>
+              <subject id="_">user</subject>
+              <classification>
+                 <tag>target</tag>
+                 <value id="_">ABC</value>
+              </classification>
+              <classification>
+                 <tag>indirect-dependency</tag>
+                 <value id="_">
+                    <link target="http://www.example.com/"/>
+                 </value>
+              </classification>
+              <classification>
+                 <tag>indirect-dependency</tag>
+                 <value id="_">ABC</value>
+              </classification>
+              <description id="_">Hic incipit</description>
+              <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+                 <identifier original-id="_">Permission 1</identifier>
+              </permission>
+              <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+                 <identifier original-id="_">Requirement 1</identifier>
+              </requirement>
+              <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+                 <identifier original-id="_">Recommendation 1</identifier>
+              </recommendation>
+              <fmt-provision>
+                 <table id="A1" type="recommendclass" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Classe de confirmité</span>
+                                      <semx element="autonum" source="A1">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifiant</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Sujet</th>
+                          <td>
+                             <semx element="subject" source="_">user</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Classe d’exigences</th>
+                          <td>
+                             <span class="fmt-element-name">Classe de confirmité</span>
+                             <semx element="autonum" source="B">2</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="B">
+                                   <semx element="identifier" source="_">ABC</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Prérequis</th>
+                          <td>
+                             <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                             <br/>
+                             <span class="fmt-element-name">Classe de confirmité</span>
+                             <semx element="autonum" source="B">2</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="B">
+                                   <semx element="identifier" source="_">ABC</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Prérequis indirect</th>
+                          <td>
+                             <semx element="value" source="_">
+                                <link target="http://www.example.com/"/>
+                             </semx>
+                             <br/>
+                             <span class="fmt-element-name">Classe de confirmité</span>
+                             <semx element="autonum" source="B">2</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="B">
+                                   <semx element="identifier" source="_">ABC</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Description</th>
+                          <td>Hic incipit</td>
+                       </tr>
+                       <tr>
+                          <th>Tests de conformité</th>
+                          <td>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Autorisation</span>
+                                <semx element="autonum" source="B2">1</semx>
+                                 :
+                                <tt>
+                                   <xref style="id" target="B2">
+                                      <semx element="identifier" source="_">Permission 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Exigence</span>
+                                <semx element="autonum" source="A3">1-1</semx>
+                                 :
+                                <tt>
+                                   <xref style="id" target="A3">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Recommandation</span>
+                                <semx element="autonum" source="A4">1-1</semx>
+                                 :
+                                <tt>
+                                   <xref style="id" target="A4">
+                                      <semx element="identifier" source="_">Recommendation 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+           <permission model="ogc" type="conformanceclass" autonum="2" original-id="B">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Classe de confirmité</span>
+                 <semx element="autonum" source="B">2</semx>
+                  :
+                 <tt>
+                    <xref style="id" target="B">
+                       <semx element="identifier" source="_">ABC</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">ABC</identifier>
+              <fmt-provision>
+                 <table id="B" type="recommendclass" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Classe de confirmité</span>
+                                      <semx element="autonum" source="B">2</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifiant</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">ABC</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+           <permission model="ogc" autonum="1" original-id="B2">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Autorisation</span>
+                 <semx element="autonum" source="B2">1</semx>
+                  :
+                 <tt>
+                    <xref style="id" target="B2">
+                       <semx element="identifier" source="_">Permission 1</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">Permission 1</identifier>
+              <fmt-provision>
+                 <table id="B2" type="recommend" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Autorisation</span>
+                                      <semx element="autonum" source="B2">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifiant</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">Permission 1</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Inclus dans</th>
+                          <td>
+                             <span class="fmt-element-name">Classe de confirmité</span>
+                             <semx element="autonum" source="A1">1</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="A1">
+                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+        </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
@@ -1768,192 +1768,192 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
-          <title id="_">Preface</title>
-          <fmt-title depth="1">
-             <semx element="title" source="_">Preface</semx>
-          </fmt-title>
-          <requirement model="ogc" id="A1" type="class" autonum="1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Requirements class</span>
-                <semx element="autonum" source="A1">1</semx>
-                :
-                <tt>
-                   <xref style="id" target="A1">
-                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <inherit id="_">/ss/584/2015/level/1</inherit>
-             <inherit id="_">/ss/584/2015/level/2</inherit>
-             <classification>
-                <tag>implements</tag>
-                <value id="_">Permission 1</value>
-             </classification>
-             <subject id="_">user</subject>
-             <description id="_">Hic incipit</description>
-             <permission model="ogc" id="A2" autonum="1-1">
-                <identifier original-id="_">Permission 1</identifier>
-             </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
-                <identifier original-id="_">Requirement 1</identifier>
-             </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
-                <identifier original-id="_">Recommendation 1</identifier>
-             </recommendation>
-             <fmt-provision>
-                <table id="A1" type="recommendclass" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Requirements class</span>
-                                     <semx element="autonum" source="A1">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Target type</th>
-                         <td>
-                            <semx element="subject" source="_">user</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Prerequisites</th>
-                         <td>
-                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
-                            <br/>
-                            <semx element="inherit" source="_">/ss/584/2015/level/2</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Implements</th>
-                         <td>
-                            <span class="fmt-element-name">Permission</span>
-                            <semx element="autonum" source="A5">1</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="A5">
-                                  <semx element="identifier" source="_">Permission 1</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Description</th>
-                         <td>Hic incipit</td>
-                      </tr>
-                      <tr>
-                         <th>Normative statements</th>
-                         <td>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="A5">1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A5">
-                                     <semx element="identifier" source="_">Permission 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Requirement</span>
-                               <semx element="autonum" source="A3">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A3">
-                                     <semx element="identifier" source="_">Requirement 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Recommendation</span>
-                               <semx element="autonum" source="A4">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A4">
-                                     <semx element="identifier" source="_">Recommendation 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </requirement>
-          <permission model="ogc" id="A5" autonum="1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="A5">1</semx>
-                :
-                <tt>
-                   <xref style="id" target="A5">
-                      <semx element="identifier" source="_">Permission 1</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">Permission 1</identifier>
-             <fmt-provision>
-                <table id="A5" type="recommend" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Permission</span>
-                                     <semx element="autonum" source="A5">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">Permission 1</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Included in</th>
-                         <td>
-                            <span class="fmt-element-name">Requirements class</span>
-                            <semx element="autonum" source="A1">1</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="A1">
-                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-       </foreword>
+        <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <semx element="title" source="_">Preface</semx>
+           </fmt-title>
+           <requirement model="ogc" type="class" autonum="1" original-id="A1">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Requirements class</span>
+                 <semx element="autonum" source="A1">1</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="A1">
+                       <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
+              <inherit id="_">/ss/584/2015/level/1</inherit>
+              <inherit id="_">/ss/584/2015/level/2</inherit>
+              <classification>
+                 <tag>implements</tag>
+                 <value id="_">Permission 1</value>
+              </classification>
+              <subject id="_">user</subject>
+              <description id="_">Hic incipit</description>
+              <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+                 <identifier original-id="_">Permission 1</identifier>
+              </permission>
+              <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+                 <identifier original-id="_">Requirement 1</identifier>
+              </requirement>
+              <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+                 <identifier original-id="_">Recommendation 1</identifier>
+              </recommendation>
+              <fmt-provision>
+                 <table id="A1" type="recommendclass" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Requirements class</span>
+                                      <semx element="autonum" source="A1">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Target type</th>
+                          <td>
+                             <semx element="subject" source="_">user</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Prerequisites</th>
+                          <td>
+                             <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                             <br/>
+                             <semx element="inherit" source="_">/ss/584/2015/level/2</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Implements</th>
+                          <td>
+                             <span class="fmt-element-name">Permission</span>
+                             <semx element="autonum" source="A5">1</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="A5">
+                                   <semx element="identifier" source="_">Permission 1</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Description</th>
+                          <td>Hic incipit</td>
+                       </tr>
+                       <tr>
+                          <th>Normative statements</th>
+                          <td>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Permission</span>
+                                <semx element="autonum" source="A5">1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A5">
+                                      <semx element="identifier" source="_">Permission 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Requirement</span>
+                                <semx element="autonum" source="A3">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A3">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Recommendation</span>
+                                <semx element="autonum" source="A4">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A4">
+                                      <semx element="identifier" source="_">Recommendation 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </requirement>
+           <permission model="ogc" autonum="1" original-id="A5">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Permission</span>
+                 <semx element="autonum" source="A5">1</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="A5">
+                       <semx element="identifier" source="_">Permission 1</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">Permission 1</identifier>
+              <fmt-provision>
+                 <table id="A5" type="recommend" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Permission</span>
+                                      <semx element="autonum" source="A5">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">Permission 1</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Included in</th>
+                          <td>
+                             <span class="fmt-element-name">Requirements class</span>
+                             <semx element="autonum" source="A1">1</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="A1">
+                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                </xref>
+                             </tt>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+        </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -1988,116 +1988,116 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
-          <title id="_">Preface</title>
-          <fmt-title depth="1">
-             <semx element="title" source="_">Preface</semx>
-          </fmt-title>
-          <recommendation model="ogc" id="A1" type="class" autonum="1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Recommendations class</span>
-                <semx element="autonum" source="A1">1</semx>
-                :
-                <tt>
-                   <xref style="id" target="A1">
-                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <inherit id="_">/ss/584/2015/level/1</inherit>
-             <inherit id="_">/ss/584/2015/level/2</inherit>
-             <subject id="_">user</subject>
-             <permission model="ogc" id="A2" autonum="1-1">
-                <identifier original-id="_">Permission 1</identifier>
-             </permission>
-             <permission model="ogc" id="A3" autonum="1-2">
-                <identifier original-id="_">Requirement 1</identifier>
-             </permission>
-             <recommendation model="ogc" id="A4" autonum="1-1">
-                <identifier original-id="_">Recommendation 1</identifier>
-             </recommendation>
-             <fmt-provision>
-                <table id="A1" type="recommendclass" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Recommendations class</span>
-                                     <semx element="autonum" source="A1">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Target type</th>
-                         <td>
-                            <semx element="subject" source="_">user</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Prerequisites</th>
-                         <td>
-                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
-                            <br/>
-                            <semx element="inherit" source="_">/ss/584/2015/level/2</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Normative statements</th>
-                         <td>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="A2">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A2">
-                                     <semx element="identifier" source="_">Permission 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="A3">1-2</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A3">
-                                     <semx element="identifier" source="_">Requirement 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Recommendation</span>
-                               <semx element="autonum" source="A4">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A4">
-                                     <semx element="identifier" source="_">Recommendation 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </recommendation>
-       </foreword>
+        <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <semx element="title" source="_">Preface</semx>
+           </fmt-title>
+           <recommendation model="ogc" type="class" autonum="1" original-id="A1">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Recommendations class</span>
+                 <semx element="autonum" source="A1">1</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="A1">
+                       <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
+              <inherit id="_">/ss/584/2015/level/1</inherit>
+              <inherit id="_">/ss/584/2015/level/2</inherit>
+              <subject id="_">user</subject>
+              <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+                 <identifier original-id="_">Permission 1</identifier>
+              </permission>
+              <permission model="ogc" autonum="1-2" original-id="A3" id="_">
+                 <identifier original-id="_">Requirement 1</identifier>
+              </permission>
+              <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+                 <identifier original-id="_">Recommendation 1</identifier>
+              </recommendation>
+              <fmt-provision>
+                 <table id="A1" type="recommendclass" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Recommendations class</span>
+                                      <semx element="autonum" source="A1">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Target type</th>
+                          <td>
+                             <semx element="subject" source="_">user</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Prerequisites</th>
+                          <td>
+                             <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                             <br/>
+                             <semx element="inherit" source="_">/ss/584/2015/level/2</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Normative statements</th>
+                          <td>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Permission</span>
+                                <semx element="autonum" source="A2">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A2">
+                                      <semx element="identifier" source="_">Permission 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Permission</span>
+                                <semx element="autonum" source="A3">1-2</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A3">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                             <br/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Recommendation</span>
+                                <semx element="autonum" source="A4">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A4">
+                                      <semx element="identifier" source="_">Recommendation 1</semx>
+                                   </xref>
+                                </tt>
+                             </span>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </recommendation>
+        </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -2165,7 +2165,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <requirement model="ogc" id="A" unnumbered="true">
+          <requirement model="ogc" original-id="A" unnumbered="true">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A">(??)</semx>
@@ -2390,7 +2390,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" id="_" autonum="1">
+          <recommendation model="ogc" original-id="_" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -2560,7 +2560,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" id="_" autonum="1">
+          <recommendation model="ogc" original-id="_" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommandation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -2730,7 +2730,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation class="Provision" model="ogc" id="_" autonum="1">
+          <recommendation class="Provision" model="ogc" original-id="_" autonum="1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Provision</span>
                 <semx element="autonum" source="_">1</semx>

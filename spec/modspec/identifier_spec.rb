@@ -56,7 +56,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true" autonum="1">
+          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Permissions class</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -68,13 +68,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <permission model="ogc" id="A2" autonum="1-1">
+             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
+             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
+             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
              <description id="_">
@@ -169,7 +169,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </permission>
-          <permission model="ogc" id="B1" autonum="1">
+          <permission model="ogc" autonum="1" original-id="B1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="B1">1</semx>
@@ -325,12 +325,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true" autonum="1">
+          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
              <fmt-xref-label container="A1">
                 <span class="fmt-element-name">Permissions class</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -362,13 +362,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <permission model="ogc" id="A2" autonum="1-1">
+             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
+             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
+             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
              <description id="_">
@@ -463,7 +463,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </permission>
-          <permission model="ogc" id="B1" autonum="1">
+          <permission model="ogc" autonum="1" original-id="B1">
              <fmt-xref-label container="B1">
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="B1">1</semx>
@@ -645,7 +645,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true" autonum="1">
+          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
              <fmt-xref-label container="A1">
                 <span class="fmt-element-name">Permissions class</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -671,13 +671,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>/ogc/recommendation/wfs</value>
              </classification>
-             <permission model="ogc" id="A2" autonum="1-1">
+             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
+             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
+             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
              <description id="_">
@@ -772,7 +772,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </permission>
-          <permission model="ogc" id="B1" autonum="1">
+          <permission model="ogc" autonum="1" original-id="B1">
              <fmt-xref-label container="B1">
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="B1">1</semx>
@@ -947,7 +947,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true" autonum="1">
+          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
              <fmt-xref-label container="A1">
                 <span class="fmt-element-name">Permissions class</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -973,13 +973,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>/ogc/recommendation/wfs</value>
              </classification>
-             <permission model="ogc" id="A2" autonum="1-1">
+             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
+             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
+             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
              <description id="_">
@@ -1074,7 +1074,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </permission>
-          <permission model="ogc" id="B1" autonum="1">
+          <permission model="ogc" autonum="1" original-id="B1">
              <fmt-xref-label container="B1">
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="B1">1</semx>
@@ -1240,12 +1240,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" id="A1" type="class" keep-with-next="true" keep-lines-together="true" autonum="1">
+          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
              <fmt-xref-label container="A1">
                 <span class="fmt-element-name">Permissions class</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -1281,13 +1281,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>/ogc/recommendation/wfs</value>
              </classification>
-             <permission model="ogc" id="A2" autonum="1-1">
+             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" id="A3" autonum="1-1">
+             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" id="A4" autonum="1-1">
+             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
              <description id="_">
@@ -1382,7 +1382,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </permission>
-          <permission model="ogc" id="B1" autonum="1">
+          <permission model="ogc" autonum="1" original-id="B1">
              <fmt-xref-label container="B1">
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="B1">1</semx>
