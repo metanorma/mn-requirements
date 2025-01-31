@@ -210,7 +210,7 @@ module Metanorma
           return requirement_description_parse(node, ret, out)
         out.add_child("<tr#{id_attr(node)}><td colspan='2'></td></tr>").first
           .at(ns(".//td")) <<
-        (preserve_in_nested_table?(node) ? node.dup : semx_fmt_dup(node))
+        (preserve_in_nested_table?(node) ? node.dup : ret)
         out
       end
 

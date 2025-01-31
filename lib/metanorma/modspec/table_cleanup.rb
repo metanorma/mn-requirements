@@ -85,15 +85,12 @@ module Metanorma
 
       def requirement_table_nested_cleanup(node, out, table)
         ins = table.at(ns("./tbody"))
-        #out.xpath(ns("./*/fmt-provision/table")).each do |t|
         table.xpath(ns("./tbody/tr/td/*/fmt-provision/table")).each do |t|
           x = t.at(ns("./thead/tr")) or next
           x.at(ns("./th")).children =
             requirement_table_nested_cleanup_hdr(node)
           f = x.at(ns("./td/fmt-name")) and
             f.replace(f.children)
-          #ins << x.dup
-          #t.parent.remove
           t.parent.parent.parent.parent.replace(x)
         end
         out.xpath(ns("./*/fmt-provision")).each(&:remove)

@@ -67,7 +67,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -261,8 +261,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="measurement-target" source="_">
-                               <p original-id="_">The measurement target shall be measured as:</p>
-                               <formula autonum="1" original-id="B">
+                               <p id="_">The measurement target shall be measured as:</p>
+                               <formula id="B" autonum="1">
                                   <fmt-name>
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
@@ -294,8 +294,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="verification" source="_">
-                               <p original-id="_">The following code will be run for verification:</p>
-                               <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
+                               <p id="_">The following code will be run for verification:</p>
+                               <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -599,8 +599,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="measurement-target" source="_">
-                               <p original-id="_">The measurement target shall be measured as:</p>
-                               <formula autonum="1" original-id="B">
+                               <p id="_">The measurement target shall be measured as:</p>
+                               <formula id="B" autonum="1">
                                   <fmt-name>
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
@@ -632,8 +632,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="verification" source="_">
-                               <p original-id="_">The following code will be run for verification:</p>
-                               <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
+                               <p id="_">The following code will be run for verification:</p>
+                               <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -709,7 +709,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -872,8 +872,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="measurement-target" source="_">
-                               <p original-id="_">The measurement target shall be measured as:</p>
-                               <formula autonum="1" original-id="B">
+                               <p id="_">The measurement target shall be measured as:</p>
+                               <formula id="B" autonum="1">
                                   <fmt-name>
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
@@ -905,8 +905,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="verification" source="_">
-                               <p original-id="_">The following code will be run for verification:</p>
-                               <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
+                               <p id="_">The following code will be run for verification:</p>
+                               <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2275,8 +2275,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="measurement-target" source="_">
-                               <p original-id="_">The measurement target shall be measured as:</p>
-                               <formula autonum="1" original-id="B">
+                               <p id="_">The measurement target shall be measured as:</p>
+                               <formula id="B" autonum="1">
                                   <fmt-name>
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
@@ -2308,8 +2308,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="verification" source="_">
-                               <p original-id="_">The following code will be run for verification:</p>
-                               <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
+                               <p id="_">The following code will be run for verification:</p>
+                               <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2385,7 +2385,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -2498,8 +2498,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="measurement-target" source="_">
-                               <p original-id="_">The measurement target shall be measured as:</p>
-                               <formula autonum="1" original-id="B">
+                               <p id="_">The measurement target shall be measured as:</p>
+                               <formula id="B" autonum="1">
                                   <fmt-name>
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
@@ -2531,8 +2531,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="verification" source="_">
-                               <p original-id="_">The following code will be run for verification:</p>
-                               <sourcecode autonum="1" original-id="_">CoreRoot(success): HttpResponse
+                               <p id="_">The following code will be run for verification:</p>
+                               <sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2668,8 +2668,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="measurement-target" source="_">
-                               <p original-id="_">The measurement target shall be measured as:</p>
-                               <formula autonum="1" original-id="B">
+                               <p id="_">The measurement target shall be measured as:</p>
+                               <formula id="B" autonum="1">
                                   <fmt-name>
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
@@ -2701,8 +2701,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr id="_">
                          <td colspan="2">
                             <semx element="verification" source="_">
-                               <p original-id="_">The following code will be run for verification:</p>
-                               <sourcecode autonum="1" original-id="_">CoreRoot(success): HttpResponse
+                               <p id="_">The following code will be run for verification:</p>
+                               <sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2725,166 +2725,166 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .to be_equivalent_to Xml::C14n.format(presxml)
 
     presxml = <<~OUTPUT
-        <foreword id="A" displayorder="2">
-           <title id="_">Preface</title>
-           <fmt-title depth="1">
-              <semx element="title" source="_">Preface</semx>
-           </fmt-title>
-           <recommendation class="Provision" model="ogc" id="_" autonum="1">
-              <fmt-xref-label>
-                 <span class="fmt-element-name">Provision</span>
-                 <semx element="autonum" source="_">1</semx>
-                 :
-                 <tt>
-                    <xref style="id" target="_">
-                       <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                    </xref>
-                 </tt>
-              </fmt-xref-label>
-              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-              <inherit id="_">/ss/584/2015/level/1</inherit>
-              <subject id="_">user</subject>
-              <description id="_">
-                 <p original-id="_">
-                    I recommend
-                    <em>this</em>
-                    .
-                 </p>
-              </description>
-              <specification exclude="true" type="tabular">
-                 <p id="_">This is the object of the recommendation:</p>
-                 <table id="_">
-                    <tbody>
-                       <tr>
-                          <td style="text-align:left;">Object</td>
-                          <td style="text-align:left;">Value</td>
-                       </tr>
-                       <tr>
-                          <td style="text-align:left;">Mission</td>
-                          <td style="text-align:left;">Accomplished</td>
-                       </tr>
-                    </tbody>
-                 </table>
-              </specification>
-              <description id="_">
-                 <p original-id="_">As for the measurement targets,</p>
-              </description>
-              <measurement-target exclude="false" id="_">
-                 <p original-id="_">The measurement target shall be measured as:</p>
-                 <formula autonum="1" original-id="B">
-                    <stem type="AsciiMath">r/1 = 0</stem>
-                 </formula>
-              </measurement-target>
-              <verification exclude="false" id="_">
-                 <p original-id="_">The following code will be run for verification:</p>
-                 <sourcecode autonum="1" original-id="_">CoreRoot(success): HttpResponse
-              if (success)
-              recommendation(label: success-response)
-              end
-            </sourcecode>
-              </verification>
-              <import exclude="true">
-                 <sourcecode id="_" autonum="1">success-response()</sourcecode>
-              </import>
-              <fmt-provision>
-                 <table id="_" type="recommend" class="modspec">
-                    <thead>
-                       <tr>
-                          <th scope="colgroup" colspan="2">
-                             <p class="RecommendationTitle">
-                                <fmt-name>
-                                   <span class="fmt-caption-label">
-                                      <span class="fmt-element-name">Provision</span>
-                                      <semx element="autonum" source="_">1</semx>
-                                   </span>
-                                </fmt-name>
-                             </p>
-                          </th>
-                       </tr>
-                    </thead>
-                    <tbody>
-                       <tr>
-                          <th>Identifier</th>
-                          <td>
-                             <tt>
-                                <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                             </tt>
-                          </td>
-                       </tr>
-                       <tr>
-                          <th>Subject</th>
-                          <td>
-                             <semx element="subject" source="_">user</semx>
-                          </td>
-                       </tr>
-                       <tr>
-                          <th>Prerequisite</th>
-                          <td>
-                             <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
-                          </td>
-                       </tr>
-                       <tr>
-                          <th>Statements</th>
-                          <td>
-                             <p id="_">
-                                I recommend
-                                <em>this</em>
-                                .
-                             </p>
-                             <br/>
-                             <p id="_">As for the measurement targets,</p>
-                          </td>
-                       </tr>
-                       <tr id="_">
-                          <td colspan="2">
-                             <semx element="measurement-target" source="_">
-                                <p original-id="_">The measurement target shall be measured as:</p>
-                                <formula autonum="1" original-id="B">
-                                   <fmt-name>
-                                      <span class="fmt-caption-label">
-                                         <span class="fmt-autonum-delim">(</span>
-                                         1
-                                         <span class="fmt-autonum-delim">)</span>
-                                      </span>
-                                   </fmt-name>
-                                   <fmt-xref-label>
-                                      <span class="fmt-element-name">Formula</span>
-                                      <span class="fmt-autonum-delim">(</span>
-                                      <semx element="autonum" source="B">1</semx>
-                                      <span class="fmt-autonum-delim">)</span>
-                                   </fmt-xref-label>
-                                   <fmt-xref-label container="A">
-                                      <span class="fmt-xref-container">
-                                         <semx element="foreword" source="A">Preface</semx>
-                                      </span>
-                                      <span class="fmt-comma">,</span>
-                                      <span class="fmt-element-name">Formula</span>
-                                      <span class="fmt-autonum-delim">(</span>
-                                      <semx element="autonum" source="B">1</semx>
-                                      <span class="fmt-autonum-delim">)</span>
-                                   </fmt-xref-label>
-                                   <stem type="AsciiMath">r/1 = 0</stem>
-                                </formula>
-                             </semx>
-                          </td>
-                       </tr>
-                       <tr id="_">
-                          <td colspan="2">
-                             <semx element="verification" source="_">
-                                <p original-id="_">The following code will be run for verification:</p>
-                                <sourcecode autonum="1" original-id="_">CoreRoot(success): HttpResponse
-              if (success)
-              recommendation(label: success-response)
-              end
-            </sourcecode>
-                             </semx>
-                          </td>
-                       </tr>
-                    </tbody>
-                 </table>
-              </fmt-provision>
-           </recommendation>
-        </foreword>
+       <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <semx element="title" source="_">Preface</semx>
+          </fmt-title>
+          <recommendation class="Provision" model="ogc" id="_" autonum="1">
+             <fmt-xref-label>
+                <span class="fmt-element-name">Provision</span>
+                <semx element="autonum" source="_">1</semx>
+                :
+                <tt>
+                   <xref style="id" target="_">
+                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                   </xref>
+                </tt>
+             </fmt-xref-label>
+             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <subject id="_">user</subject>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>this</em>
+                   .
+                </p>
+             </description>
+             <specification exclude="true" type="tabular">
+                <p id="_">This is the object of the recommendation:</p>
+                <table id="_">
+                   <tbody>
+                      <tr>
+                         <td style="text-align:left;">Object</td>
+                         <td style="text-align:left;">Value</td>
+                      </tr>
+                      <tr>
+                         <td style="text-align:left;">Mission</td>
+                         <td style="text-align:left;">Accomplished</td>
+                      </tr>
+                   </tbody>
+                </table>
+             </specification>
+             <description id="_">
+                <p original-id="_">As for the measurement targets,</p>
+             </description>
+             <measurement-target exclude="false" id="_">
+                <p original-id="_">The measurement target shall be measured as:</p>
+                <formula autonum="1" original-id="B">
+                   <stem type="AsciiMath">r/1 = 0</stem>
+                </formula>
+             </measurement-target>
+             <verification exclude="false" id="_">
+                <p original-id="_">The following code will be run for verification:</p>
+                <sourcecode autonum="1" original-id="_">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </sourcecode>
+             </verification>
+             <import exclude="true">
+                <sourcecode id="_" autonum="1">success-response()</sourcecode>
+             </import>
+             <fmt-provision>
+                <table id="_" type="recommend" class="modspec">
+                   <thead>
+                      <tr>
+                         <th scope="colgroup" colspan="2">
+                            <p class="RecommendationTitle">
+                               <fmt-name>
+                                  <span class="fmt-caption-label">
+                                     <span class="fmt-element-name">Provision</span>
+                                     <semx element="autonum" source="_">1</semx>
+                                  </span>
+                               </fmt-name>
+                            </p>
+                         </th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <th>Identifier</th>
+                         <td>
+                            <tt>
+                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                            </tt>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Subject</th>
+                         <td>
+                            <semx element="subject" source="_">user</semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Prerequisite</th>
+                         <td>
+                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statements</th>
+                         <td>
+                            <p id="_">
+                               I recommend
+                               <em>this</em>
+                               .
+                            </p>
+                            <br/>
+                            <p id="_">As for the measurement targets,</p>
+                         </td>
+                      </tr>
+                      <tr id="_">
+                         <td colspan="2">
+                            <semx element="measurement-target" source="_">
+                               <p id="_">The measurement target shall be measured as:</p>
+                               <formula id="B" autonum="1">
+                                  <fmt-name>
+                                     <span class="fmt-caption-label">
+                                        <span class="fmt-autonum-delim">(</span>
+                                        1
+                                        <span class="fmt-autonum-delim">)</span>
+                                     </span>
+                                  </fmt-name>
+                                  <fmt-xref-label>
+                                     <span class="fmt-element-name">Formula</span>
+                                     <span class="fmt-autonum-delim">(</span>
+                                     <semx element="autonum" source="B">1</semx>
+                                     <span class="fmt-autonum-delim">)</span>
+                                  </fmt-xref-label>
+                                  <fmt-xref-label container="A">
+                                     <span class="fmt-xref-container">
+                                        <semx element="foreword" source="A">Preface</semx>
+                                     </span>
+                                     <span class="fmt-comma">,</span>
+                                     <span class="fmt-element-name">Formula</span>
+                                     <span class="fmt-autonum-delim">(</span>
+                                     <semx element="autonum" source="B">1</semx>
+                                     <span class="fmt-autonum-delim">)</span>
+                                  </fmt-xref-label>
+                                  <stem type="AsciiMath">r/1 = 0</stem>
+                               </formula>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="_">
+                         <td colspan="2">
+                            <semx element="verification" source="_">
+                               <p id="_">The following code will be run for verification:</p>
+                               <sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </sourcecode>
+                            </semx>
+                         </td>
+                      </tr>
+                   </tbody>
+                </table>
+             </fmt-provision>
+          </recommendation>
+       </foreword>
     OUTPUT
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
