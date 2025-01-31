@@ -149,9 +149,18 @@ def semx_fmt_dup(elem)
         reqt_subpart?(node.name) and type = reqt_component_type(node)
         ret = semx_fmt_dup(node)
         descr_classif_render(node, ret)
-        type and t = " type='#{type}'"
+        t = copy_style_attributes(node)
+        type and t += " type='#{type}'"
         out << "<div#{t}>#{to_xml(ret)}</div>"
         out
+      end
+
+      def copy_style_attributes(node)
+        t = ""
+        %w(style keep-with-next keep-lines-together).each do |x|
+          node[x] and t += " #{x}='#{node[x]}'"
+        end
+        t
       end
 
       def descr_classif_render(node, reqt)

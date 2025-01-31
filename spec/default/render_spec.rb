@@ -454,7 +454,7 @@ RSpec.describe Metanorma::Requirements::Default do
                       <p id="_">As for the measurement targets,</p>
                    </semx>
                 </div>
-                <div type="requirement-measurement-target">
+                <div keep-with-next="true" keep-lines-together="true" type="requirement-measurement-target">
                    <semx element="measurement-target" source="_">
                       <p id="_">The measurement target shall be measured as:</p>
                       <formula id="B" autonum="1">
