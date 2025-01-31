@@ -146,12 +146,6 @@ def semx_fmt_dup(elem)
 
       def requirement_component_parse(node, out)
         node["exclude"] == "true" and return out
-        #ret = node.dup
-        ret = semx_fmt_dup(node)
-        #if reqt_subpart?(node.name)
-          #ret["type"] = reqt_component_type(node)
-          #ret.name = "div"
-        #end
         reqt_subpart?(node.name) and type = reqt_component_type(node)
         ret = semx_fmt_dup(node)
         descr_classif_render(node, ret)
