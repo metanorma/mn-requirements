@@ -5,23 +5,34 @@ module Metanorma
         @i18n.l10n(text)
       end
 
-      def semx_fmt_dup(node)
-        @isodoc ||= isodoc_create(:standoc, :en, :Latn)
-        @isodoc.semx_fmt_dup(node)
-      end
+      # TODO: move to metanorma-utils
+def semx_fmt_dup(elem)
+      elem["id"] ||= "_#{UUIDTools::UUID.random_create}"
+      new = Nokogiri::XML(<<~XML).root
+        <semx xmlns='#{elem.namespace.href}' element='#{elem.name}' source='#{elem['original-id'] || elem['id']}'>#{to_xml(elem.children)}</semx>
+      XML
+      strip_duplicate_ids(nil, elem, new)
+      new
+    end
 
-      class Dummy
-        def attr(_key); end
+    def gather_all_ids(elem)
+      elem.xpath(".//*[@id]").each_with_object([]) do |i, m|
+        m << i["id"]
       end
+    end
 
-      def isodoc_create(flavor, _lang, _script)
-        x = Asciidoctor.load nil, backend: flavor.to_sym
-        x.converter.presentation_xml_converter(Dummy.new)
-        # isodoc.i18n_init(lang, script, nil) # read in internationalisation
-        # TODO locale?
-        # isodoc.metadata_init(lang, script, nil, isodoc.i18n)
-        # isodoc.info(xml, nil)
+    # remove ids duplicated between sem_title and pres_title
+    # index terms are assumed transferred to pres_title from sem_title
+    def strip_duplicate_ids(_node, sem_title, pres_title)
+      sem_title && pres_title or return
+      ids = gather_all_ids(pres_title)
+      sem_title.xpath(".//*[@id]").each do |x|
+        ids.include?(x["id"]) or next
+        x["original-id"] = x["id"]
+        x.delete("id")
       end
+      sem_title.xpath(ns(".//index")).each(&:remove)
+    end
 
       def recommendation_label(elem, type, xrefs)
         label, title = recommendation_labels(elem)
