@@ -210,7 +210,7 @@ module Metanorma
         node.name == "description" and
           return requirement_description_parse(node, ret, out)
         id = node["id"] || node["original-id"]
-        !preserve_in_nested_table?(node) && id and attr = " id='#{node['id']}'"
+        !preserve_in_nested_table?(node) && id and attr = " id='#{id}'"
         out.add_child("<tr#{id_attr(node)}><td colspan='2'#{attr}></td></tr>").first
           .at(ns(".//td")) <<
         (preserve_in_nested_table?(node) ? node.dup : ret)
