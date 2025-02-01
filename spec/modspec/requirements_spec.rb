@@ -259,7 +259,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <td>D</td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
@@ -292,7 +292,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="verification" source="_">
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
@@ -597,7 +597,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <td>D</td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
@@ -630,33 +630,33 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
-                            <semx element="verification" source="_">
-                               <p id="_">The following code will be run for verification:</p>
-                               <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
-             if (success)
-             recommendation(label: success-response)
-             end
-           </sourcecode>
-                            </semx>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-       </foreword>
-    OUTPUT
+                           <td colspan="2" id="_">
+                              <semx element="verification" source="_">
+                                 <p id="_">The following code will be run for verification:</p>
+                                 <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+               if (success)
+               recommendation(label: success-response)
+               end
+             </sourcecode>
+                              </semx>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </fmt-provision>
+            </permission>
+         </foreword>
+      OUTPUT
 
-    out = Nokogiri::XML(
-      IsoDoc::PresentationXMLConvert.new({})
-      .convert("test", input, true),
-    ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-  end
+      out = Nokogiri::XML(
+        IsoDoc::PresentationXMLConvert.new({})
+        .convert("test", input, true),
+      ).at("//xmlns:foreword")
+      expect(Xml::C14n.format(strip_guid(out.to_xml)))
+        .to be_equivalent_to Xml::C14n.format(presxml)
+    end
 
-  it "processes abstract tests" do
+    it "processes abstract tests" do
     input = <<~INPUT
               <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface>
@@ -870,7 +870,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <td>D</td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
@@ -903,7 +903,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="verification" source="_">
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
@@ -2288,7 +2288,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
@@ -2321,7 +2321,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="verification" source="_">
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
@@ -2511,7 +2511,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
@@ -2544,7 +2544,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="verification" source="_">
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
@@ -2681,7 +2681,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
@@ -2714,7 +2714,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="verification" source="_">
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
@@ -2851,7 +2851,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
@@ -2884,7 +2884,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          </td>
                       </tr>
                       <tr id="_">
-                         <td colspan="2">
+                         <td colspan="2" id="_">
                             <semx element="verification" source="_">
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
