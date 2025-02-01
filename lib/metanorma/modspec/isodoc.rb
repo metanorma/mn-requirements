@@ -209,8 +209,9 @@ module Metanorma
           return recommendation_attributes1_component(node, ret, out)
         node.name == "description" and
           return requirement_description_parse(node, ret, out)
-        !preserve_in_nested_table?(node) && node["id"] and id = " id='#{node['id']}'"
-        out.add_child("<tr#{id_attr(node)}><td colspan='2'#{id}></td></tr>").first
+        id = node["id"] || node["original-id"]
+        !preserve_in_nested_table?(node) && id and attr = " id='#{node['id']}'"
+        out.add_child("<tr#{id_attr(node)}><td colspan='2'#{attr}></td></tr>").first
           .at(ns(".//td")) <<
         (preserve_in_nested_table?(node) ? node.dup : ret)
         out
