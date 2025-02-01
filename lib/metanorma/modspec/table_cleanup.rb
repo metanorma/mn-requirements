@@ -49,7 +49,9 @@ module Metanorma
         th = trow.at(ns("./th"))
         hdr = plural_table_row_hdr(th)
         td = th.next_element
-        res = [to_xml(td.children)]
+        id = td["id"] ? "<bookmark id='#{td['id']}'/>" : ""
+        td.delete("id")
+        res = [id + to_xml(td.children)]
         res += gather_consec_table_rows(trow, hdr)
         td.children = res.join("<br/>")
       end
@@ -65,7 +67,9 @@ module Metanorma
         ret = []
         trow.xpath("./following-sibling::xmlns:tr").each do |r|
           r.at(ns("./th"))&.text&.strip == hdr or break
-          ret << to_xml(r.remove.at(ns("./td")).children)
+          td = r.remove.at(ns("./td"))
+          id = td["id"] ? "<bookmark id='#{td['id']}'/>" : ""
+          ret << id + to_xml(td.children)
         end
         ret
       end
@@ -84,13 +88,14 @@ module Metanorma
       end
 
       def requirement_table_nested_cleanup(node, out, table)
-        ins = table.at(ns("./tbody"))
         table.xpath(ns("./tbody/tr/td/*/fmt-provision/table")).each do |t|
           x = t.at(ns("./thead/tr")) or next
           x.at(ns("./th")).children =
             requirement_table_nested_cleanup_hdr(node)
           f = x.at(ns("./td/fmt-name")) and
             f.replace(f.children)
+          td = x.at(ns("./td"))
+          td["id"] = t["id"] || t["original-id"]
           t.parent.parent.parent.parent.replace(x)
         end
         out.xpath(ns("./*/fmt-provision")).each(&:remove)

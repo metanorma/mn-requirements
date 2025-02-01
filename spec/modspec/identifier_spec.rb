@@ -113,6 +113,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Normative statements</th>
                          <td>
+                            <bookmark id="A2"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Permission</span>
                                <semx element="autonum" source="B1">1</semx>
@@ -124,6 +125,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A3"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Requirement</span>
                                <semx element="autonum" source="A3">1-1</semx>
@@ -135,6 +137,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A4"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Recommendation</span>
                                <semx element="autonum" source="A4">1-1</semx>
@@ -325,7 +328,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -407,6 +410,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Normative statements</th>
                          <td>
+                            <bookmark id="A2"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Permission</span>
                                <semx element="autonum" source="B1">1</semx>
@@ -418,6 +422,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A3"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Requirement</span>
                                <semx element="autonum" source="A3">1-1</semx>
@@ -429,6 +434,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A4"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Recommendation</span>
                                <semx element="autonum" source="A4">1-1</semx>
@@ -640,7 +646,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -716,6 +722,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Normative statements</th>
                          <td>
+                            <bookmark id="A2"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Permission</span>
                                <semx element="autonum" source="B1">1</semx>
@@ -727,6 +734,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A3"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Requirement</span>
                                <semx element="autonum" source="A3">1-1</semx>
@@ -738,6 +746,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A4"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Recommendation</span>
                                <semx element="autonum" source="A4">1-1</semx>
@@ -1018,6 +1027,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Normative statements</th>
                          <td>
+                            <bookmark id="A2"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Permission</span>
                                <semx element="autonum" source="B1">1</semx>
@@ -1029,6 +1039,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A3"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Requirement</span>
                                <semx element="autonum" source="A3">1-1</semx>
@@ -1040,6 +1051,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A4"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Recommendation</span>
                                <semx element="autonum" source="A4">1-1</semx>
@@ -1326,6 +1338,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Normative statements</th>
                          <td>
+                            <bookmark id="A2"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Permission</span>
                                <semx element="autonum" source="B1">1</semx>
@@ -1337,6 +1350,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A3"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Requirement</span>
                                <semx element="autonum" source="A3">1-1</semx>
@@ -1348,6 +1362,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                </tt>
                             </span>
                             <br/>
+                            <bookmark id="A4"/>
                             <span class="fmt-caption-label">
                                <span class="fmt-element-name">Recommendation</span>
                                <semx element="autonum" source="A4">1-1</semx>
