@@ -991,4 +991,143 @@ RSpec.describe Metanorma::Requirements::Modspec do
     expect(Xml::C14n.format(strip_guid(out.to_xml)))
       .to be_equivalent_to Xml::C14n.format(presxml)
   end
+
+  it "processes nested requirement" do
+    input = <<~INPUT
+              <ogc-standard xmlns="https://standards.opengeospatial.org/document">
+        <preface><foreword id="A"><title>Preface</title>
+        <requirement id="_c48cc925-b506-b047-d2b3-ed869fa42ebc" model="ogc" obligation="requirement" type="class"><subject>Software implementation</subject>
+<inherit>http://www.opengis.net/spec/WPS/2.0/req/conceptual-model</inherit><inherit>OWS Common 2.0</inherit><inherit>http://www.opengis.net/spec/WPS/2.0/req/service/model/handling</inherit><requirement id="_60bc1828-5e99-25ad-4ef2-c24b3b14138a" model="ogc" type="general"> <description><p id="_fea70c5b-26ca-cfe3-fbd5-74c62ccf5d19"><em>GetStatus request shall comply with the structure defined in <xref target="fig-getstatus-request-uml"/> and <xref target="tab-addition-properties-in-the-getstatus-request"/>.</em></p></description>
+</requirement>
+
+<requirement id="_d12a3db5-4115-d12d-b7e1-d42009461672" model="ogc" type="general"> <description><p id="_cb6b025c-e032-5bf5-b838-3b44693e2891"><em>The JobID used in the request shall be a valid identifier which the client has received with the execute response.</em></p></description>
+</requirement>
+</requirement>
+      </foreword>
+      </preface>
+      </ogc-standard>
+    INPUT
+    presxml = <<~OUTPUT
+           <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <semx element="title" source="_">Preface</semx>
+          </fmt-title>
+          <requirement model="ogc" obligation="requirement" type="class" autonum="1" original-id="_">
+             <fmt-xref-label>
+                <span class="fmt-element-name">Requirements class</span>
+                <semx element="autonum" source="_">1</semx>
+             </fmt-xref-label>
+             <subject id="_">Software implementation</subject>
+             <inherit id="_">http://www.opengis.net/spec/WPS/2.0/req/conceptual-model</inherit>
+             <inherit id="_">OWS Common 2.0</inherit>
+             <inherit id="_">http://www.opengis.net/spec/WPS/2.0/req/service/model/handling</inherit>
+             <requirement model="ogc" type="general" autonum="1-1" original-id="_" id="_">
+                <description original-id="_">
+                   <p original-id="_">
+                      <em>
+                         GetStatus request shall comply with the structure defined in
+                         <xref target="fig-getstatus-request-uml"/>
+                         and
+                         <xref target="tab-addition-properties-in-the-getstatus-request"/>
+                         .
+                      </em>
+                   </p>
+                </description>
+             </requirement>
+             <requirement model="ogc" type="general" autonum="1-2" original-id="_" id="_">
+                <description original-id="_">
+                   <p original-id="_">
+                      <em>The JobID used in the request shall be a valid identifier which the client has received with the execute response.</em>
+                   </p>
+                </description>
+             </requirement>
+             <fmt-provision>
+                <table id="_" type="recommendclass" class="modspec">
+                   <thead>
+                      <tr>
+                         <th scope="colgroup" colspan="2">
+                            <p class="RecommendationTitle">
+                               <fmt-name>
+                                  <span class="fmt-caption-label">
+                                     <span class="fmt-element-name">Requirements class</span>
+                                     <semx element="autonum" source="_">1</semx>
+                                  </span>
+                               </fmt-name>
+                            </p>
+                         </th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <th>Obligation</th>
+                         <td>requirement</td>
+                      </tr>
+                      <tr>
+                         <th>Target type</th>
+                         <td>
+                            <semx element="subject" source="_">Software implementation</semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Prerequisites</th>
+                         <td>
+                            <semx element="inherit" source="_">http://www.opengis.net/spec/WPS/2.0/req/conceptual-model</semx>
+                            <br/>
+                            <semx element="inherit" source="_">OWS Common 2.0</semx>
+                            <br/>
+                            <semx element="inherit" source="_">http://www.opengis.net/spec/WPS/2.0/req/service/model/handling</semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Normative statements</th>
+                         <td>
+                            <bookmark id="_"/>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">Requirement</span>
+                               <semx element="autonum" source="_">
+                                  <span class="fmt-element-name">Requirement</span>
+                                  <semx element="autonum" source="_">1</semx>
+                                  <span class="fmt-autonum-delim">-</span>
+                                  <semx element="autonum" source="_">1</semx>
+                               </semx>
+                            </span>
+                            <semx element="description" source="_">
+                               <em>
+                                  GetStatus request shall comply with the structure defined in
+                                  <xref target="fig-getstatus-request-uml">[fig-getstatus-request-uml]</xref>
+                                  and
+                                  <xref target="tab-addition-properties-in-the-getstatus-request">[tab-addition-properties-in-the-getstatus-request]</xref>
+                                  .
+                               </em>
+                            </semx>
+                            <br/>
+                            <bookmark id="_"/>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">Requirement</span>
+                               <semx element="autonum" source="_">
+                                  <span class="fmt-element-name">Requirement</span>
+                                  <semx element="autonum" source="_">1</semx>
+                                  <span class="fmt-autonum-delim">-</span>
+                                  <semx element="autonum" source="_">2</semx>
+                               </semx>
+                            </span>
+                            <semx element="description" source="_">
+                               <em>The JobID used in the request shall be a valid identifier which the client has received with the execute response.</em>
+                            </semx>
+                         </td>
+                      </tr>
+                   </tbody>
+                </table>
+             </fmt-provision>
+          </requirement>
+       </foreword>
+    OUTPUT
+        out = Nokogiri::XML(
+      IsoDoc::PresentationXMLConvert.new({})
+      .convert("test", input, true),
+    ).at("//xmlns:foreword")
+    expect(Xml::C14n.format(strip_guid(out.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(presxml)
+  end
 end

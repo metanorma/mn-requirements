@@ -95,8 +95,11 @@ module Metanorma
           f = x.at(ns("./td/fmt-name")) and
             f.replace(f.children)
           td = x.at(ns("./td"))
-          #require "debug"; binding.b
           td["id"] = t["original-id"] || t["id"]
+          if desc = t.at(ns("./tbody/tr/td/semx[@element = 'description']"))
+            p = desc.at(ns("./p")) and p.replace(p.children)
+td << " #{to_xml(desc)}"
+          end
           t.parent.parent.parent.parent.replace(x)
         end
         out.xpath(ns("./*/fmt-provision")).each(&:remove)
