@@ -222,7 +222,7 @@ module Metanorma
         recommend_class(node.parent) == "recommend" and
           lbl = "statement"
         out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
-               "<td>#{to_xml(ret.children)}</td></tr>"
+               "<td>#{to_xml(ret)}</td></tr>"
         out
       end
 

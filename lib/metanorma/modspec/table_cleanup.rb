@@ -95,7 +95,8 @@ module Metanorma
           f = x.at(ns("./td/fmt-name")) and
             f.replace(f.children)
           td = x.at(ns("./td"))
-          td["id"] = t["id"] || t["original-id"]
+          #require "debug"; binding.b
+          td["id"] = t["original-id"] || t["id"]
           t.parent.parent.parent.parent.replace(x)
         end
         out.xpath(ns("./*/fmt-provision")).each(&:remove)

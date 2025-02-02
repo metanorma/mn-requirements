@@ -48,7 +48,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" original-id="_" autonum="1">
+          <recommendation model="ogc" autonum="1" original-id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -207,25 +207,27 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>1</em>
-                               .
-                            </p>
-                            <dl>
-                               <dt>
-                                  <semx element="tag" source="_">scope</semx>
-                               </dt>
-                               <dd>
-                                  <semx element="value" source="_">random</semx>
-                               </dd>
-                               <dt>
-                                  <semx element="tag" source="_">widgets</semx>
-                               </dt>
-                               <dd>
-                                  <semx element="value" source="_">randomer</semx>
-                               </dd>
-                            </dl>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>1</em>
+                                  .
+                               </p>
+                               <dl>
+                                  <dt>
+                                     <semx element="tag" source="_">scope</semx>
+                                  </dt>
+                                  <dd>
+                                     <semx element="value" source="_">random</semx>
+                                  </dd>
+                                  <dt>
+                                     <semx element="tag" source="_">widgets</semx>
+                                  </dt>
+                                  <dd>
+                                     <semx element="value" source="_">randomer</semx>
+                                  </dd>
+                               </dl>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A1">
@@ -239,17 +241,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statements</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>2</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>2</em>
+                                  .
+                               </p>
+                            </semx>
                             <br/>
-                            <p id="_">
-                               I recommend
-                               <em>2a</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>2a</em>
+                                  .
+                               </p>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A2">
@@ -263,11 +269,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>3</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>3</em>
+                                  .
+                               </p>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A3">
@@ -281,11 +289,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>4</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>4</em>
+                                  .
+                               </p>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A4">
@@ -299,11 +309,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>5</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>5</em>
+                                  .
+                               </p>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A5">
@@ -317,11 +329,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>6</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>6</em>
+                                  .
+                               </p>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A6">
@@ -335,17 +349,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statements</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>7</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>7</em>
+                                  .
+                               </p>
+                            </semx>
                             <br/>
-                            <p id="_">
-                               I recommend
-                               <em>7a</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>7a</em>
+                                  .
+                               </p>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A7">
@@ -359,11 +377,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>8</em>
-                               .
-                            </p>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>8</em>
+                                  .
+                               </p>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A7">
@@ -417,12 +437,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" original-id="_" autonum="1">
+          <recommendation model="ogc" autonum="1" original-id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -501,19 +521,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">
-                               I recommend
-                               <em>1</em>
-                               .
-                            </p>
-                            <dl>
-                               <dt>
-                                  <semx element="tag" source="_">http://www.example4.com</semx>
-                               </dt>
-                               <dd>
-                                  <semx element="value" source="_">http://www.example5.com</semx>
-                               </dd>
-                            </dl>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>1</em>
+                                  .
+                               </p>
+                               <dl>
+                                  <dt>
+                                     <semx element="tag" source="_">http://www.example4.com</semx>
+                                  </dt>
+                                  <dd>
+                                     <semx element="value" source="_">http://www.example5.com</semx>
+                                  </dd>
+                               </dl>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A1">
@@ -527,7 +549,11 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <p id="_">http://www.example6.com</p>
+                            <link target="http://www.example6.com">
+                               <semx element="description" source="_">
+                                  <p id="_">http://www.example6.com</p>
+                               </semx>
+                            </link>
                          </td>
                       </tr>
                       <tr id="A7">
@@ -541,7 +567,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <link target="http://www.example7.com">http://www.example7.com</link>
+                            <link target="http://www.example7.com">
+                               <semx element="description" source="_">http://www.example7.com</semx>
+                            </link>
                          </td>
                       </tr>
                    </tbody>

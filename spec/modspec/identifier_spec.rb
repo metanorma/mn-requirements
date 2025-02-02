@@ -51,7 +51,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -153,19 +153,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Description</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
-                            <xref target="B1">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="B1">1</semx>
-                               :
-                               <tt>
-                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
-                               </tt>
-                            </xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                               <xref target="B1">
+                                  <span class="fmt-element-name">Permission</span>
+                                  <semx element="autonum" source="B1">1</semx>
+                                  :
+                                  <tt>
+                                     <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
+                                  </tt>
+                               </xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -232,11 +234,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -328,7 +332,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -450,19 +454,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Description</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/recommendation/wfs/2</xref>
-                            <xref target="B1" style="id">/recommendation/wfs/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
-                            <xref target="B1">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="B1">1</semx>
-                               :
-                               <tt>
-                                  <semx element="identifier" source="_">/recommendation/wfs/10</semx>
-                               </tt>
-                            </xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/recommendation/wfs/2</xref>
+                               <xref target="B1" style="id">/recommendation/wfs/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                               <xref target="B1">
+                                  <span class="fmt-element-name">Permission</span>
+                                  <semx element="autonum" source="B1">1</semx>
+                                  :
+                                  <tt>
+                                     <semx element="identifier" source="_">/recommendation/wfs/10</semx>
+                                  </tt>
+                               </xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -549,11 +555,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/recommendation/wfs/2</xref>
-                            <xref target="B1" style="id">/recommendation/wfs/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/recommendation/wfs/2</xref>
+                               <xref target="B1" style="id">/recommendation/wfs/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -646,7 +654,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -762,19 +770,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Description</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/2</xref>
-                            <xref target="B1" style="id">/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
-                            <xref target="B1">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="B1">1</semx>
-                               :
-                               <tt>
-                                  <semx element="identifier" source="_">/10</semx>
-                               </tt>
-                            </xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/2</xref>
+                               <xref target="B1" style="id">/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                               <xref target="B1">
+                                  <span class="fmt-element-name">Permission</span>
+                                  <semx element="autonum" source="B1">1</semx>
+                                  :
+                                  <tt>
+                                     <semx element="identifier" source="_">/10</semx>
+                                  </tt>
+                               </xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -855,11 +865,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/wfs/2</xref>
-                            <xref target="B1" style="id">/wfs/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/wfs/2</xref>
+                               <xref target="B1" style="id">/wfs/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -1067,19 +1079,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Description</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/2</xref>
-                            <xref target="B1" style="id">/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
-                            <xref target="B1">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="B1">1</semx>
-                               :
-                               <tt>
-                                  <semx element="identifier" source="_">/10</semx>
-                               </tt>
-                            </xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/2</xref>
+                               <xref target="B1" style="id">/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                               <xref target="B1">
+                                  <span class="fmt-element-name">Permission</span>
+                                  <semx element="autonum" source="B1">1</semx>
+                                  :
+                                  <tt>
+                                     <semx element="identifier" source="_">/10</semx>
+                                  </tt>
+                               </xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -1156,11 +1170,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/2</xref>
-                            <xref target="B1" style="id">/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/2</xref>
+                               <xref target="B1" style="id">/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -1252,7 +1268,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -1378,19 +1394,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Description</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/2</xref>
-                            <xref target="B1" style="id">/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
-                            <xref target="B1">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="B1">1</semx>
-                               :
-                               <tt>
-                                  <semx element="identifier" source="_">/10</semx>
-                               </tt>
-                            </xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/2</xref>
+                               <xref target="B1" style="id">/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                               <xref target="B1">
+                                  <span class="fmt-element-name">Permission</span>
+                                  <semx element="autonum" source="B1">1</semx>
+                                  :
+                                  <tt>
+                                     <semx element="identifier" source="_">/10</semx>
+                                  </tt>
+                               </xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -1477,11 +1495,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
-                            <xref target="A1" style="id">/2</xref>
-                            <xref target="B1" style="id">/10</xref>
-                            <xref target="A1">/ogc/recommendation/wfs/2</xref>
-                            <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            <semx element="description" source="_">
+                               <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
+                               <xref target="A1" style="id">/2</xref>
+                               <xref target="B1" style="id">/10</xref>
+                               <xref target="A1">/ogc/recommendation/wfs/2</xref>
+                               <xref target="B1">/ogc/recommendation/wfs/10</xref>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
