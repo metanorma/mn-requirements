@@ -1084,7 +1084,6 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <td>
                             <bookmark id="_"/>
                             <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Requirement</span>
                                <semx element="autonum" source="_">
                                   <span class="fmt-element-name">Requirement</span>
                                   <semx element="autonum" source="_">1</semx>
@@ -1104,7 +1103,6 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <br/>
                             <bookmark id="_"/>
                             <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Requirement</span>
                                <semx element="autonum" source="_">
                                   <span class="fmt-element-name">Requirement</span>
                                   <semx element="autonum" source="_">1</semx>

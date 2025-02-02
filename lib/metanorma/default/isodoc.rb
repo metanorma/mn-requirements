@@ -39,7 +39,8 @@ def semx_fmt_dup(elem)
         type = "<span class='fmt-element-name'>#{type}</span>"
         num = xrefs.anchor(elem["id"], :label, false)
         num &&= "<semx element='autonum' source='#{elem['id']}'>#{num}</semx>"
-        ret = "#{type} #{num}".strip
+        ret = num
+        /<span class='fmt-element-name'>/.match?(ret) or ret = "#{type} #{num}".strip
         label || title and
           ret += recommendation_label_add(elem, label, title)
         ret
