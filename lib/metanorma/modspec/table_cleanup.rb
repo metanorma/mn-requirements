@@ -51,7 +51,7 @@ module Metanorma
         td = th.next_element
         id = td["id"] ? "<bookmark id='#{td['id']}'/>" : ""
         td.delete("id")
-        res = [id + to_xml(td.children)]
+        res = [id + to_xml(td.children).strip]
         res += gather_consec_table_rows(trow, hdr)
         td.children = res.join("<br/>")
       end
@@ -69,7 +69,7 @@ module Metanorma
           r.at(ns("./th"))&.text&.strip == hdr or break
           td = r.remove.at(ns("./td"))
           id = td["id"] ? "<bookmark id='#{td['id']}'/>" : ""
-          ret << id + to_xml(td.children)
+          ret << id + to_xml(td.children).strip
         end
         ret
       end
