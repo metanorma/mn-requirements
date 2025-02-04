@@ -93,7 +93,7 @@ module Metanorma
           x.at(ns("./th")).children =
             requirement_table_nested_cleanup_hdr(node)
           f = x.at(ns("./td/fmt-name")) and
-            f.replace(f.children)
+            f.parent.children = to_xml(f.children).strip
           td = x.at(ns("./td"))
           td["id"] = t["original-id"] || t["id"]
           if desc = t.at(ns("./tbody/tr/td/semx[@element = 'description']"))
