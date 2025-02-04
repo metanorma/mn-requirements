@@ -155,96 +155,122 @@ module Metanorma
         node["id"] ? " id='#{node['id']}'" : ""
       end
 
-      def recommendation_steps(node)
+      # KILL
+      def recommendation_stepsX(node)
         node.elements.each { |e| recommendation_steps(e) }
         node.at(ns("./component[@class = 'step']")) or return node
         d = node.at(ns("./component[@class = 'step']"))
         d = d.replace("<ol class='steps'><li#{id_attr(d)}>" \
-                      "#{to_xml(d.children)}</li></ol>").first
+        "#{to_xml(d.children)}</li></ol>").first
         node.xpath(ns("./component[@class = 'step']")).each do |f|
           f = f.replace("<li#{id_attr(f)}>#{to_xml(f.children)}</li>").first
           d << f
         end
-        node
+          node
       end
 
-      def recommendation_attributes1_component(node, ret, out)
-        node["class"] == "guidance" and return out
-        ret = recommendation_steps(ret)
-        out << "<tr#{id_attr(node)}><th>#{node['label']}</th>" \
-               "<td>#{to_xml(ret)}</td></tr>"
-        node.delete("label") # inserted in recommendation_component_labels
-        out
-      end
 
-      def recommendation_attr_keyvalue(node, key, value)
-        tag = node.at(ns("./#{key}")) or return nil
-        value = node.at(ns("./#{value}")) or return nil
-        !%w(target indirect-dependency identifier-base
+        def recommendation_steps(node, ret)
+          ret.elements.each_with_index do |e, i|
+            e1 = nil
+            #require "debug"; e.name == "component" && e["class"] == "step" and binding.b
+            e.name == "component" && e["class"] == "step" and
+              e1 = e.replace(semx_fmt_dup(node.elements[i]))
+            #require "debug"; e.name == "component" && e["class"] == "step" and binding.b
+            recommendation_steps(node.elements[i], e1 || e)
+          end
+          node.name == "component" && node["class"] == "step" and ret["inlist"] = "true"
+          #require "debug"; node.name == "component" && node["class"] == "step" and binding.b
+          d = ret.at(ns("./semx[@inlist]")) or return ret
+          d.delete("inlist")
+          d = d.replace("<ol class='steps'><li#{id_attr(d)}>" \
+                        "#{to_xml(d)}</li></ol>").first
+          ret.xpath(ns("./semx[@inlist]")).each do |f|
+            f.delete("inlist")
+            f = f.replace("<li#{id_attr(f)}>#{to_xml(f)}</li>").first
+            d << f
+          end
+          ret
+        end
+
+        def recommendation_attributes1_component(node, ret, out)
+          node["class"] == "guidance" and return out
+          ret = recommendation_steps(node, ret)
+          out << "<tr#{id_attr(node)}><th>#{node['label']}</th>" \
+            "<td>#{to_xml(ret)}</td></tr>"
+          node.delete("label") # inserted in recommendation_component_labels
+          out
+        end
+
+        def recommendation_attr_keyvalue(node, key, value)
+          tag = node.at(ns("./#{key}")) or return nil
+          value = node.at(ns("./#{value}")) or return nil
+          !%w(target indirect-dependency identifier-base
             implements).include?(tag.text.downcase) or
-          return nil
-          lbl = semx_fmt_dup(tag)
-          lbl.children = Metanorma::Utils.strict_capitalize_first(lbl.text)
-        [to_xml(lbl), semx_fmt_dup(value)]
-      end
+            return nil
+            lbl = semx_fmt_dup(tag)
+            lbl.children = Metanorma::Utils.strict_capitalize_first(lbl.text)
+            [to_xml(lbl), semx_fmt_dup(value)]
+        end
 
-      def reqt_component_type(node)
-        klass = node.name
-        klass == "component" and klass = node["class"]
-        "requirement-#{klass}"
-      end
+        def reqt_component_type(node)
+          klass = node.name
+          klass == "component" and klass = node["class"]
+          "requirement-#{klass}"
+        end
 
-      def preserve_in_nested_table?(node)
-        %w(recommendation requirement permission
+        def preserve_in_nested_table?(node)
+          %w(recommendation requirement permission
            table ol dl ul).include?(node.name)
-      end
-
-      def requirement_component_parse(node, out)
-        node["exclude"] == "true" and return out
-        ret = semx_fmt_dup(node)
-        descr_classif_render(node, ret)
-        ret.elements.size == 1 && ret.first_element_child.name == "dl" and
-          return reqt_dl(ret.first_element_child, out)
-        node.name == "component" and
-          return recommendation_attributes1_component(node, ret, out)
-        node.name == "description" and
-          return requirement_description_parse(node, ret, out)
-        id = node["id"] || node["original-id"]
-        !preserve_in_nested_table?(node) && id and attr = " id='#{id}'"
-        out.add_child("<tr#{id_attr(node)}><td colspan='2'#{attr}></td></tr>").first
-          .at(ns(".//td")) <<
-        (preserve_in_nested_table?(node) ? node.dup : ret)
-        out
-      end
-
-      def requirement_description_parse(node, ret, out)
-        lbl = "description"
-        recommend_class(node.parent) == "recommend" and
-          lbl = "statement"
-        out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
-               "<td>#{to_xml(ret)}</td></tr>"
-        out
-      end
-
-      def requirement_guidance_parse(node, out)
-        ins = out.at(ns("./fmt-provision/table/tbody"))
-        out.xpath(ns("./component[@class = 'guidance']")).each do |f|
-          f.delete("label")
-          ins << "<tr#{id_attr(f)}><th>#{@labels['modspec']['guidance']}</th>" \
-                 "<td>#{to_xml(semx_fmt_dup(f))}</td></tr>"
         end
-        out
-      end
 
-      def reqt_dl(node, out)
-        node.xpath(ns("./dt")).each do |dt|
-          dd = dt.next_element
-          dd&.name == "dd" or next
-          out.add_child("<tr><th>#{to_xml(dt.children)}</th>" \
-                        "<td>#{to_xml(dd.children)}</td></tr>")
+        def requirement_component_parse(node, out)
+          node["exclude"] == "true" and return out
+          ret = semx_fmt_dup(node)
+          descr_classif_render(node, ret)
+          ret.elements.size == 1 && ret.first_element_child.name == "dl" and
+            return reqt_dl(ret.first_element_child, out)
+          node.name == "component" and
+            return recommendation_attributes1_component(node, ret, out)
+          node.name == "description" and
+            return requirement_description_parse(node, ret, out)
+          id = node["id"] || node["original-id"]
+          !preserve_in_nested_table?(node) && id and attr = " id='#{id}'"
+          out.add_child("<tr#{id_attr(node)}><td colspan='2'#{attr}></td></tr>").first
+            .at(ns(".//td")) <<
+          (preserve_in_nested_table?(node) ? node.dup : ret)
+          out
         end
-        out
+
+        def requirement_description_parse(node, ret, out)
+          lbl = "description"
+          recommend_class(node.parent) == "recommend" and
+            lbl = "statement"
+          out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
+            "<td>#{to_xml(ret)}</td></tr>"
+          out
+        end
+
+        def requirement_guidance_parse(node, out)
+          ins = out.at(ns("./fmt-provision/table/tbody"))
+          origs = node.xpath(ns("./component[@class = 'guidance']"))
+          out.xpath(ns("./component[@class = 'guidance']")).each_with_index do |f, i|
+            f.delete("label")
+            ins << "<tr#{id_attr(f)}><th>#{@labels['modspec']['guidance']}</th>" \
+              "<td>#{to_xml(semx_fmt_dup(origs[i]))}</td></tr>"
+          end
+          out
+        end
+
+        def reqt_dl(node, out)
+          node.xpath(ns("./dt")).each do |dt|
+            dd = dt.next_element
+            dd&.name == "dd" or next
+            out.add_child("<tr><th>#{to_xml(dt.children)}</th>" \
+                          "<td>#{to_xml(dd.children)}</td></tr>")
+          end
+          out
+        end
       end
     end
   end
-end

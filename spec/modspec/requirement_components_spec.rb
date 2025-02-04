@@ -623,12 +623,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <requirement model="ogc" original-id="A1" autonum="1">
+          <requirement model="ogc" autonum="1" original-id="A1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -638,16 +638,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </component>
              <component exclude="false" class="test-method" id="_">
                 <p original-id="1">
-                   <component exclude="false" class="step">
+                   <component exclude="false" class="step" id="_">
                       <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
-                      <component exclude="false" class="step">
+                      <component exclude="false" class="step" id="_">
                          <p original-id="3">
                    Validate that the Implementation Specification contains a data
                    element which represents the same concept as that defined for
                    the UML class.
                  </p>
                       </component>
-                      <component exclude="false" class="step">
+                      <component exclude="false" class="step" id="_">
                          <p original-id="4">
                    Validate that the data element has the same relationships with
                    other elements as those defined for the UML class. Validate that
@@ -691,25 +691,31 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="1">
                                   <ol class="steps">
                                      <li>
-                                        <p id="2">For each UML class defined or referenced in the Tunnel Package:</p>
-                                        <ol class="steps">
-                                           <li>
-                                              <p id="3">
+                                        <semx element="component" source="_">
+                                           <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
+                                           <ol class="steps">
+                                              <li>
+                                                 <semx element="component" source="_">
+                                                    <p original-id="3">
                    Validate that the Implementation Specification contains a data
                    element which represents the same concept as that defined for
                    the UML class.
                  </p>
-                                           </li>
-                                           <li>
-                                              <p id="4">
+                                                 </semx>
+                                              </li>
+                                              <li>
+                                                 <semx element="component" source="_">
+                                                    <p original-id="4">
                    Validate that the data element has the same relationships with
                    other elements as those defined for the UML class. Validate that
                    those relationships have the same source, target, direction,
                    roles, and multiplicies as those documented in the Conceptual
                    Model.
                  </p>
-                                           </li>
-                                        </ol>
+                                                 </semx>
+                                              </li>
+                                           </ol>
+                                        </semx>
                                      </li>
                                   </ol>
                                </p>
@@ -1008,7 +1014,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-           <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
