@@ -43,7 +43,7 @@ module Metanorma
       end
 
       def recommendation_header(reqt, out)
-        n = reqt.at(ns("./fmt-name"))
+        n = to_xml(reqt.at(ns("./fmt-name")))&.strip
         x = if reqt.ancestors("requirement, recommendation, permission").empty?
               <<~THEAD
                 <thead><tr><th scope='colgroup' colspan='2'><p class='#{recommend_name_class(reqt)}'>#{n}</p></th></tr></thead>
