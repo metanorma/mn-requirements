@@ -210,7 +210,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
                             <br/>
                             <semx element="inherit" source="_">
-                               <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref>
+                            <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616" id="_">RFC 2616 (HTTP/1.1)</eref>
+                        <semx element="eref" source="_">
+                           <fmt-xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</fmt-xref>
+                        </semx>
                             </semx>
                          </td>
                       </tr>
@@ -962,173 +965,193 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
-          <title id="_">Preface</title>
-          <fmt-title depth="1">
-             <semx element="title" source="_">Preface</semx>
-          </fmt-title>
-          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Permissions class</span>
-                <semx element="autonum" source="A1">1</semx>
-                :
-                <tt>
-                   <xref style="id" target="A1">
-                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <inherit id="_">/ss/584/2015/level/1</inherit>
-             <inherit id="_">/ss/584/2015/level/2</inherit>
-             <subject id="_">user</subject>
-             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
-                <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
-             </permission>
-             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
-                <identifier original-id="_">Requirement 1</identifier>
-             </requirement>
-             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
-                <identifier original-id="_">Recommendation 1</identifier>
-             </recommendation>
-             <fmt-provision>
-                <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Permissions class</span>
-                                     <semx element="autonum" source="A1">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Target type</th>
-                         <td>
-                            <semx element="subject" source="_">user</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Prerequisites</th>
-                         <td>
-                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
-                            <br/>
-                            <semx element="inherit" source="_">/ss/584/2015/level/2</semx>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Normative statements</th>
-                         <td>
-                            <bookmark id="A2"/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Permission</span>
-                               <semx element="autonum" source="B1">1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="B1">
-                                     <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <bookmark id="A3"/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Requirement</span>
-                               <semx element="autonum" source="A3">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A3">
-                                     <semx element="identifier" source="_">Requirement 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                            <br/>
-                            <bookmark id="A4"/>
-                            <span class="fmt-caption-label">
-                               <span class="fmt-element-name">Recommendation</span>
-                               <semx element="autonum" source="A4">1-1</semx>
-                               :
-                               <tt>
-                                  <xref style="id" target="A4">
-                                     <semx element="identifier" source="_">Recommendation 1</semx>
-                                  </xref>
-                               </tt>
-                            </span>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-          <permission model="ogc" autonum="1" original-id="B1">
-             <fmt-xref-label>
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="B1">1</semx>
-                :
-                <tt>
-                   <xref style="id" target="B1">
-                      <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
-                   </xref>
-                </tt>
-             </fmt-xref-label>
-             <identifier id="_">/ogc/recommendation/wfs/10</identifier>
-             <fmt-provision>
-                <table id="B1" type="recommend" class="modspec">
-                   <thead>
-                      <tr>
-                         <th scope="colgroup" colspan="2">
-                            <p class="RecommendationTitle">
-                               <fmt-name>
-                                  <span class="fmt-caption-label">
-                                     <span class="fmt-element-name">Permission</span>
-                                     <semx element="autonum" source="B1">1</semx>
-                                  </span>
-                               </fmt-name>
-                            </p>
-                         </th>
-                      </tr>
-                   </thead>
-                   <tbody>
-                      <tr>
-                         <th>Identifier</th>
-                         <td>
-                            <tt>
-                               <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
-                            </tt>
-                         </td>
-                      </tr>
-                      <tr>
-                         <th>Included in</th>
-                         <td>
-                            <span class="fmt-element-name">Permissions class</span>
-                            <semx element="autonum" source="A1">1</semx>
-                            :
-                            <tt>
-                               <xref style="id" target="A1">
-                                  <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                               </xref>
-                            </tt>
-                         </td>
-                      </tr>
-                   </tbody>
-                </table>
-             </fmt-provision>
-          </permission>
-       </foreword>
+       <foreword id="A" displayorder="2">
+           <title id="_">Preface</title>
+           <fmt-title depth="1">
+              <semx element="title" source="_">Preface</semx>
+           </fmt-title>
+           <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Permissions class</span>
+                 <semx element="autonum" source="A1">1</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="A1">
+                       <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
+              <inherit id="_">/ss/584/2015/level/1</inherit>
+              <inherit id="_">/ss/584/2015/level/2</inherit>
+              <subject id="_">user</subject>
+              <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
+              </permission>
+              <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+                 <identifier original-id="_">Requirement 1</identifier>
+              </requirement>
+              <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+                 <identifier original-id="_">Recommendation 1</identifier>
+              </recommendation>
+              <fmt-provision>
+                 <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Permissions class</span>
+                                      <semx element="autonum" source="A1">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Target type</th>
+                          <td>
+                             <semx element="subject" source="_">user</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Prerequisites</th>
+                          <td>
+                             <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                             <br/>
+                             <semx element="inherit" source="_">/ss/584/2015/level/2</semx>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Normative statements</th>
+                          <td>
+                             <bookmark id="A2"/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Permission</span>
+                                <semx element="autonum" source="B1">1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="B1" id="_">
+                                      <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
+                                   </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="B1">
+                                         <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
+                                      </fmt-xref>
+                                   </semx>
+                                </tt>
+                             </span>
+                             <br/>
+                             <bookmark id="A3"/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Requirement</span>
+                                <semx element="autonum" source="A3">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A3" id="_">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
+                                </tt>
+                             </span>
+                             <br/>
+                             <bookmark id="A4"/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Recommendation</span>
+                                <semx element="autonum" source="A4">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A4" id="_">
+                                      <semx element="identifier" source="_">Recommendation 1</semx>
+                                   </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A4">
+                                         <semx element="identifier" source="_">Recommendation 1</semx>
+                                      </fmt-xref>
+                                   </semx>
+                                </tt>
+                             </span>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+           <permission model="ogc" autonum="1" original-id="B1">
+              <fmt-xref-label>
+                 <span class="fmt-element-name">Permission</span>
+                 <semx element="autonum" source="B1">1</semx>
+                 :
+                 <tt>
+                    <xref style="id" target="B1">
+                       <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
+                    </xref>
+                 </tt>
+              </fmt-xref-label>
+              <identifier id="_">/ogc/recommendation/wfs/10</identifier>
+              <fmt-provision>
+                 <table id="B1" type="recommend" class="modspec">
+                    <thead>
+                       <tr>
+                          <th scope="colgroup" colspan="2">
+                             <p class="RecommendationTitle">
+                                <fmt-name>
+                                   <span class="fmt-caption-label">
+                                      <span class="fmt-element-name">Permission</span>
+                                      <semx element="autonum" source="B1">1</semx>
+                                   </span>
+                                </fmt-name>
+                             </p>
+                          </th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <th>Identifier</th>
+                          <td>
+                             <tt>
+                                <semx element="identifier" source="_">/ogc/recommendation/wfs/10</semx>
+                             </tt>
+                          </td>
+                       </tr>
+                       <tr>
+                          <th>Included in</th>
+                          <td>
+                             <span class="fmt-element-name">Permissions class</span>
+                             <semx element="autonum" source="A1">1</semx>
+                             :
+                             <tt>
+                                <xref style="id" target="A1" id="_">
+                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="A1">
+                                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                   </fmt-xref>
+                                </semx>
+                             </tt>
+                          </td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </fmt-provision>
+           </permission>
+        </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -1173,7 +1196,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-        <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
            <fmt-title depth="1">
               <semx element="title" source="_">Preface</semx>
@@ -1255,9 +1278,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="B">2</semx>
                              :
                              <tt>
-                                <xref style="id" target="B">
+                                <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="B">
+                                      <semx element="identifier" source="_">ABC</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1270,9 +1298,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="B">2</semx>
                              :
                              <tt>
-                                <xref style="id" target="B">
+                                <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="B">
+                                      <semx element="identifier" source="_">ABC</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1280,16 +1313,24 @@ RSpec.describe Metanorma::Requirements::Modspec do
                           <th>Indirect prerequisites</th>
                           <td>
                              <semx element="value" source="_">
-                                <link target="http://www.example.com/"/>
+                                <link target="http://www.example.com/" id="_"/>
+                                <semx element="link" source="_">
+                                   <fmt-link target="http://www.example.com/"/>
+                                </semx>
                              </semx>
                              <br/>
                              <span class="fmt-element-name">Conformance class</span>
                              <semx element="autonum" source="B">2</semx>
                              :
                              <tt>
-                                <xref style="id" target="B">
+                                <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="B">
+                                      <semx element="identifier" source="_">ABC</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1308,9 +1349,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="B2">1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="B2">
+                                   <xref style="id" target="B2" id="_">
                                       <semx element="identifier" source="_">Permission 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="B2">
+                                         <semx element="identifier" source="_">Permission 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -1320,9 +1366,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A3">1-1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A3">
+                                   <xref style="id" target="A3" id="_">
                                       <semx element="identifier" source="_">Requirement 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -1332,9 +1383,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A4">1-1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A4">
+                                   <xref style="id" target="A4" id="_">
                                       <semx element="identifier" source="_">Recommendation 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A4">
+                                         <semx element="identifier" source="_">Recommendation 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                           </td>
@@ -1428,9 +1484,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="A1">1</semx>
                              :
                              <tt>
-                                <xref style="id" target="A1">
+                                <xref style="id" target="A1" id="_">
                                    <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="A1">
+                                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1565,9 +1626,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="B">2</semx>
                              :
                              <tt>
-                                <xref style="id" target="B">
+                                <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="B">
+                                      <semx element="identifier" source="_">ABC</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1580,9 +1646,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="B">2</semx>
                              :
                              <tt>
-                                <xref style="id" target="B">
+                                <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="B">
+                                      <semx element="identifier" source="_">ABC</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1590,16 +1661,24 @@ RSpec.describe Metanorma::Requirements::Modspec do
                           <th>Prérequis indirect</th>
                           <td>
                              <semx element="value" source="_">
-                                <link target="http://www.example.com/"/>
+                                <link target="http://www.example.com/" id="_"/>
+                                <semx element="link" source="_">
+                                   <fmt-link target="http://www.example.com/"/>
+                                </semx>
                              </semx>
                              <br/>
                              <span class="fmt-element-name">Classe de confirmité</span>
                              <semx element="autonum" source="B">2</semx>
                              :
                              <tt>
-                                <xref style="id" target="B">
+                                <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="B">
+                                      <semx element="identifier" source="_">ABC</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1618,9 +1697,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="B2">1</semx>
                                  :
                                 <tt>
-                                   <xref style="id" target="B2">
+                                   <xref style="id" target="B2" id="_">
                                       <semx element="identifier" source="_">Permission 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="B2">
+                                         <semx element="identifier" source="_">Permission 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -1630,9 +1714,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A3">1-1</semx>
                                  :
                                 <tt>
-                                   <xref style="id" target="A3">
+                                   <xref style="id" target="A3" id="_">
                                       <semx element="identifier" source="_">Requirement 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -1642,9 +1731,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A4">1-1</semx>
                                  :
                                 <tt>
-                                   <xref style="id" target="A4">
+                                   <xref style="id" target="A4" id="_">
                                       <semx element="identifier" source="_">Recommendation 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A4">
+                                         <semx element="identifier" source="_">Recommendation 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                           </td>
@@ -1738,9 +1832,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="A1">1</semx>
                              :
                              <tt>
-                                <xref style="id" target="A1">
+                                <xref style="id" target="A1" id="_">
                                    <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="A1">
+                                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1867,9 +1966,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="A5">1</semx>
                              :
                              <tt>
-                                <xref style="id" target="A5">
+                                <xref style="id" target="A5" id="_">
                                    <semx element="identifier" source="_">Permission 1</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="A5">
+                                      <semx element="identifier" source="_">Permission 1</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -1888,9 +1992,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A5">1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A5">
+                                   <xref style="id" target="A5" id="_">
                                       <semx element="identifier" source="_">Permission 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A5">
+                                         <semx element="identifier" source="_">Permission 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -1900,9 +2009,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A3">1-1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A3">
+                                   <xref style="id" target="A3" id="_">
                                       <semx element="identifier" source="_">Requirement 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -1912,9 +2026,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A4">1-1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A4">
+                                   <xref style="id" target="A4" id="_">
                                       <semx element="identifier" source="_">Recommendation 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A4">
+                                         <semx element="identifier" source="_">Recommendation 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                           </td>
@@ -1967,9 +2086,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <semx element="autonum" source="A1">1</semx>
                              :
                              <tt>
-                                <xref style="id" target="A1">
+                                <xref style="id" target="A1" id="_">
                                    <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                                 </xref>
+                                <semx element="xref" source="_">
+                                   <fmt-xref style="id" target="A1">
+                                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                   </fmt-xref>
+                                </semx>
                              </tt>
                           </td>
                        </tr>
@@ -2012,7 +2136,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
+        <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
            <fmt-title depth="1">
               <semx element="title" source="_">Preface</semx>
@@ -2089,9 +2213,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A2">1-1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A2">
+                                   <xref style="id" target="A2" id="_">
                                       <semx element="identifier" source="_">Permission 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A2">
+                                         <semx element="identifier" source="_">Permission 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -2101,9 +2230,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A3">1-2</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A3">
+                                   <xref style="id" target="A3" id="_">
                                       <semx element="identifier" source="_">Requirement 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                              <br/>
@@ -2113,9 +2247,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 <semx element="autonum" source="A4">1-1</semx>
                                 :
                                 <tt>
-                                   <xref style="id" target="A4">
+                                   <xref style="id" target="A4" id="_">
                                       <semx element="identifier" source="_">Recommendation 1</semx>
                                    </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A4">
+                                         <semx element="identifier" source="_">Recommendation 1</semx>
+                                      </fmt-xref>
+                                   </semx>
                                 </tt>
                              </span>
                           </td>

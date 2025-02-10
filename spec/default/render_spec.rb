@@ -182,7 +182,10 @@ RSpec.describe Metanorma::Requirements::Default do
                    <em>
                       Inherits:
                       <semx element="inherit" source="_">
-                         <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref>
+                      <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616" id="_">RFC 2616 (HTTP/1.1)</eref>
+                  <semx element="eref" source="_">
+                     <fmt-xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</fmt-xref>
+                  </semx>
                       </semx>
                    </em>
                    <br/>

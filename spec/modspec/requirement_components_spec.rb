@@ -437,7 +437,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+      <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -505,17 +505,27 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Subject</th>
                          <td>
-                            <link target="http://www.example3.com">
+                            <link target="http://www.example3.com" id="_">
                                <semx element="subject" source="_">http://www.example3.com</semx>
                             </link>
+                            <semx element="link" source="_">
+                               <fmt-link target="http://www.example3.com">
+                                  <semx element="subject" source="_">http://www.example3.com</semx>
+                               </fmt-link>
+                            </semx>
                          </td>
                       </tr>
                       <tr>
                          <th>Prerequisite</th>
                          <td>
-                            <link target="http://www.example2.com">
+                            <link target="http://www.example2.com" id="_">
                                <semx element="inherit" source="_">http://www.example2.com</semx>
                             </link>
+                            <semx element="link" source="_">
+                               <fmt-link target="http://www.example2.com">
+                                  <semx element="inherit" source="_">http://www.example2.com</semx>
+                               </fmt-link>
+                            </semx>
                          </td>
                       </tr>
                       <tr>
@@ -549,11 +559,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <link target="http://www.example6.com">
+                            <link target="http://www.example6.com" id="_">
                                <semx element="description" source="_">
-                                  <p id="_">http://www.example6.com</p>
+                                  <p original-id="_">http://www.example6.com</p>
                                </semx>
                             </link>
+                            <semx element="link" source="_">
+                               <fmt-link target="http://www.example6.com">
+                                  <semx element="description" source="_">
+                                     <p id="_">http://www.example6.com</p>
+                                  </semx>
+                               </fmt-link>
+                            </semx>
                          </td>
                       </tr>
                       <tr id="A7">
@@ -567,9 +584,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                       <tr>
                          <th>Statement</th>
                          <td>
-                            <link target="http://www.example7.com">
+                            <link target="http://www.example7.com" id="_">
                                <semx element="description" source="_">http://www.example7.com</semx>
                             </link>
+                            <semx element="link" source="_">
+                               <fmt-link target="http://www.example7.com">
+                                  <semx element="description" source="_">http://www.example7.com</semx>
+                               </fmt-link>
+                            </semx>
                          </td>
                       </tr>
                    </tbody>
@@ -764,7 +786,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <requirement model="ogc" original-id="A1" type="general" autonum="1">
+          <requirement model="ogc" type="general" autonum="1" original-id="A1">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -808,9 +830,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="autonum" source="A2">1</semx>
                             :
                             <tt>
-                               <xref style="id" target="A2">
+                               <xref style="id" target="A2" id="_">
                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
                                </xref>
+                               <semx element="xref" source="_">
+                                  <fmt-xref style="id" target="A2">
+                                     <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                                  </fmt-xref>
+                               </semx>
                             </tt>
                          </td>
                       </tr>
@@ -818,7 +845,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </requirement>
-          <requirement model="ogc" original-id="A2" type="verification" autonum="1">
+          <requirement model="ogc" type="verification" autonum="1" original-id="A2">
              <fmt-xref-label>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="A2">1</semx>
@@ -866,9 +893,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="autonum" source="A1">1</semx>
                             :
                             <tt>
-                               <xref style="id" target="A1">
+                               <xref style="id" target="A1" id="_">
                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/1</semx>
                                </xref>
+                               <semx element="xref" source="_">
+                                  <fmt-xref style="id" target="A1">
+                                     <semx element="identifier" source="_">/ogc/recommendation/wfs/1</semx>
+                                  </fmt-xref>
+                               </semx>
                             </tt>
                          </td>
                       </tr>
@@ -876,7 +908,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </requirement>
-          <requirement model="ogc" original-id="A3" type="class" autonum="1">
+          <requirement model="ogc" type="class" autonum="1" original-id="A3">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirements class</span>
                 <semx element="autonum" source="A3">1</semx>
@@ -920,9 +952,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="autonum" source="A4">1</semx>
                             :
                             <tt>
-                               <xref style="id" target="A4">
+                               <xref style="id" target="A4" id="_">
                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/4</semx>
                                </xref>
+                               <semx element="xref" source="_">
+                                  <fmt-xref style="id" target="A4">
+                                     <semx element="identifier" source="_">/ogc/recommendation/wfs/4</semx>
+                                  </fmt-xref>
+                               </semx>
                             </tt>
                          </td>
                       </tr>
@@ -930,7 +967,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </requirement>
-          <requirement model="ogc" original-id="A4" type="conformanceclass" autonum="1">
+          <requirement model="ogc" type="conformanceclass" autonum="1" original-id="A4">
              <fmt-xref-label>
                 <span class="fmt-element-name">Conformance class</span>
                 <semx element="autonum" source="A4">1</semx>
@@ -978,9 +1015,14 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="autonum" source="A3">1</semx>
                             :
                             <tt>
-                               <xref style="id" target="A3">
+                               <xref style="id" target="A3" id="_">
                                   <semx element="identifier" source="_">/ogc/recommendation/wfs/3</semx>
                                </xref>
+                               <semx element="xref" source="_">
+                                  <fmt-xref style="id" target="A3">
+                                     <semx element="identifier" source="_">/ogc/recommendation/wfs/3</semx>
+                                  </fmt-xref>
+                               </semx>
                             </tt>
                          </td>
                       </tr>
@@ -1100,9 +1142,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="description" source="_">
                                <em>
                                   GetStatus request shall comply with the structure defined in
-                                  <xref target="fig-getstatus-request-uml">[fig-getstatus-request-uml]</xref>
+                                  <xref target="fig-getstatus-request-uml" id="_"/>
+                                  <semx element="xref" source="_">
+                                     <fmt-xref target="fig-getstatus-request-uml">[fig-getstatus-request-uml]</fmt-xref>
+                                  </semx>
                                   and
-                                  <xref target="tab-addition-properties-in-the-getstatus-request">[tab-addition-properties-in-the-getstatus-request]</xref>
+                                  <xref target="tab-addition-properties-in-the-getstatus-request" id="_"/>
+                                  <semx element="xref" source="_">
+                                     <fmt-xref target="tab-addition-properties-in-the-getstatus-request">[tab-addition-properties-in-the-getstatus-request]</fmt-xref>
+                                  </semx>
                                   .
                                </em>
                             </semx>
