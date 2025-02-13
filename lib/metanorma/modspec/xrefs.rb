@@ -74,7 +74,7 @@ module Metanorma
         anchor[:xref_bare] = anchor[:xref]
         l = block.at(ns("./identifier")) and
           anchor[:xref] += l10n(": ") +
-            "<tt><xref style='id' target='#{block['id']}'>#{l.text}</xref></tt>"
+            "<tt><xref style='id' target='#{block['id']}'>#{to_xml semx_fmt_dup(l)}</xref></tt>"
         anchor[:modspec] = anchor[:xref]
         anchor
       end

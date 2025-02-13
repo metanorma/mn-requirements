@@ -73,49 +73,76 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
-             <xref target="N1">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="N1">1</semx>
-             </xref>
-             <xref target="N2">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="N2">(??)</semx>
-             </xref>
-             <xref target="N">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="N">2</semx>
-             </xref>
-             <xref target="N3">
-                <span class="fmt-element-name">Provision</span>
-                <semx element="autonum" source="N3">1</semx>
-             </xref>
-             <xref target="note1">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="note1">3</semx>
-             </xref>
-             <xref target="note2">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="note2">4</semx>
-             </xref>
-             <xref target="AN">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN">1</semx>
-             </xref>
-             <xref target="Anote1">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="Anote1">(??)</semx>
-             </xref>
-             <xref target="Anote2">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="Anote2">2</semx>
-             </xref>
+             <xref target="N1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N1">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="N1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N2">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="N2">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="N">2</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N3" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N3">
+                   <span class="fmt-element-name">Provision</span>
+                   <semx element="autonum" source="N3">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note1">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="note1">3</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note2">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="note2">4</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AN" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AN">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote1">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="Anote1">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote2">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="Anote2">2</semx>
+                </fmt-xref>
+             </semx>
           </p>
        </foreword>
     OUTPUT
@@ -194,47 +221,71 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Avant-propos</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Avant-propos</semx>
+             <semx element="title" source="_">Avant-propos</semx>
           </fmt-title>
           <p>
-             <xref target="N1">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="N1">1</semx>
-             </xref>
-             <xref target="N2">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="N2">(??)</semx>
-             </xref>
-             <xref target="N">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="N">2</semx>
-             </xref>
-             <xref target="note1">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="note1">3</semx>
-             </xref>
-             <xref target="note2">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="note2">4</semx>
-             </xref>
-             <xref target="AN">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN">1</semx>
-             </xref>
-             <xref target="Anote1">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="Anote1">(??)</semx>
-             </xref>
-             <xref target="Anote2">
-                <span class="fmt-element-name">Exigence</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="Anote2">2</semx>
-             </xref>
+             <xref target="N1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N1">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="N1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N2">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="N2">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="N">2</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note1">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="note1">3</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note2">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="note2">4</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AN" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AN">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote1">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="Anote1">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote2">
+                   <span class="fmt-element-name">Exigence</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="Anote2">2</semx>
+                </fmt-xref>
+             </semx>
           </p>
-       </foreword
+       </foreword>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
@@ -307,48 +358,72 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
-             <xref target="N1">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="N1">1</semx>
-             </xref>
-             <xref target="N2">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="N2">(??)</semx>
-             </xref>
-             <xref target="N">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="N">2</semx>
-             </xref>
-             <xref target="note1">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="note1">3</semx>
-             </xref>
-             <xref target="note2">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="note2">4</semx>
-             </xref>
-             <xref target="AN">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN">1</semx>
-             </xref>
-             <xref target="Anote1">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="Anote1">(??)</semx>
-             </xref>
-             <xref target="Anote2">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="Anote2">2</semx>
-             </xref>
+             <xref target="N1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N1">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="N1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N2">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="N2">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="N">2</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note1">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="note1">3</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note2">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="note2">4</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AN" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AN">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote1">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="Anote1">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote2">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="Anote2">2</semx>
+                </fmt-xref>
+             </semx>
           </p>
        </foreword>
     OUTPUT
@@ -426,45 +501,69 @@ RSpec.describe Metanorma::Requirements::Default do
        <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
-             <xref target="N1">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="N1">1</semx>
-             </xref>
-             <xref target="N2">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="N2">(??)</semx>
-             </xref>
-             <xref target="N">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="N">2</semx>
-             </xref>
-             <xref target="note1">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="note1">3</semx>
-             </xref>
-             <xref target="note2">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="note2">4</semx>
-             </xref>
-             <xref target="AN">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN">1</semx>
-             </xref>
-             <xref target="Anote1">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="Anote1">(??)</semx>
-             </xref>
-             <xref target="Anote2">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="annex1">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="Anote2">2</semx>
-             </xref>
+             <xref target="N1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N1">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="N1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N2">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="N2">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="N">2</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note1">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="note1">3</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="note2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="note2">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="note2">4</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AN" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AN">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote1">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="Anote1">(??)</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Anote2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Anote2">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="annex1">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="Anote2">2</semx>
+                </fmt-xref>
+             </semx>
           </p>
        </foreword>
     OUTPUT
@@ -522,82 +621,112 @@ RSpec.describe Metanorma::Requirements::Default do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-             <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
-             <xref target="N1">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="N1">1</semx>
-             </xref>
-             <xref target="N2">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="N1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="N2">1</semx>
-             </xref>
-             <xref target="N">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="N1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="N2">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="N">1</semx>
-             </xref>
-             <xref target="Q1">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="N1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="Q1">1</semx>
-             </xref>
-             <xref target="R1">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="N1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="R1">1</semx>
-             </xref>
-             <xref target="AN1">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="Axyz">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN1">1</semx>
-             </xref>
-             <xref target="AN2">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="Axyz">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="AN2">1</semx>
-             </xref>
-             <xref target="AN">
-                <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="Axyz">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="AN2">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="AN">1</semx>
-             </xref>
-             <xref target="AQ1">
-                <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="Axyz">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="AQ1">1</semx>
-             </xref>
-             <xref target="AR1">
-                <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="Axyz">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="AN1">1</semx>
-                <span class="fmt-autonum-delim">-</span>
-                <semx element="autonum" source="AR1">1</semx>
-             </xref>
+             <xref target="N1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N1">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="N1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N2">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="N1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="N2">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="N" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="N">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="N1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="N2">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="N">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="Q1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="Q1">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="N1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="Q1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="R1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="R1">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="N1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="R1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AN1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AN1">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="Axyz">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AN2" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AN2">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="Axyz">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="AN2">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AN" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AN">
+                   <span class="fmt-element-name">Permission</span>
+                   <semx element="autonum" source="Axyz">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="AN2">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="AN">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AQ1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AQ1">
+                   <span class="fmt-element-name">Requirement</span>
+                   <semx element="autonum" source="Axyz">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="AQ1">1</semx>
+                </fmt-xref>
+             </semx>
+             <xref target="AR1" id="_"/>
+             <semx element="xref" source="_">
+                <fmt-xref target="AR1">
+                   <span class="fmt-element-name">Recommendation</span>
+                   <semx element="autonum" source="Axyz">A</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="AN1">1</semx>
+                   <span class="fmt-autonum-delim">-</span>
+                   <semx element="autonum" source="AR1">1</semx>
+                </fmt-xref>
+             </semx>
           </p>
        </foreword>
     OUTPUT

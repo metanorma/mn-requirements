@@ -64,10 +64,10 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword displayorder="2">
+       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-                <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <permission id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
              <fmt-name>
@@ -85,86 +85,221 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="A">1</semx>
              </fmt-xref-label>
-             <p>
-                <em>Subject: user</em>
-                <br/>
-                <em>Subject: non-user</em>
-                <br/>
-                <em>Inherits: /ss/584/2015/level/1</em>
-                <br/>
-                <em>
-                   Inherits:
-                   <xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</xref>
-                </em>
-                <br/>
-                <em>Control-class: Technical</em>
-                <br/>
-                <em>Priority: P0</em>
-                <br/>
-                <em>Family: System and Communications Protection</em>
-                <br/>
-                <em>Family: System and Communications Protocols</em>
-             </p>
-             <div type="requirement-description">
-                <p id="_">
+             <identifier>/ogc/recommendation/wfs/2</identifier>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <inherit id="_">
+                <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616">RFC 2616 (HTTP/1.1)</eref>
+             </inherit>
+             <subject id="_">user</subject>
+             <subject id="_">non-user</subject>
+             <classification>
+                <tag id="_">control-class</tag>
+                <value id="_">Technical</value>
+             </classification>
+             <classification>
+                <tag id="_">priority</tag>
+                <value id="_">P0</value>
+             </classification>
+             <classification>
+                <tag id="_">family</tag>
+                <value id="_">System and Communications Protection</value>
+             </classification>
+             <classification>
+                <tag id="_">family</tag>
+                <value id="_">System and Communications Protocols</value>
+             </classification>
+             <description id="_">
+                <p original-id="_">
                    I recommend
                    <em>this</em>
                    .
                 </p>
-                <dl>
-                   <dt>scope</dt>
-                   <dd>random</dd>
-                   <dt>widgets</dt>
-                   <dd>randomer</dd>
-                </dl>
-             </div>
-             <note id="N" autonum="">
-                <fmt-name>
-                   <span class="fmt-caption-label">
-                      <span class="fmt-element-name">NOTE</span>
-                   </span>
-                   <span class="fmt-label-delim">
-               <tab/>
-            </span>
-                </fmt-name>
-                <fmt-xref-label>
-                   <span class="fmt-element-name">Note</span>
-                </fmt-xref-label>
-                This is a note
-             </note>
-             <div type="requirement-description">
-                <p id="_">As for the measurement targets,</p>
-             </div>
-             <div exclude="false" type="requirement-measurement-target">
-                <p id="_">The measurement target shall be measured as:</p>
-                <formula id="B" autonum="1">
-                   <fmt-name>
-                      <span class="fmt-caption-label">
-                         <span class="fmt-autonum-delim">(</span>
-                         1
-                         <span class="fmt-autonum-delim">)</span>
-                      </span>
-                   </fmt-name>
-                   <fmt-xref-label>
-                      <span class="fmt-element-name">Formula</span>
-                      <span class="fmt-autonum-delim">(</span>
-                      <semx element="autonum" source="B">1</semx>
-                      <span class="fmt-autonum-delim">)</span>
-                   </fmt-xref-label>
+                <classification>
+                   <tag id="_">scope</tag>
+                   <value id="_">random</value>
+                </classification>
+                <classification>
+                   <tag id="_">widgets</tag>
+                   <value id="_">randomer</value>
+                </classification>
+             </description>
+             <note id="N" autonum="">This is a note</note>
+             <specification exclude="true" type="tabular">
+                <p id="_">This is the object of the recommendation:</p>
+                <table id="_">
+                   <tbody>
+                      <tr>
+                         <td style="text-align:left;">Object</td>
+                         <td style="text-align:left;">Value</td>
+                      </tr>
+                      <tr>
+                         <td style="text-align:left;">Mission</td>
+                         <td style="text-align:left;">Accomplished</td>
+                      </tr>
+                   </tbody>
+                </table>
+             </specification>
+             <description id="_">
+                <p original-id="_">As for the measurement targets,</p>
+             </description>
+             <measurement-target exclude="false" id="_">
+                <p original-id="_">The measurement target shall be measured as:</p>
+                <formula autonum="1" original-id="B">
                    <stem type="AsciiMath">r/1 = 0</stem>
                 </formula>
-             </div>
-             <div exclude="false" type="requirement-verification">
-                <p id="_">The following code will be run for verification:</p>
-                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             </measurement-target>
+             <verification exclude="false" id="_">
+                <p original-id="_">The following code will be run for verification:</p>
+                <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
            </sourcecode>
-             </div>
-             <div exclude="false" class="component1" type="requirement-component1">
-                <p id="_">Hello</p>
-             </div>
+             </verification>
+             <import exclude="true">
+                <sourcecode id="_" autonum="2">success-response()</sourcecode>
+             </import>
+             <component exclude="false" class="component1" id="_">
+                <p original-id="_">Hello</p>
+             </component>
+             <fmt-provision id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
+                <p>
+                   <em>
+                      Subject:
+                      <semx element="subject" source="_">user</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      Subject:
+                      <semx element="subject" source="_">non-user</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      Inherits:
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      Inherits:
+                      <semx element="inherit" source="_">
+                         <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616" id="_">RFC 2616 (HTTP/1.1)</eref>
+                         <semx element="eref" source="_">
+                            <fmt-xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</fmt-xref>
+                         </semx>
+                      </semx>
+                   </em>
+                   <br/>
+                   <em>
+                      <semx element="tag" source="_">Control-class</semx>
+                      :
+                      <semx element="value" source="_">Technical</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      <semx element="tag" source="_">Priority</semx>
+                      :
+                      <semx element="value" source="_">P0</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      <semx element="tag" source="_">Family</semx>
+                      :
+                      <semx element="value" source="_">System and Communications Protection</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      <semx element="tag" source="_">Family</semx>
+                      :
+                      <semx element="value" source="_">System and Communications Protocols</semx>
+                   </em>
+                </p>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">
+                         I recommend
+                         <em>this</em>
+                         .
+                      </p>
+                      <dl>
+                         <dt>
+                            <semx element="tag" source="_">scope</semx>
+                         </dt>
+                         <dd>
+                            <semx element="value" source="_">random</semx>
+                         </dd>
+                         <dt>
+                            <semx element="tag" source="_">widgets</semx>
+                         </dt>
+                         <dd>
+                            <semx element="value" source="_">randomer</semx>
+                         </dd>
+                      </dl>
+                   </semx>
+                </div>
+                <div>
+                   <semx element="note" source="N">
+                      <fmt-name>
+                         <span class="fmt-caption-label">
+                            <span class="fmt-element-name">NOTE</span>
+                         </span>
+                         <span class="fmt-label-delim">
+                            <tab/>
+                         </span>
+                      </fmt-name>
+                      <fmt-xref-label>
+                         <span class="fmt-element-name">Note</span>
+                      </fmt-xref-label>
+                      This is a note
+                   </semx>
+                </div>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">As for the measurement targets,</p>
+                   </semx>
+                </div>
+                <div type="requirement-measurement-target">
+                   <semx element="measurement-target" source="_">
+                      <p id="_">The measurement target shall be measured as:</p>
+                      <formula id="B" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-autonum-delim">(</span>
+                               1
+                               <span class="fmt-autonum-delim">)</span>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Formula</span>
+                            <span class="fmt-autonum-delim">(</span>
+                            <semx element="autonum" source="B">1</semx>
+                            <span class="fmt-autonum-delim">)</span>
+                         </fmt-xref-label>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
+                      </formula>
+                   </semx>
+                </div>
+                <div type="requirement-verification">
+                   <semx element="verification" source="_">
+                      <p id="_">The following code will be run for verification:</p>
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </fmt-sourcecode>
+                      </sourcecode>
+                   </semx>
+                </div>
+                <div type="requirement-component1">
+                   <semx element="component" source="_">
+                      <p id="_">Hello</p>
+                   </semx>
+                </div>
+             </fmt-provision>
           </permission>
        </foreword>
     OUTPUT
@@ -231,10 +366,10 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword displayorder="2">
+       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-                <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
              <fmt-name>
@@ -253,51 +388,124 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A">(??)</semx>
              </fmt-xref-label>
-             <p>
-                <em>Subject: user</em>
-                <br/>
-                <em>Inherits: /ss/584/2015/level/1</em>
-             </p>
-             <div type="requirement-description">
-                <p id="_">
+             <title>A New Requirement</title>
+             <identifier>/ogc/recommendation/wfs/2</identifier>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <subject id="_">user</subject>
+             <description id="_">
+                <p original-id="_">
                    I recommend
                    <em>this</em>
                    .
                 </p>
-             </div>
-             <div type="requirement-description">
-                <p id="_">As for the measurement targets,</p>
-             </div>
-             <div exclude="false" keep-with-next="true" keep-lines-together="true" type="requirement-measurement-target">
-                <p id="_">The measurement target shall be measured as:</p>
-                <formula id="B" autonum="1">
-                   <fmt-name>
-                      <span class="fmt-caption-label">
-                         <span class="fmt-autonum-delim">(</span>
-                         1
-                         <span class="fmt-autonum-delim">)</span>
-                      </span>
-                   </fmt-name>
-                   <fmt-xref-label>
-                      <span class="fmt-element-name">Formula</span>
-                      <span class="fmt-autonum-delim">(</span>
-                      <semx element="autonum" source="B">1</semx>
-                      <span class="fmt-autonum-delim">)</span>
-                   </fmt-xref-label>
+             </description>
+             <specification exclude="true" type="tabular">
+                <p id="_">This is the object of the recommendation:</p>
+                <table id="_">
+                   <tbody>
+                      <tr>
+                         <td style="text-align:left;">Object</td>
+                         <td style="text-align:left;">Value</td>
+                      </tr>
+                      <tr>
+                         <td style="text-align:left;">Mission</td>
+                         <td style="text-align:left;">Accomplished</td>
+                      </tr>
+                   </tbody>
+                </table>
+             </specification>
+             <description id="_">
+                <p original-id="_">As for the measurement targets,</p>
+             </description>
+             <measurement-target exclude="false" keep-with-next="true" keep-lines-together="true" id="_">
+                <p original-id="_">The measurement target shall be measured as:</p>
+                <formula autonum="1" original-id="B">
                    <stem type="AsciiMath">r/1 = 0</stem>
                 </formula>
-             </div>
-             <div exclude="false" type="requirement-verification">
-                <p id="_">The following code will be run for verification:</p>
-                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             </measurement-target>
+             <verification exclude="false" id="_">
+                <p original-id="_">The following code will be run for verification:</p>
+                <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
            </sourcecode>
-             </div>
-             <div exclude="false" class="component1" type="requirement-component1">
-                <p id="_">Hello</p>
-             </div>
+             </verification>
+             <import exclude="true">
+                <sourcecode id="_" autonum="2">success-response()</sourcecode>
+             </import>
+             <component exclude="false" class="component1" id="_">
+                <p original-id="_">Hello</p>
+             </component>
+             <fmt-provision id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
+                <p>
+                   <em>
+                      Subject:
+                      <semx element="subject" source="_">user</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      Inherits:
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                   </em>
+                </p>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">
+                         I recommend
+                         <em>this</em>
+                         .
+                      </p>
+                   </semx>
+                </div>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">As for the measurement targets,</p>
+                   </semx>
+                </div>
+                <div keep-with-next="true" keep-lines-together="true" type="requirement-measurement-target">
+                   <semx element="measurement-target" source="_">
+                      <p id="_">The measurement target shall be measured as:</p>
+                      <formula id="B" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-autonum-delim">(</span>
+                               1
+                               <span class="fmt-autonum-delim">)</span>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Formula</span>
+                            <span class="fmt-autonum-delim">(</span>
+                            <semx element="autonum" source="B">1</semx>
+                            <span class="fmt-autonum-delim">)</span>
+                         </fmt-xref-label>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
+                      </formula>
+                   </semx>
+                </div>
+                <div type="requirement-verification">
+                   <semx element="verification" source="_">
+                      <p id="_">The following code will be run for verification:</p>
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </fmt-sourcecode>
+                      </sourcecode>
+                   </semx>
+                </div>
+                <div type="requirement-component1">
+                   <semx element="component" source="_">
+                      <p id="_">Hello</p>
+                   </semx>
+                </div>
+             </fmt-provision>
           </requirement>
        </foreword>
     OUTPUT
@@ -369,10 +577,10 @@ RSpec.describe Metanorma::Requirements::Default do
     INPUT
 
     presxml = <<~OUTPUT
-      <foreword id="F" displayorder="2">
+       <foreword id="F" displayorder="2">
           <title id="_">Avant-propos</title>
           <fmt-title depth="1">
-                <semx element="title" id="_">Avant-propos</semx>
+             <semx element="title" source="_">Avant-propos</semx>
           </fmt-title>
           <requirement id="A" unnumbered="true" model="default">
              <fmt-name>
@@ -391,61 +599,134 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-element-name">Exigence</span>
                 <semx element="autonum" source="A">(??)</semx>
              </fmt-xref-label>
-             <p>
-                <em>Sujet : user</em>
-                <br/>
-                <em>Hérite : /ss/584/2015/level/1</em>
-             </p>
-             <div type="requirement-description">
-                <p id="_">
+             <title>A New Requirement</title>
+             <identifier>/ogc/recommendation/wfs/2</identifier>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <subject id="_">user</subject>
+             <description id="_">
+                <p original-id="_">
                    I recommend
                    <em>this</em>
                    .
                 </p>
-             </div>
-             <div type="requirement-description">
-                <p id="_">As for the measurement targets,</p>
-             </div>
-             <div exclude="false" type="requirement-measurement-target">
-                <p id="_">The measurement target shall be measured as:</p>
-                <formula id="B" autonum="1">
-                   <fmt-name>
-                      <span class="fmt-caption-label">
-                         <span class="fmt-autonum-delim">(</span>
-                         1
-                         <span class="fmt-autonum-delim">)</span>
-                      </span>
-                   </fmt-name>
-                   <fmt-xref-label>
-                      <span class="fmt-element-name">Formule</span>
-                      <span class="fmt-autonum-delim">(</span>
-                      <semx element="autonum" source="B">1</semx>
-                      <span class="fmt-autonum-delim">)</span>
-                   </fmt-xref-label>
-           <fmt-xref-label container="F">
-              <span class="fmt-xref-container">
-                 <semx element="foreword" source="F">Avant-propos</semx>
-              </span>
-              <span class="fmt-comma">,</span>
-              <span class="fmt-element-name">Formule</span>
-              <span class="fmt-autonum-delim">(</span>
-              <semx element="autonum" source="B">1</semx>
-              <span class="fmt-autonum-delim">)</span>
-           </fmt-xref-label>
+             </description>
+             <specification exclude="true" type="tabular">
+                <p id="_">This is the object of the recommendation:</p>
+                <table id="_">
+                   <tbody>
+                      <tr>
+                         <td style="text-align:left;">Object</td>
+                         <td style="text-align:left;">Value</td>
+                      </tr>
+                      <tr>
+                         <td style="text-align:left;">Mission</td>
+                         <td style="text-align:left;">Accomplished</td>
+                      </tr>
+                   </tbody>
+                </table>
+             </specification>
+             <description id="_">
+                <p original-id="_">As for the measurement targets,</p>
+             </description>
+             <measurement-target exclude="false" id="_">
+                <p original-id="_">The measurement target shall be measured as:</p>
+                <formula autonum="1" original-id="B">
                    <stem type="AsciiMath">r/1 = 0</stem>
                 </formula>
-             </div>
-             <div exclude="false" type="requirement-verification">
-                <p id="_">The following code will be run for verification:</p>
-                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             </measurement-target>
+             <verification exclude="false" id="_">
+                <p original-id="_">The following code will be run for verification:</p>
+                <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
            </sourcecode>
-             </div>
-             <div exclude="false" class="component1" type="requirement-component1">
-                <p id="_">Hello</p>
-             </div>
+             </verification>
+             <import exclude="true">
+                <sourcecode id="_" autonum="2">success-response()</sourcecode>
+             </import>
+             <component exclude="false" class="component1" id="_">
+                <p original-id="_">Hello</p>
+             </component>
+             <fmt-provision id="A" unnumbered="true" model="default">
+                <p>
+                   <em>
+                      Sujet :
+                      <semx element="subject" source="_">user</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      Hérite :
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                   </em>
+                </p>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">
+                         I recommend
+                         <em>this</em>
+                         .
+                      </p>
+                   </semx>
+                </div>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">As for the measurement targets,</p>
+                   </semx>
+                </div>
+                <div type="requirement-measurement-target">
+                   <semx element="measurement-target" source="_">
+                      <p id="_">The measurement target shall be measured as:</p>
+                      <formula id="B" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-autonum-delim">(</span>
+                               1
+                               <span class="fmt-autonum-delim">)</span>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Formule</span>
+                            <span class="fmt-autonum-delim">(</span>
+                            <semx element="autonum" source="B">1</semx>
+                            <span class="fmt-autonum-delim">)</span>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="F">
+                            <span class="fmt-xref-container">
+                               <semx element="foreword" source="F">Avant-propos</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Formule</span>
+                            <span class="fmt-autonum-delim">(</span>
+                            <semx element="autonum" source="B">1</semx>
+                            <span class="fmt-autonum-delim">)</span>
+                         </fmt-xref-label>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
+                      </formula>
+                   </semx>
+                </div>
+                <div type="requirement-verification">
+                   <semx element="verification" source="_">
+                      <p id="_">The following code will be run for verification:</p>
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </fmt-sourcecode>
+                      </sourcecode>
+                   </semx>
+                </div>
+                <div type="requirement-component1">
+                   <semx element="component" source="_">
+                      <p id="_">Hello</p>
+                   </semx>
+                </div>
+             </fmt-provision>
           </requirement>
        </foreword>
     OUTPUT
@@ -517,7 +798,7 @@ RSpec.describe Metanorma::Requirements::Default do
       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
-                <semx element="title" id="_">Foreword</semx>
+             <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <recommendation id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
              <fmt-name>
@@ -535,57 +816,145 @@ RSpec.describe Metanorma::Requirements::Default do
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="A">1</semx>
              </fmt-xref-label>
-             <p>
-                <em>Obligation: shall,could</em>
-                <br/>
-                <em>Subject: user</em>
-                <br/>
-                <em>Inherits: /ss/584/2015/level/1</em>
-                <br/>
-                <em>Type: text</em>
-                <br/>
-                <em>Language: BASIC</em>
-             </p>
-             <div type="requirement-description">
-                <p id="_">
+             <identifier>/ogc/recommendation/wfs/2</identifier>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <classification>
+                <tag id="_">type</tag>
+                <value id="_">text</value>
+             </classification>
+             <classification>
+                <tag id="_">language</tag>
+                <value id="_">BASIC</value>
+             </classification>
+             <subject id="_">user</subject>
+             <description id="_">
+                <p original-id="_">
                    I recommend
                    <em>this</em>
                    .
                 </p>
-             </div>
-             <div type="requirement-description">
-                <p id="_">As for the measurement targets,</p>
-             </div>
-             <div exclude="false" type="requirement-measurement-target">
-                <p id="_">The measurement target shall be measured as:</p>
-                <formula id="B" autonum="1">
-                   <fmt-name>
-                      <span class="fmt-caption-label">
-                         <span class="fmt-autonum-delim">(</span>
-                         1
-                         <span class="fmt-autonum-delim">)</span>
-                      </span>
-                   </fmt-name>
-                   <fmt-xref-label>
-                      <span class="fmt-element-name">Formula</span>
-                      <span class="fmt-autonum-delim">(</span>
-                      <semx element="autonum" source="B">1</semx>
-                      <span class="fmt-autonum-delim">)</span>
-                   </fmt-xref-label>
+             </description>
+             <specification exclude="true" type="tabular">
+                <p id="_">This is the object of the recommendation:</p>
+                <table id="_">
+                   <tbody>
+                      <tr>
+                         <td style="text-align:left;">Object</td>
+                         <td style="text-align:left;">Value</td>
+                      </tr>
+                      <tr>
+                         <td style="text-align:left;">Mission</td>
+                         <td style="text-align:left;">Accomplished</td>
+                      </tr>
+                   </tbody>
+                </table>
+             </specification>
+             <description id="_">
+                <p original-id="_">As for the measurement targets,</p>
+             </description>
+             <measurement-target exclude="false" id="_">
+                <p original-id="_">The measurement target shall be measured as:</p>
+                <formula autonum="1" original-id="B">
                    <stem type="AsciiMath">r/1 = 0</stem>
                 </formula>
-             </div>
-             <div exclude="false" type="requirement-verification">
-                <p id="_">The following code will be run for verification:</p>
-                <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+             </measurement-target>
+             <verification exclude="false" id="_">
+                <p original-id="_">The following code will be run for verification:</p>
+                <sourcecode autonum="2" original-id="_">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
            </sourcecode>
-             </div>
-             <div exclude="false" class="component1" type="requirement-component1">
-                <p id="_">Hello</p>
-             </div>
+             </verification>
+             <import exclude="true">
+                <sourcecode id="_" autonum="2">success-response()</sourcecode>
+             </import>
+             <component exclude="false" class="component1" id="_">
+                <p original-id="_">Hello</p>
+             </component>
+             <fmt-provision id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
+                <p>
+                   <em>Obligation: shall,could</em>
+                   <br/>
+                   <em>
+                      Subject:
+                      <semx element="subject" source="_">user</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      Inherits:
+                      <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      <semx element="tag" source="_">Type</semx>
+                      :
+                      <semx element="value" source="_">text</semx>
+                   </em>
+                   <br/>
+                   <em>
+                      <semx element="tag" source="_">Language</semx>
+                      :
+                      <semx element="value" source="_">BASIC</semx>
+                   </em>
+                </p>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">
+                         I recommend
+                         <em>this</em>
+                         .
+                      </p>
+                   </semx>
+                </div>
+                <div type="requirement-description">
+                   <semx element="description" source="_">
+                      <p id="_">As for the measurement targets,</p>
+                   </semx>
+                </div>
+                <div type="requirement-measurement-target">
+                   <semx element="measurement-target" source="_">
+                      <p id="_">The measurement target shall be measured as:</p>
+                      <formula id="B" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-autonum-delim">(</span>
+                               1
+                               <span class="fmt-autonum-delim">)</span>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Formula</span>
+                            <span class="fmt-autonum-delim">(</span>
+                            <semx element="autonum" source="B">1</semx>
+                            <span class="fmt-autonum-delim">)</span>
+                         </fmt-xref-label>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
+                      </formula>
+                   </semx>
+                </div>
+                <div type="requirement-verification">
+                   <semx element="verification" source="_">
+                      <p id="_">The following code will be run for verification:</p>
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+             if (success)
+             recommendation(label: success-response)
+             end
+           </fmt-sourcecode>
+                      </sourcecode>
+                   </semx>
+                </div>
+                <div type="requirement-component1">
+                   <semx element="component" source="_">
+                      <p id="_">Hello</p>
+                   </semx>
+                </div>
+             </fmt-provision>
           </recommendation>
        </foreword>
     OUTPUT
@@ -606,6 +975,7 @@ RSpec.describe Metanorma::Requirements::Default do
       .to be_equivalent_to Xml::C14n
         .format(presxml.sub("<recommendation ",
                             "<recommendation class='provision' ")
+                            .sub("<fmt-provision", '<fmt-provision class="provision"')
       .gsub(/<fmt-name>\s*<span class="fmt-caption-label">\s*<span class="fmt-element-name">Recommendation/,
             '<fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">Provision')
       .gsub(/<fmt-xref-label>\s*<span class="fmt-element-name">Recommendation/,

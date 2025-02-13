@@ -9,8 +9,15 @@ module Metanorma
         init_lookups(node.document)
         ret = requirement_guidance_parse(node, super)
         out = requirement_table_cleanup(node, ret)
-        out["class"] = "modspec" # deferred; node["class"] is labelling class
+        truncate_id_base_fmtxreflabel(out)
         out
+      end
+
+      def requirement_presentation(node, out)
+        ret = node.document.create_element("fmt-provision")
+        ret << out
+        out = ret
+        super
       end
 
       def recommendation_base(node, _klass)
@@ -19,6 +26,8 @@ module Metanorma
         %w(id keep-with-next keep-lines-together unnumbered).each do |x|
           out[x] = node[x] if node[x]
         end
+        node["original-id"] = node["id"]
+        node.delete("id")
         out["type"] = recommend_class(node)
         recommendation_component_labels(node)
         out
@@ -34,7 +43,7 @@ module Metanorma
       end
 
       def recommendation_header(reqt, out)
-        n = reqt.at(ns("./fmt-name"))
+        n = to_xml(reqt.at(ns("./fmt-name")))&.strip
         x = if reqt.ancestors("requirement, recommendation, permission").empty?
               <<~THEAD
                 <thead><tr><th scope='colgroup' colspan='2'><p class='#{recommend_name_class(reqt)}'>#{n}</p></th></tr></thead>
@@ -46,20 +55,6 @@ module Metanorma
         out << x
         out
       end
-
-=begin
-      def recommendation_name(node, _out)
-        ret = ""
-        name = node.at(ns("./fmt-name")) and ret += name.children.to_xml
-        title = node.at(ns("./fmt-title"))
-        return ret unless title &&
-          node.ancestors("requirement, recommendation, permission").empty?
-
-        ret += ": " unless !name || name.text.empty?
-        ret += title.children.to_xml
-        l10n(ret)
-      end
-=end
 
       def recommendation_label_add(elem, _label, title)
         title or return ""
@@ -92,7 +87,7 @@ module Metanorma
         label = node.at(ns("./identifier")) or return
         ret = <<~OUTPUT
           <tr><th>#{@labels['modspec']['identifier']}</th>
-          <td><tt><modspec-ident>#{to_xml(label.children)}</modspec-ident></tt></td>
+          <td><tt><modspec-ident>#{to_xml(semx_fmt_dup(label))}</modspec-ident></tt></td>
         OUTPUT
         out.add_child(ret)
       end
@@ -100,8 +95,8 @@ module Metanorma
       def recommendation_attributes1(node)
         ret = recommendation_attributes1_head(node, [])
         node.xpath(ns("./classification")).each do |c|
-          line = recommendation_attr_keyvalue(c, "tag",
-                                              "value") and ret << line
+          line = recommendation_attr_keyvalue(c, "tag", "value") and
+            ret << line
         end
         ret
       end
@@ -109,8 +104,8 @@ module Metanorma
       def recommendation_attributes1_head(node, head)
         oblig = node["obligation"] and
           head << [@labels["default"]["obligation"], oblig]
-        subj = node.at(ns("./subject"))&.children and
-          head << [rec_subj(node), subj]
+        subj = node.at(ns("./subject")) and
+          head << [rec_subj(node), semx_fmt_dup(subj)]
         head = recommendation_attributes1_target(node, head)
         head += recommendation_backlinks(node)
         recommendation_attributes1_dependencies(node, head)
@@ -119,7 +114,7 @@ module Metanorma
       def recommendation_attributes1_target(node, head)
         node.xpath(ns("./classification[tag][value]")).each do |c|
           c.at(ns("./tag")).text.casecmp("target").zero? or next
-          xref = recommendation_id(c.at(ns("./value")).text) and
+          xref = recommendation_id(semx_fmt_dup(c.at(ns("./value")))) and
             head << [rec_target(node), xref]
         end
         head
@@ -140,7 +135,7 @@ module Metanorma
       def recommendation_attributes1_inherit(node, head)
         node.xpath(ns("./inherit")).each do |i|
           head << [@labels["modspec"]["dependency"],
-                   recommendation_id(to_xml(i.children))]
+                   recommendation_id(semx_fmt_dup(i))]
         end
         head
       end
@@ -149,7 +144,7 @@ module Metanorma
         %w(indirect-dependency implements).each do |x|
           node.xpath(ns("./classification[tag][value]")).each do |c|
             c.at(ns("./tag")).text.casecmp(x).zero? or next
-            xref = recommendation_id(to_xml(c.at(ns("./value")).children)) and
+            xref = recommendation_id(semx_fmt_dup(c.at(ns("./value")))) and
               head << [@labels["modspec"][x.delete("-")], xref]
           end
         end
@@ -160,91 +155,122 @@ module Metanorma
         node["id"] ? " id='#{node['id']}'" : ""
       end
 
-      def recommendation_steps(node)
+      # KILL
+      def recommendation_stepsX(node)
         node.elements.each { |e| recommendation_steps(e) }
-        return node unless node.at(ns("./component[@class = 'step']"))
-
+        node.at(ns("./component[@class = 'step']")) or return node
         d = node.at(ns("./component[@class = 'step']"))
         d = d.replace("<ol class='steps'><li#{id_attr(d)}>" \
-                      "#{to_xml(d.children)}</li></ol>").first
+        "#{to_xml(d.children)}</li></ol>").first
         node.xpath(ns("./component[@class = 'step']")).each do |f|
           f = f.replace("<li#{id_attr(f)}>#{to_xml(f.children)}</li>").first
           d << f
         end
-        node
+          node
       end
 
-      def recommendation_attributes1_component(node, out)
-        return out if node["class"] == "guidance"
 
-        node = recommendation_steps(node)
-        out << "<tr#{id_attr(node)}><th>#{node['label']}</th>" \
-               "<td>#{node.children}</td></tr>"
-        out
-      end
+        def recommendation_steps(node, ret)
+          ret.elements.each_with_index do |e, i|
+            e1 = nil
+            #require "debug"; e.name == "component" && e["class"] == "step" and binding.b
+            e.name == "component" && e["class"] == "step" and
+              e1 = e.replace(semx_fmt_dup(node.elements[i]))
+            #require "debug"; e.name == "component" && e["class"] == "step" and binding.b
+            recommendation_steps(node.elements[i], e1 || e)
+          end
+          node.name == "component" && node["class"] == "step" and ret["inlist"] = "true"
+          #require "debug"; node.name == "component" && node["class"] == "step" and binding.b
+          d = ret.at(ns("./semx[@inlist]")) or return ret
+          d.delete("inlist")
+          d = d.replace("<ol class='steps'><li#{id_attr(d)}>" \
+                        "#{to_xml(d)}</li></ol>").first
+          ret.xpath(ns("./semx[@inlist]")).each do |f|
+            f.delete("inlist")
+            f = f.replace("<li#{id_attr(f)}>#{to_xml(f)}</li>").first
+            d << f
+          end
+          ret
+        end
 
-      def recommendation_attr_keyvalue(node, key, value)
-        tag = node.at(ns("./#{key}")) or return nil
-        value = node.at(ns("./#{value}")) or return nil
-        !%w(target indirect-dependency identifier-base
+        def recommendation_attributes1_component(node, ret, out)
+          node["class"] == "guidance" and return out
+          ret = recommendation_steps(node, ret)
+          out << "<tr#{id_attr(node)}><th>#{node['label']}</th>" \
+            "<td>#{to_xml(ret)}</td></tr>"
+          node.delete("label") # inserted in recommendation_component_labels
+          out
+        end
+
+        def recommendation_attr_keyvalue(node, key, value)
+          tag = node.at(ns("./#{key}")) or return nil
+          value = node.at(ns("./#{value}")) or return nil
+          !%w(target indirect-dependency identifier-base
             implements).include?(tag.text.downcase) or
-          return nil
-        [Metanorma::Utils.strict_capitalize_first(tag.text), value.children]
-      end
+            return nil
+            lbl = semx_fmt_dup(tag)
+            lbl.children = Metanorma::Utils.strict_capitalize_first(lbl.text)
+            [to_xml(lbl), semx_fmt_dup(value)]
+        end
 
-      def reqt_component_type(node)
-        klass = node.name
-        klass == "component" and klass = node["class"]
-        "requirement-#{klass}"
-      end
+        def reqt_component_type(node)
+          klass = node.name
+          klass == "component" and klass = node["class"]
+          "requirement-#{klass}"
+        end
 
-      def preserve_in_nested_table?(node)
-        %w(recommendation requirement permission
+        def preserve_in_nested_table?(node)
+          %w(recommendation requirement permission
            table ol dl ul).include?(node.name)
-      end
-
-      def requirement_component_parse(node, out)
-        node["exclude"] == "true" and return out
-        descr_classif_render(node)
-        node.elements.size == 1 && node.first_element_child.name == "dl" and
-          return reqt_dl(node.first_element_child, out)
-        node.name == "component" and
-          return recommendation_attributes1_component(node, out)
-        node.name == "description" and
-          return requirement_description_parse(node, out)
-        out.add_child("<tr#{id_attr(node)}><td colspan='2'></td></tr>").first
-          .at(ns(".//td")) <<
-          (preserve_in_nested_table?(node) ? node : node.children)
-        out
-      end
-
-      def requirement_description_parse(node, out)
-        lbl = "description"
-        recommend_class(node.parent) == "recommend" and
-          lbl = "statement"
-        out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
-               "<td>#{to_xml(node.children)}</td></tr>"
-        out
-      end
-
-      def requirement_guidance_parse(node, out)
-        ins = out.at(ns("./tbody"))
-        node.xpath(ns("./component[@class = 'guidance']")).each do |f|
-          ins << "<tr#{id_attr(f)}><th>#{@labels['modspec']['guidance']}</th>" \
-                 "<td>#{f.children}</td></tr>"
         end
-        out
-      end
 
-      def reqt_dl(node, out)
-        node.xpath(ns("./dt")).each do |dt|
-          dd = dt.next_element
-          dd&.name == "dd" or next
-          out.add_child("<tr><th>#{to_xml(dt.children)}</th>" \
-                        "<td>#{to_xml(dd.children)}</td></tr>")
+        def requirement_component_parse(node, out)
+          node["exclude"] == "true" and return out
+          ret = semx_fmt_dup(node)
+          descr_classif_render(node, ret)
+          ret.elements.size == 1 && ret.first_element_child.name == "dl" and
+            return reqt_dl(ret.first_element_child, out)
+          node.name == "component" and
+            return recommendation_attributes1_component(node, ret, out)
+          node.name == "description" and
+            return requirement_description_parse(node, ret, out)
+          id = node["id"] || node["original-id"]
+          !preserve_in_nested_table?(node) && id and attr = " id='#{id}'"
+          out.add_child("<tr#{id_attr(node)}><td colspan='2'#{attr}></td></tr>").first
+            .at(ns(".//td")) <<
+          (preserve_in_nested_table?(node) ? node.dup : ret)
+          out
         end
-        out
+
+        def requirement_description_parse(node, ret, out)
+          lbl = "description"
+          recommend_class(node.parent) == "recommend" and
+            lbl = "statement"
+          out << "<tr><th>#{@labels['modspec'][lbl]}</th>" \
+            "<td>#{to_xml(ret)}</td></tr>"
+          out
+        end
+
+        def requirement_guidance_parse(node, out)
+          ins = out.at(ns("./fmt-provision/table/tbody"))
+          origs = node.xpath(ns("./component[@class = 'guidance']"))
+          out.xpath(ns("./component[@class = 'guidance']")).each_with_index do |f, i|
+            f.delete("label")
+            ins << "<tr#{id_attr(f)}><th>#{@labels['modspec']['guidance']}</th>" \
+              "<td>#{to_xml(semx_fmt_dup(origs[i]))}</td></tr>"
+          end
+          out
+        end
+
+        def reqt_dl(node, out)
+          node.xpath(ns("./dt")).each do |dt|
+            dd = dt.next_element
+            dd&.name == "dd" or next
+            out.add_child("<tr><th>#{to_xml(dt.children)}</th>" \
+                          "<td>#{to_xml(dd.children)}</td></tr>")
+          end
+          out
+        end
       end
     end
   end
-end
