@@ -78,6 +78,7 @@ def semx_fmt_dup(elem)
       def requirement_presentation(node, out)
         out.default_namespace = node.namespace.href
         node.xpath(ns("./*//fmt-name | ./*//fmt-xref-label")).each(&:remove)
+        node.xpath(ns(".//fmt-sourcecode")).each(&:remove)
         ret = node.dup
         ret << out
         ret

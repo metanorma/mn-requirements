@@ -64,7 +64,7 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword displayorder="2">
+       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Foreword</semx>
@@ -182,10 +182,10 @@ RSpec.describe Metanorma::Requirements::Default do
                    <em>
                       Inherits:
                       <semx element="inherit" source="_">
-                      <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616" id="_">RFC 2616 (HTTP/1.1)</eref>
-                  <semx element="eref" source="_">
-                     <fmt-xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</fmt-xref>
-                  </semx>
+                         <eref type="inline" bibitemid="rfc2616" citeas="RFC 2616" id="_">RFC 2616 (HTTP/1.1)</eref>
+                         <semx element="eref" source="_">
+                            <fmt-xref type="inline" target="rfc2616">RFC 2616 (HTTP/1.1)</fmt-xref>
+                         </semx>
                       </semx>
                    </em>
                    <br/>
@@ -274,18 +274,24 @@ RSpec.describe Metanorma::Requirements::Default do
                             <semx element="autonum" source="B">1</semx>
                             <span class="fmt-autonum-delim">)</span>
                          </fmt-xref-label>
-                         <stem type="AsciiMath">r/1 = 0</stem>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
                       </formula>
                    </semx>
                 </div>
                 <div type="requirement-verification">
                    <semx element="verification" source="_">
                       <p id="_">The following code will be run for verification:</p>
-                      <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
-           </sourcecode>
+           </fmt-sourcecode>
+                      </sourcecode>
                    </semx>
                 </div>
                 <div type="requirement-component1">
@@ -360,7 +366,7 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword displayorder="2">
+       <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Foreword</semx>
@@ -474,18 +480,24 @@ RSpec.describe Metanorma::Requirements::Default do
                             <semx element="autonum" source="B">1</semx>
                             <span class="fmt-autonum-delim">)</span>
                          </fmt-xref-label>
-                         <stem type="AsciiMath">r/1 = 0</stem>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
                       </formula>
                    </semx>
                 </div>
                 <div type="requirement-verification">
                    <semx element="verification" source="_">
                       <p id="_">The following code will be run for verification:</p>
-                      <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
-           </sourcecode>
+           </fmt-sourcecode>
+                      </sourcecode>
                    </semx>
                 </div>
                 <div type="requirement-component1">
@@ -689,18 +701,24 @@ RSpec.describe Metanorma::Requirements::Default do
                             <semx element="autonum" source="B">1</semx>
                             <span class="fmt-autonum-delim">)</span>
                          </fmt-xref-label>
-                         <stem type="AsciiMath">r/1 = 0</stem>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
                       </formula>
                    </semx>
                 </div>
                 <div type="requirement-verification">
                    <semx element="verification" source="_">
                       <p id="_">The following code will be run for verification:</p>
-                      <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
-           </sourcecode>
+           </fmt-sourcecode>
+                      </sourcecode>
                    </semx>
                 </div>
                 <div type="requirement-component1">
@@ -777,7 +795,7 @@ RSpec.describe Metanorma::Requirements::Default do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-       <foreword displayorder="2">
+      <foreword displayorder="2">
           <title id="_">Foreword</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Foreword</semx>
@@ -911,18 +929,24 @@ RSpec.describe Metanorma::Requirements::Default do
                             <semx element="autonum" source="B">1</semx>
                             <span class="fmt-autonum-delim">)</span>
                          </fmt-xref-label>
-                         <stem type="AsciiMath">r/1 = 0</stem>
+                         <stem type="AsciiMath" id="_">r/1 = 0</stem>
+                         <fmt-stem type="AsciiMath">
+                            <semx element="stem" source="_">r/1 = 0</semx>
+                         </fmt-stem>
                       </formula>
                    </semx>
                 </div>
                 <div type="requirement-verification">
                    <semx element="verification" source="_">
                       <p id="_">The following code will be run for verification:</p>
-                      <sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+                      <sourcecode id="_" autonum="2">
+                         CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
+                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
-           </sourcecode>
+           </fmt-sourcecode>
+                      </sourcecode>
                    </semx>
                 </div>
                 <div type="requirement-component1">
