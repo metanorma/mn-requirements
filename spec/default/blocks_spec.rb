@@ -35,7 +35,7 @@ RSpec.describe Metanorma::Requirements::Default do
              </description>
           </recommendation>
         </sections>
-      </standard-document>
+      </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
@@ -77,7 +77,7 @@ RSpec.describe Metanorma::Requirements::Default do
       </description>
       </requirement>
              </sections>
-             </standard-document>
+             </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
@@ -101,7 +101,7 @@ RSpec.describe Metanorma::Requirements::Default do
         <description><p id="_">I recommend this</p></description>
       </permission>
              </sections>
-             </standard-document>
+             </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
@@ -156,7 +156,7 @@ RSpec.describe Metanorma::Requirements::Default do
       </requirement>
       </permission>
       </sections>
-      </standard-document>
+      </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
@@ -260,7 +260,7 @@ RSpec.describe Metanorma::Requirements::Default do
       </component>
           </recommendation>
                  </sections>
-                 </standard-document>
+                 </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))

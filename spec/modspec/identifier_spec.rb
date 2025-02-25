@@ -68,16 +68,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+             <permission model="ogc" autonum="1-1" original-id="A2">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+             <requirement model="ogc" autonum="1-1" original-id="A3">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+             <recommendation model="ogc" autonum="1-1" original-id="A4">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -228,7 +228,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/10</identifier>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -458,16 +458,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+             <permission model="ogc" autonum="1-1" original-id="A2">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+             <requirement model="ogc" autonum="1-1" original-id="A3">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+             <recommendation model="ogc" autonum="1-1" original-id="A4">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -638,7 +638,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/10</identifier>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -863,16 +863,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>/ogc/recommendation/wfs</value>
              </classification>
-             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+             <permission model="ogc" autonum="1-1" original-id="A2">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+             <requirement model="ogc" autonum="1-1" original-id="A3">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+             <recommendation model="ogc" autonum="1-1" original-id="A4">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -1037,7 +1037,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>/ogc/recommendation</value>
              </classification>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -1261,16 +1261,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>/ogc/recommendation/wfs</value>
              </classification>
-             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+             <permission model="ogc" autonum="1-1" original-id="A2">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+             <requirement model="ogc" autonum="1-1" original-id="A3">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+             <recommendation model="ogc" autonum="1-1" original-id="A4">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -1431,7 +1431,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/10</identifier>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -1665,16 +1665,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>/ogc/recommendation/wfs</value>
              </classification>
-             <permission model="ogc" autonum="1-1" original-id="A2" id="_">
+             <permission model="ogc" autonum="1-1" original-id="A2">
                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
              </permission>
-             <requirement model="ogc" autonum="1-1" original-id="A3" id="_">
+             <requirement model="ogc" autonum="1-1" original-id="A3">
                 <identifier original-id="_">Requirement 1</identifier>
              </requirement>
-             <recommendation model="ogc" autonum="1-1" original-id="A4" id="_">
+             <recommendation model="ogc" autonum="1-1" original-id="A4">
                 <identifier original-id="_">Recommendation 1</identifier>
              </recommendation>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
@@ -1845,7 +1845,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </tt>
              </fmt-xref-label>
              <identifier id="_">/ogc/recommendation/wfs/10</identifier>
-             <description id="_">
+             <description original-id="_">
                 <xref target="A" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="A1" style="id">/ogc/recommendation/wfs/2</xref>
                 <xref target="B1" style="id">/ogc/recommendation/wfs/10</xref>
