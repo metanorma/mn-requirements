@@ -219,11 +219,13 @@ module Metanorma
           "requirement-#{klass}"
         end
 
+        # KILL
         def preserve_in_nested_table?(node)
           %w(recommendation requirement permission
            table ol dl ul).include?(node.name)
         end
 
+        # KILL
         def requirement_component_parse(node, out)
           node["exclude"] == "true" and return out
           ret = semx_fmt_dup(node)
@@ -239,6 +241,45 @@ module Metanorma
           out.add_child("<tr#{id_attr(node)}><td colspan='2'#{attr}></td></tr>").first
             .at(ns(".//td")) <<
           (preserve_in_nested_table?(node) ? node.dup : ret)
+          out
+        end
+
+          def preserve_in_nested_table?(node)
+          #%w(recommendation requirement permission table ol dl ul hr br p).include?(node.name)
+          !%w(subject inherit identifier measurement-target specification verification import description component).include?(node.name)
+        end
+
+        def requirement_component_parse(node, out)
+          node["exclude"] == "true" and return out
+          ret = semx_fmt_dup(node)
+          descr_classif_render(node, ret)
+          ret.elements.size == 1 && ret.first_element_child.name == "dl" and
+            return reqt_dl(ret.first_element_child, out)
+          node.name == "component" and
+            return recommendation_attributes1_component(node, ret, out)
+          node.name == "description" and
+            return requirement_description_parse(node, ret, out)
+          id = node["id"] || node["original-id"]
+          #!preserve_in_nested_table?(node) && id and attr = " id='#{id}'"
+          id and attr = " id='#{id}'"
+          preserve = preserve_in_nested_table?(node)
+          if id == node["id"]
+            if node["original-id"]
+              attr = " id='#{node["original-id"]}'"
+            else
+            node["original-id"] = node["id"]
+            end
+            node.delete("id")
+          end
+          if preserve
+            n = Nokogiri::XML::Node.new(node.name, node.document)
+            node.attributes.each { |k, v| n[k] = v }
+            node.children.empty? or n << ret
+            ret = n
+          end
+          out.add_child("<tr#{attr}><td colspan='2'></td></tr>").first
+            .at(ns(".//td")) << (%(permission requirement recommendation).include?(node.name) ? node.dup : ret)
+          #(preserve_in_nested_table?(node) ? node.dup : ret)
           out
         end
 

@@ -52,7 +52,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </component>
            </requirement>
          </sections>
-       </standard-document>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -349,7 +349,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </description>
            </requirement>
          </sections>
-       </standard-document>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))
       .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
@@ -398,7 +398,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </requirement>
           </requirement>
         </sections>
-      </standard-document>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))
       .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
@@ -442,7 +442,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </description>
           </requirement>
         </sections>
-      </standard-document>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))
       .gsub(%r{<th>_[^<]+</th>}, "<th>_</th>")))
@@ -510,7 +510,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
            </component>
          </requirement>
        </sections>
-      </standard-document>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -560,7 +560,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <requirement id='_' type='conformanceclass' model="ogc"> </requirement>
           <requirement id='_' type='abstracttest' model="ogc"> </requirement>
         </sections>
-       </standard-document>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -595,7 +595,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <requirement id='_' type='conformanceclass' model="ogc"> </requirement>
           <requirement id='_' type='abstracttest' model="ogc"> </requirement>
         </sections>
-       </standard-document>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)

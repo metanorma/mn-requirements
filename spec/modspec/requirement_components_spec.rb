@@ -1070,7 +1070,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <inherit id="_">http://www.opengis.net/spec/WPS/2.0/req/conceptual-model</inherit>
              <inherit id="_">OWS Common 2.0</inherit>
              <inherit id="_">http://www.opengis.net/spec/WPS/2.0/req/service/model/handling</inherit>
-             <requirement model="ogc" type="general" autonum="1-1" original-id="_" id="_">
+             <requirement model="ogc" type="general" autonum="1-1" original-id="_">
                 <description original-id="_">
                    <p original-id="_">
                       <em>
@@ -1083,7 +1083,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </p>
                 </description>
              </requirement>
-             <requirement model="ogc" type="general" autonum="1-2" original-id="_" id="_">
+             <requirement model="ogc" type="general" autonum="1-2" original-id="_">
                 <description original-id="_">
                    <p original-id="_">
                       <em>The JobID used in the request shall be a valid identifier which the client has received with the execute response.</em>
