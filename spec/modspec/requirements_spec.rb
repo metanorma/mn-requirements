@@ -109,7 +109,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </classification>
              <hr original-id="_"/>
             <quote original-id="_">A</quote>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -128,7 +128,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description id="_">
+             <description original-id="_">
                 <dl>
                    <dt>A</dt>
                    <dd>B</dd>
@@ -153,28 +153,28 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <import exclude="true">
                 <sourcecode id="_" autonum="2">success-response()</sourcecode>
              </import>
-             <component class="test-purpose" id="_">
+             <component class="test-purpose" original-id="_">
                 <p>TEST PURPOSE</p>
              </component>
-             <component class="test-method" id="_">
+             <component class="test-method" original-id="_">
                 <p>TEST METHOD</p>
              </component>
-             <component class="conditions" id="_">
+             <component class="conditions" original-id="_">
                 <p>CONDITIONS</p>
              </component>
-             <component class="part" id="_">
+             <component class="part" original-id="_">
                 <p>FIRST PART</p>
              </component>
-             <component class="part" id="_">
+             <component class="part" original-id="_">
                 <p>SECOND PART</p>
              </component>
-             <component class="part" id="_">
+             <component class="part" original-id="_">
                 <p>THIRD PART</p>
              </component>
-             <component class="reference" id="_">
+             <component class="reference" original-id="_">
                 <p>REFERENCE PART</p>
              </component>
-             <component class="panda GHz express" id="_">
+             <component class="panda GHz express" original-id="_">
                 <p>PANDA PART</p>
              </component>
              <fmt-provision>
@@ -498,7 +498,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag id="_">family</tag>
                 <value id="_">System and Communications Protocols</value>
              </classification>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -517,7 +517,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description id="_">
+             <description original-id="_">
                 <dl>
                    <dt>A</dt>
                    <dd>B</dd>
@@ -779,7 +779,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag id="_">family</tag>
                 <value id="_">System and Communications Protocols</value>
              </classification>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -798,7 +798,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description id="_">
+             <description original-id="_">
                 <dl>
                    <dt>A</dt>
                    <dd>B</dd>
@@ -1264,7 +1264,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tag>indirect-dependency</tag>
                  <value id="_">ABC</value>
               </classification>
-              <description id="_">Hic incipit</description>
+              <description original-id="_">Hic incipit</description>
               <permission model="ogc" autonum="1-1" original-id="A2">
                  <identifier original-id="_">Permission 1</identifier>
               </permission>
@@ -1612,7 +1612,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tag>indirect-dependency</tag>
                  <value id="_">ABC</value>
               </classification>
-              <description id="_">Hic incipit</description>
+              <description original-id="_">Hic incipit</description>
               <permission model="ogc" autonum="1-1" original-id="A2">
                  <identifier original-id="_">Permission 1</identifier>
               </permission>
@@ -1944,7 +1944,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <value id="_">Permission 1</value>
               </classification>
               <subject id="_">user</subject>
-              <description id="_">Hic incipit</description>
+              <description original-id="_">Hic incipit</description>
               <permission model="ogc" autonum="1-1" original-id="A2">
                  <identifier original-id="_">Permission 1</identifier>
               </permission>
@@ -2380,7 +2380,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2402,7 +2402,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">
@@ -2614,7 +2614,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2636,7 +2636,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">
@@ -2794,7 +2794,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2816,7 +2816,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">
@@ -2974,7 +2974,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2996,7 +2996,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">

@@ -62,7 +62,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>1</em>
@@ -77,90 +77,90 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <value id="_">randomer</value>
                 </classification>
              </description>
-             <component class="test-purpose" id="A1">
+             <component class="test-purpose" original-id="A1">
                 <p>TEST PURPOSE</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>2</em>
                    .
                 </p>
              </description>
-             <component class="guidance" id="A7">
+             <component class="guidance" original-id="A7">
                 <p>GUIDANCE #1</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>2a</em>
                    .
                 </p>
              </description>
-             <component class="conditions" id="A2">
+             <component class="conditions" original-id="A2">
                 <p>CONDITIONS</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>3</em>
                    .
                 </p>
              </description>
-             <component class="part" id="A3">
+             <component class="part" original-id="A3">
                 <p>FIRST PART</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>4</em>
                    .
                 </p>
              </description>
-             <component class="part" id="A4">
+             <component class="part" original-id="A4">
                 <p>SECOND PART</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>5</em>
                    .
                 </p>
              </description>
-             <component class="test-method" id="A5">
+             <component class="test-method" original-id="A5">
                 <p>TEST METHOD</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>6</em>
                    .
                 </p>
              </description>
-             <component class="part" id="A6">
+             <component class="part" original-id="A6">
                 <p>THIRD PART</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>7</em>
                    .
                 </p>
              </description>
-             <component class="guidance" id="A8">
+             <component class="guidance" original-id="A8">
                 <p>GUIDANCE #2</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>7a</em>
                    .
                 </p>
              </description>
-             <component class="panda GHz express" id="A7">
+             <component class="panda GHz express" original-id="A7">
                 <p>PANDA PART</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>8</em>
@@ -456,7 +456,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">http://www.example1.com</identifier>
              <inherit id="_">http://www.example2.com</inherit>
              <subject id="_">http://www.example3.com</subject>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">
                    I recommend
                    <em>1</em>
@@ -467,16 +467,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    <value id="_">http://www.example5.com</value>
                 </classification>
              </description>
-             <component class="test-purpose" id="A1">
+             <component class="test-purpose" original-id="A1">
                 <p>TEST PURPOSE</p>
              </component>
-             <description id="_">
+             <description original-id="_">
                 <p original-id="_">http://www.example6.com</p>
              </description>
-             <component class="panda GHz express" id="A7">
+             <component class="panda GHz express" original-id="A7">
                 <p>PANDA PART</p>
              </component>
-             <description id="_">http://www.example7.com</description>
+             <description original-id="_">http://www.example7.com</description>
              <fmt-provision>
                 <table id="_" type="recommend" class="modspec">
                    <thead>
@@ -617,18 +617,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <component exclude='false' class='test method type'>
           <p id='_'>Manual Inspection</p>
         </component>
-        <component exclude='false' class='test-method'>
+        <component exclude='false' class='test-method' id="C1">
           <p id='1'>
-            <component exclude='false' class='step'>
+            <component exclude='false' class='step' id="C2">
               <p id='2'>For each UML class defined or referenced in the Tunnel Package:</p>
-              <component exclude='false' class='step'>
+              <component exclude='false' class='step' id="C3">
                 <p id='3'>
                   Validate that the Implementation Specification contains a data
                   element which represents the same concept as that defined for
                   the UML class.
                 </p>
               </component>
-              <component exclude='false' class='step'>
+              <component exclude='false' class='step' id="C4">
                 <p id='4'>
                   Validate that the data element has the same relationships with
                   other elements as those defined for the UML class. Validate that
@@ -645,7 +645,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-      <foreword id="A" displayorder="2">
+       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
           <fmt-title depth="1">
              <semx element="title" source="_">Preface</semx>
@@ -655,21 +655,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A1">1</semx>
              </fmt-xref-label>
-             <component exclude="false" class="test method type" id="_">
+             <component exclude="false" class="test method type" original-id="_">
                 <p original-id="_">Manual Inspection</p>
              </component>
-             <component exclude="false" class="test-method" id="_">
+             <component exclude="false" class="test-method" original-id="C1">
                 <p original-id="1">
-                   <component exclude="false" class="step" id="_">
+                   <component exclude="false" class="step" original-id="C2" id="_">
                       <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
-                      <component exclude="false" class="step" id="_">
+                      <component exclude="false" class="step" original-id="C3" id="_">
                          <p original-id="3">
                    Validate that the Implementation Specification contains a data
                    element which represents the same concept as that defined for
                    the UML class.
                  </p>
                       </component>
-                      <component exclude="false" class="step" id="_">
+                      <component exclude="false" class="step" original-id="C4" id="_">
                          <p original-id="4">
                    Validate that the data element has the same relationships with
                    other elements as those defined for the UML class. Validate that
@@ -706,18 +706,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             </semx>
                          </td>
                       </tr>
-                      <tr id="_">
+                      <tr id="C1">
                          <th>Test method</th>
                          <td>
-                            <semx element="component" source="_">
+                            <semx element="component" source="C1">
                                <p id="1">
                                   <ol class="steps">
                                      <li>
-                                        <semx element="component" source="_">
+                                        <semx element="component" source="C2">
                                            <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
                                            <ol class="steps">
                                               <li>
-                                                 <semx element="component" source="_">
+                                                 <semx element="component" source="C3">
                                                     <p original-id="3">
                    Validate that the Implementation Specification contains a data
                    element which represents the same concept as that defined for
@@ -726,7 +726,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                                  </semx>
                                               </li>
                                               <li>
-                                                 <semx element="component" source="_">
+                                                 <semx element="component" source="C4">
                                                     <p original-id="4">
                    Validate that the data element has the same relationships with
                    other elements as those defined for the UML class. Validate that

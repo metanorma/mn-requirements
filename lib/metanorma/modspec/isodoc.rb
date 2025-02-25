@@ -152,7 +152,8 @@ module Metanorma
       end
 
       def id_attr(node)
-        node["id"] ? " id='#{node['id']}'" : ""
+        id = node["id"] || node["original-id"]
+        id ? " id='#{id}'" : ""
       end
 
       # KILL
@@ -249,18 +250,11 @@ module Metanorma
           !%w(subject inherit identifier measurement-target specification verification import description component).include?(node.name)
         end
 
-        def requirement_component_parse(node, out)
+         def requirement_component_parse(node, out)
           node["exclude"] == "true" and return out
           ret = semx_fmt_dup(node)
           descr_classif_render(node, ret)
-          ret.elements.size == 1 && ret.first_element_child.name == "dl" and
-            return reqt_dl(ret.first_element_child, out)
-          node.name == "component" and
-            return recommendation_attributes1_component(node, ret, out)
-          node.name == "description" and
-            return requirement_description_parse(node, ret, out)
           id = node["id"] || node["original-id"]
-          #!preserve_in_nested_table?(node) && id and attr = " id='#{id}'"
           id and attr = " id='#{id}'"
           preserve = preserve_in_nested_table?(node)
           if id == node["id"]
@@ -277,6 +271,13 @@ module Metanorma
             node.children.empty? or n << ret
             ret = n
           end
+          ret.elements.size == 1 && ret.first_element_child.name == "dl" and
+            return reqt_dl(ret.first_element_child, out)
+          node.name == "component" and
+            return recommendation_attributes1_component(node, ret, out)
+          node.name == "description" and
+            return requirement_description_parse(node, ret, out)
+          #!preserve_in_nested_table?(node) && id and attr = " id='#{id}'"
           out.add_child("<tr#{attr}><td colspan='2'></td></tr>").first
             .at(ns(".//td")) << (%(permission requirement recommendation).include?(node.name) ? node.dup : ret)
           #(preserve_in_nested_table?(node) ? node.dup : ret)
