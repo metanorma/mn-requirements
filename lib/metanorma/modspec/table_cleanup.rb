@@ -74,33 +74,29 @@ module Metanorma
         ret
       end
 
-      # KILL
       def requirement_table_nested_cleanup(node, out, table)
-        table.xpath(ns("./tbody/tr/td/table")).each do |t|
-          x = t.at(ns("./thead/tr")) or next
-          x.at(ns("./th")).children =
-            requirement_table_nested_cleanup_hdr(node)
-          f = x.at(ns("./td/fmt-name")) and
-            f.replace(f.children)
-          t.parent.parent.replace(x)
-        end
-        table
-      end
-
-      def requirement_table_nested_cleanup(node, out, table)
-        table.xpath(ns("./tbody/tr/td/*/fmt-provision/table")).each do |t|
-          x = t.at(ns("./thead/tr")) or next
-          x.at(ns("./th")).children =
-            requirement_table_nested_cleanup_hdr(node)
-          f = x.at(ns("./td/fmt-name")) and
-            f.parent.children = to_xml(f.children).strip
-          td = x.at(ns("./td"))
-          td["id"] = t["original-id"] || t["id"]
-          if desc = t.at(ns("./tbody/tr/td/semx[@element = 'description']"))
-            p = desc.at(ns("./p")) and p.replace(p.children)
-td << " #{to_xml(desc)}"
+        rows = []
+        table.xpath(ns("./tbody/tr/td/*/fmt-provision/table"))
+          .sort_by do |t|
+            [t.at(ns(".//fmt-name//span[@class = 'fmt-element-name']"))&.text,
+             t.at(ns(".//fmt-name//semx[@element = 'autonum']"))&.text&.to_i]
+          end.each do |t|
+            x = t.at(ns("./thead/tr")) or next
+            x.at(ns("./th")).children =
+              requirement_table_nested_cleanup_hdr(node)
+            f = x.at(ns("./td/fmt-name")) and
+              f.parent.children = to_xml(f.children).strip
+            td = x.at(ns("./td"))
+            td["id"] = t["original-id"] || t["id"]
+            if desc = t.at(ns("./tbody/tr/td/semx[@element = 'description']"))
+              p = desc.at(ns("./p")) and p.replace(p.children)
+              td << " #{to_xml(desc)}"
+            end
+            rows << x
           end
-          t.parent.parent.parent.parent.replace(x)
+        table.xpath(ns("./tbody/tr[./td/*/fmt-provision/table]"))
+          .each_with_index do |t, i|
+          t.replace(rows[i])
         end
         out.xpath(ns("./*/fmt-provision")).each(&:remove)
         table
@@ -135,10 +131,10 @@ td << " #{to_xml(desc)}"
       def expand_xrefs_in_reqt(table)
         table.xpath(ns(".//xref[not(@style)][string-length() = 0]"))
           .each do |x|
-          @xrefs.anchor(x["target"], :modspec, false) or next # modspec xrefs only
-          ref = @xrefs.anchor(x["target"], :xref, false) or next
-          x << ref
-        end
+            @xrefs.anchor(x["target"], :modspec, false) or next # modspec xrefs only
+            ref = @xrefs.anchor(x["target"], :xref, false) or next
+            x << ref
+          end
       end
 
       def truncate_id_base_in_reqt(table)
