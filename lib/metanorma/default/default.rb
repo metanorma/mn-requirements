@@ -57,8 +57,10 @@ module Metanorma
       end
 
       def reqt_attrs(node, attrs)
+        anchor = node&.id
         attr_code(attrs.merge(
-                    id: Metanorma::Utils.anchor_or_uuid(node),
+                    id: "_#{UUIDTools::UUID.random_create}",
+                    anchor: anchor && !anchor.empty? ? anchor : nil,
                     unnumbered: node.option?("unnumbered") ? "true" : nil,
                     number: node.attr("number"),
                     subsequence: node.attr("subsequence"),

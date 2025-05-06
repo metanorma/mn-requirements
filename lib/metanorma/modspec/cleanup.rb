@@ -76,11 +76,13 @@ module Metanorma
       end
 
       def requirement_anchor_identifier(reqt)
-        Metanorma::Utils::guid_anchor?(reqt["id"]) or return
+        #Metanorma::Utils::guid_anchor?(reqt["id"]) or return
+        (!reqt["anchor"] || Metanorma::Utils::guid_anchor?(reqt["anchor"])) or return
         id = reqt.at("./identifier") or return
         anchor = id.text.strip
         anchor.empty? and return
-        reqt["id"] = Metanorma::Utils::to_ncname(anchor)
+        #reqt["id"] = Metanorma::Utils::to_ncname(anchor)
+        reqt["anchor"] = anchor
       end
 
       def requirement_target_identifiers(reqt)
@@ -105,7 +107,8 @@ module Metanorma
       def requirement_metadata_to_requirement(reqt)
         xpath = requirement_metadata_requirement_tags
         reqt.xpath(xpath.map { |x| "./#{x}" }.join(" | ")).each do |c|
-          c["id"] = Metanorma::Utils::anchor_or_uuid
+          #c["id"] = Metanorma::Utils::anchor_or_uuid
+          c["id"] = "_#{UUIDTools::UUID.random_create}"
           c["model"] = reqt["model"] # all requirements must have a model
           requirement_metadata_to_requirement1(c)
         end
@@ -142,9 +145,9 @@ module Metanorma
 
       def add_misccontainer_anchor_aliases(xmldoc)
         m = add_misc_container(xmldoc)
-        x = ".//table[@id = '_misccontainer_anchor_aliases']/tbody"
+        x = ".//table[@anchor='_misccontainer_anchor_aliases']/tbody"
         unless ins = m.at(x)
-          m << "<table id = '_misccontainer_anchor_aliases'><tbody/></table>"
+          m << "<table anchor='_misccontainer_anchor_aliases' id='_#{UUIDTools::UUID.random_create}'><tbody/></table>"
           ins = m.at(x)
         end
         ins
@@ -157,7 +160,9 @@ module Metanorma
         ids = x.each_with_object([]) do |i, m|
           m << "<td>#{i.text}</td>"
         end
-        table << "<tr><th>#{reqt['id']}</th>#{ids.join}</tr>"
+        #table << "<tr><th>#{reqt['id']}</th>#{ids.join}</tr>"
+        reqt['anchor'] and
+        table << "<tr><th>#{reqt['anchor']}</th>#{ids.join}</tr>"
       end
 
       def requirement_identifier_cleanup(reqt)

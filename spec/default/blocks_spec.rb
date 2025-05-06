@@ -14,7 +14,7 @@ RSpec.describe Metanorma::Requirements::Default do
     output = <<~"OUTPUT"
       #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
         <metanorma-extension>
-          <table id='_'>
+          <table id='_' anchor='_misccontainer_anchor_aliases'>
             <tbody>
               <tr>
                 <th>id1</th>
@@ -25,7 +25,7 @@ RSpec.describe Metanorma::Requirements::Default do
       EXT
       )}
         <sections>
-          <recommendation id="id1" unnumbered="true" type="verification" model="ogc" tag='X' multilingual-rendering='common' class="provision">
+          <recommendation id="_" anchor="id1" unnumbered="true" type="verification" model="ogc" tag='X' multilingual-rendering='common' class="provision">
              <identifier>/ogc/recommendation/wfs/2</identifier>
              <subject>user</subject>
              <subject>developer, implementer</subject>
@@ -58,7 +58,7 @@ RSpec.describe Metanorma::Requirements::Default do
     output = <<~OUTPUT
       #{BLANK_HDR}
              <sections>
-        <requirement id="ABC" subsequence="A" number="3" keep-with-next="true" keep-lines-together="true" tag='X' multilingual-rendering='common' model="default" class="provision">
+        <requirement id="_" anchor="ABC" subsequence="A" number="3" keep-with-next="true" keep-lines-together="true" tag='X' multilingual-rendering='common' model="default" class="provision">
               <title>Title</title>
         <inherit>/ss/584/2015/level/1 &amp; /ss/584/2015/level/2</inherit>
         <description><p id="_">I recommend this</p>
@@ -70,7 +70,7 @@ RSpec.describe Metanorma::Requirements::Default do
                  </li>
                  <li>
                    <p id='_'>
-                     <xref target='ABC'/>
+                     <xref target='_'/>
                    </p>
                  </li>
                </ol>
@@ -97,7 +97,7 @@ RSpec.describe Metanorma::Requirements::Default do
     output = <<~"OUTPUT"
                   #{BLANK_HDR}
              <sections>
-        <permission id="ABC" tag='X' multilingual-rendering='common' model="default" class="provision">
+        <permission id="_" anchor="ABC" tag='X' multilingual-rendering='common' model="default" class="provision">
         <description><p id="_">I recommend this</p></description>
       </permission>
              </sections>
@@ -227,7 +227,7 @@ RSpec.describe Metanorma::Requirements::Default do
     output = <<~"OUTPUT"
          #{BLANK_HDR}
           <sections>
-             <recommendation id="ABC" model="default" obligation="permission,recommendation" filename="reqt1.rq">
+             <recommendation id="_" anchor="ABC" model="default" obligation="permission,recommendation" filename="reqt1.rq">
                 <identifier>/ogc/recommendation/wfs/2</identifier>
                 <subject>user</subject>
                 <classification>
@@ -258,12 +258,12 @@ RSpec.describe Metanorma::Requirements::Default do
                    <table id="_">
                       <tbody>
                          <tr>
-                            <td valign="top" align="left">Object</td>
-                            <td valign="top" align="left">Value</td>
+                            <td id="_" valign="top" align="left">Object</td>
+                            <td id="_" valign="top" align="left">Value</td>
                          </tr>
                          <tr>
-                            <td valign="top" align="left">Mission</td>
-                            <td valign="top" align="left">Accomplished</td>
+                            <td id="_" valign="top" align="left">Mission</td>
+                            <td id="_" valign="top" align="left">Accomplished</td>
                          </tr>
                       </tbody>
                    </table>

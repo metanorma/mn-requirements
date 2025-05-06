@@ -22,12 +22,12 @@ RSpec.describe Metanorma::Requirements::Default do
           <table id="_">
             <tbody>
               <tr>
-                <td style="text-align:left;">Object</td>
-                <td style="text-align:left;">Value</td>
+                <td style="text-align: left;">Object</td>
+                <td style="text-align: left;">Value</td>
               </tr>
               <tr>
-                <td style="text-align:left;">Mission</td>
-                <td style="text-align:left;">Accomplished</td>
+                <td style="text-align: left;">Mission</td>
+                <td style="text-align: left;">Accomplished</td>
               </tr>
             </tbody>
           </table>
@@ -129,12 +129,12 @@ RSpec.describe Metanorma::Requirements::Default do
                 <table id="_">
                    <tbody>
                       <tr>
-                         <td style="text-align:left;">Object</td>
-                         <td style="text-align:left;">Value</td>
+                         <td style="text-align: left;">Object</td>
+                         <td style="text-align: left;">Value</td>
                       </tr>
                       <tr>
-                         <td style="text-align:left;">Mission</td>
-                         <td style="text-align:left;">Accomplished</td>
+                         <td style="text-align: left;">Mission</td>
+                         <td style="text-align: left;">Accomplished</td>
                       </tr>
                    </tbody>
                 </table>
@@ -345,12 +345,12 @@ RSpec.describe Metanorma::Requirements::Default do
           <table id="_">
             <tbody>
               <tr>
-                <td style="text-align:left;">Object</td>
-                <td style="text-align:left;">Value</td>
+                <td style="text-align: left;">Object</td>
+                <td style="text-align: left;">Value</td>
               </tr>
               <tr>
-                <td style="text-align:left;">Mission</td>
-                <td style="text-align:left;">Accomplished</td>
+                <td style="text-align: left;">Mission</td>
+                <td style="text-align: left;">Accomplished</td>
               </tr>
             </tbody>
           </table>
@@ -421,12 +421,12 @@ RSpec.describe Metanorma::Requirements::Default do
                 <table id="_">
                    <tbody>
                       <tr>
-                         <td style="text-align:left;">Object</td>
-                         <td style="text-align:left;">Value</td>
+                         <td style="text-align: left;">Object</td>
+                         <td style="text-align: left;">Value</td>
                       </tr>
                       <tr>
-                         <td style="text-align:left;">Mission</td>
-                         <td style="text-align:left;">Accomplished</td>
+                         <td style="text-align: left;">Mission</td>
+                         <td style="text-align: left;">Accomplished</td>
                       </tr>
                    </tbody>
                 </table>
@@ -565,12 +565,12 @@ RSpec.describe Metanorma::Requirements::Default do
           <table id="_">
             <tbody>
               <tr>
-                <td style="text-align:left;">Object</td>
-                <td style="text-align:left;">Value</td>
+                <td style="text-align: left;">Object</td>
+                <td style="text-align: left;">Value</td>
               </tr>
               <tr>
-                <td style="text-align:left;">Mission</td>
-                <td style="text-align:left;">Accomplished</td>
+                <td style="text-align: left;">Mission</td>
+                <td style="text-align: left;">Accomplished</td>
               </tr>
             </tbody>
           </table>
@@ -642,12 +642,12 @@ RSpec.describe Metanorma::Requirements::Default do
                 <table id="_">
                    <tbody>
                       <tr>
-                         <td style="text-align:left;">Object</td>
-                         <td style="text-align:left;">Value</td>
+                         <td style="text-align: left;">Object</td>
+                         <td style="text-align: left;">Value</td>
                       </tr>
                       <tr>
-                         <td style="text-align:left;">Mission</td>
-                         <td style="text-align:left;">Accomplished</td>
+                         <td style="text-align: left;">Mission</td>
+                         <td style="text-align: left;">Accomplished</td>
                       </tr>
                    </tbody>
                 </table>
@@ -784,12 +784,12 @@ RSpec.describe Metanorma::Requirements::Default do
           <table id="_">
             <tbody>
               <tr>
-                <td style="text-align:left;">Object</td>
-                <td style="text-align:left;">Value</td>
+                <td style="text-align: left;">Object</td>
+                <td style="text-align: left;">Value</td>
               </tr>
               <tr>
-                <td style="text-align:left;">Mission</td>
-                <td style="text-align:left;">Accomplished</td>
+                <td style="text-align: left;">Mission</td>
+                <td style="text-align: left;">Accomplished</td>
               </tr>
             </tbody>
           </table>
@@ -866,12 +866,12 @@ RSpec.describe Metanorma::Requirements::Default do
                 <table id="_">
                    <tbody>
                       <tr>
-                         <td style="text-align:left;">Object</td>
-                         <td style="text-align:left;">Value</td>
+                         <td style="text-align: left;">Object</td>
+                         <td style="text-align: left;">Value</td>
                       </tr>
                       <tr>
-                         <td style="text-align:left;">Mission</td>
-                         <td style="text-align:left;">Accomplished</td>
+                         <td style="text-align: left;">Mission</td>
+                         <td style="text-align: left;">Accomplished</td>
                       </tr>
                    </tbody>
                 </table>
