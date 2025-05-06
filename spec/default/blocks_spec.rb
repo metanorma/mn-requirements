@@ -70,7 +70,7 @@ RSpec.describe Metanorma::Requirements::Default do
                  </li>
                  <li>
                    <p id='_'>
-                     <xref target='_'/>
+                     <xref target='ABC'/>
                    </p>
                  </li>
                </ol>

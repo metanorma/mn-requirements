@@ -645,110 +645,110 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </ogc-standard>
     INPUT
     presxml = <<~PRESXML
-      <foreword id="A" displayorder="2">
-         <title id="_">Preface</title>
-         <fmt-title depth="1">
-            <semx element="title" source="_">Preface</semx>
-         </fmt-title>
-         <requirement model="ogc" autonum="1" original-id="A1">
-            <fmt-xref-label>
-               <span class="fmt-element-name">Requirement</span>
-               <semx element="autonum" source="A1">1</semx>
-            </fmt-xref-label>
-            <component exclude="false" class="test method type" original-id="_">
-               <p original-id="_">Manual Inspection</p>
-            </component>
-            <component exclude="false" class="test-method" original-id="C1">
-               <p original-id="1">
-                  <component exclude="false" class="step" original-id="C2" id="_">
-                     <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
-                     <component exclude="false" class="step" original-id="C3" id="_">
-                        <p original-id="3">
-                  Validate that the Implementation Specification contains a data
-                  element which represents the same concept as that defined for
-                  the UML class.
+       <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1">
+             <semx element="title" source="_">Preface</semx>
+          </fmt-title>
+          <requirement model="ogc" autonum="1" original-id="A1">
+             <fmt-xref-label>
+                <span class="fmt-element-name">Requirement</span>
+                <semx element="autonum" source="A1">1</semx>
+             </fmt-xref-label>
+             <component exclude="false" class="test method type" original-id="_">
+                <p original-id="_">Manual Inspection</p>
+             </component>
+             <component exclude="false" class="test-method" original-id="C1">
+                <p original-id="_">
+                   <component exclude="false" class="step" original-id="C2" id="_">
+                      <p original-id="_">For each UML class defined or referenced in the Tunnel Package:</p>
+                      <component exclude="false" class="step" original-id="C3" id="_">
+                         <p original-id="_">
+                   Validate that the Implementation Specification contains a data
+                   element which represents the same concept as that defined for
+                   the UML class.
+                 </p>
+                      </component>
+                      <component exclude="false" class="step" original-id="C4" id="_">
+                         <p original-id="_">
+                   Validate that the data element has the same relationships with
+                   other elements as those defined for the UML class. Validate that
+                   those relationships have the same source, target, direction,
+                   roles, and multiplicies as those documented in the Conceptual
+                   Model.
+                 </p>
+                      </component>
+                   </component>
                 </p>
-                     </component>
-                     <component exclude="false" class="step" original-id="C4" id="_">
-                        <p original-id="4">
-                  Validate that the data element has the same relationships with
-                  other elements as those defined for the UML class. Validate that
-                  those relationships have the same source, target, direction,
-                  roles, and multiplicies as those documented in the Conceptual
-                  Model.
-                </p>
-                     </component>
-                  </component>
-               </p>
-            </component>
-            <fmt-provision>
-               <table id="A1" type="recommend" class="modspec">
-                  <thead>
-                     <tr>
-                        <th scope="colgroup" colspan="2">
-                           <p class="RecommendationTitle">
-                              <fmt-name>
-                                 <span class="fmt-caption-label">
-                                    <span class="fmt-element-name">Requirement</span>
-                                    <semx element="autonum" source="A1">1</semx>
-                                 </span>
-                              </fmt-name>
-                           </p>
-                        </th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr id="_">
-                        <th>Test method type</th>
-                        <td>
-                           <semx element="component" source="_">
-                              <p id="_">Manual Inspection</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="C1">
-                        <th>Test method</th>
-                        <td>
-                           <semx element="component" source="C1">
-                              <p id="1">
-                                 <ol class="steps">
-                                    <li>
-                                       <semx element="component" source="C2">
-                                          <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
-                                          <ol class="steps">
-                                             <li>
-                                                <semx element="component" source="C3">
-                                                   <p original-id="3">
-                  Validate that the Implementation Specification contains a data
-                  element which represents the same concept as that defined for
-                  the UML class.
-                </p>
-                                                </semx>
-                                             </li>
-                                             <li>
-                                                <semx element="component" source="C4">
-                                                   <p original-id="4">
-                  Validate that the data element has the same relationships with
-                  other elements as those defined for the UML class. Validate that
-                  those relationships have the same source, target, direction,
-                  roles, and multiplicies as those documented in the Conceptual
-                  Model.
-                </p>
-                                                </semx>
-                                             </li>
-                                          </ol>
-                                       </semx>
-                                    </li>
-                                 </ol>
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </fmt-provision>
-         </requirement>
-      </foreword>
+             </component>
+             <fmt-provision>
+                <table id="A1" type="recommend" class="modspec">
+                   <thead>
+                      <tr>
+                         <th scope="colgroup" colspan="2">
+                            <p class="RecommendationTitle">
+                               <fmt-name>
+                                  <span class="fmt-caption-label">
+                                     <span class="fmt-element-name">Requirement</span>
+                                     <semx element="autonum" source="A1">1</semx>
+                                  </span>
+                               </fmt-name>
+                            </p>
+                         </th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr id="_">
+                         <th>Test method type</th>
+                         <td>
+                            <semx element="component" source="_">
+                               <p id="_">Manual Inspection</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="C1">
+                         <th>Test method</th>
+                         <td>
+                            <semx element="component" source="C1">
+                               <p id="_1">
+                                  <ol class="steps">
+                                     <li>
+                                        <semx element="component" source="C2">
+                                           <p original-id="_">For each UML class defined or referenced in the Tunnel Package:</p>
+                                           <ol class="steps">
+                                              <li>
+                                                 <semx element="component" source="C3">
+                                                    <p original-id="_">
+                   Validate that the Implementation Specification contains a data
+                   element which represents the same concept as that defined for
+                   the UML class.
+                 </p>
+                                                 </semx>
+                                              </li>
+                                              <li>
+                                                 <semx element="component" source="C4">
+                                                    <p original-id="_">
+                   Validate that the data element has the same relationships with
+                   other elements as those defined for the UML class. Validate that
+                   those relationships have the same source, target, direction,
+                   roles, and multiplicies as those documented in the Conceptual
+                   Model.
+                 </p>
+                                                 </semx>
+                                              </li>
+                                           </ol>
+                                        </semx>
+                                     </li>
+                                  </ol>
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                   </tbody>
+                </table>
+             </fmt-provision>
+          </requirement>
+       </foreword>
     PRESXML
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
