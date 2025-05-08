@@ -37,7 +37,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       #{BLANK_HDR}
          <sections>
-           <requirement id='A' model='ogc'>
+           <requirement id='_' anchor='A' model='ogc'>
              <component exclude='false' class='Test method type'>
                <p id='_'>Manual Inspection</p>
              </component>
@@ -130,46 +130,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
          <metanorma-extension>
-           <table id='_'>
+           <table id="_" anchor='_misccontainer_anchor_aliases'>
              <tbody>
                <tr>
                  <th>id1</th>
                  <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
                </tr>
-                      <tr>
-          <th>_</th>
-          <td>/label/1</td>
-        </tr>
-        <tr>
-          <th>_</th>
-          <td>A1</td>
-        </tr>
-        <tr>
-          <th>_</th>
-          <td>A2</td>
-        </tr>
-        <tr>
-          <th>_</th>
-          <td>A3</td>
-        </tr>
-        <tr>
-          <th>_</th>
-          <td>A4</td>
-        </tr>
-        <tr>
-          <th>_</th>
-          <td>A5</td>
-        </tr>
-        <tr>
-          <th>_</th>
-          <td>A6</td>
-        </tr>
              </tbody>
            </table>
       EXT
       )}
                <sections>
-           <requirement id='id1' model='ogc' obligation='recommendation,requirement' type='class'>
+           <requirement id='_' anchor='id1' model='ogc' obligation='recommendation,requirement' type='class'>
              <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
              <subject>Encoding of logical models</subject>
              <inherit>urn:iso:dis:iso:19156:clause:7.2.2</inherit>
@@ -374,22 +346,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
         <metanorma-extension>
-          <table id='_'>
+          <table id="_" anchor='_misccontainer_anchor_aliases'>
             <tbody>
               <tr>
                 <th>id1</th>
                 <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
-              </tr>
-              <tr>
-                <th>_</th>
-                <td>http://www.opengis.net/doc/IS/GML/3.2/clause/2.4</td>
               </tr>
             </tbody>
           </table>
       EXT
       )}
         <sections>
-          <requirement id='id1' model='ogc' type='class'>
+          <requirement id='_' anchor='id1' model='ogc' type='class'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
             <subject>Encoding of logical models</subject>
             <inherit>http://www.opengis.net/doc/IS/GML/3.2/clause/2.4</inherit>
@@ -421,7 +389,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     output = <<~OUTPUT
       #{BLANK_HDR.sub(/<metanorma-extension>/, <<~EXT
         <metanorma-extension>
-          <table id='_'>
+          <table id="_" anchor='_misccontainer_anchor_aliases'>
             <tbody>
               <tr>
                 <th>id1</th>
@@ -432,7 +400,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       EXT
       )}
         <sections>
-          <requirement id='id1' model='ogc' type='class'>
+          <requirement id='_' anchor="id1" model='ogc' type='class'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
                 <description>
                    <p id="_">
@@ -620,7 +588,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
     output = <<~OUTPUT
       <sections>
-        <requirement id="http___www.opengis.net_spec_waterml_2.0_req_xsd-xml-rules" model="ogc" type="class">
+        <requirement id="_" anchor="http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules" model="ogc" type="class">
           <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
         </requirement>
         <requirement id="_" model="ogc" type="class"/>

@@ -71,7 +71,6 @@ module Metanorma
 
       def reqt_to_conformance(reqt, reqtclass, confclass)
         return unless type2validate(reqt) == reqtclass
-
         r = @ids[:id][reqt["id"]]
         (r[:label] && @ids[:class][confclass]&.any? do |x|
            x[:subject].include?(r[:label])
@@ -143,7 +142,7 @@ module Metanorma
       end
 
       def reqt_links_struct(reqt)
-        { id: reqt["id"], elem: reqt, label: reqt.at("./identifier")&.text,
+        { id: reqt["anchor"], elem: reqt, label: reqt.at("./identifier")&.text,
           subject: classif_tag(reqt, "target"),
           child: reqt.xpath("./requirement | ./recommendation | ./permission")
             .map { |r| r.at("./identifier")&.text },
