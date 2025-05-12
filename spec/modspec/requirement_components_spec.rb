@@ -659,18 +659,18 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <p original-id="_">Manual Inspection</p>
              </component>
              <component exclude="false" class="test-method" original-id="C1">
-                <p original-id="_">
+                <p original-id="1">
                    <component exclude="false" class="step" original-id="C2" id="_">
-                      <p original-id="_">For each UML class defined or referenced in the Tunnel Package:</p>
+                      <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
                       <component exclude="false" class="step" original-id="C3" id="_">
-                         <p original-id="_">
+                         <p original-id="3">
                    Validate that the Implementation Specification contains a data
                    element which represents the same concept as that defined for
                    the UML class.
                  </p>
                       </component>
                       <component exclude="false" class="step" original-id="C4" id="_">
-                         <p original-id="_">
+                         <p original-id="4">
                    Validate that the data element has the same relationships with
                    other elements as those defined for the UML class. Validate that
                    those relationships have the same source, target, direction,
@@ -710,15 +710,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
                          <th>Test method</th>
                          <td>
                             <semx element="component" source="C1">
-                               <p id="_1">
+                               <p id="1">
                                   <ol class="steps">
                                      <li>
                                         <semx element="component" source="C2">
-                                           <p original-id="_">For each UML class defined or referenced in the Tunnel Package:</p>
+                                           <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
                                            <ol class="steps">
                                               <li>
                                                  <semx element="component" source="C3">
-                                                    <p original-id="_">
+                                                    <p original-id="3">
                    Validate that the Implementation Specification contains a data
                    element which represents the same concept as that defined for
                    the UML class.
@@ -727,7 +727,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                               </li>
                                               <li>
                                                  <semx element="component" source="C4">
-                                                    <p original-id="_">
+                                                    <p original-id="4">
                    Validate that the data element has the same relationships with
                    other elements as those defined for the UML class. Validate that
                    those relationships have the same source, target, direction,
