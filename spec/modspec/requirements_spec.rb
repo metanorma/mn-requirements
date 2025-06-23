@@ -71,7 +71,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <permission model="ogc" autonum="1" original-id="A1">
@@ -109,7 +109,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              </classification>
              <hr original-id="_"/>
             <quote original-id="_">A</quote>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -128,7 +128,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description original-id="_">
+             <description id="_">
                 <dl>
                    <dt>A</dt>
                    <dd>B</dd>
@@ -177,13 +177,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <component class="panda GHz express" original-id="_">
                 <p>PANDA PART</p>
              </component>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="A1" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Permission</span>
                                      <semx element="autonum" source="A1">1</semx>
@@ -284,7 +284,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
                                         1
@@ -321,7 +321,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -465,7 +465,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <permission model="ogc" type="verification" autonum="1" original-id="A1">
@@ -498,7 +498,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag id="_">family</tag>
                 <value id="_">System and Communications Protocols</value>
              </classification>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -517,7 +517,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description original-id="_">
+             <description id="_">
                 <dl>
                    <dt>A</dt>
                    <dd>B</dd>
@@ -542,13 +542,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <import exclude="true">
                 <sourcecode id="_" autonum="2">success-response()</sourcecode>
              </import>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="A1" type="recommendtest" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTestTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Conformance test</span>
                                      <semx element="autonum" source="A1">1</semx>
@@ -630,7 +630,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
                                         1
@@ -667,7 +667,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -746,7 +746,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <permission model="ogc" type="abstracttest" autonum="1" original-id="A1">
@@ -779,7 +779,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag id="_">family</tag>
                 <value id="_">System and Communications Protocols</value>
              </classification>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -798,7 +798,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description original-id="_">
+             <description id="_">
                 <dl>
                    <dt>A</dt>
                    <dd>B</dd>
@@ -823,13 +823,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <import exclude="true">
                 <sourcecode id="_" autonum="2">success-response()</sourcecode>
              </import>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="A1" type="recommendtest" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTestTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Abstract test</span>
                                      <semx element="autonum" source="A1">1</semx>
@@ -911,7 +911,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
                                         1
@@ -948,7 +948,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -1001,7 +1001,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
            <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
@@ -1020,21 +1020,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <inherit id="_">/ss/584/2015/level/2</inherit>
               <subject id="_">user</subject>
               <permission model="ogc" autonum="1-1" original-id="A2">
-                 <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
+                 <identifier id="_">/ogc/recommendation/wfs/10</identifier>
               </permission>
               <requirement model="ogc" autonum="1-1" original-id="A3">
-                 <identifier original-id="_">Requirement 1</identifier>
+                 <identifier id="_">Requirement 1</identifier>
               </requirement>
               <recommendation model="ogc" autonum="1-1" original-id="A4">
-                 <identifier original-id="_">Recommendation 1</identifier>
+                 <identifier id="_">Recommendation 1</identifier>
               </recommendation>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Permissions class</span>
                                       <semx element="autonum" source="A1">1</semx>
@@ -1138,13 +1138,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tt>
               </fmt-xref-label>
               <identifier id="_">/ogc/recommendation/wfs/10</identifier>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="B1" type="recommend" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Permission</span>
                                       <semx element="autonum" source="B1">1</semx>
@@ -1232,7 +1232,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
            <permission model="ogc" type="conformanceclass" autonum="1" original-id="A1">
@@ -1264,23 +1264,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tag>indirect-dependency</tag>
                  <value id="_">ABC</value>
               </classification>
-              <description original-id="_">Hic incipit</description>
+              <description id="_">Hic incipit</description>
               <permission model="ogc" autonum="1-1" original-id="A2">
-                 <identifier original-id="_">Permission 1</identifier>
+                 <identifier id="_">Permission 1</identifier>
               </permission>
               <requirement model="ogc" autonum="1-1" original-id="A3">
-                 <identifier original-id="_">Requirement 1</identifier>
+                 <identifier id="_">Requirement 1</identifier>
               </requirement>
               <recommendation model="ogc" autonum="1-1" original-id="A4">
-                 <identifier original-id="_">Recommendation 1</identifier>
+                 <identifier id="_">Recommendation 1</identifier>
               </recommendation>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="A1" type="recommendclass" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Conformance class</span>
                                       <semx element="autonum" source="A1">1</semx>
@@ -1445,13 +1445,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tt>
               </fmt-xref-label>
               <identifier id="_">ABC</identifier>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="B" type="recommendclass" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Conformance class</span>
                                       <semx element="autonum" source="B">2</semx>
@@ -1486,13 +1486,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tt>
               </fmt-xref-label>
               <identifier id="_">Permission 1</identifier>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="B2" type="recommend" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Permission</span>
                                       <semx element="autonum" source="B2">1</semx>
@@ -1580,7 +1580,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
         <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
            <permission model="ogc" type="conformanceclass" autonum="1" original-id="A1">
@@ -1612,23 +1612,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <tag>indirect-dependency</tag>
                  <value id="_">ABC</value>
               </classification>
-              <description original-id="_">Hic incipit</description>
+              <description id="_">Hic incipit</description>
               <permission model="ogc" autonum="1-1" original-id="A2">
-                 <identifier original-id="_">Permission 1</identifier>
+                 <identifier id="_">Permission 1</identifier>
               </permission>
               <requirement model="ogc" autonum="1-1" original-id="A3">
-                 <identifier original-id="_">Requirement 1</identifier>
+                 <identifier id="_">Requirement 1</identifier>
               </requirement>
               <recommendation model="ogc" autonum="1-1" original-id="A4">
-                 <identifier original-id="_">Recommendation 1</identifier>
+                 <identifier id="_">Recommendation 1</identifier>
               </recommendation>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="A1" type="recommendclass" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Classe de confirmité</span>
                                       <semx element="autonum" source="A1">1</semx>
@@ -1793,13 +1793,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tt>
               </fmt-xref-label>
               <identifier id="_">ABC</identifier>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="B" type="recommendclass" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Classe de confirmité</span>
                                       <semx element="autonum" source="B">2</semx>
@@ -1834,13 +1834,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tt>
               </fmt-xref-label>
               <identifier id="_">Permission 1</identifier>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="B2" type="recommend" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Autorisation</span>
                                       <semx element="autonum" source="B2">1</semx>
@@ -1922,7 +1922,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
         <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
            <requirement model="ogc" type="class" autonum="1" original-id="A1">
@@ -1944,23 +1944,23 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  <value id="_">Permission 1</value>
               </classification>
               <subject id="_">user</subject>
-              <description original-id="_">Hic incipit</description>
+              <description id="_">Hic incipit</description>
               <permission model="ogc" autonum="1-1" original-id="A2">
-                 <identifier original-id="_">Permission 1</identifier>
+                 <identifier id="_">Permission 1</identifier>
               </permission>
               <requirement model="ogc" autonum="1-1" original-id="A3">
-                 <identifier original-id="_">Requirement 1</identifier>
+                 <identifier id="_">Requirement 1</identifier>
               </requirement>
               <recommendation model="ogc" autonum="1-1" original-id="A4">
-                 <identifier original-id="_">Recommendation 1</identifier>
+                 <identifier id="_">Recommendation 1</identifier>
               </recommendation>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="A1" type="recommendclass" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Requirements class</span>
                                       <semx element="autonum" source="A1">1</semx>
@@ -2088,13 +2088,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </tt>
               </fmt-xref-label>
               <identifier id="_">Permission 1</identifier>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="A5" type="recommend" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Permission</span>
                                       <semx element="autonum" source="A5">1</semx>
@@ -2172,7 +2172,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
         <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
            <recommendation model="ogc" type="class" autonum="1" original-id="A1">
@@ -2191,21 +2191,21 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <inherit id="_">/ss/584/2015/level/2</inherit>
               <subject id="_">user</subject>
               <permission model="ogc" autonum="1-1" original-id="A2">
-                 <identifier original-id="_">Permission 1</identifier>
+                 <identifier id="_">Permission 1</identifier>
               </permission>
               <permission model="ogc" autonum="1-2" original-id="A3">
-                 <identifier original-id="_">Requirement 1</identifier>
+                 <identifier id="_">Requirement 1</identifier>
               </permission>
               <recommendation model="ogc" autonum="1-1" original-id="A4">
-                 <identifier original-id="_">Recommendation 1</identifier>
+                 <identifier id="_">Recommendation 1</identifier>
               </recommendation>
-              <fmt-provision>
+              <fmt-provision id="_">
                  <table id="A1" type="recommendclass" class="modspec">
                     <thead>
                        <tr>
                           <th scope="colgroup" colspan="2">
                              <p class="RecommendationTitle">
-                                <fmt-name>
+                                <fmt-name id="_">
                                    <span class="fmt-caption-label">
                                       <span class="fmt-element-name">Recommendations class</span>
                                       <semx element="autonum" source="A1">1</semx>
@@ -2362,7 +2362,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
       <foreword id="A0" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <requirement model="ogc" unnumbered="true" original-id="A">
@@ -2380,7 +2380,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2402,7 +2402,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">
@@ -2422,13 +2422,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <import exclude="true">
                 <sourcecode id="_" autonum="2">success-response()</sourcecode>
              </import>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="A" unnumbered="true" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Requirement</span>
                                      <span class="fmt-caption-delim">: </span>
@@ -2481,7 +2481,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
                                         1
@@ -2518,7 +2518,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2597,7 +2597,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <recommendation model="ogc" autonum="1" original-id="_">
@@ -2614,7 +2614,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2636,7 +2636,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">
@@ -2656,13 +2656,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <import exclude="true">
                 <sourcecode id="_" autonum="1">success-response()</sourcecode>
              </import>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="_" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Recommendation</span>
                                      <semx element="autonum" source="_">1</semx>
@@ -2714,7 +2714,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
                                         1
@@ -2751,7 +2751,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="1">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode autonum="1">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2777,7 +2777,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <recommendation model="ogc" autonum="1" original-id="_">
@@ -2794,7 +2794,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2816,7 +2816,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">
@@ -2836,13 +2836,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <import exclude="true">
                 <sourcecode id="_" autonum="1">success-response()</sourcecode>
              </import>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="_" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Recommandation</span>
                                      <semx element="autonum" source="_">1</semx>
@@ -2894,7 +2894,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
                                         1
@@ -2931,7 +2931,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="1">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode autonum="1">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2957,7 +2957,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <recommendation class="Provision" model="ogc" autonum="1" original-id="_">
@@ -2974,7 +2974,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">/ogc/recommendation/wfs/2</identifier>
              <inherit id="_">/ss/584/2015/level/1</inherit>
              <subject id="_">user</subject>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>this</em>
@@ -2996,7 +2996,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </tbody>
                 </table>
              </specification>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">As for the measurement targets,</p>
              </description>
              <measurement-target exclude="false" original-id="_">
@@ -3016,13 +3016,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <import exclude="true">
                 <sourcecode id="_" autonum="1">success-response()</sourcecode>
              </import>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="_" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Provision</span>
                                      <semx element="autonum" source="_">1</semx>
@@ -3074,7 +3074,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                             <semx element="measurement-target" source="_">
                                <p id="_">The measurement target shall be measured as:</p>
                                <formula id="B" autonum="1">
-                                  <fmt-name>
+                                  <fmt-name id="_">
                                      <span class="fmt-caption-label">
                                         <span class="fmt-autonum-delim">(</span>
                                         1
@@ -3111,7 +3111,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="1">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode autonum="1">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode id="_" autonum="1">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end

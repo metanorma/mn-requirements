@@ -257,11 +257,11 @@ RSpec.describe Metanorma::Requirements::Default do
                    <p id="_">This is the object of the recommendation:</p>
                    <table id="_">
                       <tbody>
-                         <tr>
+                         <tr id="_">
                             <td id="_" valign="top" align="left">Object</td>
                             <td id="_" valign="top" align="left">Value</td>
                          </tr>
-                         <tr>
+                         <tr id="_">
                             <td id="_" valign="top" align="left">Mission</td>
                             <td id="_" valign="top" align="left">Accomplished</td>
                          </tr>

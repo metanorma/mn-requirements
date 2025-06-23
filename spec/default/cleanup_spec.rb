@@ -36,7 +36,7 @@ RSpec.describe Metanorma::Requirements::Default do
             #{BLANK_HDR}
             <sections>
         <clause id='_' inline-header='false' obligation='normative'>
-          <title>Clause</title>
+          <title id="_">Clause</title>
           <requirement id='_' subsequence='A' obligation='recommendation,requirement' model='default' type='class' class='provision'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
             <subject>Encoding of logical models</subject>
@@ -128,7 +128,7 @@ RSpec.describe Metanorma::Requirements::Default do
         #{BLANK_HDR}
         <sections>
           <clause id='_' inline-header='false' obligation='normative'>
-            <title>Clause</title>
+            <title id="_">Clause</title>
             <requirement id='_' subsequence='A' model="default">
                          <title>Title</title>
               <inherit>A</inherit>
@@ -198,7 +198,7 @@ RSpec.describe Metanorma::Requirements::Default do
         #{BLANK_HDR}
            <sections>
              <clause id="_" inline-header="false" obligation="normative">
-                <title>Clause</title>
+                <title id="_">Clause</title>
                 <requirement id="_" subsequence="A" model="default" type="class">
                    <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
                    <inherit>/ss/584/2015/level/1 &amp; /ss/584/2015/level/2</inherit>

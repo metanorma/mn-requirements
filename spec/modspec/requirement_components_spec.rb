@@ -43,366 +43,366 @@ RSpec.describe Metanorma::Requirements::Modspec do
       </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A" displayorder="2">
-         <title id="_">Preface</title>
-         <fmt-title depth="1">
-            <semx element="title" source="_">Preface</semx>
-         </fmt-title>
-         <recommendation model="ogc" autonum="1" original-id="_">
-            <fmt-xref-label>
-               <span class="fmt-element-name">Recommendation</span>
-               <semx element="autonum" source="_">1</semx>
-               :
-               <tt>
-                  <xref style="id" target="_">
-                     <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                  </xref>
-               </tt>
-            </fmt-xref-label>
-            <identifier id="_">/ogc/recommendation/wfs/2</identifier>
-            <inherit id="_">/ss/584/2015/level/1</inherit>
-            <subject id="_">user</subject>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>1</em>
-                  .
-               </p>
-               <classification>
-                  <tag id="_">scope</tag>
-                  <value id="_">random</value>
-               </classification>
-               <classification>
-                  <tag id="_">widgets</tag>
-                  <value id="_">randomer</value>
-               </classification>
-            </description>
-            <component class="test-purpose" original-id="A1">
-               <p>TEST PURPOSE</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>2</em>
-                  .
-               </p>
-            </description>
-            <component class="guidance" original-id="A7">
-               <p>GUIDANCE #1</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>2a</em>
-                  .
-               </p>
-            </description>
-            <component class="conditions" original-id="A2">
-               <p>CONDITIONS</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>3</em>
-                  .
-               </p>
-            </description>
-            <component class="part" original-id="A3">
-               <p>FIRST PART</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>4</em>
-                  .
-               </p>
-            </description>
-            <component class="part" original-id="A4">
-               <p>SECOND PART</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>5</em>
-                  .
-               </p>
-            </description>
-            <component class="test-method" original-id="A5">
-               <p>TEST METHOD</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>6</em>
-                  .
-               </p>
-            </description>
-            <component class="part" original-id="A6">
-               <p>THIRD PART</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>7</em>
-                  .
-               </p>
-            </description>
-            <component class="guidance" original-id="A8">
-               <p>GUIDANCE #2</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>7a</em>
-                  .
-               </p>
-            </description>
-            <component class="panda GHz express" original-id="A7">
-               <p>PANDA PART</p>
-            </component>
-            <description original-id="_">
-               <p original-id="_">
-                  I recommend
-                  <em>8</em>
-                  .
-               </p>
-            </description>
-            <fmt-provision>
-               <table id="_" type="recommend" class="modspec">
-                  <thead>
-                     <tr>
-                        <th scope="colgroup" colspan="2">
-                           <p class="RecommendationTitle">
-                              <fmt-name>
-                                 <span class="fmt-caption-label">
-                                    <span class="fmt-element-name">Recommendation</span>
-                                    <semx element="autonum" source="_">1</semx>
-                                 </span>
-                              </fmt-name>
-                           </p>
-                        </th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <th>Identifier</th>
-                        <td>
-                           <tt>
-                              <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
-                           </tt>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Subject</th>
-                        <td>
-                           <semx element="subject" source="_">user</semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Prerequisite</th>
-                        <td>
-                           <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statement</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>1</em>
-                                 .
-                              </p>
-                              <dl>
-                                 <dt>
-                                    <semx element="tag" source="_">scope</semx>
-                                 </dt>
-                                 <dd>
-                                    <semx element="value" source="_">random</semx>
-                                 </dd>
-                                 <dt>
-                                    <semx element="tag" source="_">widgets</semx>
-                                 </dt>
-                                 <dd>
-                                    <semx element="value" source="_">randomer</semx>
-                                 </dd>
-                              </dl>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A1">
-                        <th>Test purpose</th>
-                        <td>
-                           <semx element="component" source="A1">
-                              <p>TEST PURPOSE</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statements</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>2</em>
-                                 .
-                              </p>
-                           </semx>
-                           <br/>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>2a</em>
-                                 .
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A2">
-                        <th>Conditions</th>
-                        <td>
-                           <semx element="component" source="A2">
-                              <p>CONDITIONS</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statement</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>3</em>
-                                 .
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A3">
-                        <th>A</th>
-                        <td>
-                           <semx element="component" source="A3">
-                              <p>FIRST PART</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statement</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>4</em>
-                                 .
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A4">
-                        <th>B</th>
-                        <td>
-                           <semx element="component" source="A4">
-                              <p>SECOND PART</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statement</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>5</em>
-                                 .
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A5">
-                        <th>Test method</th>
-                        <td>
-                           <semx element="component" source="A5">
-                              <p>TEST METHOD</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statement</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>6</em>
-                                 .
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A6">
-                        <th>C</th>
-                        <td>
-                           <semx element="component" source="A6">
-                              <p>THIRD PART</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statements</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>7</em>
-                                 .
-                              </p>
-                           </semx>
-                           <br/>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>7a</em>
-                                 .
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A7">
-                        <th>Panda GHz express</th>
-                        <td>
-                           <semx element="component" source="A7">
-                              <p>PANDA PART</p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>Statement</th>
-                        <td>
-                           <semx element="description" source="_">
-                              <p id="_">
-                                 I recommend
-                                 <em>8</em>
-                                 .
-                              </p>
-                           </semx>
-                        </td>
-                     </tr>
-                     <tr id="A7">
-                        <th>Guidance</th>
-                        <td>
-                           <semx element="component" source="A7">
-                              <p>GUIDANCE #1</p>
-                           </semx>
-                           <br/>
-                           <semx element="component" source="A8">
-                              <p>GUIDANCE #2</p>
-                           </semx>
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </fmt-provision>
-         </recommendation>
-      </foreword>
+       <foreword id="A" displayorder="2">
+          <title id="_">Preface</title>
+          <fmt-title depth="1" id="_">
+             <semx element="title" source="_">Preface</semx>
+          </fmt-title>
+          <recommendation model="ogc" autonum="1" original-id="_">
+             <fmt-xref-label>
+                <span class="fmt-element-name">Recommendation</span>
+                <semx element="autonum" source="_">1</semx>
+                :
+                <tt>
+                   <xref style="id" target="_">
+                      <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                   </xref>
+                </tt>
+             </fmt-xref-label>
+             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
+             <inherit id="_">/ss/584/2015/level/1</inherit>
+             <subject id="_">user</subject>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>1</em>
+                   .
+                </p>
+                <classification>
+                   <tag id="_">scope</tag>
+                   <value id="_">random</value>
+                </classification>
+                <classification>
+                   <tag id="_">widgets</tag>
+                   <value id="_">randomer</value>
+                </classification>
+             </description>
+             <component class="test-purpose" original-id="A1">
+                <p>TEST PURPOSE</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>2</em>
+                   .
+                </p>
+             </description>
+             <component class="guidance" original-id="A7">
+                <p>GUIDANCE #1</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>2a</em>
+                   .
+                </p>
+             </description>
+             <component class="conditions" original-id="A2">
+                <p>CONDITIONS</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>3</em>
+                   .
+                </p>
+             </description>
+             <component class="part" original-id="A3">
+                <p>FIRST PART</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>4</em>
+                   .
+                </p>
+             </description>
+             <component class="part" original-id="A4">
+                <p>SECOND PART</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>5</em>
+                   .
+                </p>
+             </description>
+             <component class="test-method" original-id="A5">
+                <p>TEST METHOD</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>6</em>
+                   .
+                </p>
+             </description>
+             <component class="part" original-id="A6">
+                <p>THIRD PART</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>7</em>
+                   .
+                </p>
+             </description>
+             <component class="guidance" id="A8">
+                <p>GUIDANCE #2</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>7a</em>
+                   .
+                </p>
+             </description>
+             <component class="panda GHz express" original-id="A7">
+                <p>PANDA PART</p>
+             </component>
+             <description id="_">
+                <p original-id="_">
+                   I recommend
+                   <em>8</em>
+                   .
+                </p>
+             </description>
+             <fmt-provision id="_">
+                <table id="_" type="recommend" class="modspec">
+                   <thead>
+                      <tr>
+                         <th scope="colgroup" colspan="2">
+                            <p class="RecommendationTitle">
+                               <fmt-name id="_">
+                                  <span class="fmt-caption-label">
+                                     <span class="fmt-element-name">Recommendation</span>
+                                     <semx element="autonum" source="_">1</semx>
+                                  </span>
+                               </fmt-name>
+                            </p>
+                         </th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <th>Identifier</th>
+                         <td>
+                            <tt>
+                               <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
+                            </tt>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Subject</th>
+                         <td>
+                            <semx element="subject" source="_">user</semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Prerequisite</th>
+                         <td>
+                            <semx element="inherit" source="_">/ss/584/2015/level/1</semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statement</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>1</em>
+                                  .
+                               </p>
+                               <dl>
+                                  <dt>
+                                     <semx element="tag" source="_">scope</semx>
+                                  </dt>
+                                  <dd>
+                                     <semx element="value" source="_">random</semx>
+                                  </dd>
+                                  <dt>
+                                     <semx element="tag" source="_">widgets</semx>
+                                  </dt>
+                                  <dd>
+                                     <semx element="value" source="_">randomer</semx>
+                                  </dd>
+                               </dl>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A1">
+                         <th>Test purpose</th>
+                         <td>
+                            <semx element="component" source="A1">
+                               <p>TEST PURPOSE</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statements</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>2</em>
+                                  .
+                               </p>
+                            </semx>
+                            <br/>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>2a</em>
+                                  .
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A2">
+                         <th>Conditions</th>
+                         <td>
+                            <semx element="component" source="A2">
+                               <p>CONDITIONS</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statement</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>3</em>
+                                  .
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A3">
+                         <th>A</th>
+                         <td>
+                            <semx element="component" source="A3">
+                               <p>FIRST PART</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statement</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>4</em>
+                                  .
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A4">
+                         <th>B</th>
+                         <td>
+                            <semx element="component" source="A4">
+                               <p>SECOND PART</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statement</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>5</em>
+                                  .
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A5">
+                         <th>Test method</th>
+                         <td>
+                            <semx element="component" source="A5">
+                               <p>TEST METHOD</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statement</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>6</em>
+                                  .
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A6">
+                         <th>C</th>
+                         <td>
+                            <semx element="component" source="A6">
+                               <p>THIRD PART</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statements</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>7</em>
+                                  .
+                               </p>
+                            </semx>
+                            <br/>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>7a</em>
+                                  .
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A7">
+                         <th>Panda GHz express</th>
+                         <td>
+                            <semx element="component" source="A7">
+                               <p>PANDA PART</p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr>
+                         <th>Statement</th>
+                         <td>
+                            <semx element="description" source="_">
+                               <p id="_">
+                                  I recommend
+                                  <em>8</em>
+                                  .
+                               </p>
+                            </semx>
+                         </td>
+                      </tr>
+                      <tr id="A7">
+                         <th>Guidance</th>
+                         <td>
+                            <semx element="component" source="A7">
+                               <p>GUIDANCE #1</p>
+                            </semx>
+                            <br/>
+                            <semx element="component" source="A8">
+                               <p>GUIDANCE #2</p>
+                            </semx>
+                         </td>
+                      </tr>
+                   </tbody>
+                </table>
+             </fmt-provision>
+          </recommendation>
+       </foreword>
     OUTPUT
 
     out = Nokogiri::XML(
@@ -439,7 +439,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
       <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <recommendation model="ogc" autonum="1" original-id="_">
@@ -456,7 +456,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <identifier id="_">http://www.example1.com</identifier>
              <inherit id="_">http://www.example2.com</inherit>
              <subject id="_">http://www.example3.com</subject>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">
                    I recommend
                    <em>1</em>
@@ -470,20 +470,20 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <component class="test-purpose" original-id="A1">
                 <p>TEST PURPOSE</p>
              </component>
-             <description original-id="_">
+             <description id="_">
                 <p original-id="_">http://www.example6.com</p>
              </description>
              <component class="panda GHz express" original-id="A7">
                 <p>PANDA PART</p>
              </component>
-             <description original-id="_">http://www.example7.com</description>
-             <fmt-provision>
+             <description id="_">http://www.example7.com</description>
+             <fmt-provision id="_">
                 <table id="_" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Recommendation</span>
                                      <semx element="autonum" source="_">1</semx>
@@ -647,7 +647,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~PRESXML
        <foreword id="A" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
           <requirement model="ogc" autonum="1" original-id="A1">
@@ -661,16 +661,16 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <component exclude="false" class="test-method" original-id="C1">
                 <p original-id="1">
                    <component exclude="false" class="step" original-id="C2" id="_">
-                      <p original-id="2">For each UML class defined or referenced in the Tunnel Package:</p>
+                      <p id="2">For each UML class defined or referenced in the Tunnel Package:</p>
                       <component exclude="false" class="step" original-id="C3" id="_">
-                         <p original-id="3">
+                         <p id="3">
                    Validate that the Implementation Specification contains a data
                    element which represents the same concept as that defined for
                    the UML class.
                  </p>
                       </component>
                       <component exclude="false" class="step" original-id="C4" id="_">
-                         <p original-id="4">
+                         <p id="4">
                    Validate that the data element has the same relationships with
                    other elements as those defined for the UML class. Validate that
                    those relationships have the same source, target, direction,
@@ -681,13 +681,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                    </component>
                 </p>
              </component>
-             <fmt-provision>
+             <fmt-provision id="_">
                 <table id="A1" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
                             <p class="RecommendationTitle">
-                               <fmt-name>
+                               <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Requirement</span>
                                      <semx element="autonum" source="A1">1</semx>
@@ -783,7 +783,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~PRESXML
       <foreword id="A" displayorder="2">
          <title id="_">Preface</title>
-         <fmt-title depth="1">
+         <fmt-title id="_" depth="1">
             <semx element="title" source="_">Preface</semx>
          </fmt-title>
          <requirement model="ogc" type="general" autonum="1" original-id="A1">
@@ -798,13 +798,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </tt>
             </fmt-xref-label>
             <identifier id="_">/ogc/recommendation/wfs/1</identifier>
-            <fmt-provision>
+            <fmt-provision id="_">
                <table id="A1" type="recommend" class="modspec">
                   <thead>
                      <tr>
                         <th scope="colgroup" colspan="2">
                            <p class="RecommendationTitle">
-                              <fmt-name>
+                              <fmt-name id="_">
                                  <span class="fmt-caption-label">
                                     <span class="fmt-element-name">Requirement</span>
                                     <semx element="autonum" source="A1">1</semx>
@@ -861,13 +861,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <tag>target</tag>
                <value id="_">/ogc/recommendation/wfs/1</value>
             </classification>
-            <fmt-provision>
+            <fmt-provision id="_">
                <table id="A2" type="recommendtest" class="modspec">
                   <thead>
                      <tr>
                         <th scope="colgroup" colspan="2">
                            <p class="RecommendationTestTitle">
-                              <fmt-name>
+                              <fmt-name id="_">
                                  <span class="fmt-caption-label">
                                     <span class="fmt-element-name">Conformance test</span>
                                     <semx element="autonum" source="A2">1</semx>
@@ -920,13 +920,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </tt>
             </fmt-xref-label>
             <identifier id="_">/ogc/recommendation/wfs/3</identifier>
-            <fmt-provision>
+            <fmt-provision id="_">
                <table id="A3" type="recommendclass" class="modspec">
                   <thead>
                      <tr>
                         <th scope="colgroup" colspan="2">
                            <p class="RecommendationTitle">
-                              <fmt-name>
+                              <fmt-name id="_">
                                  <span class="fmt-caption-label">
                                     <span class="fmt-element-name">Requirements class</span>
                                     <semx element="autonum" source="A3">1</semx>
@@ -983,13 +983,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <tag>target</tag>
                <value id="_">/ogc/recommendation/wfs/3</value>
             </classification>
-            <fmt-provision>
+            <fmt-provision id="_">
                <table id="A4" type="recommendclass" class="modspec">
                   <thead>
                      <tr>
                         <th scope="colgroup" colspan="2">
                            <p class="RecommendationTitle">
-                              <fmt-name>
+                              <fmt-name id="_">
                                  <span class="fmt-caption-label">
                                     <span class="fmt-element-name">Conformance class</span>
                                     <semx element="autonum" source="A4">1</semx>
@@ -1058,7 +1058,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
       <foreword id="A" displayorder="2">
          <title id="_">Preface</title>
-         <fmt-title depth="1">
+         <fmt-title id="_" depth="1">
             <semx element="title" source="_">Preface</semx>
          </fmt-title>
          <requirement model="ogc" obligation="requirement" type="class" autonum="1" original-id="_">
@@ -1071,8 +1071,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
             <inherit id="_">OWS Common 2.0</inherit>
             <inherit id="_">http://www.opengis.net/spec/WPS/2.0/req/service/model/handling</inherit>
             <requirement model="ogc" type="general" autonum="1-1" original-id="_">
-               <description original-id="_">
-                  <p original-id="_">
+               <description id="_">
+                  <p id="_">
                      <em>
                         GetStatus request shall comply with the structure defined in
                         <xref target="fig-getstatus-request-uml"/>
@@ -1084,19 +1084,19 @@ RSpec.describe Metanorma::Requirements::Modspec do
                </description>
             </requirement>
             <requirement model="ogc" type="general" autonum="1-2" original-id="_">
-               <description original-id="_">
-                  <p original-id="_">
+               <description id="_">
+                  <p id="_">
                      <em>The JobID used in the request shall be a valid identifier which the client has received with the execute response.</em>
                   </p>
                </description>
             </requirement>
-            <fmt-provision>
+            <fmt-provision id="_">
                <table id="_" type="recommendclass" class="modspec">
                   <thead>
                      <tr>
                         <th scope="colgroup" colspan="2">
                            <p class="RecommendationTitle">
-                              <fmt-name>
+                              <fmt-name id="_">
                                  <span class="fmt-caption-label">
                                     <span class="fmt-element-name">Requirements class</span>
                                     <semx element="autonum" source="_">1</semx>
@@ -1215,7 +1215,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
           <foreword id="A" displayorder="2">
          <title id="_">Preface</title>
-         <fmt-title depth="1">
+         <fmt-title id="_" depth="1">
             <semx element="title" source="_">Preface</semx>
          </fmt-title>
          <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
@@ -1231,30 +1231,30 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </fmt-xref-label>
             <identifier id="_">/ogc/recommendation/wfs/2</identifier>
             <permission model="ogc" autonum="1-1" original-id="A2">
-               <identifier original-id="_">/ogc/recommendation/wfs/10</identifier>
+               <identifier id="_">/ogc/recommendation/wfs/10</identifier>
             </permission>
             <requirement model="ogc" autonum="1-1" original-id="A3">
-               <identifier original-id="_">Requirement 1</identifier>
+               <identifier id="_">Requirement 1</identifier>
             </requirement>
             <recommendation model="ogc" autonum="1-1" original-id="A4">
-               <identifier original-id="_">Recommendation 2</identifier>
+               <identifier id="_">Recommendation 2</identifier>
             </recommendation>
             <permission model="ogc" autonum="1-2" original-id="A5">
-               <identifier original-id="_">/ogc/recommendation/wfs/11</identifier>
+               <identifier id="_">/ogc/recommendation/wfs/11</identifier>
             </permission>
             <requirement model="ogc" autonum="1-2" original-id="A6">
-               <identifier original-id="_">Requirement 2</identifier>
+               <identifier id="_">Requirement 2</identifier>
             </requirement>
             <recommendation model="ogc" autonum="1-2" original-id="A7">
-               <identifier original-id="_">Recommendation 1</identifier>
+               <identifier id="_">Recommendation 1</identifier>
             </recommendation>
-            <fmt-provision>
+            <fmt-provision id="_">
                <table id="A1" keep-with-next="true" keep-lines-together="true" type="recommendclass" class="modspec">
                   <thead>
                      <tr>
                         <th scope="colgroup" colspan="2">
                            <p class="RecommendationTitle">
-                              <fmt-name>
+                              <fmt-name id="_">
                                  <span class="fmt-caption-label">
                                     <span class="fmt-element-name">Permissions class</span>
                                     <semx element="autonum" source="A1">1</semx>

@@ -66,11 +66,11 @@ RSpec.describe Metanorma::Requirements::Default do
     presxml = <<~OUTPUT
        <foreword id="_" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <permission id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
-             <fmt-name>
+             <fmt-name id="_">
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Permission</span>
                    <semx element="autonum" source="A">1</semx>
@@ -162,7 +162,7 @@ RSpec.describe Metanorma::Requirements::Default do
              <component exclude="false" class="component1" id="_">
                 <p original-id="_">Hello</p>
              </component>
-             <fmt-provision id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
+             <fmt-provision id="_" id="A" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
                 <p>
                    <em>
                       Subject:
@@ -238,7 +238,7 @@ RSpec.describe Metanorma::Requirements::Default do
                 </div>
                 <div>
                    <semx element="note" source="N">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">NOTE</span>
                          </span>
@@ -268,7 +268,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    <semx element="measurement-target" source="_">
                       <p id="_">The measurement target shall be measured as:</p>
                       <formula id="B" autonum="1">
-                         <fmt-name>
+                         <fmt-name id="_">
                             <span class="fmt-caption-label">
                                <span class="fmt-autonum-delim">(</span>
                                1
@@ -303,7 +303,7 @@ RSpec.describe Metanorma::Requirements::Default do
                       <p id="_">The following code will be run for verification:</p>
                       <sourcecode id="_" autonum="2">
                          CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                         <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -385,11 +385,11 @@ RSpec.describe Metanorma::Requirements::Default do
     presxml = <<~OUTPUT
        <foreword id="_" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <requirement id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
-             <fmt-name>
+             <fmt-name id="_">
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Requirement</span>
                    <span class="fmt-caption-delim">
@@ -454,7 +454,7 @@ RSpec.describe Metanorma::Requirements::Default do
              <component exclude="false" class="component1" id="_">
                 <p original-id="_">Hello</p>
              </component>
-             <fmt-provision id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
+             <fmt-provision id="_" id="A" unnumbered="true" keep-with-next="true" keep-lines-together="true" model="default">
                 <p>
                    <em>
                       Subject:
@@ -484,7 +484,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    <semx element="measurement-target" source="_">
                       <p id="_">The measurement target shall be measured as:</p>
                       <formula id="B" autonum="1">
-                         <fmt-name>
+                         <fmt-name id="_">
                             <span class="fmt-caption-label">
                                <span class="fmt-autonum-delim">(</span>
                                1
@@ -519,7 +519,7 @@ RSpec.describe Metanorma::Requirements::Default do
                       <p id="_">The following code will be run for verification:</p>
                       <sourcecode id="_" autonum="2">
                          CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                         <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -606,11 +606,11 @@ RSpec.describe Metanorma::Requirements::Default do
     presxml = <<~OUTPUT
        <foreword id="F" displayorder="2">
           <title id="_">Avant-propos</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Avant-propos</semx>
           </fmt-title>
           <requirement id="A" unnumbered="true" model="default">
-             <fmt-name>
+             <fmt-name id="_">
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Exigence</span>
                    <span class="fmt-caption-delim">
@@ -675,7 +675,7 @@ RSpec.describe Metanorma::Requirements::Default do
              <component exclude="false" class="component1" id="_">
                 <p original-id="_">Hello</p>
              </component>
-             <fmt-provision id="A" unnumbered="true" model="default">
+             <fmt-provision id="_" id="A" unnumbered="true" model="default">
                 <p>
                    <em>
                       Sujet :
@@ -705,7 +705,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    <semx element="measurement-target" source="_">
                       <p id="_">The measurement target shall be measured as:</p>
                       <formula id="B" autonum="1">
-                         <fmt-name>
+                         <fmt-name id="_">
                             <span class="fmt-caption-label">
                                <span class="fmt-autonum-delim">(</span>
                                1
@@ -740,7 +740,7 @@ RSpec.describe Metanorma::Requirements::Default do
                       <p id="_">The following code will be run for verification:</p>
                       <sourcecode id="_" autonum="2">
                          CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                         <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -824,11 +824,11 @@ RSpec.describe Metanorma::Requirements::Default do
     presxml = <<~OUTPUT
        <foreword id="_" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <recommendation id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
-             <fmt-name>
+             <fmt-name id="_">
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">Recommendation</span>
                    <semx element="autonum" source="A">1</semx>
@@ -899,7 +899,7 @@ RSpec.describe Metanorma::Requirements::Default do
              <component exclude="false" class="component1" id="_">
                 <p original-id="_">Hello</p>
              </component>
-             <fmt-provision id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
+             <fmt-provision id="_" id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
                 <p>
                    <em>Obligation: shall,could</em>
                    <br/>
@@ -943,7 +943,7 @@ RSpec.describe Metanorma::Requirements::Default do
                    <semx element="measurement-target" source="_">
                       <p id="_">The measurement target shall be measured as:</p>
                       <formula id="B" autonum="1">
-                         <fmt-name>
+                         <fmt-name id="_">
                             <span class="fmt-caption-label">
                                <span class="fmt-autonum-delim">(</span>
                                1
@@ -978,7 +978,7 @@ RSpec.describe Metanorma::Requirements::Default do
                       <p id="_">The following code will be run for verification:</p>
                       <sourcecode id="_" autonum="2">
                          CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                         <fmt-sourcecode autonum="2">CoreRoot(success): HttpResponse
+                         <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -1013,8 +1013,8 @@ RSpec.describe Metanorma::Requirements::Default do
         .format(presxml.sub("<recommendation ",
                             "<recommendation class='provision' ")
                             .sub("<fmt-provision", '<fmt-provision class="provision"')
-      .gsub(/<fmt-name>\s*<span class="fmt-caption-label">\s*<span class="fmt-element-name">Recommendation/,
-            '<fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">Provision')
+      .gsub(/<fmt-name id="_">\s*<span class="fmt-caption-label">\s*<span class="fmt-element-name">Recommendation/,
+            '<fmt-name id="_"><span class="fmt-caption-label"><span class="fmt-element-name">Provision')
       .gsub(/<fmt-xref-label>\s*<span class="fmt-element-name">Recommendation/,
             '<fmt-xref-label><span class="fmt-element-name">provision'))
   end

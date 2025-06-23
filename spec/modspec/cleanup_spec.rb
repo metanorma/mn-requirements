@@ -213,7 +213,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <tag>identifier-base</tag>
                 <value>http://www.example.com</value>
              </classification>
-             <component class='conditions'>
+             <component id="_" class='conditions'>
                <ol id='_' type='arabic'>
                  <li>
                    <p id='_'>Candidate test subject is a witch</p>
@@ -223,13 +223,13 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </li>
                </ol>
              </component>
-             <component class='part'>
+             <component id="_" class='part'>
                <p id='_'>Determine travel distance by flight path</p>
              </component>
-             <component class='guidance'>
+             <component id="_" class='guidance'>
                <p id='_'>Guidance</p>
              </component>
-             <description>
+             <description id="_">
                <p id='_'>Interpolated description</p>
                       <classification>
          <tag>scope</tag>
@@ -243,45 +243,45 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <recommendation id='_' model='ogc' type='general'>
                <identifier>/label/1</identifier>
              </recommendation>
-             <component class='part'>
+             <component id="_" class='part'>
                <p id='_'>Widget has been suitably calibrated for aerodynamics</p>
              </component>
-             <component class='test-method'>
+             <component id="_" class='test-method'>
                <p id='_'>Method</p>
-               <description>
+               <description id="_">
                  <p id='_'>Method description</p>
                </description>
-               <component class='step'>
+               <component id="_" class='step'>
                  <p id='_'>Step 1</p>
-                 <component class='step'>
+                 <component id="_" class='step'>
                    <p id='_'>Step 2</p>
                  </component>
                </component>
              </component>
-             <description>
+             <description id="_">
                <p id='_'>Statement</p>
              </description>
-             <component class='test-purpose'>
+             <component id="_" class='test-purpose'>
                <p id='_'>Purpose</p>
              </component>
-             <component class='test-method-type'>
+             <component id="_" class='test-method-type'>
                <p id='_'>Method Type</p>
              </component>
-             <component class='reference'>
+             <component id="_" class='reference'>
                <p id='_'>
                  <xref target='ref2'/>
                </p>
              </component>
-             <component class='step'>
+             <component id="_" class='step'>
                <p id='_'>Step</p>
              </component>
-             <component class='test-method'>
+             <component id="_" class='test-method'>
                <p id='_'>Method2</p>
              </component>
-             <component class='test-purpose'>
+             <component id="_" class='test-purpose'>
                <p id='_'>Purpose2</p>
              </component>
-             <component class='test-method-type'>
+             <component id="_" class='test-method-type'>
                <p id='_'>Method Type2</p>
              </component>
              <requirement id='_' model='ogc' type='conformanceclass'>
@@ -302,7 +302,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
              <permission id='_' model='ogc' type='class'>
                <identifier>A6</identifier>
              </permission>
-             <description>
+             <description id="_">
                <p id="_">ABC</p>
             <ul id="_">
                <li>
@@ -402,7 +402,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
         <sections>
           <requirement id='_' anchor="id1" model='ogc' type='class'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
-                <description>
+                <description id="_">
                    <p id="_">
                       See
                       <xref target="xyz"/>
