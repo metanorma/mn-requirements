@@ -135,6 +135,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                <tr>
                  <th>id1</th>
                  <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
+                 <td>http___www.opengis.net_spec_waterml_2.0_req_xsd-xml-rules</td>
                </tr>
              </tbody>
            </table>
@@ -351,6 +352,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <tr>
                 <th>id1</th>
                 <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
+                <td>http___www.opengis.net_spec_waterml_2.0_req_xsd-xml-rules</td>
               </tr>
             </tbody>
           </table>
@@ -394,6 +396,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
               <tr>
                 <th>id1</th>
                 <td>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</td>
+                <td>http___www.opengis.net_spec_waterml_2.0_req_xsd-xml-rules</td>
               </tr>
             </tbody>
           </table>

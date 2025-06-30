@@ -19,6 +19,7 @@ RSpec.describe Metanorma::Requirements::Default do
               <tr>
                 <th>id1</th>
                 <td>/ogc/recommendation/wfs/2</td>
+                <td>_ogc_recommendation_wfs_2</td>
               </tr>
             </tbody>
           </table>

@@ -315,8 +315,9 @@ RSpec.describe Metanorma::Requirements::Modspec do
            </p>
         </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
+    pres_output = Nokogiri::XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
+    expect(Xml::C14n.format(strip_guid(pres_output
       .at("//xmlns:foreword").to_xml)))
       .to be_equivalent_to Xml::C14n.format(output)
   end
