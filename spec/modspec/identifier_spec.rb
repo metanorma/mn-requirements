@@ -368,8 +368,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes id xrefs with modspec base id prefix" do
@@ -777,8 +777,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes id xrefs with base id prefix per requirement" do
@@ -1176,8 +1176,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes id xrefs with base id prefix per requirement with inheritance" do
@@ -1570,8 +1570,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes id xrefs with base id prefix per requirement with inheritance and modspec base id prefix" do
@@ -1984,7 +1984,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({ modspecidentifierbase: "/ogc" })
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 end

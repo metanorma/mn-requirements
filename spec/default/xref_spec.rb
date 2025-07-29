@@ -146,10 +146,10 @@ RSpec.describe Metanorma::Requirements::Default do
           </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Canon.format_xml(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "cross-references requirements in French" do
@@ -287,10 +287,10 @@ RSpec.describe Metanorma::Requirements::Default do
           </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Canon.format_xml(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "cross-references recommendations" do
@@ -427,10 +427,10 @@ RSpec.describe Metanorma::Requirements::Default do
           </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Canon.format_xml(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "cross-references permissions" do
@@ -567,10 +567,10 @@ RSpec.describe Metanorma::Requirements::Default do
           </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Canon.format_xml(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "labels and cross-references nested requirements" do
@@ -730,9 +730,9 @@ RSpec.describe Metanorma::Requirements::Default do
           </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
+    expect(Canon.format_xml(strip_guid(Nokogiri.XML(IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 end

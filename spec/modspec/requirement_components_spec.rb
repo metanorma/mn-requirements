@@ -409,8 +409,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes URIs in requirement components" do
@@ -604,8 +604,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes nested requirement steps" do
@@ -754,8 +754,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes bidirectional requirement/conformance tests" do
@@ -1036,8 +1036,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes nested requirement" do
@@ -1179,8 +1179,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "sort nested requirements numerically" do
@@ -1389,7 +1389,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 end

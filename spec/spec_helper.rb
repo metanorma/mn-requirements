@@ -10,7 +10,7 @@ require "equivalent-xml"
 require "mn-requirements"
 require "isodoc"
 require "metanorma-standoc"
-require "xml-c14n"
+require "canon"
 
 Dir[File.expand_path("./support/**/**/*.rb", __dir__)]
   .sort.each { |f| require f }

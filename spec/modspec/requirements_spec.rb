@@ -405,8 +405,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes permission verifications" do
@@ -687,8 +687,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         IsoDoc::PresentationXMLConvert.new({})
         .convert("test", input, true),
       ).at("//xmlns:foreword")
-      expect(Xml::C14n.format(strip_guid(out.to_xml)))
-        .to be_equivalent_to Xml::C14n.format(presxml)
+      expect(Canon.format_xml(strip_guid(out.to_xml)))
+        .to be_equivalent_to Canon.format_xml(presxml)
     end
 
     it "processes abstract tests" do
@@ -968,8 +968,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes permission classes" do
@@ -1192,8 +1192,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes conformance classes" do
@@ -1540,8 +1540,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes conformance classes in French" do
@@ -1887,8 +1887,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes requirement classes" do
@@ -2142,8 +2142,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes recommendation classes" do
@@ -2304,15 +2304,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes requirements" do
     input = <<~INPUT
                 <ogc-standard xmlns="https://standards.opengeospatial.org/document">
           <preface><foreword id="A0"><title>Preface</title>
-          <requirement model="ogc" id="A" unnumbered="true">
+          <requirement model="ogc" id="A">
         <title>A New Requirement</title>
         <identifier>/ogc/recommendation/wfs/2</identifier>
         <inherit>/ss/584/2015/level/1</inherit>
@@ -2360,15 +2360,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
           </ogc-standard>
     INPUT
     presxml = <<~OUTPUT
-      <foreword id="A0" displayorder="2">
+          <foreword id="A0" displayorder="2">
           <title id="_">Preface</title>
-          <fmt-title id="_" depth="1">
+          <fmt-title depth="1" id="_">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <requirement model="ogc" unnumbered="true" original-id="A">
+          <requirement model="ogc" autonum="1" original-id="A">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="A">(??)</semx>
+                <semx element="autonum" source="A">1</semx>
                 :
                 <tt>
                    <xref style="id" target="A">
@@ -2423,7 +2423,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 <sourcecode id="_" autonum="2">success-response()</sourcecode>
              </import>
              <fmt-provision id="_">
-                <table id="A" unnumbered="true" type="recommend" class="modspec">
+                <table id="A" type="recommend" class="modspec">
                    <thead>
                       <tr>
                          <th scope="colgroup" colspan="2">
@@ -2431,6 +2431,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <fmt-name id="_">
                                   <span class="fmt-caption-label">
                                      <span class="fmt-element-name">Requirement</span>
+                                     <semx element="autonum" source="A">1</semx>
                                      <span class="fmt-caption-delim">: </span>
                                      <semx element="title" source="A">A New Requirement</semx>
                                   </span>
@@ -2518,7 +2519,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                <p id="_">The following code will be run for verification:</p>
                                <sourcecode id="_" autonum="2">
                                   CoreRoot(success): HttpResponse if (success) recommendation(label: success-response) end
-                                  <fmt-sourcecode id="_" autonum="2">CoreRoot(success): HttpResponse
+                                  <fmt-sourcecode autonum="2" id="_">CoreRoot(success): HttpResponse
              if (success)
              recommendation(label: success-response)
              end
@@ -2531,15 +2532,15 @@ RSpec.describe Metanorma::Requirements::Modspec do
                 </table>
              </fmt-provision>
           </requirement>
-       </foreword>
+       </foreword> 
     OUTPUT
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes recommendations" do
@@ -2771,8 +2772,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
 
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
@@ -2951,8 +2952,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<language>en</language>", "<language>fr</language>"), true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
 
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
@@ -3131,7 +3132,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<recommendation ", "<recommendation class='Provision' "), true),
     ).at("//xmlns:foreword")
-    expect(Xml::C14n.format(strip_guid(out.to_xml)))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Canon.format_xml(strip_guid(out.to_xml)))
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 end
