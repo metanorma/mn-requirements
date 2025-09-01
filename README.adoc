@@ -2,7 +2,7 @@
 
 image:https://img.shields.io/gem/v/mn-requirements.svg["Gem Version", link="https://rubygems.org/gems/mn-requirements"]
 image:https://github.com/metanorma/mn-requirements/workflows/rake/badge.svg["Build Status", link="https://github.com/metanorma/mn-requirements/actions?workflow=rake"]
-image:https://codeclimate.com/github/metanorma/mn-requirements/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/mn-requirements"]
+// image:https://codeclimate.com/github/metanorma/mn-requirements/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/mn-requirements"]
 image:https://img.shields.io/github/issues-pr-raw/metanorma/mn-requirements.svg["Pull Requests", link="https://github.com/metanorma/mn-requirements/pulls"]
 image:https://img.shields.io/github/commits-since/metanorma/mn-requirements/latest.svg["Commits since latest",link="https://github.com/metanorma/mn-requirements/releases"]
 
