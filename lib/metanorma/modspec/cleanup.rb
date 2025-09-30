@@ -76,13 +76,21 @@ module Metanorma
       end
 
       def requirement_anchor_identifier(reqt)
-        # Metanorma::Utils::guid_anchor?(reqt["id"]) or return
-        (!reqt["anchor"] || Metanorma::Utils::guid_anchor?(reqt["anchor"])) or return
+        (!reqt["anchor"] || Metanorma::Utils::guid_anchor?(reqt["anchor"])) or
+          return
         id = reqt.at("./identifier") or return
-        anchor = id.text.strip
+        anchor = identifier2text(id)
         anchor.empty? and return
-        # reqt["id"] = Metanorma::Utils::to_ncname(anchor)
         reqt["anchor"] = anchor
+      end
+
+      # allow case where identifier contains a link, which has not yet been
+      # converted to its target text
+      def identifier2text(ident)
+        m = ident.dup
+        l = m.at("./link[normalize-space(.)='']") and
+          l.replace(l["target"])
+        m.text.strip
       end
 
       def requirement_target_identifiers(reqt)

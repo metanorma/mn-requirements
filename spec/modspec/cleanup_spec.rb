@@ -601,5 +601,28 @@ RSpec.describe Metanorma::Requirements::Modspec do
     xml = xml.at("//xmlns:sections")
     expect(Canon.format_xml(strip_guid(xml.to_xml)))
       .to be_equivalent_to Canon.format_xml(output)
+
+        input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+
+      [requirement,model=ogc]
+      ====
+      [%metadata]
+      type:: class
+      identifier:: http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules
+      ====
+
+      [requirement,model=ogc]
+      ====
+      [%metadata]
+      type:: class
+      ====
+    INPUT
+        xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    xml = xml.at("//xmlns:sections")
+    expect(Canon.format_xml(strip_guid(xml.to_xml)))
+      .to be_equivalent_to Canon.format_xml(output)
+
+
   end
 end
