@@ -74,7 +74,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" autonum="1" original-id="A1">
+          <permission model="ogc" autonum="1" original-id="A1" id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Permission</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -468,7 +468,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" type="verification" autonum="1" original-id="A1">
+          <permission model="ogc" type="verification" autonum="1" original-id="A1" id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Conformance test</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -749,7 +749,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <permission model="ogc" type="abstracttest" autonum="1" original-id="A1">
+          <permission model="ogc" type="abstracttest" autonum="1" original-id="A1" id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Abstract test</span>
                 <semx element="autonum" source="A1">1</semx>
@@ -999,12 +999,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+        <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title id="_" depth="1">
+           <fmt-title depth="1" id="_">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
-           <permission model="ogc" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
+           <permission model="ogc" id="_" type="class" keep-with-next="true" keep-lines-together="true" autonum="1" original-id="A1">
               <fmt-xref-label>
                  <span class="fmt-element-name">Permissions class</span>
                  <semx element="autonum" source="A1">1</semx>
@@ -1087,23 +1087,6 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 </tt>
                              </span>
                              <br/>
-                             <bookmark id="A3"/>
-                             <span class="fmt-caption-label">
-                                <span class="fmt-element-name">Requirement</span>
-                                <semx element="autonum" source="A3">1-1</semx>
-                                :
-                                <tt>
-                                   <xref style="id" target="A3" id="_">
-                                      <semx element="identifier" source="_">Requirement 1</semx>
-                                   </xref>
-                                   <semx element="xref" source="_">
-                                      <fmt-xref style="id" target="A3">
-                                         <semx element="identifier" source="_">Requirement 1</semx>
-                                      </fmt-xref>
-                                   </semx>
-                                </tt>
-                             </span>
-                             <br/>
                              <bookmark id="A4"/>
                              <span class="fmt-caption-label">
                                 <span class="fmt-element-name">Recommendation</span>
@@ -1120,13 +1103,30 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                    </semx>
                                 </tt>
                              </span>
+                             <br/>
+                             <bookmark id="A3"/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Requirement</span>
+                                <semx element="autonum" source="A3">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A3" id="_">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
+                                </tt>
+                             </span>
                           </td>
                        </tr>
                     </tbody>
                  </table>
               </fmt-provision>
            </permission>
-           <permission model="ogc" autonum="1" original-id="B1">
+           <permission model="ogc" id="_" autonum="1" original-id="B1">
               <fmt-xref-label>
                  <span class="fmt-element-name">Permission</span>
                  <semx element="autonum" source="B1">1</semx>
@@ -1230,12 +1230,12 @@ RSpec.describe Metanorma::Requirements::Modspec do
     INPUT
 
     presxml = <<~OUTPUT
-       <foreword id="A" displayorder="2">
+        <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title id="_" depth="1">
+           <fmt-title depth="1" id="_">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
-           <permission model="ogc" type="conformanceclass" autonum="1" original-id="A1">
+           <permission model="ogc" id="_" type="conformanceclass" autonum="1" original-id="A1">
               <fmt-xref-label>
                  <span class="fmt-element-name">Conformance class</span>
                  <semx element="autonum" source="A1">1</semx>
@@ -1394,23 +1394,6 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 </tt>
                              </span>
                              <br/>
-                             <bookmark id="A3"/>
-                             <span class="fmt-caption-label">
-                                <span class="fmt-element-name">Requirement</span>
-                                <semx element="autonum" source="A3">1-1</semx>
-                                :
-                                <tt>
-                                   <xref style="id" target="A3" id="_">
-                                      <semx element="identifier" source="_">Requirement 1</semx>
-                                   </xref>
-                                   <semx element="xref" source="_">
-                                      <fmt-xref style="id" target="A3">
-                                         <semx element="identifier" source="_">Requirement 1</semx>
-                                      </fmt-xref>
-                                   </semx>
-                                </tt>
-                             </span>
-                             <br/>
                              <bookmark id="A4"/>
                              <span class="fmt-caption-label">
                                 <span class="fmt-element-name">Recommendation</span>
@@ -1427,13 +1410,30 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                    </semx>
                                 </tt>
                              </span>
+                             <br/>
+                             <bookmark id="A3"/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Requirement</span>
+                                <semx element="autonum" source="A3">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A3" id="_">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
+                                </tt>
+                             </span>
                           </td>
                        </tr>
                     </tbody>
                  </table>
               </fmt-provision>
            </permission>
-           <permission model="ogc" type="conformanceclass" autonum="2" original-id="B">
+           <permission model="ogc" id="_" type="conformanceclass" autonum="2" original-id="B">
               <fmt-xref-label>
                  <span class="fmt-element-name">Conformance class</span>
                  <semx element="autonum" source="B">2</semx>
@@ -1474,7 +1474,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </table>
               </fmt-provision>
            </permission>
-           <permission model="ogc" autonum="1" original-id="B2">
+           <permission model="ogc" id="_" autonum="1" original-id="B2">
               <fmt-xref-label>
                  <span class="fmt-element-name">Permission</span>
                  <semx element="autonum" source="B2">1</semx>
@@ -1580,10 +1580,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
         <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title id="_" depth="1">
+           <fmt-title depth="1" id="_">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
-           <permission model="ogc" type="conformanceclass" autonum="1" original-id="A1">
+           <permission model="ogc" id="_" type="conformanceclass" autonum="1" original-id="A1">
               <fmt-xref-label>
                  <span class="fmt-element-name">Classe de confirmité</span>
                  <semx element="autonum" source="A1">1</semx>
@@ -1658,7 +1658,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                           <td>
                              <span class="fmt-element-name">Classe de confirmité</span>
                              <semx element="autonum" source="B">2</semx>
-                             :
+                              :
                              <tt>
                                 <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
@@ -1678,7 +1678,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <br/>
                              <span class="fmt-element-name">Classe de confirmité</span>
                              <semx element="autonum" source="B">2</semx>
-                             :
+                              :
                              <tt>
                                 <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
@@ -1703,7 +1703,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                              <br/>
                              <span class="fmt-element-name">Classe de confirmité</span>
                              <semx element="autonum" source="B">2</semx>
-                             :
+                              :
                              <tt>
                                 <xref style="id" target="B" id="_">
                                    <semx element="identifier" source="_">ABC</semx>
@@ -1781,7 +1781,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </table>
               </fmt-provision>
            </permission>
-           <permission model="ogc" type="conformanceclass" autonum="2" original-id="B">
+           <permission model="ogc" id="_" type="conformanceclass" autonum="2" original-id="B">
               <fmt-xref-label>
                  <span class="fmt-element-name">Classe de confirmité</span>
                  <semx element="autonum" source="B">2</semx>
@@ -1822,7 +1822,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                  </table>
               </fmt-provision>
            </permission>
-           <permission model="ogc" autonum="1" original-id="B2">
+           <permission model="ogc" id="_" autonum="1" original-id="B2">
               <fmt-xref-label>
                  <span class="fmt-element-name">Autorisation</span>
                  <semx element="autonum" source="B2">1</semx>
@@ -1864,7 +1864,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
                           <td>
                              <span class="fmt-element-name">Classe de confirmité</span>
                              <semx element="autonum" source="A1">1</semx>
-                             :
+                              :
                              <tt>
                                 <xref style="id" target="A1" id="_">
                                    <semx element="identifier" source="_">/ogc/recommendation/wfs/2</semx>
@@ -1922,10 +1922,10 @@ RSpec.describe Metanorma::Requirements::Modspec do
     presxml = <<~OUTPUT
         <foreword id="A" displayorder="2">
            <title id="_">Preface</title>
-           <fmt-title id="_" depth="1">
+           <fmt-title depth="1" id="_">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
-           <requirement model="ogc" type="class" autonum="1" original-id="A1">
+           <requirement model="ogc" id="_" type="class" autonum="1" original-id="A1">
               <fmt-xref-label>
                  <span class="fmt-element-name">Requirements class</span>
                  <semx element="autonum" source="A1">1</semx>
@@ -2037,23 +2037,6 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                 </tt>
                              </span>
                              <br/>
-                             <bookmark id="A3"/>
-                             <span class="fmt-caption-label">
-                                <span class="fmt-element-name">Requirement</span>
-                                <semx element="autonum" source="A3">1-1</semx>
-                                :
-                                <tt>
-                                   <xref style="id" target="A3" id="_">
-                                      <semx element="identifier" source="_">Requirement 1</semx>
-                                   </xref>
-                                   <semx element="xref" source="_">
-                                      <fmt-xref style="id" target="A3">
-                                         <semx element="identifier" source="_">Requirement 1</semx>
-                                      </fmt-xref>
-                                   </semx>
-                                </tt>
-                             </span>
-                             <br/>
                              <bookmark id="A4"/>
                              <span class="fmt-caption-label">
                                 <span class="fmt-element-name">Recommendation</span>
@@ -2070,13 +2053,30 @@ RSpec.describe Metanorma::Requirements::Modspec do
                                    </semx>
                                 </tt>
                              </span>
+                             <br/>
+                             <bookmark id="A3"/>
+                             <span class="fmt-caption-label">
+                                <span class="fmt-element-name">Requirement</span>
+                                <semx element="autonum" source="A3">1-1</semx>
+                                :
+                                <tt>
+                                   <xref style="id" target="A3" id="_">
+                                      <semx element="identifier" source="_">Requirement 1</semx>
+                                   </xref>
+                                   <semx element="xref" source="_">
+                                      <fmt-xref style="id" target="A3">
+                                         <semx element="identifier" source="_">Requirement 1</semx>
+                                      </fmt-xref>
+                                   </semx>
+                                </tt>
+                             </span>
                           </td>
                        </tr>
                     </tbody>
                  </table>
               </fmt-provision>
            </requirement>
-           <permission model="ogc" autonum="1" original-id="A5">
+           <permission model="ogc" id="_" autonum="1" original-id="A5">
               <fmt-xref-label>
                  <span class="fmt-element-name">Permission</span>
                  <semx element="autonum" source="A5">1</semx>
@@ -2175,7 +2175,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
            <fmt-title id="_" depth="1">
               <semx element="title" source="_">Preface</semx>
            </fmt-title>
-           <recommendation model="ogc" type="class" autonum="1" original-id="A1">
+           <recommendation model="ogc" type="class" autonum="1" original-id="A1" id="_">
               <fmt-xref-label>
                  <span class="fmt-element-name">Recommendations class</span>
                  <semx element="autonum" source="A1">1</semx>
@@ -2365,7 +2365,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title depth="1" id="_">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <requirement model="ogc" autonum="1" original-id="A">
+          <requirement model="ogc" autonum="1" original-id="A" id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Requirement</span>
                 <semx element="autonum" source="A">1</semx>
@@ -2601,7 +2601,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" autonum="1" original-id="_">
+          <recommendation model="ogc" autonum="1" original-id="_" id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommendation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -2781,7 +2781,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation model="ogc" autonum="1" original-id="_">
+          <recommendation model="ogc" autonum="1" original-id="_" id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Recommandation</span>
                 <semx element="autonum" source="_">1</semx>
@@ -2961,7 +2961,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
           <fmt-title id="_" depth="1">
              <semx element="title" source="_">Preface</semx>
           </fmt-title>
-          <recommendation class="Provision" model="ogc" autonum="1" original-id="_">
+          <recommendation class="Provision" model="ogc" autonum="1" original-id="_" id="_">
              <fmt-xref-label>
                 <span class="fmt-element-name">Provision</span>
                 <semx element="autonum" source="_">1</semx>

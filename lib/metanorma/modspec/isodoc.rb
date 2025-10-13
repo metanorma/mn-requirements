@@ -27,7 +27,7 @@ module Metanorma
           out[x] = node[x] if node[x]
         end
         node["original-id"] = node["id"]
-        node.delete("id")
+        node["id"] = "_#{UUIDTools::UUID.random_create}"
         out["type"] = recommend_class(node)
         recommendation_component_labels(node)
         out
