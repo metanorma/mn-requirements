@@ -1,10 +1,12 @@
 require "tsort"
+require_relative "log"
 
 module Metanorma
   class Requirements
     class Modspec < Default
       def validate(reqt, log)
         @log ||= log
+        @log&.add_msg(MODSPEC_LOG_MESSAGES)
         @ids ||= reqt_links(reqt.document)
         reqt_cycles_validate
         reqt_link_validate(reqt)
@@ -47,17 +49,13 @@ module Metanorma
       }.freeze
 
       def log_reqt(reqt, leftclass, rightclass)
-        @log.add("Requirements", reqt[:elem], <<~MSG
-          #{CLASS2LABEL[leftclass.to_sym]} #{reqt[:label] || reqt[:id]} has no corresponding #{CLASS2LABEL[rightclass.to_sym]}
-        MSG
-        )
+        @log.add("MODSPEC_1", reqt[:elem],
+                 params: [CLASS2LABEL[leftclass.to_sym], reqt[:label] || reqt[:id], CLASS2LABEL[rightclass.to_sym]])
       end
 
       def log_reqt2(reqt, leftclass, target, rightclass)
-        @log.add("Requirements", reqt[:elem], <<~MSG
-          #{CLASS2LABEL[leftclass]} #{reqt[:label] || reqt[:id]} points to #{CLASS2LABEL[rightclass]} #{target} outside this document
-        MSG
-        )
+        @log.add("MODSPEC_2", reqt[:elem],
+                 params: [CLASS2LABEL[leftclass], reqt[:label] || reqt[:id], CLASS2LABEL[rightclass], target])
       end
 
       def reqt_to_dependency(reqt)
@@ -71,10 +69,11 @@ module Metanorma
 
       def reqt_to_conformance(reqt, reqtclass, confclass)
         return unless type2validate(reqt) == reqtclass
+
         r = @ids[:id][reqt["id"]]
-        (r[:label] && @ids[:class][confclass]&.any? do |x|
-           x[:subject].include?(r[:label])
-         end) and return
+        r[:label] && @ids[:class][confclass]&.any? do |x|
+          x[:subject].include?(r[:label])
+        end and return
         log_reqt(r, reqtclass, confclass)
       end
 
@@ -82,9 +81,9 @@ module Metanorma
         return unless type2validate(reqt) == confclass
 
         r = @ids[:id][reqt["id"]]
-        (r[:subject] && @ids[:class][reqtclass]&.any? do |x|
-           r[:subject].include?(x[:label])
-         end) and return
+        r[:subject] && @ids[:class][reqtclass]&.any? do |x|
+          r[:subject].include?(x[:label])
+        end and return
         log_reqt(r, confclass, reqtclass)
       end
 
@@ -97,12 +96,11 @@ module Metanorma
       end
 
       def children_to_class(reqt, childclass, parentclass)
-        return unless type2validate(reqt) == childclass
-
+        type2validate(reqt) == childclass or return
         r = @ids[:id][reqt["id"]]
-        (r[:label] && @ids[:class][parentclass]&.any? do |x|
-           x[:child].include?(r[:label])
-         end) and return
+        r[:label] && @ids[:class][parentclass]&.any? do |x|
+          x[:child].include?(r[:label])
+        end and return
         log_reqt(r, childclass, parentclass)
       end
 
@@ -123,11 +121,9 @@ module Metanorma
       end
 
       def reqt_links1_label(reqt, hash, struct)
-        return hash unless struct[:label]
-
+        struct[:label] or return hash
         if hash[:label][struct[:label]]
-          msg = "Modspec identifier #{struct[:label]} is used more than once"
-          @log.add("Requirements", reqt, msg, severity: 0)
+          @log.add("MODSPEC_3", reqt, params: [struct[:label]])
         end
         hash[:label][struct[:label]] = reqt["id"]
         hash
@@ -160,22 +156,21 @@ module Metanorma
       end
 
       def reqt_cycles_validate1(link)
-        arr = TSHash.new(@ids[:id].values)
-        arr.link = link
+        arr = reqt_cycles_validate1_prep(link)
         TSort.each_strongly_connected_component(
           lambda { |&b| arr.tsort_each_node(&b) },
           lambda { |n, &b| arr.tsort_each_child(n, &b) },
-        ) do |c|
-          c.size == 1 and next
-          log_cycle(link, c)
+        ) do |path|
+          path.size == 1 and next
+          @log.add("MODSPEC_4", nil,
+                   params: [link, (path << path.first).join(" => ")])
         end
       end
 
-      def log_cycle(link, path)
-        @log.add("Requirements", nil, <<~MSG
-          Cycle in Modspec linkages through #{link}: #{(path << path.first).join(' => ')}
-        MSG
-        )
+      def reqt_cycles_validate1_prep(link)
+        arr = TSHash.new(@ids[:id].values)
+        arr.link = link
+        arr
       end
 
       class TSHash
