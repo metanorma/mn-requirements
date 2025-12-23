@@ -17,7 +17,7 @@ module Metanorma
       def requirement_inherit_insert(reqt)
         ins = reqt.at("./classification") || reqt.at(
           "./description | ./measurementtarget | ./specification | " \
-          "./verification | ./import | ./description | ./component | " \
+          "./verification | ./import | ./component | " \
           "./requirement | ./recommendation | ./permission",
         ) and return ins
         requirement_inherit_insert1(reqt)
@@ -48,7 +48,8 @@ module Metanorma
       def requirement_description_wrap(reqt, text)
         return if (text.element? && (reqt_subpart?(text.name) ||
                 REQS.include?(text.name))) ||
-          (text.text.strip.empty? && !text.at(".//xref | .//eref | .//link"))
+          (text.text.strip.empty? &&
+           !text.at(".//xref | .//eref | .//link | .//source"))
 
         t = Nokogiri::XML::Element.new("description", reqt.document)
         text.before(t)
