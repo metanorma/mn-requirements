@@ -49,7 +49,7 @@ module Metanorma
         return if (text.element? && (reqt_subpart?(text.name) ||
                 REQS.include?(text.name))) ||
           (text.text.strip.empty? &&
-           !text.at(".//xref | .//eref | .//link | .//source"))
+           !text.at(".//xref | .//eref | .//link | .//origin"))
 
         t = Nokogiri::XML::Element.new("description", reqt.document)
         text.before(t)
