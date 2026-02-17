@@ -452,36 +452,26 @@ RSpec.describe Metanorma::Requirements::Modspec do
       ====
     INPUT
     output = <<~OUTPUT
-                #{BLANK_HDR}
-           <sections>
-         <requirement id='_' model='ogc'>
-           <component exclude='false' class='Test method type'>
-             <p id='_'>Manual Inspection</p>
+#{BLANK_HDR}
+   <sections>
+     <requirement id="_" model="ogc">
+       <component exclude="false" class="Test method type">
+         <p id="_">Manual Inspection</p>
+       </component>
+       <component exclude="false" class="Test method">
+         <component exclude="false" class="step">
+           <p id="_">For each UML class defined or referenced in the Tunnel Package:</p>
+           <component exclude="false" class="step">
+             <p id="_">Validate that the Implementation Specification contains a data element which represents the same concept as that defined for the UML class.</p>
            </component>
-           <component exclude='false' class='Test method'>
-               <component exclude='false' class='step'>
-                 <p id='_'>For each UML class defined or referenced in the Tunnel Package:</p>
-                 <component exclude='false' class='step'>
-                   <p id='_'>
-                     Validate that the Implementation Specification contains a data
-                     element which represents the same concept as that defined for
-                     the UML class.
-                   </p>
-                 </component>
-                 <component exclude='false' class='step'>
-                   <p id='_'>
-                     Validate that the data element has the same relationships with
-                     other elements as those defined for the UML class. Validate that
-                     those relationships have the same source, target, direction,
-                     roles, and multiplicies as those documented in the Conceptual
-                     Model.
-                   </p>
-                 </component>
-               </component>
+           <component exclude="false" class="step">
+             <p id="_">Validate that the data element has the same relationships with other elements as those defined for the UML class. Validate that those relationships have the same source, target, direction, roles, and multiplicies as those documented in the Conceptual Model.</p>
            </component>
-         </requirement>
-       </sections>
-      </metanorma>
+         </component>
+       </component>
+     </requirement>
+   </sections>
+ </metanorma>
     OUTPUT
     expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Canon.format_xml(output)
