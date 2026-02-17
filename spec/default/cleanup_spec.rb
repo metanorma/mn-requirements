@@ -201,7 +201,7 @@ RSpec.describe Metanorma::Requirements::Default do
                 <title id="_">Clause</title>
                 <requirement id="_" subsequence="A" model="default" type="class">
                    <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
-                   <inherit>/ss/584/2015/level/1 &amp; /ss/584/2015/level/2</inherit>
+                   <inherit>/ss/584/2015/level/1 &#x26; /ss/584/2015/level/2</inherit>
                    <classification>
                       <tag>widget</tag>
                       <value>producer</value>
