@@ -326,8 +326,8 @@ RSpec.describe Metanorma::Requirements::Default do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes requirements" do
@@ -543,8 +543,8 @@ RSpec.describe Metanorma::Requirements::Default do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes requirements in French" do
@@ -766,8 +766,8 @@ RSpec.describe Metanorma::Requirements::Default do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes recommendation" do
@@ -1004,16 +1004,16 @@ RSpec.describe Metanorma::Requirements::Default do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
 
     out = Nokogiri::XML(
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input
       .sub("<recommendation ", "<recommendation class='provision' "), true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format(
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to Canon.format(
         presxml.sub("<recommendation ", "<recommendation class='provision' ")
                .sub("<fmt-provision", '<fmt-provision class="provision"')
       .gsub(/<fmt-name id="_">\s*<span class="fmt-caption-label">\s*<span class="fmt-element-name">Recommendation/,

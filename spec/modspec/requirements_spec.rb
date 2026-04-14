@@ -405,8 +405,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes permission verifications" do
@@ -687,8 +687,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
         IsoDoc::PresentationXMLConvert.new({})
         .convert("test", input, true),
       ).at("//xmlns:foreword")
-      expect(Canon.format_xml(strip_guid(out.to_xml)))
-        .to be_equivalent_to Canon.format_xml(presxml)
+      expect(strip_guid(out.to_xml))
+        .to be_xml_equivalent_to presxml
     end
 
     it "processes abstract tests" do
@@ -968,8 +968,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes permission classes" do
@@ -1192,8 +1192,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes conformance classes" do
@@ -1540,8 +1540,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes conformance classes in French" do
@@ -1887,8 +1887,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes requirement classes" do
@@ -2142,8 +2142,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes recommendation classes" do
@@ -2304,8 +2304,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes requirements" do
@@ -2539,8 +2539,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes recommendations" do
@@ -2772,8 +2772,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       IsoDoc::PresentationXMLConvert.new({})
       .convert("test", input, true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
 
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
@@ -2952,8 +2952,8 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<language>en</language>", "<language>fr</language>"), true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
 
     presxml = <<~OUTPUT
        <foreword id="A" displayorder="2">
@@ -3132,7 +3132,7 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .convert("test", input
       .sub("<recommendation ", "<recommendation class='Provision' "), true),
     ).at("//xmlns:foreword")
-    expect(Canon.format_xml(strip_guid(out.to_xml)))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(out.to_xml))
+      .to be_xml_equivalent_to presxml
   end
 end
