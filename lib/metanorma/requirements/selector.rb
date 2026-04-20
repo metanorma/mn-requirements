@@ -18,13 +18,12 @@ module Metanorma
       # @labels = @i18n.get.deep_merge(options[:labels] || {})["requirements"]
       @labels = @i18n.get["requirements"]
       @modspecidentifierbase = options[:modspecidentifierbase]
+      init_isodoc(options)
       @models =
         model_names.each_with_object({}) { |k, m| m[k] = create(k) }
-      init_isodoc(options)
     end
 
     def init_isodoc(options)
-      require "debug"; binding.b
       @isodoc = Metanorma::Core::Isodoc
         .init(options[:conv], lang: options[:lang], script: options[:script],
                               locale: options[:locale],
