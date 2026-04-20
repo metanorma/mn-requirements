@@ -1,3 +1,5 @@
+require "isodoc"
+
 module Metanorma
   class Requirements
     class Default
@@ -5,34 +7,40 @@ module Metanorma
         @i18n.l10n(text)
       end
 
-      # TODO: move to metanorma-utils
-def semx_fmt_dup(elem)
-      elem["id"] ||= "_#{UUIDTools::UUID.random_create}"
-      new = Nokogiri::XML(<<~XML).root
-        <semx xmlns='#{elem.namespace.href}' element='#{elem.name}' source='#{elem['original-id'] || elem['id']}'>#{to_xml(elem.children)}</semx>
-      XML
-      strip_duplicate_ids(nil, elem, new)
-      new
-    end
-
-    def gather_all_ids(elem)
-      elem.xpath(".//*[@id]").each_with_object([]) do |i, m|
-        m << i["id"]
+      # KILL
+      def semx_fmt_dup(elem)
+        elem["id"] ||= "_#{UUIDTools::UUID.random_create}"
+        new = Nokogiri::XML(<<~XML).root
+          <semx xmlns='#{elem.namespace.href}' element='#{elem.name}' source='#{elem['original-id'] || elem['id']}'>#{to_xml(elem.children)}</semx>
+        XML
+        strip_duplicate_ids(nil, elem, new)
+        new
       end
-    end
 
-    # remove ids duplicated between sem_title and pres_title
-    # index terms are assumed transferred to pres_title from sem_title
-    def strip_duplicate_ids(_node, sem_title, pres_title)
-      sem_title && pres_title or return
-      ids = gather_all_ids(pres_title)
-      sem_title.xpath(".//*[@id]").each do |x|
-        ids.include?(x["id"]) or next
-        x["original-id"] = x["id"]
-        x.delete("id")
+      def semx_fmt_dup(elem)
+        @isodoc.semx_fmt_dup(elem)
       end
-      sem_title.xpath(ns(".//index")).each(&:remove)
-    end
+
+      # KILL
+      def gather_all_idsx(elem)
+        elem.xpath(".//*[@id]").each_with_object([]) do |i, m|
+          m << i["id"]
+        end
+      end
+
+      # KILL
+      # remove ids duplicated between sem_title and pres_title
+      # index terms are assumed transferred to pres_title from sem_title
+      def strip_duplicate_idsx(_node, sem_title, pres_title)
+        (sem_title && pres_title) or return
+        ids = gather_all_ids(pres_title)
+        sem_title.xpath(".//*[@id]").each do |x|
+          ids.include?(x["id"]) or next
+          x["original-id"] = x["id"]
+          x.delete("id")
+        end
+        sem_title.xpath(ns(".//index")).each(&:remove)
+      end
 
       def recommendation_label(elem, type, xrefs)
         label, title = recommendation_labels(elem)
@@ -99,7 +107,7 @@ def semx_fmt_dup(elem)
       def recommendation_labels(node)
         [node.at(ns("./identifier")), node.at(ns("./title"))]
           .map do |n|
-           to_xml(n&.children)
+          to_xml(n&.children)
         end
       end
 
@@ -107,7 +115,7 @@ def semx_fmt_dup(elem)
         oblig = node["obligation"] and
           out << l10n("#{@labels['default']['obligation']}: #{oblig}")
         node.xpath(ns("./subject")).each do |subj|
-          #out << l10n("#{@labels['default']['subject']}: #{subj.text}")
+          # out << l10n("#{@labels['default']['subject']}: #{subj.text}")
           out << l10n("#{@labels['default']['subject']}: #{to_xml(semx_fmt_dup(subj))}")
         end
         node.xpath(ns("./inherit")).each do |i|
@@ -120,7 +128,7 @@ def semx_fmt_dup(elem)
       end
 
       def recommendation_attr_parse(node, label)
-        #l10n("#{label}: #{to_xml(node.children)}")
+        # l10n("#{label}: #{to_xml(node.children)}")
         l10n("#{label}: #{to_xml(semx_fmt_dup(node))}")
       end
 

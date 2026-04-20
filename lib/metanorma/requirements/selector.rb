@@ -20,6 +20,15 @@ module Metanorma
       @modspecidentifierbase = options[:modspecidentifierbase]
       @models =
         model_names.each_with_object({}) { |k, m| m[k] = create(k) }
+      init_isodoc(options)
+    end
+
+    def init_isodoc(options)
+      require "debug"; binding.b
+      @isodoc = Metanorma::Core::Isodoc
+        .init(options[:conv], lang: options[:lang], script: options[:script],
+                              locale: options[:locale],
+                              i18nyaml: options[:labels])
     end
 
     def model_names
@@ -50,8 +59,8 @@ module Metanorma
     def create(type)
       case type
       when :modspec, :ogc
-        Metanorma::Requirements::Modspec.new(parent: self)
-      else Metanorma::Requirements::Default.new(parent: self)
+        Metanorma::Requirements::Modspec.new(parent: self, isodoc: @isodoc)
+      else Metanorma::Requirements::Default.new(parent: self, isodoc: @isodoc)
       end
     end
 
