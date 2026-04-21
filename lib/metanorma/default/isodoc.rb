@@ -7,39 +7,8 @@ module Metanorma
         @i18n.l10n(text)
       end
 
-      # KILL
-      def semx_fmt_dup(elem)
-        elem["id"] ||= "_#{UUIDTools::UUID.random_create}"
-        new = Nokogiri::XML(<<~XML).root
-          <semx xmlns='#{elem.namespace.href}' element='#{elem.name}' source='#{elem['original-id'] || elem['id']}'>#{to_xml(elem.children)}</semx>
-        XML
-        strip_duplicate_ids(nil, elem, new)
-        new
-      end
-
       def semx_fmt_dup(elem)
         @isodoc.semx_fmt_dup(elem)
-      end
-
-      # KILL
-      def gather_all_idsx(elem)
-        elem.xpath(".//*[@id]").each_with_object([]) do |i, m|
-          m << i["id"]
-        end
-      end
-
-      # KILL
-      # remove ids duplicated between sem_title and pres_title
-      # index terms are assumed transferred to pres_title from sem_title
-      def strip_duplicate_idsx(_node, sem_title, pres_title)
-        (sem_title && pres_title) or return
-        ids = gather_all_ids(pres_title)
-        sem_title.xpath(".//*[@id]").each do |x|
-          ids.include?(x["id"]) or next
-          x["original-id"] = x["id"]
-          x.delete("id")
-        end
-        sem_title.xpath(ns(".//index")).each(&:remove)
       end
 
       def recommendation_label(elem, type, xrefs)
@@ -48,7 +17,8 @@ module Metanorma
         num = xrefs.anchor(elem["id"], :label, false)
         num &&= "<semx element='autonum' source='#{elem['id']}'>#{num}</semx>"
         ret = num
-        /<span class='fmt-element-name'>/.match?(ret) or ret = "#{type} #{num}".strip
+        ret&.include?("<span class='fmt-element-name'>") or
+          ret = "#{type} #{num}".strip
         label || title and
           ret += recommendation_label_add(elem, label, title)
         ret
@@ -74,6 +44,34 @@ module Metanorma
       end
 
       def requirement_render1(node)
+        case node["render"]
+        when "inline" then requirement_render1_inline(node)
+        else requirement_render1_default(node)
+        end
+      end
+
+      def requirement_render1_inline(node)
+        out = recommendation_base(node, "fmt-provision")
+        lbl, body = requirement_render1_inline_prep(node)
+        if ins = body&.at(ns(".//p"))
+          ins.children.first.previous = lbl
+          out << body
+        else
+          lbl and out << lbl
+          body and out << body
+        end
+        requirement_presentation(node, out)
+      end
+
+      def requirement_render1_inline_prep(node)
+        ident = node.at(ns("./identifier")) and
+          lbl = "[#{to_xml(semx_fmt_dup(ident))}] "
+        body =  node.at(ns("./title | ./specification | ./description"))
+        body &&= semx_fmt_dup(body)
+        [lbl, body]
+      end
+
+      def requirement_render1_default(node)
         out = recommendation_base(node, "fmt-provision")
         ins = recommendation_header(node, out)
         ins = recommendation_attributes(node, ins)
@@ -115,7 +113,6 @@ module Metanorma
         oblig = node["obligation"] and
           out << l10n("#{@labels['default']['obligation']}: #{oblig}")
         node.xpath(ns("./subject")).each do |subj|
-          # out << l10n("#{@labels['default']['subject']}: #{subj.text}")
           out << l10n("#{@labels['default']['subject']}: #{to_xml(semx_fmt_dup(subj))}")
         end
         node.xpath(ns("./inherit")).each do |i|
@@ -128,7 +125,6 @@ module Metanorma
       end
 
       def recommendation_attr_parse(node, label)
-        # l10n("#{label}: #{to_xml(node.children)}")
         l10n("#{label}: #{to_xml(semx_fmt_dup(node))}")
       end
 
