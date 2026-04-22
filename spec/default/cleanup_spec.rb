@@ -12,6 +12,7 @@ RSpec.describe Metanorma::Requirements::Default do
       ====
       [%metadata]
       model:: default
+      render:: inline
       type:: class
       identifier:: http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules[*req/core*]
       subject:: Encoding of logical models
@@ -37,7 +38,7 @@ RSpec.describe Metanorma::Requirements::Default do
             <sections>
         <clause id='_' inline-header='false' obligation='normative'>
           <title id="_">Clause</title>
-          <requirement id='_' subsequence='A' obligation='recommendation,requirement' model='default' type='class' class='provision'>
+          <requirement id='_' subsequence='A' obligation='recommendation,requirement' model='default' render='inline' type='class' class='provision'>
             <identifier>http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules</identifier>
             <subject>Encoding of logical models</subject>
             <inherit>/ss/584/2015/level/1 &amp; /ss/584/2015/level/2</inherit>

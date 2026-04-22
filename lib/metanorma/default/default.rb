@@ -3,6 +3,7 @@ require_relative "cleanup"
 require_relative "utils"
 require_relative "isodoc"
 require_relative "xrefs"
+require "metanorma-core"
 
 module Metanorma
   class Requirements
@@ -12,6 +13,7 @@ module Metanorma
         @parent = options[:parent]
         @i18n = @parent.i18n
         @labels = @parent.labels
+        @isodoc = options[:isodoc]
       end
 
       def reqt_subpart?(name)

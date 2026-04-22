@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   # precise version is on relaton-render
   spec.add_dependency "isodoc-i18n", ">= 1.2.0"
   spec.add_dependency "metanorma-utils", ">= 2.0.0"
+  spec.add_dependency "metanorma-core", ">= 0.1.0"
   spec.add_dependency "relaton-render", ">= 1.0.0"
 
   spec.add_development_dependency "benchmark"
