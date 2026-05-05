@@ -903,7 +903,7 @@ RSpec.describe Metanorma::Requirements::Default do
             <component exclude="false" class="component1" id="_">
                <p original-id="_">Hello</p>
             </component>
-            <fmt-provision id="_" id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
+            <fmt-provision id="A" obligation="shall,could" keep-with-next="true" keep-lines-together="true" model="default" autonum="1">
                <p>
                   <em>Obligation: shall,could</em>
                   <br/>
