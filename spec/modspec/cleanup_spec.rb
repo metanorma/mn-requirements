@@ -625,4 +625,31 @@ RSpec.describe Metanorma::Requirements::Modspec do
 
 
   end
+
+  describe "#autonum_sort_key" do
+    let(:cleaner) { Class.new(Metanorma::Requirements::Modspec).allocate }
+
+    it "splits delimited numeric autonums into integer components" do
+      expect(cleaner.autonum_sort_key("1-1")).to eq [[1, 1], "1-1"]
+      expect(cleaner.autonum_sort_key("1.1.1")).to eq [[1, 1, 1], "1.1.1"]
+      expect(cleaner.autonum_sort_key("11")).to eq [[11], "11"]
+    end
+
+    it "falls back to the string when there is no numeric component" do
+      expect(cleaner.autonum_sort_key("foo")).to eq [[], "foo"]
+      expect(cleaner.autonum_sort_key(nil)).to eq [[], ""]
+    end
+
+    it "orders component-wise, with the string as tiebreaker" do
+      sorted = ["2", "1-10", "11", "1-2", "1-1"]
+        .sort_by { |s| cleaner.autonum_sort_key(s) }
+      expect(sorted).to eq ["1-1", "1-2", "1-10", "2", "11"]
+    end
+
+    it "treats mixed alphanumeric autonums by their numeric components first" do
+      sorted = ["1b", "1a", "2a"]
+        .sort_by { |s| cleaner.autonum_sort_key(s) }
+      expect(sorted).to eq ["1a", "1b", "2a"]
+    end
+  end
 end

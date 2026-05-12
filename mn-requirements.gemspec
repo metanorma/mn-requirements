@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   # precise version is on relaton-render
   spec.add_dependency "isodoc-i18n", ">= 1.2.0"
   spec.add_dependency "metanorma-utils", ">= 2.0.0"
+  spec.add_dependency "metanorma-core", ">= 0.1.0"
   spec.add_dependency "relaton-render", ">= 1.0.0"
 
   spec.add_development_dependency "benchmark"
@@ -36,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
   spec.add_development_dependency "guard", "~> 2.14"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
-  spec.add_development_dependency "metanorma-standoc", ">= 2.8.0"
+  spec.add_development_dependency "metanorma-standoc", ">= 3.4.1"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.6"
   spec.add_development_dependency "rubocop", "~> 1"

@@ -18,8 +18,16 @@ module Metanorma
       # @labels = @i18n.get.deep_merge(options[:labels] || {})["requirements"]
       @labels = @i18n.get["requirements"]
       @modspecidentifierbase = options[:modspecidentifierbase]
+      init_isodoc(options)
       @models =
         model_names.each_with_object({}) { |k, m| m[k] = create(k) }
+    end
+
+    def init_isodoc(options)
+      @isodoc = Metanorma::Core::Isodoc
+        .init(options[:conv], lang: options[:lang], script: options[:script],
+                              locale: options[:locale],
+                              i18nyaml: options[:labels])
     end
 
     def model_names
@@ -50,8 +58,8 @@ module Metanorma
     def create(type)
       case type
       when :modspec, :ogc
-        Metanorma::Requirements::Modspec.new(parent: self)
-      else Metanorma::Requirements::Default.new(parent: self)
+        Metanorma::Requirements::Modspec.new(parent: self, isodoc: @isodoc)
+      else Metanorma::Requirements::Default.new(parent: self, isodoc: @isodoc)
       end
     end
 

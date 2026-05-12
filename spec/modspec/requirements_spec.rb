@@ -2308,6 +2308,36 @@ RSpec.describe Metanorma::Requirements::Modspec do
       .to be_xml_equivalent_to presxml
   end
 
+  it "sorts nested provision tables by numeric components of autonum" do
+    table = Nokogiri::XML(<<~XML).root
+      <table xmlns="https://standards.opengeospatial.org/document">
+        <tbody>
+          <tr><td><div><fmt-provision><table id="B">
+            <thead><tr><td><fmt-name>
+              <span class="fmt-element-name">Permission</span>
+              <semx element="autonum">1-2</semx>
+            </fmt-name></td></tr></thead>
+          </table></fmt-provision></div></td></tr>
+          <tr><td><div><fmt-provision><table id="C">
+            <thead><tr><td><fmt-name>
+              <span class="fmt-element-name">Permission</span>
+              <semx element="autonum">1-10</semx>
+            </fmt-name></td></tr></thead>
+          </table></fmt-provision></div></td></tr>
+          <tr><td><div><fmt-provision><table id="A">
+            <thead><tr><td><fmt-name>
+              <span class="fmt-element-name">Permission</span>
+              <semx element="autonum">1-1</semx>
+            </fmt-name></td></tr></thead>
+          </table></fmt-provision></div></td></tr>
+        </tbody>
+      </table>
+    XML
+    cleaner = Class.new(Metanorma::Requirements::Modspec).allocate
+    sorted = cleaner.requirement_table_nested_cleanup_sort(table)
+    expect(sorted.map { |t| t["id"] }).to eq %w(A B C)
+  end
+
   it "processes requirements" do
     input = <<~INPUT
                 <ogc-standard xmlns="https://standards.opengeospatial.org/document">
