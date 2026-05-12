@@ -6,8 +6,13 @@ RSpec.describe Metanorma::Requirements do
   end
 
   it "initialises class" do
+    conv = IsoDoc::PresentationXMLConvert
+      .new({
+             output_formats: Metanorma::Standoc::Processor.new
+             .output_formats,
+           })
     expect(Metanorma::Requirements
-      .new(default: "default")
+      .new(default: "default", conv: conv)
       .model_names).to eq(%i[default ogc])
   end
 end

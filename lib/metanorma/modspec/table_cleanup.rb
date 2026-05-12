@@ -69,37 +69,52 @@ module Metanorma
           r.at(ns("./th"))&.text&.strip == hdr or break
           td = r.remove.at(ns("./td"))
           id = td["id"] ? "<bookmark id='#{td['id']}'/>" : ""
-          ret << id + to_xml(td.children).strip
+          ret << (id + to_xml(td.children).strip)
         end
         ret
       end
 
       def requirement_table_nested_cleanup(node, out, table)
         rows = []
-        table.xpath(ns("./tbody/tr/td/*/fmt-provision/table"))
-          .sort_by do |t|
-            [t.at(ns(".//fmt-name//span[@class = 'fmt-element-name']"))&.text,
-             t.at(ns(".//fmt-name//semx[@element = 'autonum']"))&.text&.to_i]
-          end.each do |t|
-            x = t.at(ns("./thead/tr")) or next
-            x.at(ns("./th")).children =
-              requirement_table_nested_cleanup_hdr(node)
-            f = x.at(ns("./td/fmt-name")) and
-              f.parent.children = to_xml(f.children).strip
-            td = x.at(ns("./td"))
-            td["id"] = t["original-id"] || t["id"]
-            if desc = t.at(ns("./tbody/tr/td/semx[@element = 'description']"))
-              p = desc.at(ns("./p")) and p.replace(p.children)
-              td << " #{to_xml(desc)}"
-            end
-            rows << x
+        requirement_table_nested_cleanup_sort(table).each do |t|
+          x = t.at(ns("./thead/tr")) or next
+          x.at(ns("./th")).children =
+            requirement_table_nested_cleanup_hdr(node)
+          f = x.at(ns("./td/fmt-name")) and
+            f.parent.children = to_xml(f.children).strip
+          td = x.at(ns("./td"))
+          td["id"] = t["original-id"] || t["id"]
+          if desc = t.at(ns("./tbody/tr/td/semx[@element = 'description']"))
+            p = desc.at(ns("./p")) and p.replace(p.children)
+            td << " #{to_xml(desc)}"
           end
+          rows << x
+        end
         table.xpath(ns("./tbody/tr[./td/*/fmt-provision/table]"))
           .each_with_index do |t, i|
           t.replace(rows[i])
         end
         out.xpath(ns("./*/fmt-provision")).each(&:remove)
         table
+      end
+
+      def requirement_table_nested_cleanup_sort(table)
+        table.xpath(ns("./tbody/tr/td/*/fmt-provision/table"))
+          .sort_by do |t|
+            [t.at(ns(".//fmt-name//span[@class = 'fmt-element-name']"))&.text,
+             *autonum_sort_key(
+               t.at(ns(".//fmt-name//semx[@element = 'autonum']"))&.text,
+             )]
+          end
+      end
+
+      # allow autonum to be sorted numerically, but break up non-numeric text
+      # to allow for autonum values like "1a", "1b", etc. and delimited autonum
+      # values like "1.1", "1.2", etc.
+      def autonum_sort_key(text)
+        text ||= ""
+        nums = text.scan(/\d+/).map(&:to_i)
+        [nums, text]
       end
 
       def requirement_table_nested_cleanup_hdr(node)

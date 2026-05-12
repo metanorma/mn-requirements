@@ -120,5 +120,5 @@ def mock_open_uri(code)
 end
 
 def xml_string_conent(xml)
-  strip_guid(Nokogiri::HTML(xml).to_s)
+  strip_guid(Nokogiri::HTML(xml).to_xhtml)
 end
