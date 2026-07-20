@@ -1,4 +1,3 @@
-require "isodoc"
 
 module Metanorma
   class Requirements
