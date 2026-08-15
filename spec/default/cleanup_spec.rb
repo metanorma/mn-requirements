@@ -232,4 +232,63 @@ RSpec.describe Metanorma::Requirements::Default do
     expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
       .to be_xml_equivalent_to output
   end
+
+  # metanorma/metanorma-standoc#1239: the provisions model fixes the metadata
+  # head order (title?, identifier?, subject*, inherit*, classification*), but
+  # requirement processing can emit subject after classification; reordering
+  # restores the canonical sequence.
+  describe "#requirement_metadata_reorder" do
+    let(:model) { Class.new(described_class).allocate }
+
+    def head(xml)
+      reqt = Nokogiri::XML(xml).root
+      model.requirement_metadata_reorder(reqt)
+      reqt.elements.map(&:name)
+    end
+
+    it "reorders a classification emitted before subject into canonical order" do
+      expect(head(<<~XML))
+        <requirement>
+          <title>T</title>
+          <classification><tag>priority</tag><value>P0</value></classification>
+          <subject>S</subject>
+          <inherit>I</inherit>
+          <description><p>body</p></description>
+        </requirement>
+      XML
+        .to eq %w(title subject inherit classification description)
+    end
+
+    it "preserves order within each metadata type and keeps the body last" do
+      reqt = Nokogiri::XML(<<~XML).root
+        <requirement>
+          <classification><value>c1</value></classification>
+          <identifier>id</identifier>
+          <classification><value>c2</value></classification>
+          <subject>s1</subject>
+          <title>T</title>
+          <subject>s2</subject>
+          <description><p>body</p></description>
+        </requirement>
+      XML
+      model.requirement_metadata_reorder(reqt)
+      expect(reqt.elements.map(&:name))
+        .to eq %w(title identifier subject subject classification classification
+                  description)
+      expect(reqt.xpath("./subject").map(&:text)).to eq %w(s1 s2)
+      expect(reqt.xpath("./classification/value").map(&:text)).to eq %w(c1 c2)
+    end
+
+    it "leaves an already-canonical head unchanged" do
+      expect(head(<<~XML))
+        <requirement>
+          <title>T</title>
+          <identifier>id</identifier>
+          <subject>S</subject>
+          <classification><value>c</value></classification>
+        </requirement>
+      XML
+        .to eq %w(title identifier subject classification)
+    end
+  end
 end

@@ -72,6 +72,26 @@ module Metanorma
         requirement_metadata1(reqt, dl, reqt.at("./title"))
       end
 
+      # The provisions model fixes the metadata head order
+      # (title?, identifier?, subject*, inherit*, classification*), but the
+      # elements are emitted in authored order, so a requirement authoring its
+      # subject after its classifications is invalid. Reorder the metadata head
+      # into the canonical sequence, preserving relative order within each type.
+      # https://github.com/metanorma/metanorma-standoc/issues/1239
+      REQT_METADATA_HEAD = %w(title identifier subject inherit
+                              classification).freeze
+
+      def requirement_metadata_reorder(reqt)
+        ordered = REQT_METADATA_HEAD.flat_map { |n| reqt.xpath("./#{n}").to_a }
+        ordered.size < 2 and return
+        ordered.reverse_each do |e|
+          e.unlink
+          if reqt.children.empty? then reqt.add_child(e)
+          else reqt.children.first.previous = e
+          end
+        end
+      end
+
       def requirement_metadata1_attrs
         %w(obligation model type class render)
       end

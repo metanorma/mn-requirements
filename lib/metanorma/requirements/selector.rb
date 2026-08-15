@@ -79,6 +79,13 @@ module Metanorma
       requirement_inherit_cleanup(xmldoc)
       requirement_descriptions_cleanup(xmldoc)
       requirement_identifier_cleanup(xmldoc)
+      requirement_metadata_reorder(xmldoc)
+    end
+
+    def requirement_metadata_reorder(xmldoc)
+      xmldoc.xpath(REQRECPER).each do |r|
+        model(r["model"]).requirement_metadata_reorder(r)
+      end
     end
 
     def requirement_type_cleanup(xmldoc)
