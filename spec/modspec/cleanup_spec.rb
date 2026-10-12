@@ -318,7 +318,6 @@ RSpec.describe Metanorma::Requirements::Modspec do
             </ul>
                  <p id="_">Logical models encoded as XSDs should be faithful to the original UML
                  conceptual models.</p>
-               </p>
              </description>
            </requirement>
          </sections>
