@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "isodoc-i18n", ">= 1.2.0"
   spec.add_dependency "metanorma-utils", ">= 2.0.0"
   spec.add_dependency "metanorma-core", ">= 0.1.0"
-  spec.add_dependency "relaton", "~> 3.1"
+  spec.add_dependency "relaton", "~> 3.1.1"
 
   spec.add_development_dependency "benchmark"
   spec.add_development_dependency "debug"
