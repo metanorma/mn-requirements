@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "isodoc-i18n", ">= 1.2.0"
   spec.add_dependency "metanorma-utils", ">= 2.0.0"
   spec.add_dependency "metanorma-core", ">= 0.1.0"
-  spec.add_dependency "relaton", "~> 3.1.1"
   # Bundled-gem successors required directly by lib code: modspec/validate.rb
   # uses tsort for the circular-dependency check, table_cleanup.rb uses uri.
   # Ruby 4 warns on undeclared bundled gems and pruned bundles would fail.
